@@ -1,0 +1,548 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 34  of event 'cycles'
+# Event count (approx.): 340000000
+#
+# Overhead       Samples  Shared Object            Symbol                                             IPC   [IPC Coverage]
+# ........  ............  .......................  .................................................  ....................
+#
+     8.82%             3  [kernel.kallsyms]        [k] snooze_loop                                    -      -            
+            |
+            ---snooze_loop
+               snooze_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     5.88%             2  [kernel.kallsyms]        [k] _raw_spin_lock                                 -      -            
+            |
+            ---_raw_spin_lock
+               |          
+               |--2.94%--__close_fd
+               |          0
+               |          __se_sys_close
+               |          system_call
+               |          __close
+               |          0x7ffff7f39f98
+               |          0x7ffff7f39ecc
+               |          0x7ffff7f3aa48
+               |          readproc
+               |          0x10000b1f8
+               |          generic_start_main.isra.0
+               |          __libc_start_main
+               |          0
+               |          
+                --2.94%--tick_do_update_jiffies64.part.4
+                          0
+                          tick_irq_enter
+                          irq_enter
+                          timer_interrupt
+                          plpar_hcall_norets
+                          dedicated_cede_loop
+                          cpuidle_enter_state
+                          cpuidle_enter
+                          do_idle
+                          cpu_startup_entry
+                          start_secondary
+                          start_secondary_prolog
+
+     5.88%             2  [vdso]                   [.] __do_get_tspec                                 -      -            
+            |
+            ---__do_get_tspec
+               __kernel_clock_gettime
+               |          
+               |--2.94%--0x7fff881512b8
+               |          0x7fff8800a074
+               |          0x7fff88009f14
+               |          0x7fff8800a074
+               |          0x7fff8800a074
+               |          0x7fff8800093c
+               |          JavaCalls::call_helper
+               |          os::os_exception_wrapper
+               |          JavaCalls::call_virtual
+               |          JavaCalls::call_virtual
+               |          thread_entry
+               |          JavaThread::thread_main_inner
+               |          JavaThread::run
+               |          java_start
+               |          start_thread
+               |          __clone
+               |          
+                --2.94%--0x7fff88151274
+                          0x7fff8800a074
+                          0x7fff88009f14
+                          0x7fff8800a074
+                          0x7fff8800a074
+                          0x7fff8800093c
+                          JavaCalls::call_helper
+                          os::os_exception_wrapper
+                          JavaCalls::call_virtual
+                          JavaCalls::call_virtual
+                          thread_entry
+                          JavaThread::thread_main_inner
+                          JavaThread::run
+                          java_start
+                          start_thread
+                          __clone
+
+     5.88%             2  [vdso]                   [.] __kernel_clock_gettime                         -      -            
+            |
+            ---__kernel_clock_gettime
+               |          
+               |--2.94%--__clock_gettime
+               |          0x7fff881512b8
+               |          0x7fff8800a074
+               |          0x7fff88009f14
+               |          0x7fff8800a074
+               |          0x7fff8800a074
+               |          0x7fff8800093c
+               |          JavaCalls::call_helper
+               |          os::os_exception_wrapper
+               |          JavaCalls::call_virtual
+               |          JavaCalls::call_virtual
+               |          thread_entry
+               |          JavaThread::thread_main_inner
+               |          JavaThread::run
+               |          java_start
+               |          start_thread
+               |          __clone
+               |          
+                --2.94%--__kernel_clock_gettime
+                          0x7fff881512b8
+                          0x7fff8800a074
+                          0x7fff88009f14
+                          0x7fff8800a074
+                          0x7fff8800a074
+                          0x7fff8800093c
+                          JavaCalls::call_helper
+                          os::os_exception_wrapper
+                          JavaCalls::call_virtual
+                          JavaCalls::call_virtual
+                          thread_entry
+                          JavaThread::thread_main_inner
+                          JavaThread::run
+                          java_start
+                          start_thread
+                          __clone
+
+     5.88%             2  libc-2.28.so             [.] __clock_gettime                                -      -            
+            |
+            ---__clock_gettime
+               |          
+               |--2.94%--os::javaTimeNanos
+               |          0x7fff881512b8
+               |          0x7fff8800a074
+               |          0x7fff88009f14
+               |          0x7fff8800a074
+               |          0x7fff8800a074
+               |          0x7fff8800093c
+               |          JavaCalls::call_helper
+               |          os::os_exception_wrapper
+               |          JavaCalls::call_virtual
+               |          JavaCalls::call_virtual
+               |          thread_entry
+               |          JavaThread::thread_main_inner
+               |          JavaThread::run
+               |          java_start
+               |          start_thread
+               |          __clone
+               |          
+                --2.94%--0x7fff881512b8
+                          0x7fff8800a074
+                          0x7fff88009f14
+                          0x7fff8800a074
+                          0x7fff8800a074
+                          0x7fff8800093c
+                          JavaCalls::call_helper
+                          os::os_exception_wrapper
+                          JavaCalls::call_virtual
+                          JavaCalls::call_virtual
+                          thread_entry
+                          JavaThread::thread_main_inner
+                          JavaThread::run
+                          java_start
+                          start_thread
+                          __clone
+
+     5.88%             2  libc-2.28.so             [.] __strchr_power8                                -      -            
+            |
+            ---__strchr_power8
+               |          
+               |--2.94%--0x7ffff7f38a6c
+               |          0x7ffff7f3aa64
+               |          readproc
+               |          0x10000b1f8
+               |          generic_start_main.isra.0
+               |          __libc_start_main
+               |          0
+               |          
+                --2.94%--0x7ffff7f388c4
+                          0x7ffff7f3aa64
+                          readproc
+                          0x10000b1f8
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     2.94%             1  [kernel.kallsyms]        [k] __nf_conntrack_find_get.part.7                 -      -            
+            |
+            ---__nf_conntrack_find_get.part.7
+               nf_conntrack_in
+               0
+               ipv4_conntrack_in
+               nf_hook_slow
+               ip_rcv
+               __netif_receive_skb_core
+               netif_receive_skb_internal
+               napi_gro_receive
+               ibmveth_poll
+               net_rx_action
+               __softirqentry_text_start
+               irq_exit
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     2.94%             1  [kernel.kallsyms]        [k] __task_pid_nr_ns                               -      -            
+            |
+            ---__task_pid_nr_ns
+               proc_pid_status
+               proc_pid_status
+               proc_single_show
+               seq_read
+               __se_sys_read
+               system_call
+               read
+               0x7ffff7f39f74
+               0x7ffff7f39ecc
+               0x7ffff7f3aa48
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     2.94%             1  [kernel.kallsyms]        [k] _raw_spin_lock_irq                             -      -            
+            |
+            ---_raw_spin_lock_irq
+               task_work_run
+               task_work_run
+               do_notify_resume
+               ret_from_except_lite
+               __close
+               0x7ffff7f39a0c
+               0x7ffff7f398ec
+               0x7ffff7f39b84
+               0x7ffff7f3a8c4
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     2.94%             1  [kernel.kallsyms]        [k] _raw_spin_lock_irqsave                         -      -            
+            |
+            ---_raw_spin_lock_irqsave
+               __delayacct_blkio_ticks
+               seq_put_decimal_ll
+               do_task_stat
+               proc_single_show
+               seq_read
+               __se_sys_read
+               system_call
+               read
+               0x7ffff7f39f74
+               0x7ffff7f39ecc
+               0x7ffff7f3a958
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     2.94%             1  [kernel.kallsyms]        [k] do_syscall_trace_leave                         -      -            
+            |
+            ---do_syscall_trace_leave
+               do_syscall_trace_leave
+               0
+               system_call_exit
+               __open64_nocancel
+               _nl_load_locale_from_archive
+               _nl_find_locale
+               setlocale
+               0x10000a850
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     2.94%             1  [kernel.kallsyms]        [k] do_task_stat                                   -      -            
+            |
+            ---do_task_stat
+               proc_single_show
+               0
+               seq_read
+               __se_sys_read
+               system_call
+               read
+               0x7ffff7f39f74
+               0x7ffff7f39ecc
+               0x7ffff7f3a958
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     2.94%             1  [kernel.kallsyms]        [k] exc_virt_0x4c00_system_call                    -      -            
+            |
+            ---exc_virt_0x4c00_system_call
+               0
+               __close
+               0x7ffff7f39f98
+               0x7ffff7f39ecc
+               0x7ffff7f3aa48
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     2.94%             1  [kernel.kallsyms]        [k] legitimize_mnt                                 -      -            
+            |
+            ---legitimize_mnt
+               legitimize_mnt
+               lookup_fast
+               walk_component
+               link_path_walk
+               path_openat
+               do_filp_open
+               do_sys_open
+               system_call
+               __GI___libc_open
+               0x7ffff7f39ef0
+               0x7ffff7f39ecc
+               0x7ffff7f3aa48
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     2.94%             1  [kernel.kallsyms]        [k] memcpy_power7                                  -      -            
+            |
+            ---memcpy_power7
+               seq_puts
+               proc_pid_status
+               proc_single_show
+               seq_read
+               __se_sys_read
+               system_call
+               read
+               0x7ffff7f39f74
+               0x7ffff7f39ecc
+               0x7ffff7f3aa48
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     2.94%             1  [kernel.kallsyms]        [k] rcu_gp_kthread                                 -      -            
+            |
+            ---rcu_gp_kthread
+               rcu_gp_kthread
+               kthread
+               ret_from_kernel_thread
+
+     2.94%             1  [kernel.kallsyms]        [k] render_sigset_t                                -      -            
+            |
+            ---render_sigset_t
+               render_sigset_t
+               proc_pid_status
+               proc_single_show
+               seq_read
+               __se_sys_read
+               system_call
+               read
+               0x7ffff7f39f74
+               0x7ffff7f39ecc
+               0x7ffff7f3aa48
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     2.94%             1  [kernel.kallsyms]        [k] smp_call_function_single                       -      -            
+            |
+            ---smp_call_function_single
+               smp_call_function_single
+               event_function_call
+               perf_event_for_each_child
+               _perf_ioctl
+               perf_ioctl
+               do_vfs_ioctl
+               __se_sys_ioctl
+               system_call
+               __GI___ioctl
+               perf_evsel__disable
+               0x3
+               perf_evlist__disable
+               cmd_record
+               0x1001a9ed4
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     2.94%             1  [kernel.kallsyms]        [k] strlen                                         -      -            
+            |
+            ---strlen
+               seq_puts
+               proc_pid_status
+               proc_single_show
+               seq_read
+               __se_sys_read
+               system_call
+               read
+               0x7ffff7f39f74
+               0x7ffff7f39ecc
+               0x7ffff7f3aa48
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     2.94%             1  [vdso]                   [.] __get_datapage                                 -      -            
+            |
+            ---__get_datapage
+               __kernel_clock_gettime
+               0x7fff881512b8
+               0x7fff8800a074
+               0x7fff88009f14
+               0x7fff8800a074
+               0x7fff8800a074
+               0x7fff8800093c
+               JavaCalls::call_helper
+               os::os_exception_wrapper
+               JavaCalls::call_virtual
+               JavaCalls::call_virtual
+               thread_entry
+               JavaThread::thread_main_inner
+               JavaThread::run
+               java_start
+               start_thread
+               __clone
+
+     2.94%             1  libc-2.28.so             [.] _IO_default_xsputn                             -      -            
+            |
+            ---_IO_default_xsputn
+               vfprintf@@GLIBC_2.17
+               vfprintf@@GLIBC_2.17
+               __vsnprintf_chk@@GLIBC_2.17
+               __snprintf_chk@@GLIBC_2.17
+               0x7ffff7f39ecc
+               0x7ffff7f3aa48
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     2.94%             1  libc-2.28.so             [.] __GI_____strtoll_l_internal                    -      -            
+            |
+            ---__GI_____strtoll_l_internal
+               __strtoll_internal
+               _IO_vfscanf@@GLIBC_2.17
+               _IO_vsscanf
+               sscanf@@GLIBC_2.17
+               0x7ffff7f386e8
+               0x7ffff7f3a96c
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     2.94%             1  libc-2.28.so             [.] __GI_____strtoull_l_internal                   -      -            
+            |
+            ---__GI_____strtoull_l_internal
+               __strtoull_internal
+               __strtoll_internal
+               _IO_vfscanf@@GLIBC_2.17
+               _IO_vsscanf
+               sscanf@@GLIBC_2.17
+               0x7ffff7f386e8
+               0x7ffff7f3a96c
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     2.94%             1  libc-2.28.so             [.] __strlen_power8                                -      -            
+            |
+            ---__strlen_power8
+               vfprintf@@GLIBC_2.17
+               __vsnprintf_chk@@GLIBC_2.17
+               __snprintf_chk@@GLIBC_2.17
+               0x7ffff7f39ecc
+               0x7ffff7f3aa48
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     2.94%             1  libglib-2.0.so.0.5600.4  [.] g_mutex_unlock                                 -      -            
+            |
+            ---g_mutex_unlock
+               g_main_context_prepare
+               0x7fff8ac98dc8
+               g_main_loop_run
+               0x1385dcd10
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     2.94%             1  libprocps.so.7.1.0       [.] 0x0000000000004bec                             -      -            
+            |
+            ---0x7ffff7f34bec
+               0x7ffff7f39f74
+               0x7ffff7f3aa48
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     2.94%             1  libprocps.so.7.1.0       [.] 0x0000000000009f00                             -      -            
+            |
+            ---0x7ffff7f39f00
+               0x7ffff7f3a958
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+
+
+#
+# (Tip: Search options using a keyword: perf report -h <keyword>)
+#

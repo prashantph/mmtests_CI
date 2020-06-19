@@ -1,0 +1,6 @@
+start :: 1592023917
+test begin :: rtmigration 1592023919
+test end :: rtmigration 1592023937
+time :: rtmigration 163.38 user 1.78 system 11.41 elapsed
+finish :: 1592023937
+status :: 0

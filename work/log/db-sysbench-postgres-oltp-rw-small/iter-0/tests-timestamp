@@ -1,0 +1,7 @@
+start :: 1592389684
+test begin :: sysbench 1592389710
+test end :: sysbench 1592392766
+Command exited with non-zero status 255
+time :: sysbench 30.10 user 27.53 system 3042.57 elapsed
+finish :: 1592392766
+status :: 255

@@ -1,0 +1,9 @@
+start :: 1592120333
+test begin :: ipcscale-waitforzero 1592120334
+test end :: ipcscale-waitforzero 1592122993
+time :: ipcscale-waitforzero 20246.22 user 97046.79 system 2653.13 elapsed
+test begin :: ipcscale-posixsempp 1592122994
+test end :: ipcscale-posixsempp 1592143137
+time :: ipcscale-posixsempp 438311.62 user 302833.09 system 20136.50 elapsed
+finish :: 1592143137
+status :: 0

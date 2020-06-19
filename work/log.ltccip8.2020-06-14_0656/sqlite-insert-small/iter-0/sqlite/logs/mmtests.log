@@ -1,0 +1,5 @@
+Extracting /home/mmtests/work/tmp/1012860/perl-trans.pl
+Creating insert script for 2520 entries
+Creating table
+Inserting rows
+-rw-r--r--. 1 root root 128K Jun 14 09:34 /home/mmtests/work/testdisk/data/benchmark.db

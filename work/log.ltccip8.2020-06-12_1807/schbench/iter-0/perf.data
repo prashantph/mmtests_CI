@@ -1,0 +1,135 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 5K of event 'cycles'
+# Event count (approx.): 57920000000
+#
+# Overhead       Samples  Shared Object      Symbol                                          IPC   [IPC Coverage]
+# ........  ............  .................  ..............................................  ....................
+#
+    44.89%          2600  [vdso]             [.] __do_get_tspec                              -      -            
+            |
+            ---__do_get_tspec
+               |          
+                --44.85%--__kernel_gettimeofday
+                          |          
+                           --44.84%--worker_thread
+                                     start_thread
+                                     __clone
+
+    20.72%          1200  schbench           [.] tvsub                                       -      -            
+            |
+            ---tvsub
+               usec_spin.part.3
+               worker_thread
+               start_thread
+               __clone
+
+    19.67%          1139  schbench           [.] usec_spin.part.3                            -      -            
+            |
+            ---usec_spin.part.3
+               worker_thread
+               start_thread
+               __clone
+
+     8.34%           483  [vdso]             [.] __kernel_gettimeofday                       -      -            
+            |
+            ---__kernel_gettimeofday
+               |          
+               |--6.46%--__kernel_gettimeofday
+               |          worker_thread
+               |          start_thread
+               |          __clone
+               |          
+                --1.88%--usec_spin.part.3
+                          worker_thread
+                          start_thread
+                          __clone
+
+     2.12%           123  [vdso]             [.] data_page_branch                            -      -            
+            |
+            ---data_page_branch
+               |          
+                --2.11%--data_page_branch
+                          worker_thread
+                          start_thread
+                          __clone
+
+     1.81%           105  schbench           [.] 00000022.plt_call.gettimeofday@@GLIBC_2.17  -      -            
+            |
+            ---00000022.plt_call.gettimeofday@@GLIBC_2.17
+               usec_spin.part.3
+               worker_thread
+               start_thread
+               __clone
+
+     0.83%            48  [vdso]             [.] __get_datapage                              -      -            
+            |
+            ---__get_datapage
+               __kernel_gettimeofday
+               worker_thread
+               start_thread
+               __clone
+
+     0.43%            25  [kernel.kallsyms]  [k] snooze_loop                                 -      -            
+     0.12%             7  libc-2.28.so       [.] __clock_gettime                             -      -            
+     0.05%             3  [kernel.kallsyms]  [k] _raw_spin_lock_irqsave                      -      -            
+     0.05%             3  [kernel.kallsyms]  [k] find_busiest_group                          -      -            
+     0.03%             2  [kernel.kallsyms]  [k] dequeue_entity                              -      -            
+     0.03%             2  [kernel.kallsyms]  [k] ktime_get                                   -      -            
+     0.03%             2  [kernel.kallsyms]  [k] rcu_gp_kthread                              -      -            
+     0.03%             2  [kernel.kallsyms]  [k] update_rq_clock                             -      -            
+     0.03%             2  [vdso]             [.] __kernel_clock_gettime                      -      -            
+     0.02%             1  [JIT] tid 7480     [.] 0x00007fff88151248                          -      -            
+     0.02%             1  [kernel.kallsyms]  [k] __audit_syscall_entry                       -      -            
+     0.02%             1  [kernel.kallsyms]  [k] __audit_syscall_exit                        -      -            
+     0.02%             1  [kernel.kallsyms]  [k] __fget                                      -      -            
+     0.02%             1  [kernel.kallsyms]  [k] __se_sys_write                              -      -            
+     0.02%             1  [kernel.kallsyms]  [k] __update_load_avg_se                        -      -            
+     0.02%             1  [kernel.kallsyms]  [k] _switch                                     -      -            
+     0.02%             1  [kernel.kallsyms]  [k] arch_local_irq_restore                      -      -            
+     0.02%             1  [kernel.kallsyms]  [k] do_IRQ                                      -      -            
+     0.02%             1  [kernel.kallsyms]  [k] do_syscall_trace_enter                      -      -            
+     0.02%             1  [kernel.kallsyms]  [k] enqueue_entity                              -      -            
+     0.02%             1  [kernel.kallsyms]  [k] exc_virt_0x4a00_doorbell_super              -      -            
+     0.02%             1  [kernel.kallsyms]  [k] fast_exception_return                       -      -            
+     0.02%             1  [kernel.kallsyms]  [k] find_next_bit                               -      -            
+     0.02%             1  [kernel.kallsyms]  [k] finish_task_switch                          -      -            
+     0.02%             1  [kernel.kallsyms]  [k] flush_count_cache                           -      -            
+     0.02%             1  [kernel.kallsyms]  [k] hrtimer_get_next_event                      -      -            
+     0.02%             1  [kernel.kallsyms]  [k] icp_hv_eoi                                  -      -            
+     0.02%             1  [kernel.kallsyms]  [k] idle_cpu                                    -      -            
+     0.02%             1  [kernel.kallsyms]  [k] menu_select                                 -      -            
+     0.02%             1  [kernel.kallsyms]  [k] pipe_read                                   -      -            
+     0.02%             1  [kernel.kallsyms]  [k] rcu_all_qs                                  -      -            
+     0.02%             1  [kernel.kallsyms]  [k] rcu_idle_exit                               -      -            
+     0.02%             1  [kernel.kallsyms]  [k] rcu_qs                                      -      -            
+     0.02%             1  [kernel.kallsyms]  [k] run_timer_softirq                           -      -            
+     0.02%             1  [kernel.kallsyms]  [k] sched_clock_cpu                             -      -            
+     0.02%             1  [kernel.kallsyms]  [k] system_call_exit                            -      -            
+     0.02%             1  [kernel.kallsyms]  [k] trigger_load_balance                        -      -            
+     0.02%             1  [kernel.kallsyms]  [k] try_to_wake_up                              -      -            
+     0.02%             1  libc-2.28.so       [.] __GI___printf_fp_l                          -      -            
+     0.02%             1  libc-2.28.so       [.] __libc_enable_asynccancel                   -      -            
+     0.02%             1  libc-2.28.so       [.] __mpn_mul_1                                 -      -            
+     0.02%             1  libc-2.28.so       [.] __printf_chk@@GLIBC_2.17                    -      -            
+     0.02%             1  libc-2.28.so       [.] buffered_vfprintf                           -      -            
+     0.02%             1  libc-2.28.so       [.] vfprintf@@GLIBC_2.17                        -      -            
+     0.02%             1  libjvm.so          [.] os::javaTimeNanos                           -      -            
+     0.02%             1  libperl.so.5.26.3  [.] Perl_PerlIO_get_cnt                         -      -            
+     0.02%             1  libperl.so.5.26.3  [.] Perl_PerlIO_set_ptrcnt                      -      -            
+     0.02%             1  libperl.so.5.26.3  [.] Perl_pp_pushmark                            -      -            
+     0.02%             1  libtcl8.6.so       [.] Tcl_Preserve                                -      -            
+     0.02%             1  libtcl8.6.so       [.] 0x000000000017beb0                          -      -            
+     0.02%             1  libtcl8.6.so       [.] 0x00000000001badec                          -      -            
+     0.02%             1  libtcl8.6.so       [.] 0x00000000001bafd0                          -      -            
+     0.02%             1  [unknown]          [H] 0x0000000000370290                          -      -            
+     0.02%             1  [unknown]          [H] 0x0000000000371498                          -      -            
+     0.02%             1  [unknown]          [H] 0x0000000000372110                          -      -            
+
+
+#
+# (Tip: Compare performance results with: perf diff [<old file> <new file>])
+#

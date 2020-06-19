@@ -1,0 +1,40 @@
+sysbench --db-driver=pgsql --pgsql-db=pgtest --test=oltp --oltp-test-mode=complex --oltp-table-size=91683000 --num-threads=5 run
+sysbench 0.4.12:  multi-threaded system evaluation benchmark
+
+Running the test with following options:
+Number of threads: 5
+
+Doing OLTP test.
+Running mixed OLTP test
+Using Special distribution (12 iterations,  1 pct of values are returned in 75 pct cases)
+Using "BEGIN" for starting transactions
+Using auto_inc on the id column
+Maximum number of requests for OLTP test is limited to 10000
+Threads started!
+Done.
+
+OLTP test statistics:
+    queries performed:
+        read:                            140238
+        write:                           50085
+        other:                           20034
+        total:                           210357
+    transactions:                        10017  (382.88 per sec.)
+    deadlocks:                           0      (0.00 per sec.)
+    read/write requests:                 190323 (7274.75 per sec.)
+    other operations:                    20034  (765.76 per sec.)
+
+Test execution summary:
+    total time:                          26.1621s
+    total number of events:              10017
+    total time taken by event execution: 130.6960
+    per-request statistics:
+         min:                                  6.58ms
+         avg:                                 13.05ms
+         max:                                 48.56ms
+         approx.  95 percentile:              13.01ms
+
+Threads fairness:
+    events (avg/stddev):           2003.4000/24.71
+    execution time (avg/stddev):   26.1392/0.01
+

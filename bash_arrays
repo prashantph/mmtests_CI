@@ -1,1 +1,1 @@
-declare -ax CONFIGS=([0]="configs/config-workload-thpscale")
+declare -ax CONFIGS=([0]="configs/config-db-sysbench-postgres-oltp-rw-small")

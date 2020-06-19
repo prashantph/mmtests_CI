@@ -1,0 +1,4 @@
+1591418800 run-mmtests: Start
+1591418800 run-mmtests: Iteration 0 start
+1591418801 sysbench-bench: source-install
+1591418801 mariadbbuild-bench: source-install

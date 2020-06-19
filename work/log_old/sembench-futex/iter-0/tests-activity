@@ -1,0 +1,27 @@
+1590481492 run-mmtests: Start
+1590481492 run-mmtests: Iteration 0 start
+1590481493 run-mmtests: begin sembench-futex
+1590481493 sembench-bench: futex 2
+1590481523 sembench-bench: futex 5
+1590481553 sembench-bench: futex 8
+1590481583 sembench-bench: futex 12
+1590481613 sembench-bench: futex 21
+1590481643 sembench-bench: futex 30
+1590481673 sembench-bench: futex 48
+1590481703 sembench-bench: futex 79
+1590481733 sembench-bench: futex 110
+1590481763 sembench-bench: futex 141
+1590481793 sembench-bench: futex 172
+1590481823 sembench-bench: futex 203
+1590481853 sembench-bench: futex 234
+1590481883 sembench-bench: futex 265
+1590481913 sembench-bench: futex 296
+1590481943 sembench-bench: futex 327
+1590481973 sembench-bench: futex 358
+1590482003 sembench-bench: futex 389
+1590482033 sembench-bench: futex 420
+1590482063 sembench-bench: futex 451
+1590482093 sembench-bench: futex 482
+1590482123 sembench-bench: futex 512
+1590482158 run-mmtests: Iteration 0 end
+1590482158 run-mmtests: End

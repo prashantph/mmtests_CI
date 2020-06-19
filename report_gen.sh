@@ -1,5 +1,12 @@
-Log_dir=/home/mmtests/work/log.ltccip8.2020-06-03_1400
+#!/bin/bash
+Log_dir=$1
 Result_dir=/home/mmtests/Results
+
+if [ ! -d $Result_dir ]
+then 
+	mkdir $Result_dir
+fi 
+
 echo "post processing now..."
 workload_list=($(ls -ltr $Log_dir| awk '{print  $9}'))
 
@@ -16,4 +23,3 @@ do
 		fi
 	done	
 done
-

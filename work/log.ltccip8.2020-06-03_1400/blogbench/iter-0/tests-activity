@@ -1,0 +1,16 @@
+1591416302 run-mmtests: Start
+1591416302 run-mmtests: Iteration 0 start
+1591416303 blogbench-bench: source-install
+1591416314 blogbench-bench: source-installed
+1591416314 run-mmtests: begin blogbench
+1591416314 blogbench-bench: source-install
+1591416324 blogbench-bench: source-installed
+1591416324 blogbench-bench: iteration 1
+1591416909 blogbench-bench: iteration 2
+1591417226 blogbench-bench: iteration 3
+1591417531 blogbench-bench: iteration 4
+1591417835 blogbench-bench: iteration 5
+1591418139 blogbench-bench: iteration 6
+1591418442 blogbench-bench: iteration 7
+1591418760 run-mmtests: Iteration 0 end
+1591418760 run-mmtests: End

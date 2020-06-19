@@ -1,0 +1,28 @@
+1592109944 run-mmtests: Start
+1592109944 run-mmtests: Iteration 0 start
+1592109945 run-mmtests: begin aim9
+1592109946 aim9-bench: iteration 1
+1592110006 aim9-bench: iteration 2
+1592110067 aim9-bench: iteration 3
+1592110127 aim9-bench: iteration 4
+1592110187 aim9-bench: iteration 5
+1592110248 aim9-bench: iteration 6
+1592110308 aim9-bench: iteration 7
+1592110368 aim9-bench: iteration 8
+1592110429 aim9-bench: iteration 9
+1592110489 aim9-bench: iteration 10
+1592110549 aim9-bench: iteration 11
+1592110610 aim9-bench: iteration 12
+1592110678 run-mmtests: begin pft
+1592110678 pft-bench: client 1
+1592110679 pft-bench: client 4
+1592110680 pft-bench: client 7
+1592110680 pft-bench: client 12
+1592110681 pft-bench: client 21
+1592110681 pft-bench: client 30
+1592110681 pft-bench: client 48
+1592110683 pft-bench: client 79
+1592110688 pft-bench: client 110
+1592110692 pft-bench: client 128
+1592110709 run-mmtests: Iteration 0 end
+1592110710 run-mmtests: End

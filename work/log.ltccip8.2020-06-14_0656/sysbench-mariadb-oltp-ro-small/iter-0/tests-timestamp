@@ -1,0 +1,6 @@
+start :: 1592106482
+test begin :: sysbench 1592107269
+test end :: sysbench 1592107402
+time :: sysbench 76.19 user 70.55 system 122.54 elapsed
+finish :: 1592107402
+status :: 0

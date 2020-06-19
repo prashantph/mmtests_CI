@@ -1,0 +1,8 @@
+Re-AIM Version 0.1.0 Run Date May 26 23:36:36 2020
+Times are in seconds. 
+ChildU time is cutime from the parent
+ChildS time is cstime from the parent
+Send me a patch for a nicer header
+
+                 Jobs/min/ Jobs/sec/ Time:   Time:  Time:   Time:           Running child time
+Forks  Jobs/min   child     child parent  childU childS  std_dev   JTI   :max  :min

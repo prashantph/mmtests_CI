@@ -1,0 +1,16 @@
+Updating Subscription Management repositories.
+Unable to read consumer identity
+This system is not registered to Red Hat Subscription Management. You can use subscription-manager to register.
+Last metadata expiration check: 0:50:05 ago on Sat 13 Jun 2020 09:41:37 AM IST.
+Package python36-devel-3.6.8-2.module+el8.1.0+3334+5cb623d7.ppc64le is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+Installed python3-devel
+Downloaded file already available at /home/mmtests/work/sources/linux-5.1.tar.xz
+mv: cannot move 'linux-5.1' to 'perfbuild-5.1/linux-5.1': Directory not empty
+/home/mmtests/work/sources/perfbuild-5.1 /home/mmtests/work/sources/perfbuild-5.1 /home/mmtests/work/sources
+/home/mmtests/work/sources/perfbuild-5.1/tools/perf /home/mmtests/work/sources/perfbuild-5.1 /home/mmtests/work/sources/perfbuild-5.1 /home/mmtests/work/sources
+make: *** No targets specified and no makefile found.  Stop.
+ERROR perfbuild-install: perfbuild-install: make failed
+FATAL hackbench-bench: perfbuild install script returned error

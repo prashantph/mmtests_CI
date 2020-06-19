@@ -1,0 +1,7 @@
+Initialisation step complete, continuing
+Checking postgres installation
+grep: /root/mmtests/work/testdisk/data/pgdata/postgresql.conf: No such file or directory
+grep: /root/mmtests/work/testdisk/data/pgdata/postgresql.conf: No such file or directory
+FATAL postgresbuild-bench: Failed to locate parameter work_mem
+FATAL sysbench-install: Failed to get usable database installation
+FATAL sysbench-bench: sysbench install script returned error

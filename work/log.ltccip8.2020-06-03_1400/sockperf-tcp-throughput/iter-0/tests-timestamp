@@ -1,0 +1,6 @@
+start :: 1591216774
+test begin :: sockperf-tcp-throughput 1591216774
+test end :: sockperf-tcp-throughput 1591218397
+time :: sockperf-tcp-throughput 256.01 user 1918.83 system 1617.09 elapsed
+finish :: 1591218397
+status :: 0

@@ -1,0 +1,36 @@
+	Iozone: Performance Test of File I/O
+	        Version $Revision: 3.428 $
+		Compiled for 64 bit mode.
+		Build: linux 
+
+	Contributors:William Norcott, Don Capps, Isom Crawford, Kirby Collins
+	             Al Slater, Scott Rhine, Mike Wisner, Ken Goss
+	             Steve Landherr, Brad Smith, Mark Kelly, Dr. Alain CYR,
+	             Randy Dunlap, Mark Montague, Dan Million, Gavin Brebner,
+	             Jean-Marc Zucconi, Jeff Blomberg, Benny Halevy, Dave Boone,
+	             Erik Habbinga, Kris Strecker, Walter Wong, Joshua Root,
+	             Fabrice Bacchella, Zhenghua Xue, Qin Li, Darren Sawyer,
+	             Vangel Bojaxhi, Ben England, Vikentsi Lapa.
+
+	Run began: Tue May 26 21:57:58 2020
+
+	Auto Mode
+	Using minimum file size of 2478464 kilobytes.
+	Using maximum file size of 19827712 kilobytes.
+	Using Minimum Record Size 4 kB
+	Using Maximum Record Size 4 kB
+	Include fsync in write timing
+	Command line used: src/current/iozone -a -n 2478464 -g 19827712 -y 4 -q 4 -i 0 -i 1 -i 2 -i 3 -e -f /root/mmtests/work/testdisk/data/iozone_file
+	Output is in kBytes/sec
+	Time Resolution = 0.000001 seconds.
+	Processor cache size set to 1024 kBytes.
+	Processor cache line size set to 32 bytes.
+	File stride size set to 17 * record size.
+                                                              random    random     bkwd    record    stride                                    
+              kB  reclen    write  rewrite    read    reread    read     write     read   rewrite      read   fwrite frewrite    fread  freread
+         2478464       4   420238   340431  2677992  2666440  1822716   197737  1944855                                                  
+         4956928       4   523008   560382  2676214  2660976  1770063   110018  1945516                                                  
+         9913856       4   469045   581552   628542   569118    20348    87397   113538                                                  
+        19827712       4   509302   581665   627960   625818     7993    63657    57930                                                  
+
+iozone test complete.

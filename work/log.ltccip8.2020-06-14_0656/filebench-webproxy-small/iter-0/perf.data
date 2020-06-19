@@ -1,0 +1,1014 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 2K of event 'cycles'
+# Event count (approx.): 26300000000
+#
+# Overhead       Samples  Shared Object                             Symbol                                          IPC   [IPC Coverage]
+# ........  ............  ........................................  ..............................................  ....................
+#
+     5.55%           146  libc-2.28.so                              [.] _IO_vfscanf@@GLIBC_2.17                     -      -            
+            |
+            ---_IO_vfscanf@@GLIBC_2.17
+               |          
+                --5.36%--_IO_vfscanf@@GLIBC_2.17
+                          __vfscanf@@GLIBC_2.17
+                          fscanf@@GLIBC_2.17
+                          |          
+                          |--2.93%--flowop_beginop
+                          |          |          
+                          |          |--1.03%--flowoplib_closefile
+                          |          |          flowop_start
+                          |          |          start_thread
+                          |          |          __clone
+                          |          |          
+                          |          |--0.76%--flowoplib_openfile_common
+                          |          |          flowop_start
+                          |          |          start_thread
+                          |          |          __clone
+                          |          |          
+                          |           --0.72%--flowoplib_readwholefile
+                          |                     flowop_start
+                          |                     start_thread
+                          |                     __clone
+                          |          
+                           --2.43%--flowop_endop
+                                     |          
+                                     |--0.72%--flowoplib_openfile_common
+                                     |          flowop_start
+                                     |          start_thread
+                                     |          __clone
+                                     |          
+                                     |--0.68%--flowoplib_readwholefile
+                                     |          flowop_start
+                                     |          start_thread
+                                     |          __clone
+                                     |          
+                                      --0.57%--flowoplib_closefile
+                                                flowop_start
+                                                start_thread
+                                                __clone
+
+     3.65%            96  [kernel.kallsyms]                         [k] __crc32c_le                                 -      -            
+            |
+            ---__crc32c_le
+               |          
+                --3.61%--chksum_update
+                          crypto_shash_update
+                          |          
+                          |--1.63%--ext4_handle_dirty_dirent_node
+                          |          |          
+                          |           --1.14%--add_dirent_to_buf
+                          |                     ext4_dx_add_entry
+                          |                     ext4_add_entry
+                          |                     ext4_create
+                          |                     lookup_open
+                          |                     do_last
+                          |                     path_openat
+                          |                     do_filp_open
+                          |                     do_sys_open
+                          |                     system_call
+                          |                     __open64
+                          |                     __open64
+                          |                     fb_lfs_open
+                          |                     |          
+                          |                     |--0.61%--fileset_openfile
+                          |                     |          flowoplib_createfile
+                          |                     |          flowop_start
+                          |                     |          start_thread
+                          |                     |          __clone
+                          |                     |          
+                          |                      --0.53%--fileset_alloc_file
+                          |                                fileset_create
+                          |                                fileset_createset
+                          |                                parser_fileset_create
+                          |                                parser_run
+                          |                                yyparse
+                          |                                main
+                          |                                generic_start_main.isra.0
+                          |                                __libc_start_main
+                          |                                0
+                          |          
+                           --1.03%--ext4_inode_csum
+                                     ext4_inode_csum_set
+                                     ext4_do_update_inode.isra.6
+                                     ext4_mark_iloc_dirty
+                                     |          
+                                      --0.84%--ext4_mark_inode_dirty
+
+     3.57%            94  [kernel.kallsyms]                         [k] snooze_loop                                 -      -            
+            |
+            ---snooze_loop
+               snooze_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     2.24%            59  [kernel.kallsyms]                         [k] fast_exception_return                       -      -            
+     2.05%            54  [kernel.kallsyms]                         [k] num_to_str                                  -      -            
+            |
+            ---num_to_str
+               |          
+               |--1.03%--seq_put_decimal_ull
+               |          |          
+               |           --0.80%--0
+               |                     do_task_stat
+               |                     proc_single_show
+               |                     seq_read
+               |                     __se_sys_read
+               |                     system_call
+               |                     read
+               |                     read
+               |                     _IO_file_read
+               |                     _IO_file_underflow@@GLIBC_2.17
+               |                     _IO_default_uflow
+               |                     __uflow
+               |                     _IO_vfscanf@@GLIBC_2.17
+               |                     __vfscanf@@GLIBC_2.17
+               |                     fscanf@@GLIBC_2.17
+               |          
+                --0.57%--do_task_stat
+
+     1.79%            47  [kernel.kallsyms]                         [k] filenametr_cmp                              -      -            
+            |
+            ---filenametr_cmp
+               hashtab_search
+               security_compute_sid.part.15
+               |          
+                --1.63%--selinux_inode_create
+                          security_inode_create
+                          lookup_open
+                          do_last
+                          path_openat
+                          do_filp_open
+                          do_sys_open
+                          system_call
+                          __open64
+                          __open64
+                          fb_lfs_open
+                          |          
+                           --1.25%--fileset_openfile
+                                     flowoplib_createfile
+                                     flowop_start
+                                     start_thread
+                                     __clone
+
+     1.60%            42  [kernel.kallsyms]                         [k] _raw_spin_lock                              -      -            
+            |
+            ---_raw_spin_lock
+               |          
+                --0.53%--__close_fd
+
+     1.48%            39  [kernel.kallsyms]                         [k] avc_lookup                                  -      -            
+            |
+            ---avc_lookup
+               |          
+                --1.37%--avc_lookup
+                          |          
+                           --1.14%--avc_has_perm_noaudit
+                                     selinux_inode_permission
+                                     security_inode_permission
+                                     |          
+                                      --0.99%--inode_permission
+                                                |          
+                                                 --0.87%--link_path_walk
+                                                           |          
+                                                            --0.84%--path_openat
+                                                                      do_filp_open
+                                                                      do_sys_open
+                                                                      system_call
+                                                                      |          
+                                                                       --0.53%--__GI___libc_open
+                                                                                 __GI___libc_open
+                                                                                 _IO_file_open
+                                                                                 _IO_file_fopen@@GLIBC_2.17
+                                                                                 __fopen_internal
+
+     1.44%            38  [kernel.kallsyms]                         [k] __copy_tofrom_user_power7                   -      -            
+            |
+            ---__copy_tofrom_user_power7
+               |          
+                --0.91%--copyout
+                          |          
+                           --0.87%--0
+                                     copy_page_to_iter
+                                     generic_file_buffered_read
+                                     ext4_file_read_iter
+                                     new_sync_read
+                                     __se_sys_read
+                                     system_call
+                                     __libc_read
+                                     __libc_read
+                                     fb_lfs_read
+                                     flowoplib_readwholefile
+                                     flowop_start
+                                     start_thread
+                                     __clone
+
+     1.44%            38  [kernel.kallsyms]                         [k] do_task_stat                                -      -            
+            |
+            ---do_task_stat
+               |          
+                --1.29%--do_task_stat
+                          |          
+                          |--0.68%--do_task_stat
+                          |          proc_single_show
+                          |          seq_read
+                          |          __se_sys_read
+                          |          system_call
+                          |          read
+                          |          read
+                          |          _IO_file_read
+                          |          _IO_file_underflow@@GLIBC_2.17
+                          |          _IO_default_uflow
+                          |          __uflow
+                          |          _IO_vfscanf@@GLIBC_2.17
+                          |          __vfscanf@@GLIBC_2.17
+                          |          fscanf@@GLIBC_2.17
+                          |          
+                           --0.57%--proc_single_show
+                                     seq_read
+                                     __se_sys_read
+                                     system_call
+                                     read
+                                     read
+                                     _IO_file_read
+                                     _IO_file_underflow@@GLIBC_2.17
+                                     _IO_default_uflow
+                                     __uflow
+                                     _IO_vfscanf@@GLIBC_2.17
+                                     __vfscanf@@GLIBC_2.17
+                                     fscanf@@GLIBC_2.17
+
+     1.37%            36  [kernel.kallsyms]                         [k] seq_put_decimal_ull                         -      -            
+            |
+            ---seq_put_decimal_ull
+               |          
+                --0.65%--do_task_stat
+                          |          
+                           --0.53%--do_task_stat
+                                     proc_single_show
+                                     seq_read
+                                     __se_sys_read
+                                     system_call
+                                     read
+                                     read
+                                     _IO_file_read
+                                     _IO_file_underflow@@GLIBC_2.17
+                                     _IO_default_uflow
+                                     __uflow
+                                     _IO_vfscanf@@GLIBC_2.17
+                                     __vfscanf@@GLIBC_2.17
+                                     fscanf@@GLIBC_2.17
+
+     1.33%            35  [kernel.kallsyms]                         [k] exc_virt_0x4c00_system_call                 -      -            
+            |
+            ---exc_virt_0x4c00_system_call
+               0
+
+     1.33%            35  [kernel.kallsyms]                         [k] hashtab_search                              -      -            
+            |
+            ---hashtab_search
+               hashtab_search
+               |          
+                --1.10%--security_compute_sid.part.15
+                          |          
+                           --0.87%--selinux_inode_create
+                                     security_inode_create
+                                     lookup_open
+                                     do_last
+                                     path_openat
+                                     do_filp_open
+                                     do_sys_open
+                                     system_call
+                                     __open64
+                                     __open64
+                                     fb_lfs_open
+
+     1.33%            35  libpython3.6m.so.1.0                      [.] _PyEval_EvalFrameDefault                    -      -            
+            |
+            ---_PyEval_EvalFrameDefault
+               |          
+                --1.29%--PyEval_EvalFrameEx
+                          |          
+                           --0.84%--0x7ffff7933ecc
+                                     0x7ffff7975060
+                                     _PyEval_EvalFrameDefault
+                                     PyEval_EvalFrameEx
+                                     |          
+                                      --0.68%--0x7ffff7933ecc
+                                                0x7ffff7975060
+                                                _PyEval_EvalFrameDefault
+                                                PyEval_EvalFrameEx
+
+     1.25%            33  [kernel.kallsyms]                         [k] security_compute_sid.part.15                -      -            
+            |
+            ---security_compute_sid.part.15
+               security_compute_sid.part.15
+               |          
+                --0.76%--selinux_inode_create
+                          security_inode_create
+                          lookup_open
+                          do_last
+                          path_openat
+                          do_filp_open
+                          do_sys_open
+                          system_call
+                          __open64
+                          __open64
+                          fb_lfs_open
+
+     1.06%            28  [kernel.kallsyms]                         [k] __d_lookup_rcu                              -      -            
+            |
+            ---__d_lookup_rcu
+               lookup_fast
+               |          
+                --0.95%--0
+                          |          
+                           --0.53%--walk_component
+                                     link_path_walk
+                                     path_openat
+                                     do_filp_open
+                                     do_sys_open
+                                     system_call
+
+     0.95%            25  [kernel.kallsyms]                         [k] cleanup_module                              -      -            
+            |
+            ---cleanup_module
+
+     0.91%            24  [kernel.kallsyms]                         [k] fput                                        -      -            
+            |
+            ---fput
+
+     0.87%            23  [kernel.kallsyms]                         [k] system_call                                 -      -            
+            |
+            ---system_call
+
+     0.84%            22  [kernel.kallsyms]                         [k] memset                                      -      -            
+            |
+            ---memset
+
+     0.84%            22  libc-2.28.so                              [.] _IO_link_in                                 -      -            
+            |
+            ---_IO_link_in
+               _IO_link_in
+               _IO_new_file_init_internal
+               __fopen_internal
+
+     0.72%            19  [kernel.kallsyms]                         [k] __fget                                      -      -            
+            |
+            ---__fget
+
+     0.72%            19  [kernel.kallsyms]                         [k] kmem_cache_alloc                            -      -            
+            |
+            ---kmem_cache_alloc
+               |          
+                --0.57%--kmem_cache_alloc
+
+     0.72%            19  [kernel.kallsyms]                         [k] system_call_exit                            -      -            
+            |
+            ---system_call_exit
+
+     0.68%            18  [kernel.kallsyms]                         [k] seq_put_decimal_ll                          -      -            
+            |
+            ---seq_put_decimal_ll
+
+     0.65%            17  [kernel.kallsyms]                         [k] _raw_spin_lock_irqsave                      -      -            
+            |
+            ---_raw_spin_lock_irqsave
+
+     0.65%            17  [kernel.kallsyms]                         [k] put_dec_full8                               -      -            
+            |
+            ---put_dec_full8
+
+     0.65%            17  [kernel.kallsyms]                         [k] system_call_common                          -      -            
+            |
+            ---system_call_common
+               |          
+                --0.53%--0
+
+     0.65%            17  [kernel.kallsyms]                         [k] task_work_run                               -      -            
+            |
+            ---task_work_run
+
+     0.61%            16  [kernel.kallsyms]                         [k] kfree                                       -      -            
+            |
+            ---kfree
+
+     0.61%            16  [kernel.kallsyms]                         [k] kmem_cache_free                             -      -            
+            |
+            ---kmem_cache_free
+
+     0.61%            16  [kernel.kallsyms]                         [k] memcg_kmem_get_cache                        -      -            
+            |
+            ---memcg_kmem_get_cache
+
+     0.61%            16  [kernel.kallsyms]                         [k] msr_check_and_set                           -      -            
+     0.61%            16  [kernel.kallsyms]                         [k] rcu_all_qs                                  -      -            
+            |
+            ---rcu_all_qs
+
+     0.61%            16  libc-2.28.so                              [.] _IO_sputbackc                               -      -            
+            |
+            ---_IO_sputbackc
+               _IO_vfscanf@@GLIBC_2.17
+
+     0.61%            16  libc-2.28.so                              [.] vfprintf@@GLIBC_2.17                        -      -            
+            |
+            ---vfprintf@@GLIBC_2.17
+
+     0.53%            14  [kernel.kallsyms]                         [k] __audit_syscall_exit                        -      -            
+            |
+            ---__audit_syscall_exit
+
+     0.53%            14  [kernel.kallsyms]                         [k] block_read_full_page                        -      -            
+            |
+            ---block_read_full_page
+               block_read_full_page
+               ext4_mpage_readpages
+               ext4_readpage
+               generic_file_buffered_read
+               ext4_file_read_iter
+               new_sync_read
+               __se_sys_read
+               system_call
+               __libc_read
+               __libc_read
+               fb_lfs_read
+               flowoplib_readwholefile
+               flowop_start
+               start_thread
+               __clone
+
+     0.53%            14  [kernel.kallsyms]                         [k] memcmp                                      -      -            
+            |
+            ---memcmp
+
+     0.53%            14  libc-2.28.so                              [.] __GI__IO_un_link.part.1                     -      -            
+            |
+            ---__GI__IO_un_link.part.1
+
+     0.53%            14  libc-2.28.so                              [.] __libc_enable_asynccancel                   -      -            
+            |
+            ---__libc_enable_asynccancel
+
+     0.49%            13  [kernel.kallsyms]                         [k] __check_object_size                         -      -            
+     0.49%            13  [kernel.kallsyms]                         [k] _cond_resched                               -      -            
+     0.49%            13  [kernel.kallsyms]                         [k] block_invalidatepage                        -      -            
+     0.49%            13  [kernel.kallsyms]                         [k] pid_revalidate                              -      -            
+     0.49%            13  [kernel.kallsyms]                         [k] put_dec                                     -      -            
+     0.49%            13  [kernel.kallsyms]                         [k] task_work_add                               -      -            
+     0.49%            13  filebench                                 [.] fb_strlcat                                  -      -            
+     0.46%            12  [kernel.kallsyms]                         [k] do_syscall_trace_enter                      -      -            
+     0.46%            12  [kernel.kallsyms]                         [k] put_dec_trunc8                              -      -            
+     0.46%            12  [kernel.kallsyms]                         [k] selinux_inode_permission                    -      -            
+     0.46%            12  filebench                                 [.] fb_strlcpy                                  -      -            
+     0.42%            11  [kernel.kallsyms]                         [k] ext4_do_update_inode.isra.6                 -      -            
+     0.42%            11  [kernel.kallsyms]                         [k] fsnotify                                    -      -            
+     0.42%            11  libc-2.28.so                              [.] fclose@@GLIBC_2.17                          -      -            
+     0.42%            11  libc-2.28.so                              [.] malloc                                      -      -            
+     0.38%            10  [kernel.kallsyms]                         [k] crypto_shash_update                         -      -            
+     0.38%            10  [kernel.kallsyms]                         [k] do_dentry_open                              -      -            
+     0.38%            10  [kernel.kallsyms]                         [k] ktime_get_coarse_real_ts64                  -      -            
+     0.34%             9  [kernel.kallsyms]                         [k] __find_get_block                            -      -            
+     0.34%             9  [kernel.kallsyms]                         [k] dput.part.4                                 -      -            
+     0.34%             9  [kernel.kallsyms]                         [k] mutex_unlock                                -      -            
+     0.34%             9  [kernel.kallsyms]                         [k] security_task_getsecid                      -      -            
+     0.34%             9  [kernel.kallsyms]                         [k] strncpy_from_user                           -      -            
+     0.34%             9  libc-2.28.so                              [.] _itoa_word                                  -      -            
+     0.34%             9  libpython3.6m.so.1.0                      [.] PyObject_Malloc                             -      -            
+     0.34%             9  libpython3.6m.so.1.0                      [.] _PyObject_GenericGetAttrWithDict            -      -            
+     0.30%             8  [kernel.kallsyms]                         [k] _raw_spin_lock_irq                          -      -            
+     0.30%             8  [kernel.kallsyms]                         [k] ext4_da_get_block_prep                      -      -            
+     0.30%             8  [kernel.kallsyms]                         [k] ext4_search_dir                             -      -            
+     0.30%             8  [kernel.kallsyms]                         [k] ret_from_except_lite                        -      -            
+     0.30%             8  [kernel.kallsyms]                         [k] strncpy                                     -      -            
+     0.30%             8  [kernel.kallsyms]                         [k] up_read                                     -      -            
+     0.30%             8  libpthread-2.28.so                        [.] __pthread_mutex_lock                        -      -            
+     0.30%             8  libpthread-2.28.so                        [.] __pthread_mutex_unlock_usercnt              -      -            
+     0.27%             7  [kernel.kallsyms]                         [k] __d_lookup                                  -      -            
+     0.27%             7  [kernel.kallsyms]                         [k] __legitimize_mnt                            -      -            
+     0.27%             7  [kernel.kallsyms]                         [k] _raw_read_lock                              -      -            
+     0.27%             7  [kernel.kallsyms]                         [k] alloc_page_buffers                          -      -            
+     0.27%             7  [kernel.kallsyms]                         [k] file_free_rcu                               -      -            
+     0.27%             7  [kernel.kallsyms]                         [k] mark_buffer_dirty                           -      -            
+     0.27%             7  [kernel.kallsyms]                         [k] proc_single_show                            -      -            
+     0.27%             7  [kernel.kallsyms]                         [k] security_inode_permission                   -      -            
+     0.27%             7  libc-2.28.so                              [.] __memset_power8                             -      -            
+     0.23%             6  [kernel.kallsyms]                         [k] __audit_syscall_entry                       -      -            
+     0.23%             6  [kernel.kallsyms]                         [k] __ext4_check_dir_entry                      -      -            
+     0.23%             6  [kernel.kallsyms]                         [k] __se_sys_read                               -      -            
+     0.23%             6  [kernel.kallsyms]                         [k] add_dirent_to_buf                           -      -            
+     0.23%             6  [kernel.kallsyms]                         [k] do_last                                     -      -            
+     0.23%             6  [kernel.kallsyms]                         [k] do_sys_open                                 -      -            
+     0.23%             6  [kernel.kallsyms]                         [k] find_get_entry                              -      -            
+     0.23%             6  [kernel.kallsyms]                         [k] inode_permission                            -      -            
+     0.23%             6  [kernel.kallsyms]                         [k] lookup_fast                                 -      -            
+     0.23%             6  [kernel.kallsyms]                         [k] selinux_file_permission                     -      -            
+     0.23%             6  [kernel.kallsyms]                         [k] seq_read                                    -      -            
+     0.23%             6  filebench                                 [.] fileset_entry_compare                       -      -            
+     0.23%             6  libc-2.28.so                              [.] _IO_no_init                                 -      -            
+     0.23%             6  libc-2.28.so                              [.] _int_free                                   -      -            
+     0.23%             6  libpython3.6m.so.1.0                      [.] _PyType_Lookup                              -      -            
+     0.19%             5  [kernel.kallsyms]                         [k] __alloc_fd                                  -      -            
+     0.19%             5  [kernel.kallsyms]                         [k] __block_commit_write.isra.6                 -      -            
+     0.19%             5  [kernel.kallsyms]                         [k] __brelse                                    -      -            
+     0.19%             5  [kernel.kallsyms]                         [k] allocate_slab                               -      -            
+     0.19%             5  [kernel.kallsyms]                         [k] arch_local_irq_restore                      -      -            
+     0.19%             5  [kernel.kallsyms]                         [k] chacha20_block                              -      -            
+     0.19%             5  [kernel.kallsyms]                         [k] ext4_da_invalidatepage                      -      -            
+     0.19%             5  [kernel.kallsyms]                         [k] ext4_es_lookup_extent                       -      -            
+     0.19%             5  [kernel.kallsyms]                         [k] find_busiest_group                          -      -            
+     0.19%             5  [kernel.kallsyms]                         [k] find_next_and_bit                           -      -            
+     0.19%             5  [kernel.kallsyms]                         [k] generic_permission                          -      -            
+     0.19%             5  [kernel.kallsyms]                         [k] get_pid_task                                -      -            
+     0.19%             5  [kernel.kallsyms]                         [k] kmem_cache_alloc_trace                      -      -            
+     0.19%             5  [kernel.kallsyms]                         [k] lockref_put_return                          -      -            
+     0.19%             5  [kernel.kallsyms]                         [k] restore_math                                -      -            
+     0.19%             5  [kernel.kallsyms]                         [k] save_nvgprs                                 -      -            
+     0.19%             5  [kernel.kallsyms]                         [k] thread_group_cputime                        -      -            
+     0.19%             5  [vdso]                                    [.] __kernel_clock_gettime                      -      -            
+     0.19%             5  libc-2.28.so                              [.] _IO_default_xsputn                          -      -            
+     0.19%             5  libc-2.28.so                              [.] __fopen_internal                            -      -            
+     0.19%             5  libc-2.28.so                              [.] __libc_disable_asynccancel                  -      -            
+     0.19%             5  libc-2.28.so                              [.] __strchrnul_power8                          -      -            
+     0.19%             5  libpython3.6m.so.1.0                      [.] PyErr_Occurred                              -      -            
+     0.19%             5  libpython3.6m.so.1.0                      [.] PyObject_GetAttr                            -      -            
+     0.19%             5  libpython3.6m.so.1.0                      [.] PyTuple_New                                 -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] __close_fd                                  -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] __fsnotify_parent                           -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] __kmalloc_node                              -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] __se_sys_newfstat                           -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] __task_pid_nr_ns                            -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] _raw_spin_unlock_irqrestore                 -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] alloc_empty_file                            -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] avc_has_perm_noaudit                        -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] do_syscall_trace_leave                      -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] ext4_llseek                                 -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] find_next_zero_bit                          -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] jbd2_journal_get_write_access               -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] jbd2_journal_grab_journal_head              -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] kmalloc_slab                                -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] lockref_get_not_dead                        -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] lockref_put_or_lock                         -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] percpu_counter_add_batch                    -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] release_pages                               -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] security_file_alloc                         -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] seq_puts                                    -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] update_curr                                 -      -            
+     0.15%             4  [kernel.kallsyms]                         [k] vsnprintf                                   -      -            
+     0.15%             4  [vdso]                                    [.] __do_get_tspec                              -      -            
+     0.15%             4  libc-2.28.so                              [.] _IO_file_open                               -      -            
+     0.15%             4  libc-2.28.so                              [.] _IO_file_stat                               -      -            
+     0.15%             4  libc-2.28.so                              [.] _IO_file_underflow@@GLIBC_2.17              -      -            
+     0.15%             4  libc-2.28.so                              [.] __clock_gettime                             -      -            
+     0.15%             4  libc-2.28.so                              [.] cfree@GLIBC_2.17                            -      -            
+     0.15%             4  libc-2.28.so                              [.] read                                        -      -            
+     0.15%             4  libpthread-2.28.so                        [.] __pthread_enable_asynccancel                -      -            
+     0.15%             4  libpython3.6m.so.1.0                      [.] _PyCFunction_FastCallDict                   -      -            
+     0.11%             3  [kernel.kallsyms]                         [k] __fput                                      -      -            
+     0.11%             3  [kernel.kallsyms]                         [k] __lookup_mnt                                -      -            
+     0.11%             3  [kernel.kallsyms]                         [k] __set_page_dirty_buffers                    -      -            
+     0.11%             3  [kernel.kallsyms]                         [k] __slab_free                                 -      -            
+     0.11%             3  [kernel.kallsyms]                         [k] avc_has_perm                                -      -            
+     0.11%             3  [kernel.kallsyms]                         [k] avc_policy_seqno                            -      -            
+     0.11%             3  [kernel.kallsyms]                         [k] cp_new_stat                                 -      -            
+     0.11%             3  [kernel.kallsyms]                         [k] idle_cpu                                    -      -            
+     0.11%             3  [kernel.kallsyms]                         [k] link_path_walk                              -      -            
+     0.11%             3  [kernel.kallsyms]                         [k] make_kprojid                                -      -            
+     0.11%             3  [kernel.kallsyms]                         [k] may_open.isra.23                            -      -            
+     0.11%             3  [kernel.kallsyms]                         [k] memcpy_power7                               -      -            
+     0.11%             3  [kernel.kallsyms]                         [k] mutex_lock                                  -      -            
+     0.11%             3  [kernel.kallsyms]                         [k] process_measurement                         -      -            
+     0.11%             3  [kernel.kallsyms]                         [k] putname                                     -      -            
+     0.11%             3  [kernel.kallsyms]                         [k] rcu_segcblist_enqueue                       -      -            
+     0.11%             3  [kernel.kallsyms]                         [k] security_file_permission                    -      -            
+     0.11%             3  [kernel.kallsyms]                         [k] selinux_file_alloc_security                 -      -            
+     0.11%             3  [kernel.kallsyms]                         [k] single_release                              -      -            
+     0.11%             3  [kernel.kallsyms]                         [k] strlen                                      -      -            
+     0.11%             3  filebench                                 [.] fileset_pick                                -      -            
+     0.11%             3  filebench                                 [.] flowop_beginop                              -      -            
+     0.11%             3  libc-2.28.so                              [.] _IO_switch_to_get_mode                      -      -            
+     0.11%             3  libc-2.28.so                              [.] _IO_vsprintf@@GLIBC_2.17                    -      -            
+     0.11%             3  libc-2.28.so                              [.] __fxstat64                                  -      -            
+     0.11%             3  libc-2.28.so                              [.] _int_malloc                                 -      -            
+     0.11%             3  libpthread-2.28.so                        [.] _pthread_cleanup_push_defer                 -      -            
+     0.11%             3  libpython3.6m.so.1.0                      [.] PyDict_GetItem                              -      -            
+     0.11%             3  libpython3.6m.so.1.0                      [.] PyLong_FromLong                             -      -            
+     0.11%             3  libpython3.6m.so.1.0                      [.] PyObject_GC_UnTrack                         -      -            
+     0.11%             3  libpython3.6m.so.1.0                      [.] _PyThreadState_UncheckedGet                 -      -            
+     0.11%             3  [unknown]                                 [k] 0x000020000035992c                          -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] __copy_tofrom_user                          -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] __es_insert_extent                          -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] __follow_mount_rcu.isra.7                   -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] __list_del_entry_valid                      -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] _copy_to_user                               -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] avtab_search_node                           -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] cpumask_next_and                            -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] d_alloc_parallel                            -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] do_notify_resume                            -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] down_read                                   -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] dput                                        -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] ext4_delete_entry                           -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] ext4_file_write_iter                        -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] ext4_inode_attach_jinode.part.14            -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] ext4_journal_check_start                    -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] ext4fs_dirhash                              -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] extract_crng_user                           -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] find_get_pages_range                        -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] from_kprojid                                -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] from_kuid_munged                            -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] generic_file_buffered_read                  -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] get_task_mm                                 -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] getname                                     -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] jbd2_journal_stop                           -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] ktime_get_update_offsets_now                -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] kvfree                                      -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] legitimize_links                            -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] legitimize_mnt                              -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] lru_cache_add                               -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] mmput                                       -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] mntget                                      -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] mntput                                      -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] new_sync_read                               -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] path_put                                    -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] policydb_context_isvalid                    -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] proc_pid_permission                         -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] proc_pid_status                             -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] radix_tree_lookup_slot                      -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] rb_next                                     -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] rcu_cblist_dequeue                          -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] sched_clock_cpu                             -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] selinux_file_free_security                  -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] selinux_inode_init_security                 -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] set_root                                    -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] single_open                                 -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] str2hashbuf_unsigned                        -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] taskstats_user_cmd                          -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] wake_up_bit                                 -      -            
+     0.08%             2  [kernel.kallsyms]                         [k] walk_component                              -      -            
+     0.08%             2  [vdso]                                    [.] __kernel_gettimeofday                       -      -            
+     0.08%             2  filebench                                 [.] 00000022.plt_call.fscanf@@GLIBC_2.17        -      -            
+     0.08%             2  filebench                                 [.] avd_get_bool                                -      -            
+     0.08%             2  filebench                                 [.] avl_find                                    -      -            
+     0.08%             2  filebench                                 [.] fb_urandom64                                -      -            
+     0.08%             2  filebench                                 [.] flowop_endop                                -      -            
+     0.08%             2  filebench                                 [.] flowoplib_closefile                         -      -            
+     0.08%             2  filebench                                 [.] gethrtime                                   -      -            
+     0.08%             2  libc-2.28.so                              [.] _IO_default_uflow                           -      -            
+     0.08%             2  libc-2.28.so                              [.] _IO_doallocbuf                              -      -            
+     0.08%             2  libc-2.28.so                              [.] _IO_file_close                              -      -            
+     0.08%             2  libc-2.28.so                              [.] _IO_un_link                                 -      -            
+     0.08%             2  libc-2.28.so                              [.] __GI___libc_open                            -      -            
+     0.08%             2  libc-2.28.so                              [.] __memchr_power8                             -      -            
+     0.08%             2  libc-2.28.so                              [.] __strstr_ppc                                -      -            
+     0.08%             2  libc-2.28.so                              [.] syscall                                     -      -            
+     0.08%             2  libpthread-2.28.so                        [.] __pthread_mutex_unlock                      -      -            
+     0.08%             2  libpython3.6m.so.1.0                      [.] PyErr_Clear                                 -      -            
+     0.08%             2  libpython3.6m.so.1.0                      [.] PyErr_Restore                               -      -            
+     0.08%             2  libpython3.6m.so.1.0                      [.] PyEval_SaveThread                           -      -            
+     0.08%             2  libpython3.6m.so.1.0                      [.] PyNumber_AsSsize_t                          -      -            
+     0.08%             2  libpython3.6m.so.1.0                      [.] PyObject_Free                               -      -            
+     0.08%             2  libpython3.6m.so.1.0                      [.] PyObject_SetItem                            -      -            
+     0.08%             2  libpython3.6m.so.1.0                      [.] PyObject_Size                               -      -            
+     0.08%             2  libpython3.6m.so.1.0                      [.] PySlice_New                                 -      -            
+     0.08%             2  libpython3.6m.so.1.0                      [.] _PyCFunction_FastCallKeywords               -      -            
+     0.08%             2  libpython3.6m.so.1.0                      [.] _PyUnicodeWriter_Finish                     -      -            
+     0.08%             2  libpython3.6m.so.1.0                      [.] _PyUnicode_FromASCII                        -      -            
+     0.08%             2  libpython3.6m.so.1.0                      [.] _Py_HashBytes                               -      -            
+     0.08%             2  libpython3.6m.so.1.0                      [.] 0x000000000006138c                          -      -            
+     0.08%             2  libpython3.6m.so.1.0                      [.] 0x0000000000068100                          -      -            
+     0.08%             2  libpython3.6m.so.1.0                      [.] 0x0000000000184ee4                          -      -            
+     0.08%             2  [unknown]                                 [k] 0x00002000003611cc                          -      -            
+     0.08%             2  [unknown]                                 [H] 0x00000000004505f0                          -      -            
+     0.04%             1  NetworkManager                            [.] 0x000000000022ded0                          -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __add_to_page_cache_locked                  -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __alloc_pages_nodemask                      -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __block_write_begin_int                     -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __check_heap_object                         -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __d_alloc                                   -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __delayacct_blkio_ticks                     -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __destroy_inode                             -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __es_scan_range.constprop.2                 -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __ext4_handle_dirty_super                   -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __ext4_journal_get_write_access             -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __ext4_new_inode                            -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __ext4_read_dirblock                        -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __ext4_read_dirblock.constprop.17           -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __f_unlock_pos                              -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __fdget_pos                                 -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __fdget_raw                                 -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __find_linux_pte                            -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __get_task_comm                             -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __lock_task_sighand                         -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __mark_inode_dirty                          -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __mutex_init                                -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __note_gp_changes                           -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __remove_inode_hash                         -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __rq_qos_issue                              -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __sb_start_write                            -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __se_sys_epoll_ctl                          -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __se_sys_llseek                             -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __se_sys_openat                             -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __se_sys_unlink                             -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __vfs_getxattr                              -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] __wake_up_common                            -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] _atomic_dec_and_lock                        -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] _raw_write_lock                             -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] account_page_cleaned                        -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] alloc_inode                                 -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] avtab_search                                -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] block_is_partially_uptodate                 -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] block_page_mkwrite                          -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] call_rcu                                    -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] chksum_update                               -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] context_struct_to_string.part.7             -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] copyout                                     -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] cpuacct_charge                              -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] cpuidle_enter_state                         -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] cpuidle_reflect                             -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] create_page_buffers                         -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] dequeue_entity                              -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] do_filp_open                                -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] do_idle                                     -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] do_mmap                                     -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] do_wp_page                                  -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] dx_probe                                    -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] enable_kernel_altivec                       -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] errseq_sample                               -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] expand_files.part.3                         -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] ext4_da_write_begin                         -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] ext4_es_remove_blks                         -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] ext4_ext_map_blocks                         -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] ext4_file_open                              -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] ext4_file_read_iter                         -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] ext4_find_entry                             -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] ext4_find_extent.constprop.13               -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] ext4_getblk                                 -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] ext4_htree_next_block                       -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] ext4_invalidatepage                         -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] ext4_map_blocks                             -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] ext4_mark_iloc_dirty                        -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] ext4_reserve_inode_write                    -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] ext4_set_page_dirty                         -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] ext4_superblock_csum_set                    -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] ext4_xattr_get                              -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] ext4_xattr_security_get                     -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] ext4_xattr_set_entry                        -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] fd_install                                  -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] file_ns_capable                             -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] find_get_entries                            -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] find_get_task_by_vpid                       -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] format_decode                               -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] free_unref_page                             -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] from_kgid_munged                            -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] generic_file_llseek_size                    -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] generic_fillattr                            -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] get_acl                                     -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] get_page_from_freelist                      -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] get_unused_fd_flags                         -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] inode_io_list_move_locked                   -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] inode_permission.constprop.30               -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] iov_iter_copy_from_user_atomic              -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] jbd2_journal_dirty_metadata                 -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] load_balance                                -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] load_up_altivec                             -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] lockref_get                                 -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] locks_remove_file                           -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] locks_remove_posix                          -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] make_kuid                                   -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] memcg_kmem_put_cache                        -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] menu_select                                 -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] mls_compute_context_len                     -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] mls_context_isvalid                         -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] mmap_region                                 -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] module_put                                  -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] new_sync_write                              -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] nla_put                                     -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] numamigrate_isolate_page                    -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] page_cache_tree_insert                      -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] page_counter_uncharge                       -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] page_mapping                                -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] path_init                                   -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] perf_event_mmap_output                      -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] proc_pid_readdir                            -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] proc_task_readdir                           -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] rangetr_cmp                                 -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] rcu_core                                    -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] rcu_gp_kthread                              -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] rcu_segcblist_insert_count                  -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] resched_curr                                -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] save_altivec                                -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] security_file_free                          -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] security_file_open                          -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] security_task_to_inode                      -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] selinux_capable                             -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] selinux_file_open                           -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] selinux_inode_getattr                       -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] selinux_mmap_file                           -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] sidtab_context_to_sid                       -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] skb_set_owner_w                             -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] slice_find_area_bottomup.isra.3             -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] strscpy                                     -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] submit_bio                                  -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] task_dump_owner                             -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] task_rq_lock                                -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] task_sched_runtime                          -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] task_vsize                                  -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] tick_nohz_idle_got_tick                     -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] try_charge                                  -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] try_to_wake_up                              -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] unlock_page                                 -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] update_blocked_averages                     -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] vfs_open                                    -      -            
+     0.04%             1  [kernel.kallsyms]                         [k] vmstat_start                                -      -            
+     0.04%             1  [vdso]                                    [.] data_page_branch                            -      -            
+     0.04%             1  _struct.cpython-36m-ppc64le-linux-gnu.so  [.] 0x0000000000005ab0                          -      -            
+     0.04%             1  filebench                                 [.] 00000022.plt_call.gettimeofday@@GLIBC_2.17  -      -            
+     0.04%             1  filebench                                 [.] 00000022.plt_call.read@@GLIBC_2.17          -      -            
+     0.04%             1  filebench                                 [.] fb_lfs_lseek                                -      -            
+     0.04%             1  filebench                                 [.] fb_lfs_write                                -      -            
+     0.04%             1  filebench                                 [.] filebench_log                               -      -            
+     0.04%             1  filebench                                 [.] flowop_start                                -      -            
+     0.04%             1  filebench                                 [.] flowoplib_fileattrs                         -      -            
+     0.04%             1  filebench                                 [.] flowoplib_iobufsetup.isra.7                 -      -            
+     0.04%             1  filebench                                 [.] flowoplib_openfile                          -      -            
+     0.04%             1  filebench                                 [.] flowoplib_readwholefile                     -      -            
+     0.04%             1  filebench                                 [.] gamma_dist_knuth_algA                       -      -            
+     0.04%             1  filebench                                 [.] get_attr_integer.isra.24                    -      -            
+     0.04%             1  libc-2.28.so                              [.] 00000037.plt_call.malloc                    -      -            
+     0.04%             1  libc-2.28.so                              [.] _IO_file_doallocate                         -      -            
+     0.04%             1  libc-2.28.so                              [.] _IO_file_fopen@@GLIBC_2.17                  -      -            
+     0.04%             1  libc-2.28.so                              [.] _IO_file_read                               -      -            
+     0.04%             1  libc-2.28.so                              [.] _IO_new_file_init_internal                  -      -            
+     0.04%             1  libc-2.28.so                              [.] _IO_old_init                                -      -            
+     0.04%             1  libc-2.28.so                              [.] _IO_setb                                    -      -            
+     0.04%             1  libc-2.28.so                              [.] __GI_____strtoull_l_internal                -      -            
+     0.04%             1  libc-2.28.so                              [.] __drand48_iterate                           -      -            
+     0.04%             1  libc-2.28.so                              [.] __gconv_transform_utf8_internal             -      -            
+     0.04%             1  libc-2.28.so                              [.] __memcmp_power8                             -      -            
+     0.04%             1  libc-2.28.so                              [.] __memcpy_power7                             -      -            
+     0.04%             1  libc-2.28.so                              [.] __strlen_power8                             -      -            
+     0.04%             1  libc-2.28.so                              [.] __vfscanf@@GLIBC_2.17                       -      -            
+     0.04%             1  libc-2.28.so                              [.] fopen@@GLIBC_2.17                           -      -            
+     0.04%             1  libc-2.28.so                              [.] new_do_write                                -      -            
+     0.04%             1  libc-2.28.so                              [.] sprintf@@GLIBC_2.17                         -      -            
+     0.04%             1  libglib-2.0.so.0.5600.4                   [.] g_mutex_unlock                              -      -            
+     0.04%             1  libjvm.so                                 [.] os::javaTimeNanos                           -      -            
+     0.04%             1  libm-2.28.so                              [.] __log_finite                                -      -            
+     0.04%             1  libperl.so.5.26.3                         [.] Perl_safesyscalloc                          -      -            
+     0.04%             1  libperl.so.5.26.3                         [.] Perl_sv_clear                               -      -            
+     0.04%             1  libperl.so.5.26.3                         [.] Perl_sv_grow                                -      -            
+     0.04%             1  libperl.so.5.26.3                         [.] Perl_sv_setsv_flags                         -      -            
+     0.04%             1  libperl.so.5.26.3                         [.] 0x000000000019ca04                          -      -            
+     0.04%             1  libpthread-2.28.so                        [.] __close                                     -      -            
+     0.04%             1  libpthread-2.28.so                        [.] __open64                                    -      -            
+     0.04%             1  libpthread-2.28.so                        [.] __pthread_disable_asynccancel               -      -            
+     0.04%             1  libpthread-2.28.so                        [.] _pthread_cleanup_pop_restore                -      -            
+     0.04%             1  libpthread-2.28.so                        [.] pthread_cond_signal@@GLIBC_2.17             -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyCFunction_NewEx                           -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyDict_SetItem                              -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyErr_CheckSignals                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyEval_EvalFrameEx                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyEval_RestoreThread                        -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyFrame_New                                 -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyFunction_NewWithQualName                  -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyList_New                                  -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyMem_Free                                  -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyMem_Malloc                                -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyMember_SetOne                             -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyNumber_Multiply                           -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyObject_GetItem                            -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyObject_IsSubclass                         -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyObject_IsTrue                             -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyObject_Realloc                            -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyObject_SetAttr                            -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyTuple_GetSlice                            -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyType_IsSubtype                            -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyUnicode_DecodeUTF8Stateful                -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyUnicode_FromFormat                        -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyUnicode_FromFormatV                       -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] PyUnicode_InternInPlace                     -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] _PyDict_GetItemId                           -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] _PyIO_get_locale_module                     -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] _PyLong_New                                 -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] _PyObject_Call_Prepend                      -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] _PyObject_GC_New                            -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] _PyUnicode_IsTitlecase                      -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] _Py_CheckFunctionResult                     -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] _Py_normalize_encoding                      -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x000000000005e2c0                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x000000000005e620                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x000000000005ef6c                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x000000000006050c                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000060d80                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000060f8c                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000611c0                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000613ac                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x000000000006150c                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000061c00                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000623ac                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x000000000006282c                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000634e0                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000634ec                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000063860                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000638a0                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000654c0                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x000000000006558c                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000066e4c                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000067840                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000068b20                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000068ea0                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000bfc30                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000c1560                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000c4f10                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000c4f30                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000c6998                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000c8c80                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000d3178                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000d3194                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000def5c                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000df180                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000df400                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000df674                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000dff20                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000f64b0                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000f6994                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000f6ea0                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000f7054                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000ff690                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000000ff830                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000104b30                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000104c54                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000111380                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x000000000011d970                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x000000000011ed80                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x000000000011eda0                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x000000000011edb0                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x000000000011ee4c                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000120550                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000001205ec                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000120630                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000001208d0                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x000000000012d3b8                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000134aa0                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000139c24                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x000000000013a234                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x000000000015f1b0                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000165898                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000001744c0                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000178b80                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000001821a0                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000184eb0                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000184fe0                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000188110                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000189afc                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x0000000000189b00                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x000000000018bb30                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000001a60c8                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000001a7f50                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000001add28                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000001ae260                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000001b99ec                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x00000000002129c0                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x000000000021a1ac                          -      -            
+     0.04%             1  libpython3.6m.so.1.0                      [.] 0x000000000027a8f4                          -      -            
+     0.04%             1  libtalloc.so.2.2.0                        [.] _talloc_zero                                -      -            
+     0.04%             1  libtalloc.so.2.2.0                        [.] 0x00000000000026c0                          -      -            
+     0.04%             1  libtalloc.so.2.2.0                        [.] 0x0000000000009390                          -      -            
+     0.04%             1  libtdb.so.1.4.2                           [.] tdb_unlock                                  -      -            
+     0.04%             1  libtevent.so.0.10.0                       [.] _tevent_req_create                          -      -            
+     0.04%             1  libtevent.so.0.10.0                       [.] _tevent_req_data                            -      -            
+     0.04%             1  libtevent.so.0.10.0                       [.] 0x0000000000005978                          -      -            
+     0.04%             1  libtevent.so.0.10.0                       [.] 0x000000000000f5e0                          -      -            
+     0.04%             1  [unknown]                                 [k] 0x00007ffff74c564c                          -      -            
+     0.04%             1  [unknown]                                 [k] 0x00007ffff77b7c10                          -      -            
+     0.04%             1  [unknown]                                 [H] 0x0000000000008024                          -      -            
+     0.04%             1  [unknown]                                 [H] 0x000000000000802c                          -      -            
+     0.04%             1  [unknown]                                 [H] 0x000000000000cc9c                          -      -            
+     0.04%             1  [unknown]                                 [H] 0x000000000000cf08                          -      -            
+     0.04%             1  [unknown]                                 [k] 0x00002000000976f4                          -      -            
+     0.04%             1  [unknown]                                 [k] 0x0000200000097f70                          -      -            
+     0.04%             1  [unknown]                                 [H] 0x00000000002d85a4                          -      -            
+     0.04%             1  [unknown]                                 [k] 0x000020000035a358                          -      -            
+     0.04%             1  [unknown]                                 [H] 0x0000000000372114                          -      -            
+     0.04%             1  [unknown]                                 [H] 0x00000000003d648c                          -      -            
+     0.04%             1  [unknown]                                 [H] 0x0000000000442094                          -      -            
+     0.04%             1  [unknown]                                 [H] 0x0000000000618a44                          -      -            
+     0.04%             1  [unknown]                                 [H] 0x000000000062b9c8                          -      -            
+     0.04%             1  [unknown]                                 [H] 0x0000000000659d74                          -      -            
+     0.04%             1  [unknown]                                 [H] 0x00000000006afb90                          -      -            
+     0.04%             1  [unknown]                                 [H] 0x00000000006b02b4                          -      -            
+     0.04%             1  [unknown]                                 [H] 0x00000000006b18d4                          -      -            
+     0.04%             1  [unknown]                                 [k] 0x00000000006ce9d8                          -      -            
+     0.04%             1  [unknown]                                 [H] 0x000000000072e1fc                          -      -            
+
+
+#
+# (Tip: For hierarchical output, try: perf report --hierarchy)
+#

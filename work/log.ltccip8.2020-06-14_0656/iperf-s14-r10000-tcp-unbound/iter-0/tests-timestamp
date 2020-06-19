@@ -1,0 +1,7 @@
+start :: 1592120316
+test begin :: iperf3 1592120317
+test end :: iperf3 1592120325
+Command exited with non-zero status 255
+time :: iperf3 0.24 user 0.10 system 0.30 elapsed
+finish :: 1592120325
+status :: 255

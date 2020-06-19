@@ -1,0 +1,23 @@
+Initialisation step complete, continuing
+Checking mariadb installation
+Updating Subscription Management repositories.
+Unable to read consumer identity
+This system is not registered to Red Hat Subscription Management. You can use subscription-manager to register.
+Last metadata expiration check: 0:01:00 ago on Sat 06 Jun 2020 10:15:42 AM IST.
+No match for argument: libncurses5
+Error: Unable to find a match: libncurses5
+Failed to install package libncurses5 for distro redhat at /home/mmtests/bin/install-depends line 243.
+Updating Subscription Management repositories.
+Unable to read consumer identity
+This system is not registered to Red Hat Subscription Management. You can use subscription-manager to register.
+Last metadata expiration check: 0:01:03 ago on Sat 06 Jun 2020 10:15:42 AM IST.
+No match for argument: bzr
+Error: Unable to find a match: bzr
+Failed to install package bzr for distro redhat at /home/mmtests/bin/install-depends line 243.
+mariadb-install: Fetching from mirror http://mcp/mmtests-mirror/mariadb//mariadb-10.4.11.tar.gz
+mariadb-install: Fetching from internet http://ftp.heanet.ie/mirrors/mariadb/mariadb-10.4.11/source/mariadb-10.4.11.tar.gz
+mariadb-install: Fetching from alt internet http://archive.mariadb.org//mariadb-10.4.11/source/mariadb-10.4.11.tar.gz
+FATAL mariadb-install: mariadb-install: Could not download http://archive.mariadb.org//mariadb-10.4.11/source/mariadb-10.4.11.tar.gz
+FATAL mariadbbuild-bench: mariadbbuild install script returned error
+FATAL sysbench-install: Failed to get usable database installation
+FATAL sysbench-bench: sysbench install script returned error

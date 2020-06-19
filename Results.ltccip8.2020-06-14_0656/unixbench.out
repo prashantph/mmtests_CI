@@ -1,0 +1,35 @@
+   Operation      Sample         Ops
+unixbench-dhry2reg-1   0            1 22479820.60
+unixbench-dhry2reg-1   0            2 22478677.90
+unixbench-dhry2reg-1   0            3 22478415.70
+unixbench-dhry2reg-320 0            1767180144.10
+unixbench-dhry2reg-320 0            2770677701.80
+unixbench-dhry2reg-320 0            3767365147.80
+   Operation      Sample         Ops
+unixbench-execl-1   0            1     3091.10
+unixbench-execl-1   0            2     3092.20
+unixbench-execl-1   0            3     3091.30
+unixbench-execl-320 0            1    22557.80
+unixbench-execl-320 0            2    22881.30
+unixbench-execl-320 0            3    23386.80
+   Operation      Sample         Ops
+unixbench-pipe-1   0            1   598138.00
+unixbench-pipe-1   0            2   607400.30
+unixbench-pipe-1   0            3   606488.50
+unixbench-pipe-320 0            1 25740273.40
+unixbench-pipe-320 0            2 25812440.30
+unixbench-pipe-320 0            3 25811923.30
+   Operation      Sample         Ops
+unixbench-spawn-1   0            1     6022.80
+unixbench-spawn-1   0            2     6082.60
+unixbench-spawn-1   0            3     6078.40
+unixbench-spawn-320 0            1    44333.50
+unixbench-spawn-320 0            2    44460.30
+unixbench-spawn-320 0            3    45023.00
+   Operation      Sample         Ops
+unixbench-syscall-1   0            1   456834.20
+unixbench-syscall-1   0            2   456249.30
+unixbench-syscall-1   0            3   456311.20
+unixbench-syscall-320 0            1  2868175.40
+unixbench-syscall-320 0            2  2758028.50
+unixbench-syscall-320 0            3  2763826.30

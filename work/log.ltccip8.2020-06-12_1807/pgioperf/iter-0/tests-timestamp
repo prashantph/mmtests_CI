@@ -1,0 +1,9 @@
+start :: 1591976457
+test begin :: pgioperfinit 1591976472
+test end :: pgioperfinit 1591976483
+time :: pgioperfinit 0.44 user 0.09 system 0.46 elapsed
+test begin :: pgioperfbench 1591976484
+test end :: pgioperfbench 1591976706
+time :: pgioperfbench 0.65 user 4.32 system 171.38 elapsed
+finish :: 1591976706
+status :: 0

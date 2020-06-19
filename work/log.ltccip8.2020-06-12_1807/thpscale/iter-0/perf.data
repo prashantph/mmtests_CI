@@ -1,0 +1,1012 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 2K of event 'cycles'
+# Event count (approx.): 28820000000
+#
+# Overhead       Samples  Shared Object         Symbol                                      IPC   [IPC Coverage]
+# ........  ............  ....................  ..........................................  ....................
+#
+     9.44%           272  [kernel.kallsyms]     [k] __crc32c_le                             -      -            
+            |
+            ---__crc32c_le
+               |          
+                --8.88%--chksum_update
+                          |          
+                           --8.81%--crypto_shash_update
+                                     ext4_inode_csum
+                                     ext4_inode_csum_set
+                                     ext4_do_update_inode.isra.6
+                                     ext4_mark_iloc_dirty
+                                     ext4_mark_inode_dirty
+                                     ext4_dirty_inode
+                                     __mark_inode_dirty
+                                     generic_write_end
+                                     ext4_da_write_end
+                                     generic_perform_write
+                                     __generic_file_write_iter
+                                     ext4_file_write_iter
+                                     new_sync_write
+                                     __se_sys_write
+                                     system_call
+                                     __GI___libc_write
+                                     0x100006338
+                                     0x1000062d4
+                                     0x1000065f8
+                                     0x100003424
+                                     generic_start_main.isra.0
+                                     __libc_start_main
+                                     0
+
+     6.28%           181  [kernel.kallsyms]     [k] __block_commit_write.isra.6             -      -            
+            |
+            ---__block_commit_write.isra.6
+               |          
+               |--3.37%--__block_commit_write.isra.6
+               |          |          
+               |           --3.23%--generic_write_end
+               |                     ext4_da_write_end
+               |                     generic_perform_write
+               |                     __generic_file_write_iter
+               |                     ext4_file_write_iter
+               |                     new_sync_write
+               |                     __se_sys_write
+               |                     system_call
+               |                     __GI___libc_write
+               |                     0x100006338
+               |                     0x1000062d4
+               |                     0x1000065f8
+               |                     0x100003424
+               |                     generic_start_main.isra.0
+               |                     __libc_start_main
+               |                     0
+               |          
+                --2.91%--generic_write_end
+                          |          
+                           --2.67%--0
+                                     ext4_da_write_end
+                                     generic_perform_write
+                                     __generic_file_write_iter
+                                     ext4_file_write_iter
+                                     new_sync_write
+                                     __se_sys_write
+                                     system_call
+                                     __GI___libc_write
+                                     0x100006338
+                                     0x1000062d4
+                                     0x1000065f8
+                                     0x100003424
+                                     generic_start_main.isra.0
+                                     __libc_start_main
+                                     0
+
+     4.68%           135  [kernel.kallsyms]     [k] cleanup_module                          -      -            
+            |
+            ---cleanup_module
+               |          
+               |--0.87%--ext4_do_update_inode.isra.6
+               |          |          
+               |           --0.76%--ext4_mark_iloc_dirty
+               |                     ext4_mark_inode_dirty
+               |                     ext4_dirty_inode
+               |                     __mark_inode_dirty
+               |                     generic_write_end
+               |                     ext4_da_write_end
+               |                     generic_perform_write
+               |                     __generic_file_write_iter
+               |                     ext4_file_write_iter
+               |                     new_sync_write
+               |                     __se_sys_write
+               |                     system_call
+               |                     __GI___libc_write
+               |                     0x100006338
+               |                     0x1000062d4
+               |                     0x1000065f8
+               |                     0x100003424
+               |                     generic_start_main.isra.0
+               |                     __libc_start_main
+               |                     0
+               |          
+               |--0.80%--ext4_da_write_begin
+               |          |          
+               |           --0.76%--generic_perform_write
+               |                     __generic_file_write_iter
+               |                     ext4_file_write_iter
+               |                     new_sync_write
+               |                     __se_sys_write
+               |                     system_call
+               |                     __GI___libc_write
+               |                     0x100006338
+               |                     0x1000062d4
+               |                     0x1000065f8
+               |                     0x100003424
+               |                     generic_start_main.isra.0
+               |                     __libc_start_main
+               |                     0
+               |          
+               |--0.69%--ext4_file_write_iter
+               |          |          
+               |           --0.66%--new_sync_write
+               |                     __se_sys_write
+               |                     system_call
+               |                     __GI___libc_write
+               |                     0x100006338
+               |                     0x1000062d4
+               |                     0x1000065f8
+               |                     0x100003424
+               |                     generic_start_main.isra.0
+               |                     __libc_start_main
+               |                     0
+               |          
+               |--0.52%--ext4_inode_csum
+               |          
+                --0.52%--__ext4_journal_get_write_access
+
+     2.57%            74  [kernel.kallsyms]     [k] __block_write_begin_int                 -      -            
+            |
+            ---__block_write_begin_int
+               |          
+                --2.43%--__block_write_begin_int
+                          |          
+                           --2.39%--ext4_da_write_begin
+                                     generic_perform_write
+                                     __generic_file_write_iter
+                                     ext4_file_write_iter
+                                     new_sync_write
+                                     __se_sys_write
+                                     system_call
+                                     __GI___libc_write
+                                     0x100006338
+                                     0x1000062d4
+                                     0x1000065f8
+                                     0x100003424
+                                     generic_start_main.isra.0
+                                     __libc_start_main
+                                     0
+
+     2.46%            71  [kernel.kallsyms]     [k] fast_exception_return                   -      -            
+            |          
+             --0.62%--0xc00000000000df68
+
+     2.43%            70  [kernel.kallsyms]     [k] find_get_entry                          -      -            
+            |
+            ---find_get_entry
+               |          
+                --2.05%--find_get_entry
+                          pagecache_get_page
+                          |          
+                          |--1.15%--grab_cache_page_write_begin
+                          |          ext4_da_write_begin
+                          |          generic_perform_write
+                          |          __generic_file_write_iter
+                          |          ext4_file_write_iter
+                          |          new_sync_write
+                          |          __se_sys_write
+                          |          system_call
+                          |          __GI___libc_write
+                          |          0x100006338
+                          |          0x1000062d4
+                          |          0x1000065f8
+                          |          0x100003424
+                          |          generic_start_main.isra.0
+                          |          __libc_start_main
+                          |          0
+                          |          
+                           --0.90%--generic_file_buffered_read
+                                     ext4_file_read_iter
+                                     new_sync_read
+                                     __se_sys_read
+                                     system_call
+                                     read
+                                     0x100005d1c
+                                     0x100005d0c
+                                     0x100003498
+                                     generic_start_main.isra.0
+                                     __libc_start_main
+                                     0
+
+     1.98%            57  [kernel.kallsyms]     [k] up_write                                -      -            
+            |
+            ---up_write
+               |          
+                --1.87%--ext4_file_write_iter
+                          |          
+                           --1.67%--ext4_file_write_iter
+                                     new_sync_write
+                                     __se_sys_write
+                                     system_call
+                                     __GI___libc_write
+                                     0x100006338
+                                     0x1000062d4
+                                     0x1000065f8
+                                     0x100003424
+                                     generic_start_main.isra.0
+                                     __libc_start_main
+                                     0
+
+     1.91%            55  [kernel.kallsyms]     [k] __copy_tofrom_user_power7               -      -            
+            |
+            ---__copy_tofrom_user_power7
+               |          
+               |--1.08%--copyout
+               |          |          
+               |           --0.94%--0
+               |                     copy_page_to_iter
+               |                     generic_file_buffered_read
+               |                     ext4_file_read_iter
+               |                     new_sync_read
+               |                     __se_sys_read
+               |                     system_call
+               |                     read
+               |                     0x100005d1c
+               |                     0x100005d0c
+               |                     0x100003498
+               |                     generic_start_main.isra.0
+               |                     __libc_start_main
+               |                     0
+               |          
+                --0.59%--copyin
+
+     1.84%            53  [kernel.kallsyms]     [k] ext4_do_update_inode.isra.6             -      -            
+            |
+            ---ext4_do_update_inode.isra.6
+               |          
+                --1.80%--ext4_do_update_inode.isra.6
+                          |          
+                           --1.73%--ext4_mark_iloc_dirty
+                                     ext4_mark_inode_dirty
+                                     ext4_dirty_inode
+                                     __mark_inode_dirty
+                                     generic_write_end
+                                     ext4_da_write_end
+                                     generic_perform_write
+                                     __generic_file_write_iter
+                                     ext4_file_write_iter
+                                     new_sync_write
+                                     __se_sys_write
+                                     system_call
+                                     __GI___libc_write
+                                     0x100006338
+                                     0x1000062d4
+                                     0x1000065f8
+                                     0x100003424
+                                     generic_start_main.isra.0
+                                     __libc_start_main
+                                     0
+
+     1.80%            52  [kernel.kallsyms]     [k] system_call                             -      -            
+            |
+            ---system_call
+               |          
+               |--0.69%--system_call
+               |          
+                --0.66%--0
+
+     1.63%            47  [kernel.kallsyms]     [k] exc_virt_0x4c00_system_call             -      -            
+            |
+            ---exc_virt_0x4c00_system_call
+               0
+               |          
+               |--0.87%--__GI___libc_write
+               |          0x100006338
+               |          0x1000062d4
+               |          0x1000065f8
+               |          0x100003424
+               |          generic_start_main.isra.0
+               |          __libc_start_main
+               |          0
+               |          
+                --0.76%--read
+                          0x100005d1c
+                          0x100005d0c
+                          0x100003498
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     1.56%            45  [kernel.kallsyms]     [k] _cond_resched                           -      -            
+            |
+            ---_cond_resched
+               |          
+                --0.62%--_cond_resched
+                          |          
+                           --0.52%--0
+
+     1.56%            45  [kernel.kallsyms]     [k] ext4_da_write_begin                     -      -            
+            |
+            ---ext4_da_write_begin
+               |          
+                --1.01%--generic_perform_write
+                          |          
+                           --0.73%--0
+                                     __generic_file_write_iter
+                                     ext4_file_write_iter
+                                     new_sync_write
+                                     __se_sys_write
+                                     system_call
+                                     __GI___libc_write
+                                     0x100006338
+                                     0x1000062d4
+                                     0x1000065f8
+                                     0x100003424
+                                     generic_start_main.isra.0
+                                     __libc_start_main
+                                     0
+
+     1.53%            44  [kernel.kallsyms]     [k] snooze_loop                             -      -            
+            |
+            ---snooze_loop
+               snooze_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     1.49%            43  [kernel.kallsyms]     [k] __fdget_pos                             -      -            
+            |
+            ---__fdget_pos
+               |          
+               |--0.73%--__se_sys_write
+               |          |          
+               |           --0.56%--0
+               |                     system_call
+               |                     __GI___libc_write
+               |                     0x100006338
+               |                     0x1000062d4
+               |                     0x1000065f8
+               |                     0x100003424
+               |                     generic_start_main.isra.0
+               |                     __libc_start_main
+               |                     0
+               |          
+                --0.69%--__se_sys_read
+                          |          
+                           --0.59%--0
+                                     system_call
+                                     read
+                                     0x100005d1c
+                                     0x100005d0c
+                                     0x100003498
+                                     generic_start_main.isra.0
+                                     __libc_start_main
+                                     0
+
+     1.35%            39  [kernel.kallsyms]     [k] crypto_shash_update                     -      -            
+            |
+            ---crypto_shash_update
+               |          
+                --0.76%--crypto_shash_update
+                          ext4_inode_csum
+                          ext4_inode_csum_set
+                          ext4_do_update_inode.isra.6
+                          ext4_mark_iloc_dirty
+                          ext4_mark_inode_dirty
+                          ext4_dirty_inode
+                          __mark_inode_dirty
+                          generic_write_end
+                          ext4_da_write_end
+                          generic_perform_write
+                          __generic_file_write_iter
+                          ext4_file_write_iter
+                          new_sync_write
+                          __se_sys_write
+                          system_call
+                          __GI___libc_write
+                          0x100006338
+                          0x1000062d4
+                          0x1000065f8
+                          0x100003424
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     1.35%            39  [kernel.kallsyms]     [k] rcu_all_qs                              -      -            
+            |
+            ---rcu_all_qs
+
+     1.32%            38  [kernel.kallsyms]     [k] kmem_cache_alloc                        -      -            
+            |
+            ---kmem_cache_alloc
+               |          
+                --0.97%--kmem_cache_alloc
+                          |          
+                           --0.90%--jbd2__journal_start
+                                     __ext4_journal_start_sb
+                                     ext4_da_write_begin
+                                     generic_perform_write
+                                     __generic_file_write_iter
+                                     ext4_file_write_iter
+                                     new_sync_write
+                                     __se_sys_write
+                                     system_call
+                                     __GI___libc_write
+                                     0x100006338
+                                     0x1000062d4
+                                     0x1000065f8
+                                     0x100003424
+                                     generic_start_main.isra.0
+                                     __libc_start_main
+                                     0
+
+     1.32%            38  [kernel.kallsyms]     [k] radix_tree_lookup_slot                  -      -            
+            |
+            ---radix_tree_lookup_slot
+               find_get_entry
+               pagecache_get_page
+               |          
+               |--0.80%--grab_cache_page_write_begin
+               |          ext4_da_write_begin
+               |          generic_perform_write
+               |          __generic_file_write_iter
+               |          ext4_file_write_iter
+               |          new_sync_write
+               |          __se_sys_write
+               |          system_call
+               |          __GI___libc_write
+               |          0x100006338
+               |          0x1000062d4
+               |          0x1000065f8
+               |          0x100003424
+               |          generic_start_main.isra.0
+               |          __libc_start_main
+               |          0
+               |          
+                --0.52%--generic_file_buffered_read
+                          ext4_file_read_iter
+                          new_sync_read
+                          __se_sys_read
+                          system_call
+                          read
+                          0x100005d1c
+                          0x100005d0c
+                          0x100003498
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     1.28%            37  [kernel.kallsyms]     [k] jbd2_journal_stop                       -      -            
+            |
+            ---jbd2_journal_stop
+               |          
+                --0.94%--__ext4_journal_stop
+                          0
+                          ext4_da_write_end
+                          generic_perform_write
+                          __generic_file_write_iter
+                          ext4_file_write_iter
+                          new_sync_write
+                          __se_sys_write
+                          system_call
+                          __GI___libc_write
+                          0x100006338
+                          0x1000062d4
+                          0x1000065f8
+                          0x100003424
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     1.28%            37  [kernel.kallsyms]     [k] system_call_exit                        -      -            
+            |          
+             --1.01%--system_call_exit
+                       |          
+                        --0.73%--system_call
+                                  |          
+                                   --0.52%--__GI___libc_write
+                                             0x100006338
+                                             0x1000062d4
+                                             0x1000065f8
+                                             0x100003424
+                                             generic_start_main.isra.0
+                                             __libc_start_main
+                                             0
+
+     1.21%            35  [kernel.kallsyms]     [k] msr_check_and_set                       -      -            
+            |          
+             --0.59%--0xc00000000001e9c0
+
+     1.21%            35  [kernel.kallsyms]     [k] start_this_handle                       -      -            
+            |
+            ---start_this_handle
+               |          
+                --0.87%--start_this_handle
+                          jbd2__journal_start
+                          __ext4_journal_start_sb
+                          ext4_da_write_begin
+                          generic_perform_write
+                          __generic_file_write_iter
+                          ext4_file_write_iter
+                          new_sync_write
+                          __se_sys_write
+                          system_call
+                          __GI___libc_write
+                          0x100006338
+                          0x1000062d4
+                          0x1000065f8
+                          0x100003424
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     1.11%            32  [kernel.kallsyms]     [k] ext4_mark_iloc_dirty                    -      -            
+            |
+            ---ext4_mark_iloc_dirty
+
+     1.11%            32  [kernel.kallsyms]     [k] generic_file_buffered_read              -      -            
+            |
+            ---generic_file_buffered_read
+               |          
+                --0.80%--generic_file_buffered_read
+                          |          
+                           --0.76%--ext4_file_read_iter
+                                     new_sync_read
+                                     __se_sys_read
+                                     system_call
+                                     read
+                                     0x100005d1c
+                                     0x100005d0c
+                                     0x100003498
+                                     generic_start_main.isra.0
+                                     __libc_start_main
+                                     0
+
+     1.01%            29  [kernel.kallsyms]     [k] __se_sys_write                          -      -            
+            |
+            ---__se_sys_write
+               |          
+                --0.59%--system_call
+                          |          
+                           --0.52%--__GI___libc_write
+                                     0x100006338
+                                     0x1000062d4
+                                     0x1000065f8
+                                     0x100003424
+                                     generic_start_main.isra.0
+                                     __libc_start_main
+                                     0
+
+     1.01%            29  [kernel.kallsyms]     [k] generic_perform_write                   -      -            
+            |
+            ---generic_perform_write
+               |          
+                --0.80%--generic_perform_write
+                          |          
+                           --0.52%--__generic_file_write_iter
+                                     ext4_file_write_iter
+                                     new_sync_write
+                                     __se_sys_write
+                                     system_call
+                                     __GI___libc_write
+                                     0x100006338
+                                     0x1000062d4
+                                     0x1000065f8
+                                     0x100003424
+                                     generic_start_main.isra.0
+                                     __libc_start_main
+                                     0
+
+     0.94%            27  [kernel.kallsyms]     [k] add_transaction_credits                 -      -            
+            |
+            ---add_transaction_credits
+               start_this_handle
+               |          
+                --0.83%--0
+                          jbd2__journal_start
+                          __ext4_journal_start_sb
+                          ext4_da_write_begin
+                          generic_perform_write
+                          __generic_file_write_iter
+                          ext4_file_write_iter
+                          new_sync_write
+                          __se_sys_write
+                          system_call
+                          __GI___libc_write
+                          0x100006338
+                          0x1000062d4
+                          0x1000065f8
+                          0x100003424
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     0.87%            25  [kernel.kallsyms]     [k] __audit_syscall_entry                   -      -            
+            |
+            ---__audit_syscall_entry
+               |          
+                --0.66%--__audit_syscall_entry
+                          do_syscall_trace_enter
+                          system_call_exit
+
+     0.80%            23  [kernel.kallsyms]     [k] cleanup_module                          -      -            
+            |
+            ---cleanup_module
+
+     0.80%            23  libc-2.28.so          [.] __memcpy_power7                         -      -            
+            |
+            ---__memcpy_power7
+               0x10000345c
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.76%            22  [kernel.kallsyms]     [k] jbd2__journal_start                     -      -            
+            |
+            ---jbd2__journal_start
+               |          
+                --0.52%--__ext4_journal_start_sb
+
+     0.76%            22  [kernel.kallsyms]     [k] mark_buffer_dirty                       -      -            
+            |
+            ---mark_buffer_dirty
+               |          
+                --0.69%--__block_commit_write.isra.6
+                          |          
+                           --0.62%--0
+                                     generic_write_end
+                                     ext4_da_write_end
+                                     generic_perform_write
+                                     __generic_file_write_iter
+                                     ext4_file_write_iter
+                                     new_sync_write
+                                     __se_sys_write
+                                     system_call
+                                     __GI___libc_write
+                                     0x100006338
+                                     0x1000062d4
+                                     0x1000065f8
+                                     0x100003424
+                                     generic_start_main.isra.0
+                                     __libc_start_main
+                                     0
+
+     0.76%            22  [kernel.kallsyms]     [k] new_sync_read                           -      -            
+            |
+            ---new_sync_read
+
+     0.76%            22  [kernel.kallsyms]     [k] system_call_common                      -      -            
+            |
+            ---system_call_common
+               |          
+                --0.59%--0
+
+     0.73%            21  [kernel.kallsyms]     [k] generic_write_end                       -      -            
+            |
+            ---generic_write_end
+               generic_write_end
+               |          
+                --0.69%--ext4_da_write_end
+                          generic_perform_write
+                          __generic_file_write_iter
+                          ext4_file_write_iter
+                          new_sync_write
+                          __se_sys_write
+                          system_call
+                          __GI___libc_write
+                          0x100006338
+                          0x1000062d4
+                          0x1000065f8
+                          0x100003424
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     0.73%            21  [kernel.kallsyms]     [k] selinux_file_permission                 -      -            
+            |
+            ---selinux_file_permission
+               |          
+                --0.52%--security_file_permission
+
+     0.66%            19  [kernel.kallsyms]     [k] __brelse                                -      -            
+            |
+            ---__brelse
+               |          
+                --0.56%--ext4_do_update_inode.isra.6
+                          |          
+                           --0.52%--ext4_mark_iloc_dirty
+                                     ext4_mark_inode_dirty
+                                     ext4_dirty_inode
+                                     __mark_inode_dirty
+
+     0.66%            19  [kernel.kallsyms]     [k] ext4_da_write_end                       -      -            
+            |
+            ---ext4_da_write_end
+
+     0.62%            18  [kernel.kallsyms]     [k] ext4_file_write_iter                    -      -            
+            |
+            ---ext4_file_write_iter
+
+     0.62%            18  [kernel.kallsyms]     [k] ktime_get_coarse_real_ts64              -      -            
+            |
+            ---ktime_get_coarse_real_ts64
+
+     0.59%            17  [kernel.kallsyms]     [k] chacha20_block                          -      -            
+            |
+            ---chacha20_block
+               extract_crng_user
+               |          
+                --0.52%--extract_crng_user
+                          urandom_read
+                          __se_sys_read
+                          system_call
+                          read
+                          0x100005d1c
+                          0x100005d0c
+                          0x100003498
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     0.59%            17  [kernel.kallsyms]     [k] ext4_inode_csum                         -      -            
+            |
+            ---ext4_inode_csum
+
+     0.59%            17  [kernel.kallsyms]     [k] jbd2_journal_get_write_access           -      -            
+            |
+            ---jbd2_journal_get_write_access
+
+     0.56%            16  [kernel.kallsyms]     [k] __find_get_block                        -      -            
+            |
+            ---__find_get_block
+               |          
+                --0.52%--__getblk_gfp
+                          0
+                          __ext4_get_inode_loc
+                          ext4_reserve_inode_write
+                          ext4_mark_inode_dirty
+                          ext4_dirty_inode
+                          __mark_inode_dirty
+                          generic_write_end
+                          ext4_da_write_end
+                          generic_perform_write
+                          __generic_file_write_iter
+                          ext4_file_write_iter
+                          new_sync_write
+                          __se_sys_write
+                          system_call
+                          __GI___libc_write
+                          0x100006338
+                          0x1000062d4
+                          0x1000065f8
+                          0x100003424
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     0.56%            16  [kernel.kallsyms]     [k] __generic_file_write_iter               -      -            
+            |
+            ---__generic_file_write_iter
+
+     0.56%            16  [kernel.kallsyms]     [k] do_syscall_trace_enter                  -      -            
+            |
+            ---do_syscall_trace_enter
+
+     0.52%            15  [kernel.kallsyms]     [k] __audit_syscall_exit                    -      -            
+            |
+            ---__audit_syscall_exit
+
+     0.52%            15  [kernel.kallsyms]     [k] __fsnotify_parent                       -      -            
+            |
+            ---__fsnotify_parent
+
+     0.52%            15  [kernel.kallsyms]     [k] _raw_spin_lock_irqsave                  -      -            
+            |
+            ---_raw_spin_lock_irqsave
+
+     0.52%            15  [kernel.kallsyms]     [k] security_file_permission                -      -            
+            |
+            ---security_file_permission
+
+     0.52%            15  [kernel.kallsyms]     [k] unlock_page                             -      -            
+            |
+            ---unlock_page
+
+     0.52%            15  libc-2.28.so          [.] __GI___libc_write                       -      -            
+            |
+            ---__GI___libc_write
+               0x100006338
+               0x1000065f8
+               0x100003424
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.49%            14  [kernel.kallsyms]     [k] __mark_inode_dirty                      -      -            
+     0.49%            14  [kernel.kallsyms]     [k] __se_sys_read                           -      -            
+     0.49%            14  [kernel.kallsyms]     [k] current_time                            -      -            
+     0.49%            14  [kernel.kallsyms]     [k] fsnotify                                -      -            
+     0.49%            14  [kernel.kallsyms]     [k] pagecache_get_page                      -      -            
+     0.45%            13  [kernel.kallsyms]     [k] chksum_update                           -      -            
+     0.45%            13  [kernel.kallsyms]     [k] down_write_trylock                      -      -            
+     0.42%            12  [kernel.kallsyms]     [k] _raw_spin_lock                          -      -            
+     0.42%            12  [kernel.kallsyms]     [k] balance_dirty_pages_ratelimited         -      -            
+     0.42%            12  [kernel.kallsyms]     [k] generic_write_checks                    -      -            
+     0.42%            12  [kernel.kallsyms]     [k] kmem_cache_free                         -      -            
+     0.42%            12  [kernel.kallsyms]     [k] new_sync_write                          -      -            
+     0.38%            11  [kernel.kallsyms]     [k] __ext4_get_inode_loc                    -      -            
+     0.38%            11  [kernel.kallsyms]     [k] __ext4_handle_dirty_metadata            -      -            
+     0.38%            11  [kernel.kallsyms]     [k] avc_policy_seqno                        -      -            
+     0.38%            11  [kernel.kallsyms]     [k] do_syscall_trace_leave                  -      -            
+     0.38%            11  [kernel.kallsyms]     [k] ext4_journal_check_start                -      -            
+     0.38%            11  [kernel.kallsyms]     [k] ext4_reserve_inode_write                -      -            
+     0.38%            11  [kernel.kallsyms]     [k] from_kprojid                            -      -            
+     0.38%            11  [kernel.kallsyms]     [k] iov_iter_copy_from_user_atomic          -      -            
+     0.38%            11  [kernel.kallsyms]     [k] iov_iter_fault_in_readable              -      -            
+     0.35%            10  [kernel.kallsyms]     [k] from_kgid                               -      -            
+     0.35%            10  [kernel.kallsyms]     [k] generic_file_read_iter                  -      -            
+     0.35%            10  [kernel.kallsyms]     [k] iov_iter_advance                        -      -            
+     0.35%            10  [kernel.kallsyms]     [k] memset                                  -      -            
+     0.35%            10  [kernel.kallsyms]     [k] restore_math                            -      -            
+     0.35%            10  libc-2.28.so          [.] read                                    -      -            
+     0.31%             9  [kernel.kallsyms]     [k] ext4_get_group_desc                     -      -            
+     0.31%             9  [kernel.kallsyms]     [k] ret_from_except_lite                    -      -            
+     0.28%             8  [kernel.kallsyms]     [k] __es_insert_extent                      -      -            
+     0.28%             8  [kernel.kallsyms]     [k] __ext4_journal_get_write_access         -      -            
+     0.28%             8  [kernel.kallsyms]     [k] _raw_read_lock                          -      -            
+     0.28%             8  [kernel.kallsyms]     [k] create_page_buffers                     -      -            
+     0.28%             8  [kernel.kallsyms]     [k] grab_cache_page_write_begin             -      -            
+     0.28%             8  [kernel.kallsyms]     [k] jbd2_journal_dirty_metadata             -      -            
+     0.24%             7  [kernel.kallsyms]     [k] __copy_tofrom_user                      -      -            
+     0.24%             7  [kernel.kallsyms]     [k] __wake_up_common_lock                   -      -            
+     0.24%             7  [kernel.kallsyms]     [k] ext4_es_lookup_extent                   -      -            
+     0.24%             7  [kernel.kallsyms]     [k] kfree                                   -      -            
+     0.24%             7  [kernel.kallsyms]     [k] wait_for_stable_page                    -      -            
+     0.24%             7  dd                    [.] 0x00000000000030b0                      -      -            
+     0.24%             7  dd                    [.] 0x0000000000006600                      -      -            
+     0.21%             6  [kernel.kallsyms]     [k] __getblk_gfp                            -      -            
+     0.21%             6  [kernel.kallsyms]     [k] dput.part.4                             -      -            
+     0.21%             6  [kernel.kallsyms]     [k] ext4_file_read_iter                     -      -            
+     0.21%             6  [kernel.kallsyms]     [k] from_kuid                               -      -            
+     0.21%             6  [kernel.kallsyms]     [k] mark_page_accessed                      -      -            
+     0.17%             5  [kernel.kallsyms]     [k] dput                                    -      -            
+     0.17%             5  [kernel.kallsyms]     [k] ext4_da_get_block_prep                  -      -            
+     0.17%             5  [kernel.kallsyms]     [k] file_remove_privs                       -      -            
+     0.17%             5  [kernel.kallsyms]     [k] file_update_time                        -      -            
+     0.17%             5  [kernel.kallsyms]     [k] find_busiest_group                      -      -            
+     0.17%             5  [kernel.kallsyms]     [k] path_put                                -      -            
+     0.17%             5  [vdso]                [.] __do_get_tspec                          -      -            
+     0.17%             5  [vdso]                [.] __kernel_clock_gettime                  -      -            
+     0.17%             5  dd                    [.] 0x0000000000005ad8                      -      -            
+     0.17%             5  dd                    [.] 0x0000000000006348                      -      -            
+     0.17%             5  dd                    [.] 0x00000000000065f8                      -      -            
+     0.14%             4  [kernel.kallsyms]     [k] _raw_spin_unlock_irqrestore             -      -            
+     0.14%             4  [kernel.kallsyms]     [k] down_read                               -      -            
+     0.14%             4  [kernel.kallsyms]     [k] ext4_mark_inode_dirty                   -      -            
+     0.14%             4  [kernel.kallsyms]     [k] percpu_counter_add_batch                -      -            
+     0.14%             4  [kernel.kallsyms]     [k] ret_from_except                         -      -            
+     0.14%             4  dd                    [.] 0x0000000000003424                      -      -            
+     0.14%             4  dd                    [.] 0x0000000000005dac                      -      -            
+     0.14%             4  [unknown]             [k] 0x00007ffff7e7a790                      -      -            
+     0.10%             3  [kernel.kallsyms]     [k] __ext4_journal_start_sb                 -      -            
+     0.10%             3  [kernel.kallsyms]     [k] __sb_start_write                        -      -            
+     0.10%             3  [kernel.kallsyms]     [k] _raw_write_lock                         -      -            
+     0.10%             3  [kernel.kallsyms]     [k] copy_page_to_iter                       -      -            
+     0.10%             3  [kernel.kallsyms]     [k] copyin                                  -      -            
+     0.10%             3  [kernel.kallsyms]     [k] copyout                                 -      -            
+     0.10%             3  [kernel.kallsyms]     [k] ext4_es_insert_delayed_block            -      -            
+     0.10%             3  [kernel.kallsyms]     [k] ext4_inode_csum_set                     -      -            
+     0.10%             3  [kernel.kallsyms]     [k] find_next_and_bit                       -      -            
+     0.10%             3  [kernel.kallsyms]     [k] flush_dcache_page                       -      -            
+     0.10%             3  [kernel.kallsyms]     [k] idle_cpu                                -      -            
+     0.10%             3  [kernel.kallsyms]     [k] memcg_kmem_get_cache                    -      -            
+     0.10%             3  [kernel.kallsyms]     [k] mntput                                  -      -            
+     0.10%             3  [kernel.kallsyms]     [k] rcu_gp_kthread                          -      -            
+     0.10%             3  dd                    [.] 0x0000000000003124                      -      -            
+     0.10%             3  dd                    [.] 0x0000000000005af0                      -      -            
+     0.10%             3  dd                    [.] 0x0000000000005af8                      -      -            
+     0.10%             3  dd                    [.] 0x0000000000005b90                      -      -            
+     0.07%             2  [kernel.kallsyms]     [k] __sb_end_write                          -      -            
+     0.07%             2  [kernel.kallsyms]     [k] __wake_up_common                        -      -            
+     0.07%             2  [kernel.kallsyms]     [k] allocate_slab                           -      -            
+     0.07%             2  [kernel.kallsyms]     [k] ext4_dirty_inode                        -      -            
+     0.07%             2  [kernel.kallsyms]     [k] fput                                    -      -            
+     0.07%             2  [kernel.kallsyms]     [k] iov_iter_init                           -      -            
+     0.07%             2  [kernel.kallsyms]     [k] ktime_get                               -      -            
+     0.07%             2  [kernel.kallsyms]     [k] menu_select                             -      -            
+     0.07%             2  [kernel.kallsyms]     [k] release_pages                           -      -            
+     0.07%             2  [kernel.kallsyms]     [k] save_nvgprs                             -      -            
+     0.07%             2  [kernel.kallsyms]     [k] touch_atime                             -      -            
+     0.07%             2  [kernel.kallsyms]     [k] up_read                                 -      -            
+     0.07%             2  dd                    [.] 0x00000000000025ac                      -      -            
+     0.07%             2  dd                    [.] 0x0000000000005bbc                      -      -            
+     0.07%             2  dd                    [.] 0x0000000000005cb0                      -      -            
+     0.07%             2  dd                    [.] 0x0000000000005cc0                      -      -            
+     0.07%             2  dd                    [.] 0x0000000000006260                      -      -            
+     0.07%             2  dd                    [.] 0x0000000000006338                      -      -            
+     0.07%             2  libc-2.28.so          [.] __clock_gettime                         -      -            
+     0.03%             1  [JIT] tid 7480        [.] 0x00007fff881512d0                      -      -            
+     0.03%             1  [kernel.kallsyms]     [k] ___slab_alloc                           -      -            
+     0.03%             1  [kernel.kallsyms]     [k] __check_heap_object                     -      -            
+     0.03%             1  [kernel.kallsyms]     [k] __es_remove_extent                      -      -            
+     0.03%             1  [kernel.kallsyms]     [k] __es_tree_search.isra.0                 -      -            
+     0.03%             1  [kernel.kallsyms]     [k] __ext4_journal_stop                     -      -            
+     0.03%             1  [kernel.kallsyms]     [k] __mnt_drop_write_file                   -      -            
+     0.03%             1  [kernel.kallsyms]     [k] __radix_tree_replace                    -      -            
+     0.03%             1  [kernel.kallsyms]     [k] __schedule                              -      -            
+     0.03%             1  [kernel.kallsyms]     [k] __wake_up                               -      -            
+     0.03%             1  [kernel.kallsyms]     [k] arch_get_unmapped_area_topdown          -      -            
+     0.03%             1  [kernel.kallsyms]     [k] arch_local_irq_restore                  -      -            
+     0.03%             1  [kernel.kallsyms]     [k] copy_mm                                 -      -            
+     0.03%             1  [kernel.kallsyms]     [k] copypage_power7                         -      -            
+     0.03%             1  [kernel.kallsyms]     [k] cpumask_next_and                        -      -            
+     0.03%             1  [kernel.kallsyms]     [k] exc_virt_0x4900_decrementer             -      -            
+     0.03%             1  [kernel.kallsyms]     [k] ext4_bio_write_page                     -      -            
+     0.03%             1  [kernel.kallsyms]     [k] ext4_inode_table                        -      -            
+     0.03%             1  [kernel.kallsyms]     [k] extract_crng_user                       -      -            
+     0.03%             1  [kernel.kallsyms]     [k] find_get_pages_range                    -      -            
+     0.03%             1  [kernel.kallsyms]     [k] find_next_bit                           -      -            
+     0.03%             1  [kernel.kallsyms]     [k] flush_count_cache                       -      -            
+     0.03%             1  [kernel.kallsyms]     [k] path_openat                             -      -            
+     0.03%             1  [kernel.kallsyms]     [k] pick_next_task_fair                     -      -            
+     0.03%             1  [kernel.kallsyms]     [k] plpar_hcall                             -      -            
+     0.03%             1  [kernel.kallsyms]     [k] plpar_hcall_norets                      -      -            
+     0.03%             1  [kernel.kallsyms]     [k] rb_erase                                -      -            
+     0.03%             1  [kernel.kallsyms]     [k] rb_next                                 -      -            
+     0.03%             1  [kernel.kallsyms]     [k] rcu_core                                -      -            
+     0.03%             1  [kernel.kallsyms]     [k] rcu_irq_enter                           -      -            
+     0.03%             1  [kernel.kallsyms]     [k] rcu_irq_exit                            -      -            
+     0.03%             1  [kernel.kallsyms]     [k] save_fpu                                -      -            
+     0.03%             1  [kernel.kallsyms]     [k] scsi_init_io                            -      -            
+     0.03%             1  [kernel.kallsyms]     [k] security_mmap_file                      -      -            
+     0.03%             1  [kernel.kallsyms]     [k] select_task_rq_fair                     -      -            
+     0.03%             1  [kernel.kallsyms]     [k] tick_nohz_next_event                    -      -            
+     0.03%             1  [kernel.kallsyms]     [k] tick_sched_timer                        -      -            
+     0.03%             1  [kernel.kallsyms]     [k] timer_interrupt                         -      -            
+     0.03%             1  [kernel.kallsyms]     [k] update_group_capacity                   -      -            
+     0.03%             1  [kernel.kallsyms]     [k] update_rt_rq_load_avg                   -      -            
+     0.03%             1  [kernel.kallsyms]     [k] zap_pte_range                           -      -            
+     0.03%             1  bash                  [.] xmalloc                                 -      -            
+     0.03%             1  dd                    [.] 0x0000000000002260                      -      -            
+     0.03%             1  dd                    [.] 0x000000000000226c                      -      -            
+     0.03%             1  dd                    [.] 0x00000000000030bc                      -      -            
+     0.03%             1  dd                    [.] 0x00000000000030d8                      -      -            
+     0.03%             1  dd                    [.] 0x00000000000031bc                      -      -            
+     0.03%             1  dd                    [.] 0x0000000000003440                      -      -            
+     0.03%             1  dd                    [.] 0x00000000000035c0                      -      -            
+     0.03%             1  dd                    [.] 0x0000000000005b00                      -      -            
+     0.03%             1  dd                    [.] 0x0000000000005cb8                      -      -            
+     0.03%             1  dd                    [.] 0x0000000000005d1c                      -      -            
+     0.03%             1  dd                    [.] 0x0000000000006248                      -      -            
+     0.03%             1  dd                    [.] 0x0000000000006280                      -      -            
+     0.03%             1  dd                    [.] 0x00000000000062bc                      -      -            
+     0.03%             1  dd                    [.] 0x0000000000006360                      -      -            
+     0.03%             1  dd                    [.] 0x0000000000006380                      -      -            
+     0.03%             1  dd                    [.] 0x0000000000007a58                      -      -            
+     0.03%             1  ld-2.28.so            [.] _dl_lookup_symbol_x                     -      -            
+     0.03%             1  ld-2.28.so            [.] _dl_relocate_object                     -      -            
+     0.03%             1  ld-2.28.so            [.] check_match                             -      -            
+     0.03%             1  libc-2.28.so          [.] _getopt_internal_r                      -      -            
+     0.03%             1  libpython3.6m.so.1.0  [.] 0x00000000000f6d34                      -      -            
+     0.03%             1  [unknown]             [k] 0x00007ffff7e7a680                      -      -            
+     0.03%             1  [unknown]             [H] 0x000000000000ab74                      -      -            
+     0.03%             1  [unknown]             [H] 0x000000000000abcc                      -      -            
+     0.03%             1  [unknown]             [H] 0x000000000000cdf4                      -      -            
+     0.03%             1  [unknown]             [H] 0x00000000002e11a8                      -      -            
+     0.03%             1  [unknown]             [H] 0x00000000002e4d64                      -      -            
+     0.03%             1  [unknown]             [H] 0x00000000002f1414                      -      -            
+     0.03%             1  [unknown]             [H] 0x00000000003016a0                      -      -            
+     0.03%             1  [unknown]             [H] 0x0000000000363bbc                      -      -            
+     0.03%             1  [unknown]             [H] 0x000000000036537c                      -      -            
+     0.03%             1  [unknown]             [H] 0x0000000000365d88                      -      -            
+     0.03%             1  [unknown]             [H] 0x0000000000366160                      -      -            
+     0.03%             1  [unknown]             [H] 0x0000000000368910                      -      -            
+     0.03%             1  [unknown]             [H] 0x0000000000370484                      -      -            
+     0.03%             1  [unknown]             [H] 0x00000000003715bc                      -      -            
+     0.03%             1  [unknown]             [H] 0x0000000000371918                      -      -            
+     0.03%             1  [unknown]             [H] 0x0000000000371a7c                      -      -            
+     0.03%             1  [unknown]             [H] 0x0000000000371b28                      -      -            
+     0.03%             1  [unknown]             [H] 0x00000000003d1f84                      -      -            
+     0.03%             1  [unknown]             [H] 0x0000000000452c08                      -      -            
+     0.03%             1  [unknown]             [H] 0x0000000000693fc8                      -      -            
+     0.03%             1  [unknown]             [H] 0x00000000006aed7c                      -      -            
+     0.03%             1  [unknown]             [H] 0x00000000006b067c                      -      -            
+     0.03%             1  [unknown]             [H] 0x00000000006cdcac                      -      -            
+     0.03%             1  [unknown]             [H] 0x00000000006d9444                      -      -            
+
+
+#
+# (Tip: Show current config key-value pairs: perf config --list)
+#

@@ -1,0 +1,10 @@
+1591931440 run-mmtests: Start
+1591931440 run-mmtests: Iteration 0 start
+1591931448 run-mmtests: begin stream
+1591931454 stream-bench: iteration 1
+1591931455 stream-bench: iteration 2
+1591931455 stream-bench: iteration 3
+1591931456 stream-bench: iteration 4
+1591931456 stream-bench: iteration 5
+1591931470 run-mmtests: Iteration 0 end
+1591931470 run-mmtests: End

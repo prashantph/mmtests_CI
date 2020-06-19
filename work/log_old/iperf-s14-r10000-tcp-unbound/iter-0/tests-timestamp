@@ -1,0 +1,6 @@
+start :: 1590491630
+test begin :: iperf3 1590491630
+test end :: iperf3 1590491759
+time :: iperf3 0.23 user 0.30 system 124.02 elapsed
+finish :: 1590491759
+status :: 0

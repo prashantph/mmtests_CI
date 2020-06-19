@@ -1,0 +1,14 @@
+2020-06-06 11:07:07.844 IST [2934090] LOG:  listening on IPv6 address "::1", port 5432
+2020-06-06 11:07:07.844 IST [2934090] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2020-06-06 11:07:07.868 IST [2934090] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2020-06-06 11:07:08.019 IST [2934091] LOG:  database system was shut down at 2020-06-06 11:07:04 IST
+2020-06-06 11:07:08.037 IST [2934090] LOG:  database system is ready to accept connections
+2020-06-06 11:07:09.920 IST [2934112] ERROR:  database "pgbench" does not exist
+2020-06-06 11:07:09.920 IST [2934112] STATEMENT:  DROP DATABASE pgbench;
+2020-06-06 11:07:09.938 IST [2934115] ERROR:  role "root" does not exist
+2020-06-06 11:07:09.938 IST [2934115] STATEMENT:  DROP ROLE root;
+2020-06-06 12:26:23.077 IST [2934090] LOG:  received fast shutdown request
+2020-06-06 12:26:23.139 IST [2934090] LOG:  aborting any active transactions
+2020-06-06 12:26:23.139 IST [2934090] LOG:  background worker "logical replication launcher" (PID 2934097) exited with exit code 1
+2020-06-06 12:26:23.141 IST [2934092] LOG:  shutting down
+2020-06-06 12:26:23.817 IST [2934090] LOG:  database system is shut down

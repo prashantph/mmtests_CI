@@ -1,0 +1,14 @@
+1591220356 run-mmtests: Start
+1591220356 run-mmtests: Iteration 0 start
+1591220357 run-mmtests: begin ipcscale-waitforzero
+1591220358 ipcscale-bench: waitforzero-1
+1591220358 ipcscale-bench: iteration 1
+1591220990 ipcscale-bench: iteration 2
+1591221623 ipcscale-bench: iteration 3
+1591222262 run-mmtests: begin ipcscale-posixsempp
+1591222262 ipcscale-bench: posixsempp-1
+1591222262 ipcscale-bench: iteration 1
+1591223243 ipcscale-bench: iteration 2
+1591224149 ipcscale-bench: iteration 3
+1591225061 run-mmtests: Iteration 0 end
+1591225061 run-mmtests: End

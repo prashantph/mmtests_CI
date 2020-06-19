@@ -1,0 +1,6 @@
+# Running 'syscall/basic' benchmark:
+# Executed 5,000,000 getppid() calls
+     Total time: 2.066 [sec]
+
+       0.413203 usecs/op
+      2,420,116 ops/sec

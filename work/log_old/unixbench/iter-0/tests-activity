@@ -1,0 +1,49 @@
+1590477877 run-mmtests: Start
+1590477877 run-mmtests: Iteration 0 start
+1590477877 run-mmtests: begin unixbench-dhry2reg
+1590477877 unixbench-bench: dhry2reg-1
+1590477877 unixbench-bench: iteration 1
+1590478007 unixbench-bench: iteration 2
+1590478138 unixbench-bench: iteration 3
+1590478268 unixbench-bench: dhry2reg-16
+1590478268 unixbench-bench: iteration 1
+1590478399 unixbench-bench: iteration 2
+1590478531 unixbench-bench: iteration 3
+1590478669 run-mmtests: begin unixbench-syscall
+1590478669 unixbench-bench: syscall-1
+1590478669 unixbench-bench: iteration 1
+1590478799 unixbench-bench: iteration 2
+1590478929 unixbench-bench: iteration 3
+1590479059 unixbench-bench: syscall-16
+1590479059 unixbench-bench: iteration 1
+1590479191 unixbench-bench: iteration 2
+1590479323 unixbench-bench: iteration 3
+1590479460 run-mmtests: begin unixbench-pipe
+1590479461 unixbench-bench: pipe-1
+1590479461 unixbench-bench: iteration 1
+1590479591 unixbench-bench: iteration 2
+1590479721 unixbench-bench: iteration 3
+1590479851 unixbench-bench: pipe-16
+1590479851 unixbench-bench: iteration 1
+1590479983 unixbench-bench: iteration 2
+1590480114 unixbench-bench: iteration 3
+1590480252 run-mmtests: begin unixbench-spawn
+1590480252 unixbench-bench: spawn-1
+1590480252 unixbench-bench: iteration 1
+1590480351 unixbench-bench: iteration 2
+1590480450 unixbench-bench: iteration 3
+1590480550 unixbench-bench: spawn-16
+1590480550 unixbench-bench: iteration 1
+1590480649 unixbench-bench: iteration 2
+1590480748 unixbench-bench: iteration 3
+1590480854 run-mmtests: begin unixbench-execl
+1590480854 unixbench-bench: execl-1
+1590480854 unixbench-bench: iteration 1
+1590480953 unixbench-bench: iteration 2
+1590481052 unixbench-bench: iteration 3
+1590481151 unixbench-bench: execl-16
+1590481151 unixbench-bench: iteration 1
+1590481250 unixbench-bench: iteration 2
+1590481349 unixbench-bench: iteration 3
+1590481455 run-mmtests: Iteration 0 end
+1590481455 run-mmtests: End

@@ -1,0 +1,5 @@
+	load /root/mmtests/work/sources/filebench-1.4.9.1-installed/share/filebench/workloads/oltp-noism
+	set $dir=/root/mmtests/work/testdisk/data
+	set $filesize=203035770
+	set $directio=0
+	run 32

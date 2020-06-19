@@ -1,0 +1,172 @@
+   Operation      Sample         Ops
+sembench-futex-2   0            1   621968.00
+sembench-futex-5   0            1   371386.00
+sembench-futex-8   0            1   368742.00
+sembench-futex-12  0            1   489491.00
+sembench-futex-21  0            1   597717.00
+sembench-futex-30  0            1   575412.00
+sembench-futex-48  0            1   317311.00
+sembench-futex-79  0            1   289716.00
+sembench-futex-110 0            1   292639.00
+sembench-futex-141 0            1   302151.00
+sembench-futex-172 0            1   291527.00
+sembench-futex-203 0            1   293786.00
+sembench-futex-234 0            1   279653.00
+sembench-futex-265 0            1   286570.00
+sembench-futex-296 0            1   291758.00
+sembench-futex-327 0            1   288155.00
+sembench-futex-358 0            1   285530.00
+sembench-futex-389 0            1   285055.00
+sembench-futex-420 0            1   288672.00
+sembench-futex-451 0            1   288892.00
+sembench-futex-482 0            1   287025.00
+sembench-futex-513 0            1   287312.00
+sembench-futex-544 0            1   285370.00
+sembench-futex-575 0            1   278996.00
+sembench-futex-606 0            1   283457.00
+sembench-futex-637 0            1   282648.00
+sembench-futex-668 0            1   286133.00
+sembench-futex-699 0            1   282680.00
+sembench-futex-730 0            1   282084.00
+sembench-futex-761 0            1   283235.00
+sembench-futex-792 0            1   282542.00
+sembench-futex-823 0            1   282022.00
+sembench-futex-854 0            1   280723.00
+sembench-futex-885 0            1   282527.00
+sembench-futex-916 0            1   279793.00
+sembench-futex-947 0            1   276229.00
+sembench-futex-978 0            1   282628.00
+sembench-futex-10090            1   285822.00
+sembench-futex-10400            1   283763.00
+sembench-futex-10710            1   286539.00
+sembench-futex-11020            1   280196.00
+sembench-futex-11330            1   285139.00
+sembench-futex-11640            1   289622.00
+sembench-futex-11950            1   284271.00
+sembench-futex-12260            1   288501.00
+sembench-futex-12570            1   287754.00
+sembench-futex-12880            1   282538.00
+sembench-futex-13190            1   288328.00
+sembench-futex-13500            1   284490.00
+sembench-futex-13810            1   282406.00
+sembench-futex-14120            1   287419.00
+sembench-futex-14430            1   284273.00
+sembench-futex-14740            1   280329.00
+sembench-futex-15050            1   282457.00
+sembench-futex-15360            1   282527.00
+sembench-futex-15670            1   288508.00
+sembench-futex-15980            1   279700.00
+sembench-futex-16290            1   284977.00
+sembench-futex-16600            1   284031.00
+sembench-futex-16910            1   284884.00
+sembench-futex-17220            1   288844.00
+sembench-futex-17530            1   285685.00
+sembench-futex-17840            1   279389.00
+sembench-futex-18150            1   278544.00
+sembench-futex-18460            1   277594.00
+sembench-futex-18770            1   275784.00
+sembench-futex-19080            1   275151.00
+sembench-futex-19390            1   271628.00
+sembench-futex-19700            1   288311.00
+sembench-futex-20010            1   287108.00
+sembench-futex-20320            1   286638.00
+sembench-futex-20630            1   286391.00
+sembench-futex-20940            1   282332.00
+sembench-futex-21250            1   285537.00
+sembench-futex-21560            1   279320.00
+sembench-futex-21870            1   282098.00
+sembench-futex-22180            1   285798.00
+sembench-futex-22490            1   283032.00
+sembench-futex-22800            1   283299.00
+sembench-futex-23110            1   279388.00
+sembench-futex-23420            1   276406.00
+sembench-futex-23730            1   282038.00
+sembench-futex-24040            1   275499.00
+sembench-futex-24350            1   285344.00
+sembench-futex-24660            1   283051.00
+sembench-futex-24970            1   284741.00
+sembench-futex-25280            1   285273.00
+sembench-futex-25590            1   280964.00
+sembench-futex-25900            1   276024.00
+sembench-futex-26210            1   283552.00
+sembench-futex-26520            1   283170.00
+sembench-futex-26830            1   277402.00
+sembench-futex-27140            1   284533.00
+sembench-futex-27450            1   279178.00
+sembench-futex-27760            1   284192.00
+sembench-futex-28070            1   283919.00
+sembench-futex-28380            1   278326.00
+sembench-futex-28690            1   283116.00
+sembench-futex-29000            1   284266.00
+sembench-futex-29310            1   282051.00
+sembench-futex-29620            1   283098.00
+sembench-futex-29930            1   280861.00
+sembench-futex-30240            1   273684.00
+sembench-futex-30550            1   282447.00
+sembench-futex-30860            1   282063.00
+sembench-futex-31170            1   281817.00
+sembench-futex-31480            1   283260.00
+sembench-futex-31790            1   283470.00
+sembench-futex-32100            1   280779.00
+sembench-futex-32410            1   282541.00
+sembench-futex-32720            1   281391.00
+sembench-futex-33030            1   283496.00
+sembench-futex-33340            1   281742.00
+sembench-futex-33650            1   279957.00
+sembench-futex-33960            1   280616.00
+sembench-futex-34270            1   279740.00
+sembench-futex-34580            1   270517.00
+sembench-futex-34890            1   282280.00
+sembench-futex-35200            1   282743.00
+sembench-futex-35510            1   282175.00
+sembench-futex-35820            1   280447.00
+sembench-futex-36130            1   274733.00
+sembench-futex-36440            1   281978.00
+sembench-futex-36750            1   282345.00
+sembench-futex-37060            1   282290.00
+sembench-futex-37370            1   280199.00
+sembench-futex-37680            1   281422.00
+sembench-futex-37990            1   280860.00
+sembench-futex-38300            1   281270.00
+sembench-futex-38610            1   281134.00
+sembench-futex-38920            1   280826.00
+sembench-futex-39230            1   281308.00
+sembench-futex-39540            1   281958.00
+sembench-futex-39850            1   277767.00
+sembench-futex-40160            1   280851.00
+sembench-futex-40470            1   276470.00
+sembench-futex-40780            1   280000.00
+sembench-futex-41090            1   280388.00
+sembench-futex-41400            1   278938.00
+sembench-futex-41710            1   276390.00
+sembench-futex-42020            1   280699.00
+sembench-futex-42330            1   279188.00
+sembench-futex-42640            1   280659.00
+sembench-futex-42950            1   280774.00
+sembench-futex-43260            1   279809.00
+sembench-futex-43570            1   273976.00
+sembench-futex-43880            1   280064.00
+sembench-futex-44190            1   279881.00
+sembench-futex-44500            1   280501.00
+sembench-futex-44810            1   280727.00
+sembench-futex-45120            1   280176.00
+sembench-futex-45430            1   280418.00
+sembench-futex-45740            1   280284.00
+sembench-futex-46050            1   278836.00
+sembench-futex-46360            1   280023.00
+sembench-futex-46670            1   279684.00
+sembench-futex-46980            1   278765.00
+sembench-futex-47290            1   279936.00
+sembench-futex-47600            1   277309.00
+sembench-futex-47910            1   267245.00
+sembench-futex-48220            1   273307.00
+sembench-futex-48530            1   280355.00
+sembench-futex-48840            1   279542.00
+sembench-futex-49150            1   279778.00
+sembench-futex-49460            1   278078.00
+sembench-futex-49770            1   279277.00
+sembench-futex-50080            1   280280.00
+sembench-futex-50390            1   277619.00
+sembench-futex-50700            1   278667.00
+sembench-futex-51010            1   278962.00
+sembench-futex-51200            1   279679.00

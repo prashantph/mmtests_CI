@@ -1,0 +1,27 @@
+
+DEBUG: Number of directories is 1
+REAIM Workload
+Times are in seconds - Child times from tms.cstime and tms.cutime
+
+Num     Parent   Child   Child  Jobs per   Jobs/min/  Std_dev  Std_dev  JTI
+Forked  Time     SysTime UTime   Minute     Child      Time     Percent 
+1       8.32     0.26    0.81    699.52     699.52     0.00     0.00     100  
+5       6.89     0.85    5.00    4223.51    844.70     0.06     0.85     99   
+9       6.76     1.29    9.41    7748.52    860.95     0.10     1.47     98   
+13      6.91     2.03    14.17   10949.35   842.26     0.12     1.71     98   
+17      7.67     2.47    18.96   12899.61   758.80     0.27     3.75     96   
+
+Child process called exit(), status = 1
+21      7.82     3.27    23.83   15629.16   744.25     0.33     4.51     95   
+25      8.42     3.57    28.55   17280.29   691.21     0.55     7.09     92   
+
+Child process called exit(), status = 1
+
+Child process called exit(), status = 1
+29      8.93     4.33    33.46   18900.34   651.74     0.61     7.35     92   
+
+Child process called exit(), status = 1
+
+Child process called exit(), status = 1
+33      9.09     4.72    37.82   21128.71   640.26     0.75     9.09     90   
+Max Jobs per Minute 21128.71

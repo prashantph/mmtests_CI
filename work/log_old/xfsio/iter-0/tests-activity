@@ -1,0 +1,12 @@
+1590492282 run-mmtests: Start
+1590492282 run-mmtests: Iteration 0 start
+1590492282 run-mmtests: begin xfsio
+1590492329 xfsio-bench: iteration 1
+1590492384 xfsio-bench: iteration 2
+1590492434 xfsio-bench: iteration 3
+1590492486 xfsio-bench: iteration 4
+1590492537 xfsio-bench: iteration 5
+1590492588 xfsio-bench: iteration 6
+1590492639 xfsio-bench: iteration 7
+1590492703 run-mmtests: Iteration 0 end
+1590492703 run-mmtests: End

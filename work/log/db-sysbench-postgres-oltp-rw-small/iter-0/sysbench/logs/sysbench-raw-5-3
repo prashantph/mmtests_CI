@@ -1,0 +1,17 @@
+sysbench --db-driver=pgsql --pgsql-db=pgtest --test=oltp --oltp-test-mode=complex --oltp-table-size=91683000 --num-threads=5 run
+sysbench 0.4.12:  multi-threaded system evaluation benchmark
+
+Running the test with following options:
+Number of threads: 5
+
+Doing OLTP test.
+Running mixed OLTP test
+Using Special distribution (12 iterations,  1 pct of values are returned in 75 pct cases)
+Using "BEGIN" for starting transactions
+Using auto_inc on the id column
+Maximum number of requests for OLTP test is limited to 10000
+Threads started!
+FATAL: query execution failed: 269324656
+FATAL: database error, exiting...
+Done.
+

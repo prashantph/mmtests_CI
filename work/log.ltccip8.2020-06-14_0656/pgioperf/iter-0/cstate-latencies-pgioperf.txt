@@ -1,0 +1,2 @@
+c-0  snooze    0
+c-1   CEDE   10

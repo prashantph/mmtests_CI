@@ -1,0 +1,963 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 4K of event 'cycles'
+# Event count (approx.): 49440000000
+#
+# Overhead       Samples  Shared Object                              Symbol                                                            IPC   [IPC Coverage]
+# ........  ............  .........................................  ................................................................  ....................
+#
+    17.17%           849  stream                                     [.] main._omp_fn.6                                                -      -            
+            |
+            ---main._omp_fn.6
+               |          
+               |--14.85%--0x7ffff7defab8
+               |          start_thread
+               |          __clone
+               |          
+                --2.33%--GOMP_parallel
+                          main
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+    16.89%           835  stream                                     [.] main._omp_fn.7                                                -      -            
+            |
+            ---main._omp_fn.7
+               |          
+               |--14.68%--0x7ffff7defab8
+               |          start_thread
+               |          __clone
+               |          
+                --2.20%--GOMP_parallel
+                          main
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+    13.17%           651  libc-2.28.so                               [.] __memcpy_power7                                               -      -            
+            |
+            ---__memcpy_power7
+               |          
+                --12.48%--main._omp_fn.4
+                          |          
+                          |--10.80%--0x7ffff7defab8
+                          |          start_thread
+                          |          __clone
+                          |          
+                           --1.68%--GOMP_parallel
+                                     main
+                                     generic_start_main.isra.0
+                                     __libc_start_main
+                                     0
+
+    12.76%           631  stream                                     [.] main._omp_fn.5                                                -      -            
+            |
+            ---main._omp_fn.5
+               |          
+               |--10.94%--0x7ffff7defab8
+               |          start_thread
+               |          __clone
+               |          
+                --1.82%--GOMP_parallel
+                          main
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     1.56%            77  libgomp.so.1.0.0                           [.] 0x0000000000023690                                            -      -            
+            |
+            ---0x7ffff7df3690
+               |          
+                --1.33%--0x7ffff7defac4
+                          start_thread
+                          __clone
+
+     1.23%            61  [kernel.kallsyms]                          [k] clear_user_page                                               -      -            
+            |
+            ---clear_user_page
+               |          
+                --1.21%--do_anonymous_page
+                          __handle_mm_fault
+                          handle_mm_fault
+                          __do_page_fault
+                          do_page_fault
+                          handle_page_fault
+                          |          
+                           --0.95%--main._omp_fn.2
+                                     main._omp_fn.2
+                                     |          
+                                      --0.89%--0x7ffff7defab8
+                                                start_thread
+                                                __clone
+
+     1.19%            59  stream                                     [.] main._omp_fn.3                                                -      -            
+            |
+            ---main._omp_fn.3
+               |          
+                --1.05%--0x7ffff7defab8
+                          start_thread
+                          __clone
+
+     1.07%            53  stream                                     [.] main._omp_fn.2                                                -      -            
+            |
+            ---main._omp_fn.2
+               |          
+                --0.85%--0x7ffff7defab8
+                          start_thread
+                          __clone
+
+     1.01%            50  libpython3.6m.so.1.0                       [.] _PyEval_EvalFrameDefault                                      -      -            
+            |
+            ---_PyEval_EvalFrameDefault
+               PyEval_EvalFrameEx
+
+     0.99%            49  [kernel.kallsyms]                          [k] snooze_loop                                                   -      -            
+            |
+            ---snooze_loop
+               snooze_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.77%            38  stream                                     [.] checkSTREAMresults                                            -      -            
+            |
+            ---checkSTREAMresults
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.65%            32  libc-2.28.so                               [.] __memchr_power8                                               -      -            
+            |
+            ---__memchr_power8
+               |          
+                --0.61%--0x7fffe91be508
+                          0x7fffe91c2168
+
+     0.59%            29  [kernel.kallsyms]                          [k] _raw_spin_lock                                                -      -            
+            |
+            ---_raw_spin_lock
+               |          
+                --0.55%--do_anonymous_page
+                          do_anonymous_page
+                          __handle_mm_fault
+                          handle_mm_fault
+                          __do_page_fault
+                          do_page_fault
+                          handle_page_fault
+
+     0.51%            25  libc-2.28.so                               [.] getenv                                                        -      -            
+            |
+            ---getenv
+
+     0.42%            21  libpthread-2.28.so                         [.] __pthread_mutex_unlock_usercnt                                -      -            
+     0.42%            21  libsolv.so.1                               [.] repo_add_solv                                                 -      -            
+     0.40%            20  libc-2.28.so                               [.] __strlen_power8                                               -      -            
+     0.40%            20  libc-2.28.so                               [.] vfprintf@@GLIBC_2.17                                          -      -            
+     0.38%            19  libc-2.28.so                               [.] _IO_default_xsputn                                            -      -            
+     0.38%            19  libglib-2.0.so.0.5600.4                    [.] g_pointer_bit_unlock                                          -      -            
+     0.36%            18  libpython3.6m.so.1.0                       [.] PyDict_GetItem                                                -      -            
+     0.34%            17  libgomp.so.1.0.0                           [.] 0x00000000000232e0                                            -      -            
+     0.32%            16  libyaml-0.so.2.0.5                         [.] yaml_emitter_emit                                             -      -            
+     0.28%            14  libc-2.28.so                               [.] __memset_power8                                               -      -            
+     0.28%            14  libgomp.so.1.0.0                           [.] 0x000000000002369c                                            -      -            
+     0.28%            14  libpython3.6m.so.1.0                       [.] _PyType_Lookup                                                -      -            
+     0.28%            14  libyaml-0.so.2.0.5                         [.] yaml_parser_update_buffer                                     -      -            
+     0.26%            13  libpython3.6m.so.1.0                       [.] PyObject_Malloc                                               -      -            
+     0.24%            12  libpython3.6m.so.1.0                       [.] PyErr_Occurred                                                -      -            
+     0.22%            11  libglib-2.0.so.0.5600.4                    [.] g_mutex_lock                                                  -      -            
+     0.20%            10  libc-2.28.so                               [.] cfree@GLIBC_2.17                                              -      -            
+     0.20%            10  libglib-2.0.so.0.5600.4                    [.] g_private_set                                                 -      -            
+     0.20%            10  libpthread-2.28.so                         [.] __pthread_mutex_lock                                          -      -            
+     0.18%             9  [kernel.kallsyms]                          [k] __copy_tofrom_user_power7                                     -      -            
+     0.18%             9  libc-2.28.so                               [.] malloc                                                        -      -            
+     0.18%             9  libglib-2.0.so.0.5600.4                    [.] g_private_get                                                 -      -            
+     0.18%             9  libsolv.so.1                               [.] dirpool_add_dir                                               -      -            
+     0.18%             9  libyaml-0.so.2.0.5                         [.] 0x0000000000007de8                                            -      -            
+     0.16%             8  [kernel.kallsyms]                          [k] find_busiest_group                                            -      -            
+     0.16%             8  libc-2.28.so                               [.] _int_malloc                                                   -      -            
+     0.16%             8  libc-2.28.so                               [.] re_node_set_add_intersect                                     -      -            
+     0.16%             8  libglib-2.0.so.0.5600.4                    [.] g_datalist_id_set_data_full                                   -      -            
+     0.16%             8  libglib-2.0.so.0.5600.4                    [.] g_mutex_unlock                                                -      -            
+     0.16%             8  libpython3.6m.so.1.0                       [.] 0x00000000000c4ff0                                            -      -            
+     0.14%             7  [kernel.kallsyms]                          [k] try_charge                                                    -      -            
+     0.14%             7  ld-2.28.so                                 [.] do_lookup_x                                                   -      -            
+     0.14%             7  libc-2.28.so                               [.] msort_with_tmp.part.0                                         -      -            
+     0.14%             7  libpython3.6m.so.1.0                       [.] 0x00000000000c4f10                                            -      -            
+     0.14%             7  libsolv.so.1                               [.] 0x000000000000f6e0                                            -      -            
+     0.14%             7  libyaml-0.so.2.0.5                         [.] yaml_parser_parse                                             -      -            
+     0.12%             6  libc-2.28.so                               [.] __clock_gettime                                               -      -            
+     0.12%             6  libc-2.28.so                               [.] sift_states_backward                                          -      -            
+     0.12%             6  libglib-2.0.so.0.5600.4                    [.] g_pointer_bit_lock                                            -      -            
+     0.12%             6  libgomp.so.1.0.0                           [.] 0x00000000000232ec                                            -      -            
+     0.12%             6  libpython3.6m.so.1.0                       [.] PyDict_SetItem                                                -      -            
+     0.12%             6  libpython3.6m.so.1.0                       [.] PyTuple_New                                                   -      -            
+     0.12%             6  libpython3.6m.so.1.0                       [.] _PyObject_GenericGetAttrWithDict                              -      -            
+     0.10%             5  [kernel.kallsyms]                          [k] __pagevec_lru_add_fn                                          -      -            
+     0.10%             5  [kernel.kallsyms]                          [k] _raw_write_lock_irq                                           -      -            
+     0.10%             5  libc-2.28.so                               [.] _IO_getc                                                      -      -            
+     0.10%             5  libc-2.28.so                               [.] __strchrnul_power8                                            -      -            
+     0.10%             5  libc-2.28.so                               [.] __vasprintf_chk                                               -      -            
+     0.10%             5  libglib-2.0.so.0.5600.4                    [.] g_log_structured_standard                                     -      -            
+     0.10%             5  libgobject-2.0.so.0.5600.4                 [.] g_object_unref                                                -      -            
+     0.10%             5  libpython3.6m.so.1.0                       [.] PyDict_SetDefault                                             -      -            
+     0.10%             5  libpython3.6m.so.1.0                       [.] _PyThreadState_UncheckedGet                                   -      -            
+     0.10%             5  libpython3.6m.so.1.0                       [.] _Py_HashBytes                                                 -      -            
+     0.10%             5  libpython3.6m.so.1.0                       [.] 0x0000000000120550                                            -      -            
+     0.08%             4  [kernel.kallsyms]                          [k] exc_virt_0x4c00_system_call                                   -      -            
+     0.08%             4  [kernel.kallsyms]                          [k] fast_exception_return                                         -      -            
+     0.08%             4  [kernel.kallsyms]                          [k] find_next_and_bit                                             -      -            
+     0.08%             4  [kernel.kallsyms]                          [k] rmqueue_pcplist.isra.14.constprop.29                          -      -            
+     0.08%             4  [vdso]                                     [.] __kernel_clock_gettime                                        -      -            
+     0.08%             4  libc-2.28.so                               [.] __memcmp_power8                                               -      -            
+     0.08%             4  libc-2.28.so                               [.] _int_free                                                     -      -            
+     0.08%             4  libc-2.28.so                               [.] _itoa_word                                                    -      -            
+     0.08%             4  libc-2.28.so                               [.] malloc_consolidate                                            -      -            
+     0.08%             4  libc-2.28.so                               [.] re_search_internal                                            -      -            
+     0.08%             4  libdb-5.3.so                               [.] __db_pthread_mutex_lock                                       -      -            
+     0.08%             4  libdb-5.3.so                               [.] __db_pthread_mutex_unlock                                     -      -            
+     0.08%             4  libglib-2.0.so.0.5600.4                    [.] g_free                                                        -      -            
+     0.08%             4  libglib-2.0.so.0.5600.4                    [.] g_str_hash                                                    -      -            
+     0.08%             4  libpython3.6m.so.1.0                       [.] PyObject_Free                                                 -      -            
+     0.08%             4  libpython3.6m.so.1.0                       [.] PyObject_GC_UnTrack                                           -      -            
+     0.08%             4  libpython3.6m.so.1.0                       [.] PyObject_RichCompare                                          -      -            
+     0.08%             4  libpython3.6m.so.1.0                       [.] PyUnicode_RichCompare                                         -      -            
+     0.08%             4  libpython3.6m.so.1.0                       [.] _PyCFunction_FastCallDict                                     -      -            
+     0.08%             4  libpython3.6m.so.1.0                       [.] _PyObject_FastCallDict                                        -      -            
+     0.08%             4  libpython3.6m.so.1.0                       [.] _Py_CheckFunctionResult                                       -      -            
+     0.08%             4  libsolv.so.1                               [.] 0x000000000000f6e8                                            -      -            
+     0.08%             4  libyaml-0.so.2.0.5                         [.] 0x0000000000007de0                                            -      -            
+     0.06%             3  [kernel.kallsyms]                          [k] data_access_common                                            -      -            
+     0.06%             3  [kernel.kallsyms]                          [k] do_idle                                                       -      -            
+     0.06%             3  [kernel.kallsyms]                          [k] get_mem_cgroup_from_mm.part.2                                 -      -            
+     0.06%             3  [kernel.kallsyms]                          [k] handle_mm_fault                                               -      -            
+     0.06%             3  [kernel.kallsyms]                          [k] strncpy_from_user                                             -      -            
+     0.06%             3  [kernel.kallsyms]                          [k] up_read                                                       -      -            
+     0.06%             3  [vdso]                                     [.] __do_get_tspec                                                -      -            
+     0.06%             3  libc-2.28.so                               [.] 00000037.plt_call.malloc                                      -      -            
+     0.06%             3  libc-2.28.so                               [.] __libc_calloc                                                 -      -            
+     0.06%             3  libc-2.28.so                               [.] check_node_accept                                             -      -            
+     0.06%             3  libc-2.28.so                               [.] check_node_accept_bytes.isra.34                               -      -            
+     0.06%             3  libc-2.28.so                               [.] realloc                                                       -      -            
+     0.06%             3  libc-2.28.so                               [.] unlink_chunk.isra.3                                           -      -            
+     0.06%             3  libdnf.so.2                                [.] libdnf::PackageSet::next                                      -      -            
+     0.06%             3  libglib-2.0.so.0.5600.4                    [.] g_datalist_clear                                              -      -            
+     0.06%             3  libglib-2.0.so.0.5600.4                    [.] g_datalist_id_dup_data                                        -      -            
+     0.06%             3  libgobject-2.0.so.0.5600.4                 [.] g_object_notify_by_pspec                                      -      -            
+     0.06%             3  libgobject-2.0.so.0.5600.4                 [.] g_type_class_peek_static                                      -      -            
+     0.06%             3  libgobject-2.0.so.0.5600.4                 [.] g_type_class_ref                                              -      -            
+     0.06%             3  libpython3.6m.so.1.0                       [.] PyEval_EvalFrameEx                                            -      -            
+     0.06%             3  libpython3.6m.so.1.0                       [.] PyObject_Hash                                                 -      -            
+     0.06%             3  libpython3.6m.so.1.0                       [.] PyType_IsSubtype                                              -      -            
+     0.06%             3  libpython3.6m.so.1.0                       [.] PyUnicode_FromFormatV                                         -      -            
+     0.06%             3  libpython3.6m.so.1.0                       [.] PyUnicode_InternInPlace                                       -      -            
+     0.06%             3  libpython3.6m.so.1.0                       [.] _PyDict_LoadGlobal                                            -      -            
+     0.06%             3  libpython3.6m.so.1.0                       [.] _PyFunction_FastCallDict                                      -      -            
+     0.06%             3  libpython3.6m.so.1.0                       [.] 0x0000000000061b0c                                            -      -            
+     0.06%             3  libpython3.6m.so.1.0                       [.] 0x00000000001fb49c                                            -      -            
+     0.06%             3  libsolv.so.1                               [.] repodata_add_dirstr                                           -      -            
+     0.06%             3  libsolv.so.1                               [.] repodata_str2dir                                              -      -            
+     0.06%             3  libsolv.so.1                               [.] stringpool_strn2id                                            -      -            
+     0.06%             3  libsolv.so.1                               [.] 0x0000000000026d90                                            -      -            
+     0.06%             3  libsolv.so.1                               [.] 0x00000000000336e0                                            -      -            
+     0.06%             3  libyaml-0.so.2.0.5                         [.] yaml_parser_fetch_more_tokens                                 -      -            
+     0.06%             3  libyaml-0.so.2.0.5                         [.] 0x0000000000019380                                            -      -            
+     0.06%             3  [unknown]                                  [H] 0x0000000000008038                                            -      -            
+     0.04%             2  [kernel.kallsyms]                          [k] __bitmap_and                                                  -      -            
+     0.04%             2  [kernel.kallsyms]                          [k] __d_lookup_rcu                                                -      -            
+     0.04%             2  [kernel.kallsyms]                          [k] __handle_mm_fault                                             -      -            
+     0.04%             2  [kernel.kallsyms]                          [k] __hash_page_64K                                               -      -            
+     0.04%             2  [kernel.kallsyms]                          [k] _cond_resched                                                 -      -            
+     0.04%             2  [kernel.kallsyms]                          [k] alloc_pages_vma                                               -      -            
+     0.04%             2  [kernel.kallsyms]                          [k] avc_lookup                                                    -      -            
+     0.04%             2  [kernel.kallsyms]                          [k] down_read_trylock                                             -      -            
+     0.04%             2  [kernel.kallsyms]                          [k] exc_virt_0x4300_data_access                                   -      -            
+     0.04%             2  [kernel.kallsyms]                          [k] mntget                                                        -      -            
+     0.04%             2  [kernel.kallsyms]                          [k] msr_check_and_set                                             -      -            
+     0.04%             2  [kernel.kallsyms]                          [k] rcu_gp_kthread                                                -      -            
+     0.04%             2  [kernel.kallsyms]                          [k] security_file_permission                                      -      -            
+     0.04%             2  [kernel.kallsyms]                          [k] system_call_common                                            -      -            
+     0.04%             2  [kernel.kallsyms]                          [k] tick_sched_timer                                              -      -            
+     0.04%             2  [vdso]                                     [.] data_page_branch                                              -      -            
+     0.04%             2  cc1                                        [.] ht_lookup                                                     -      -            
+     0.04%             2  cc1                                        [.] insn_default_latency_power8                                   -      -            
+     0.04%             2  cc1                                        [.] swap_commutative_operands_p                                   -      -            
+     0.04%             2  cc1                                        [.] tree_strip_sign_nop_conversions                               -      -            
+     0.04%             2  ld-2.28.so                                 [.] _dl_lookup_symbol_x                                           -      -            
+     0.04%             2  ld-2.28.so                                 [.] _dl_map_object                                                -      -            
+     0.04%             2  ld-2.28.so                                 [.] _dl_name_match_p                                              -      -            
+     0.04%             2  libbfd-2.30-73.el8.so                      [.] bfd_link_hash_traverse                                        -      -            
+     0.04%             2  libc-2.28.so                               [.] _IO_old_init                                                  -      -            
+     0.04%             2  libc-2.28.so                               [.] __memmove_power7                                              -      -            
+     0.04%             2  libc-2.28.so                               [.] __strncmp_power8                                              -      -            
+     0.04%             2  libc-2.28.so                               [.] __strncpy_power8                                              -      -            
+     0.04%             2  libc-2.28.so                               [.] update_cur_sifted_state                                       -      -            
+     0.04%             2  libdb-5.3.so                               [.] 0x0000000000034eec                                            -      -            
+     0.04%             2  libglib-2.0.so.0.5600.4                    [.] g_datalist_get_flags                                          -      -            
+     0.04%             2  libglib-2.0.so.0.5600.4                    [.] 0x000000000001b040                                            -      -            
+     0.04%             2  libglib-2.0.so.0.5600.4                    [.] 0x00000000000720a0                                            -      -            
+     0.04%             2  libgobject-2.0.so.0.5600.4                 [.] g_object_new_with_properties                                  -      -            
+     0.04%             2  libgobject-2.0.so.0.5600.4                 [.] g_object_ref                                                  -      -            
+     0.04%             2  libgobject-2.0.so.0.5600.4                 [.] g_signal_emit_valist                                          -      -            
+     0.04%             2  libgobject-2.0.so.0.5600.4                 [.] g_type_check_instance_cast                                    -      -            
+     0.04%             2  libgobject-2.0.so.0.5600.4                 [.] g_type_check_instance_is_fundamentally_a                      -      -            
+     0.04%             2  libgobject-2.0.so.0.5600.4                 [.] g_type_class_unref                                            -      -            
+     0.04%             2  libgobject-2.0.so.0.5600.4                 [.] 0x000000000000b940                                            -      -            
+     0.04%             2  libmodulemd.so.1.8.16                      [.] modulemd_component_get_type                                   -      -            
+     0.04%             2  libmodulemd.so.1.8.16                      [.] modulemd_component_rpm_get_type                               -      -            
+     0.04%             2  libpthread-2.28.so                         [.] __pthread_rwlock_unlock                                       -      -            
+     0.04%             2  libpthread-2.28.so                         [.] __pthread_rwlock_wrlock                                       -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] PyCFunction_NewEx                                             -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] PyErr_Clear                                                   -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] PyErr_Restore                                                 -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] PyFrame_New                                                   -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] PyMethod_New                                                  -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] PyNode_AddChild                                               -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] PyObject_GetAttr                                              -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] PyObject_SetAttr                                              -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] PyType_Ready                                                  -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] _PyObjectDict_SetItem                                         -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] _PyObject_GC_Malloc                                           -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] _PyObject_GC_New                                              -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] _PyStack_AsTuple                                              -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] _PyUnicode_FromASCII                                          -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] _PyUnicode_FromId                                             -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] 0x0000000000060e8c                                            -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] 0x0000000000069780                                            -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] 0x00000000000bf250                                            -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] 0x00000000000bf8d0                                            -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] 0x000000000011ee00                                            -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] 0x0000000000120568                                            -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] 0x00000000001205e0                                            -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] 0x00000000001205ec                                            -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] 0x0000000000120600                                            -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] 0x0000000000120754                                            -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] 0x00000000001208ec                                            -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] 0x0000000000184e38                                            -      -            
+     0.04%             2  libpython3.6m.so.1.0                       [.] 0x0000000000184f40                                            -      -            
+     0.04%             2  librpm.so.8.1.0                            [.] 0x000000000001efc0                                            -      -            
+     0.04%             2  librpm.so.8.1.0                            [.] 0x0000000000031158                                            -      -            
+     0.04%             2  librpm.so.8.1.0                            [.] 0x00000000000311ec                                            -      -            
+     0.04%             2  libsolv.so.1                               [.] pool_alloctmpspace                                            -      -            
+     0.04%             2  libsolv.so.1                               [.] pool_createwhatprovides                                       -      -            
+     0.04%             2  libsolv.so.1                               [.] stringpool_str2id                                             -      -            
+     0.04%             2  libsolv.so.1                               [.] 0x0000000000033738                                            -      -            
+     0.04%             2  libsolv.so.1                               [.] 0x00000000000414f4                                            -      -            
+     0.04%             2  libyaml-0.so.2.0.5                         [.] yaml_event_delete                                             -      -            
+     0.04%             2  libyaml-0.so.2.0.5                         [.] yaml_malloc                                                   -      -            
+     0.04%             2  libyaml-0.so.2.0.5                         [.] 0x0000000000006a00                                            -      -            
+     0.04%             2  libyaml-0.so.2.0.5                         [.] 0x0000000000006a58                                            -      -            
+     0.04%             2  libyaml-0.so.2.0.5                         [.] 0x00000000000075ec                                            -      -            
+     0.04%             2  libyaml-0.so.2.0.5                         [.] 0x0000000000007df0                                            -      -            
+     0.04%             2  libyaml-0.so.2.0.5                         [.] 0x00000000000097c4                                            -      -            
+     0.04%             2  libyaml-0.so.2.0.5                         [.] 0x000000000000de80                                            -      -            
+     0.04%             2  libyaml-0.so.2.0.5                         [.] 0x00000000000193c8                                            -      -            
+     0.04%             2  [unknown]                                  [H] 0x000000000000ab74                                            -      -            
+     0.04%             2  [unknown]                                  [H] 0x0000000000384270                                            -      -            
+     0.04%             2  [unknown]                                  [H] 0x00000000004afeb4                                            -      -            
+     0.04%             2  [unknown]                                  [H] 0x000000000072daec                                            -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] __block_write_begin_int                                       -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] __check_irq_replay                                            -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] __crc32c_le                                                   -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] __d_lookup                                                    -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] __do_page_fault                                               -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] __find_linux_pte                                              -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] __follow_mount_rcu.isra.7                                     -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] __fsnotify_parent                                             -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] __hash_page                                                   -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] __hrtimer_run_queues                                          -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] __inc_numa_state                                              -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] __mark_inode_dirty                                            -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] __mod_zone_page_state                                         -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] __netif_receive_skb_core                                      -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] __rb_erase_color                                              -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] __se_sys_read                                                 -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] __set_page_dirty_buffers                                      -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] __slab_free                                                   -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] __switch_to                                                   -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] _raw_spin_lock_irqsave                                        -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] _switch                                                       -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] account_process_tick                                          -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] avtab_search_node                                             -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] cleanup_module                                                -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] collect_expired_timers                                        -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] copypage_power7                                               -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] cpuidle_enter_state                                           -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] cpuidle_reflect                                               -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] dedicated_cede_loop                                           -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] dequeue_entity                                                -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] do_anonymous_page                                             -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] do_munmap                                                     -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] do_syscall_trace_leave                                        -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] dquot_file_open                                               -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] enable_kernel_altivec                                         -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] enqueue_entity                                                -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] ext4_bio_write_page                                           -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] ext4_release_file                                             -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] fib_table_lookup                                              -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] file_path                                                     -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] filenametr_cmp                                                -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] find_get_entry                                                -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] find_next_bit                                                 -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] format_decode                                                 -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] fput                                                          -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] get_page_from_freelist                                        -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] hash_page_mm                                                  -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] hash_preload                                                  -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] hrtimer_interrupt                                             -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] hrtimer_next_event_without                                    -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] idle_cpu                                                      -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] inode_permission                                              -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] kfree                                                         -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] kmem_cache_alloc                                              -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] kmem_cache_alloc_trace                                        -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] ktime_get                                                     -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] ktime_get_coarse_real_ts64                                    -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] load_balance                                                  -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] lru_cache_add_active_or_unevictable                           -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] mem_cgroup_charge_statistics                                  -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] mem_cgroup_uncharge_list                                      -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] mm_update_next_owner                                          -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] mutex_lock                                                    -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] page_add_new_anon_rmap                                        -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] path_init                                                     -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] perf_event_mmap                                               -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] perf_event_task_output                                        -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] perf_event_task_tick                                          -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] perf_output_begin                                             -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] pick_next_task_fair                                           -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] pid_revalidate                                                -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] plpar_hcall                                                   -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] prep_new_page                                                 -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] prepend_path.isra.2                                           -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] radix_tree_lookup                                             -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] radix_tree_lookup_slot                                        -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] rcu_irq_enter                                                 -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] rcu_sched_clock_irq                                           -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] rebalance_domains                                             -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] release_pages                                                 -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] restore_math                                                  -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] run_posix_cpu_timers                                          -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] sched_clock                                                   -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] sched_clock_cpu                                               -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] security_compute_sid.part.15                                  -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] selinux_file_ioctl                                            -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] set_root                                                      -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] slice_get_unmapped_area                                       -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] system_call                                                   -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] system_call_exit                                              -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] task_fork_fair                                                -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] task_work_add                                                 -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] tcp_in_window                                                 -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] timer_interrupt                                               -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] timerqueue_del                                                -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] touch_atime                                                   -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] try_to_wake_up                                                -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] update_group_capacity                                         -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] update_mmu_cache                                              -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] update_rq_clock                                               -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] vfs_getattr_nosec                                             -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] vma_merge                                                     -      -            
+     0.02%             1  [kernel.kallsyms]                          [k] vmacache_find                                                 -      -            
+     0.02%             1  _hawkey.so                                 [.] 0x0000000000010300                                            -      -            
+     0.02%             1  _sqlite3.cpython-36m-ppc64le-linux-gnu.so  [.] _pysqlite_query_execute                                       -      -            
+     0.02%             1  _sqlite3.cpython-36m-ppc64le-linux-gnu.so  [.] 0x0000000000007420                                            -      -            
+     0.02%             1  as                                         [.] 0x000000000004bc70                                            -      -            
+     0.02%             1  bash                                       [.] 0x000000000003a16c                                            -      -            
+     0.02%             1  cc1                                        [.] _cpp_lex_token                                                -      -            
+     0.02%             1  cc1                                        [.] bitmap_clear_bit                                              -      -            
+     0.02%             1  cc1                                        [.] bitmap_clear_range                                            -      -            
+     0.02%             1  cc1                                        [.] bitmap_set_bit                                                -      -            
+     0.02%             1  cc1                                        [.] c_lex_with_flags                                              -      -            
+     0.02%             1  cc1                                        [.] calculate_elim_costs_all_insns                                -      -            
+     0.02%             1  cc1                                        [.] cleanup_cfg                                                   -      -            
+     0.02%             1  cc1                                        [.] constrain_operands                                            -      -            
+     0.02%             1  cc1                                        [.] decl_maybe_in_construction_p                                  -      -            
+     0.02%             1  cc1                                        [.] df_insn_delete                                                -      -            
+     0.02%             1  cc1                                        [.] df_worklist_dataflow                                          -      -            
+     0.02%             1  cc1                                        [.] expand_expr_real_2                                            -      -            
+     0.02%             1  cc1                                        [.] extract_asm_operands                                          -      -            
+     0.02%             1  cc1                                        [.] extract_constrain_insn_cached                                 -      -            
+     0.02%             1  cc1                                        [.] ggc_round_alloc_size                                          -      -            
+     0.02%             1  cc1                                        [.] hash_table<int_cst_hasher, xcallocator>::find_slot_with_hash  -      -            
+     0.02%             1  cc1                                        [.] ira_init                                                      -      -            
+     0.02%             1  cc1                                        [.] layout_type                                                   -      -            
+     0.02%             1  cc1                                        [.] lra_eliminate                                                 -      -            
+     0.02%             1  cc1                                        [.] may_trap_p_1                                                  -      -            
+     0.02%             1  cc1                                        [.] note_uses                                                     -      -            
+     0.02%             1  cc1                                        [.] operator delete                                               -      -            
+     0.02%             1  cc1                                        [.] prologue_contains                                             -      -            
+     0.02%             1  cc1                                        [.] reg_set_p                                                     -      -            
+     0.02%             1  cc1                                        [.] side_effects_p                                                -      -            
+     0.02%             1  cc1                                        [.] simplify_const_binary_operation                               -      -            
+     0.02%             1  cc1                                        [.] stmt_ends_bb_p                                                -      -            
+     0.02%             1  cc1                                        [.] tree_nop_conversion_p                                         -      -            
+     0.02%             1  cc1                                        [.] useless_type_conversion_p                                     -      -            
+     0.02%             1  cc1                                        [.] walk_gimple_op                                                -      -            
+     0.02%             1  cc1                                        [.] 0x0000000000558c50                                            -      -            
+     0.02%             1  cc1                                        [.] 0x0000000000994dd8                                            -      -            
+     0.02%             1  cc1                                        [.] 0x00000000009a9ec0                                            -      -            
+     0.02%             1  cc1                                        [.] 0x00000000009a9fe8                                            -      -            
+     0.02%             1  cc1                                        [.] 0x00000000009c5a3c                                            -      -            
+     0.02%             1  cc1                                        [.] 0x0000000000b81850                                            -      -            
+     0.02%             1  cc1                                        [.] 0x0000000000b8271c                                            -      -            
+     0.02%             1  cc1                                        [.] 0x0000000000b85dbc                                            -      -            
+     0.02%             1  cc1                                        [.] 0x0000000000b8b75c                                            -      -            
+     0.02%             1  cc1                                        [.] 0x0000000000b8c440                                            -      -            
+     0.02%             1  cc1                                        [.] 0x0000000000b8c5e8                                            -      -            
+     0.02%             1  cc1                                        [.] 0x0000000000b9bc20                                            -      -            
+     0.02%             1  cc1                                        [.] 0x0000000000bc55c0                                            -      -            
+     0.02%             1  cc1                                        [.] 0x0000000000c4c3b0                                            -      -            
+     0.02%             1  cc1                                        [.] 0x0000000000cd8540                                            -      -            
+     0.02%             1  cc1                                        [.] 0x0000000000e55a08                                            -      -            
+     0.02%             1  cc1                                        [.] 0x0000000000ef7c90                                            -      -            
+     0.02%             1  cc1                                        [.] 0x0000000000f6fbd8                                            -      -            
+     0.02%             1  cc1                                        [.] 0x0000000000fb11a4                                            -      -            
+     0.02%             1  cc1                                        [.] 0x000000000117f4c0                                            -      -            
+     0.02%             1  cc1                                        [.] 0x0000000001188f84                                            -      -            
+     0.02%             1  cc1                                        [.] 0x00000000011bd290                                            -      -            
+     0.02%             1  cc1                                        [.] 0x00000000011be34c                                            -      -            
+     0.02%             1  cc1                                        [.] 0x000000000127944c                                            -      -            
+     0.02%             1  cc1                                        [.] 0x0000000001279ef0                                            -      -            
+     0.02%             1  cc1                                        [.] 0x000000000129a2b8                                            -      -            
+     0.02%             1  gcc                                        [.] 0x00000000000680c8                                            -      -            
+     0.02%             1  ld-2.28.so                                 [.] _dl_relocate_object                                           -      -            
+     0.02%             1  ld-2.28.so                                 [.] _dl_sort_maps                                                 -      -            
+     0.02%             1  ld-2.28.so                                 [.] check_match                                                   -      -            
+     0.02%             1  libbfd-2.30-73.el8.so                      [.] bfd_elf_link_add_symbols                                      -      -            
+     0.02%             1  libbfd-2.30-73.el8.so                      [.] bfd_hash_traverse                                             -      -            
+     0.02%             1  libbfd-2.30-73.el8.so                      [.] 0x0000000000076b80                                            -      -            
+     0.02%             1  libbfd-2.30-73.el8.so                      [.] 0x00000000000b08e0                                            -      -            
+     0.02%             1  libc-2.28.so                               [.] 00000037.plt_call.__GI_strlen                                 -      -            
+     0.02%             1  libc-2.28.so                               [.] 00000037.plt_call.__strchrnul                                 -      -            
+     0.02%             1  libc-2.28.so                               [.] 00000037.plt_call.free                                        -      -            
+     0.02%             1  libc-2.28.so                               [.] _IO_setb                                                      -      -            
+     0.02%             1  libc-2.28.so                               [.] _IO_str_init_static_internal                                  -      -            
+     0.02%             1  libc-2.28.so                               [.] __GI___libc_write                                             -      -            
+     0.02%             1  libc-2.28.so                               [.] __dcigettext                                                  -      -            
+     0.02%             1  libc-2.28.so                               [.] __mbrtowc                                                     -      -            
+     0.02%             1  libc-2.28.so                               [.] __strcpy_power8                                               -      -            
+     0.02%             1  libc-2.28.so                               [.] __strcspn_power8                                              -      -            
+     0.02%             1  libc-2.28.so                               [.] _int_realloc                                                  -      -            
+     0.02%             1  libc-2.28.so                               [.] _nl_make_l10nflist.localalias.0                               -      -            
+     0.02%             1  libc-2.28.so                               [.] check_halt_state_context.isra.22                              -      -            
+     0.02%             1  libc-2.28.so                               [.] re_acquire_state                                              -      -            
+     0.02%             1  libc-2.28.so                               [.] re_node_set_contains.isra.2                                   -      -            
+     0.02%             1  libc-2.28.so                               [.] re_node_set_insert                                            -      -            
+     0.02%             1  libcrypto.so.1.1.1c                        [.] 0x00000000001c0148                                            -      -            
+     0.02%             1  libcrypto.so.1.1.1c                        [.] 0x000000000021990c                                            -      -            
+     0.02%             1  libcrypto.so.1.1.1c                        [.] 0x0000000000219958                                            -      -            
+     0.02%             1  libcrypto.so.1.1.1c                        [.] 0x0000000000219990                                            -      -            
+     0.02%             1  libcrypto.so.1.1.1c                        [.] 0x00000000002199d0                                            -      -            
+     0.02%             1  libcrypto.so.1.1.1c                        [.] 0x0000000000219a34                                            -      -            
+     0.02%             1  libcrypto.so.1.1.1c                        [.] 0x0000000000219a60                                            -      -            
+     0.02%             1  libcrypto.so.1.1.1c                        [.] 0x0000000000219ab4                                            -      -            
+     0.02%             1  libcrypto.so.1.1.1c                        [.] 0x0000000000219b08                                            -      -            
+     0.02%             1  libcrypto.so.1.1.1c                        [.] 0x0000000000219bd4                                            -      -            
+     0.02%             1  libcrypto.so.1.1.1c                        [.] 0x0000000000219be8                                            -      -            
+     0.02%             1  libcrypto.so.1.1.1c                        [.] 0x0000000000219c28                                            -      -            
+     0.02%             1  libdb-5.3.so                               [.] __db_pthread_mutex_readlock                                   -      -            
+     0.02%             1  libdb-5.3.so                               [.] __ham_getindex                                                -      -            
+     0.02%             1  libdb-5.3.so                               [.] __memp_fget                                                   -      -            
+     0.02%             1  libdb-5.3.so                               [.] __os_id                                                       -      -            
+     0.02%             1  libdb-5.3.so                               [.] __os_io                                                       -      -            
+     0.02%             1  libdb-5.3.so                               [.] 0x000000000002cecc                                            -      -            
+     0.02%             1  libdb-5.3.so                               [.] 0x0000000000033ac0                                            -      -            
+     0.02%             1  libdnf.so.2                                [.] libdnf::Nevra::parse                                          -      -            
+     0.02%             1  libdnf.so.2                                [.] libdnf::Query::Impl::filterName                               -      -            
+     0.02%             1  libdnf.so.2                                [.] libdnf::Query::Impl::filterNevraStrict                        -      -            
+     0.02%             1  libdnf.so.2                                [.] libdnf::Query::Impl::filterReponame                           -      -            
+     0.02%             1  libdnf.so.2                                [.] 0x000000000017a870                                            -      -            
+     0.02%             1  libglib-2.0.so.0.5600.4                    [.] g_datalist_id_get_data                                        -      -            
+     0.02%             1  libglib-2.0.so.0.5600.4                    [.] g_hash_table_get_keys_as_array                                -      -            
+     0.02%             1  libglib-2.0.so.0.5600.4                    [.] g_hash_table_unref                                            -      -            
+     0.02%             1  libglib-2.0.so.0.5600.4                    [.] g_log_structured_array                                        -      -            
+     0.02%             1  libglib-2.0.so.0.5600.4                    [.] g_log_writer_default                                          -      -            
+     0.02%             1  libglib-2.0.so.0.5600.4                    [.] g_slice_alloc0                                                -      -            
+     0.02%             1  libglib-2.0.so.0.5600.4                    [.] g_vasprintf                                                   -      -            
+     0.02%             1  libglib-2.0.so.0.5600.4                    [.] 0x000000000001b94c                                            -      -            
+     0.02%             1  libglib-2.0.so.0.5600.4                    [.] 0x000000000001c160                                            -      -            
+     0.02%             1  libglib-2.0.so.0.5600.4                    [.] 0x000000000004c230                                            -      -            
+     0.02%             1  libglib-2.0.so.0.5600.4                    [.] 0x000000000004c758                                            -      -            
+     0.02%             1  libglib-2.0.so.0.5600.4                    [.] 0x000000000004c7dc                                            -      -            
+     0.02%             1  libglib-2.0.so.0.5600.4                    [.] 0x0000000000064048                                            -      -            
+     0.02%             1  libglib-2.0.so.0.5600.4                    [.] 0x0000000000072080                                            -      -            
+     0.02%             1  libgmp.so.10.3.2                           [.] __gmpn_sbpi1_div_qr                                           -      -            
+     0.02%             1  libgmp.so.10.3.2                           [.] __gmpz_sub                                                    -      -            
+     0.02%             1  libgobject-2.0.so.0.5600.4                 [.] g_type_check_class_cast                                       -      -            
+     0.02%             1  libgobject-2.0.so.0.5600.4                 [.] g_type_check_instance                                         -      -            
+     0.02%             1  libgobject-2.0.so.0.5600.4                 [.] g_type_fundamental                                            -      -            
+     0.02%             1  libgobject-2.0.so.0.5600.4                 [.] 0x000000000000b780                                            -      -            
+     0.02%             1  libgobject-2.0.so.0.5600.4                 [.] 0x000000000001a910                                            -      -            
+     0.02%             1  libgomp.so.1.0.0                           [.] omp_get_num_threads                                           -      -            
+     0.02%             1  libjvm.so                                  [.] os::javaTimeNanos                                             -      -            
+     0.02%             1  libmodulemd.so.1.8.16                      [.] _modulemd_ordered_str_keys                                    -      -            
+     0.02%             1  libmodulemd.so.1.8.16                      [.] _simpleset_from_sequence                                      -      -            
+     0.02%             1  libmodulemd.so.1.8.16                      [.] modulemd_component_rpm_peek_arches                            -      -            
+     0.02%             1  libmodulemd.so.1.8.16                      [.] modulemd_component_rpm_set_ref                                -      -            
+     0.02%             1  libmodulemd.so.1.8.16                      [.] modulemd_component_set_rationale                              -      -            
+     0.02%             1  libmodulemd.so.1.8.16                      [.] modulemd_module_get_type                                      -      -            
+     0.02%             1  libmodulemd.so.1.8.16                      [.] modulemd_modulestream_get_type                                -      -            
+     0.02%             1  libmodulemd.so.1.8.16                      [.] modulemd_simpleset_copy                                       -      -            
+     0.02%             1  libmodulemd.so.1.8.16                      [.] modulemd_simpleset_get_type                                   -      -            
+     0.02%             1  libmodulemd.so.1.8.16                      [.] 0x0000000000011960                                            -      -            
+     0.02%             1  libmodulemd.so.1.8.16                      [.] 0x0000000000011c8c                                            -      -            
+     0.02%             1  libmodulemd.so.1.8.16                      [.] 0x0000000000011e40                                            -      -            
+     0.02%             1  libmodulemd.so.1.8.16                      [.] 0x0000000000012c4c                                            -      -            
+     0.02%             1  libmodulemd.so.1.8.16                      [.] 0x000000000001c910                                            -      -            
+     0.02%             1  libmodulemd.so.1.8.16                      [.] 0x00000000000528b0                                            -      -            
+     0.02%             1  libmodulemd.so.1.8.16                      [.] 0x0000000000052940                                            -      -            
+     0.02%             1  libperl.so.5.26.3                          [.] Perl_newLISTOP                                                -      -            
+     0.02%             1  libperl.so.5.26.3                          [.] Perl_op_free                                                  -      -            
+     0.02%             1  libperl.so.5.26.3                          [.] Perl_sv_grow                                                  -      -            
+     0.02%             1  libperl.so.5.26.3                          [.] Perl_sv_setsv_flags                                           -      -            
+     0.02%             1  libperl.so.5.26.3                          [.] 0x00000000000842e0                                            -      -            
+     0.02%             1  libpopt.so.0.0.0                           [.] poptParseArgvString                                           -      -            
+     0.02%             1  libpopt.so.0.0.0                           [.] poptReadConfigFile                                            -      -            
+     0.02%             1  libpopt.so.0.0.0                           [.] 0x00000000000029cc                                            -      -            
+     0.02%             1  libpthread-2.28.so                         [.] __pthread_mutex_unlock                                        -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyBuffer_FillInfo                                             -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyCode_New                                                    -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyDict_DelItem                                                -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyDict_MergeFromSeq2                                          -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyErr_CheckSignals                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyErr_SetObject                                               -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyEval_CallObjectWithKeywords                                 -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyEval_SaveThread                                             -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyFrame_BlockSetup                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyImport_ImportModuleLevelObject                              -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyLong_AsSsize_t                                              -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyMem_RawFree                                                 -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyModule_Create2                                              -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyNumber_Add                                                  -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyNumber_Multiply                                             -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyObject_CallFunctionObjArgs                                  -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyObject_CallMethodObjArgs                                    -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyObject_GC_Del                                               -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyObject_GenericGetAttr                                       -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyObject_GetItem                                              -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyObject_IsTrue                                               -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyObject_Str                                                  -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyParser_AddToken                                             -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyTuple_ClearFreeList                                         -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyTuple_Pack                                                  -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyUnicode_AsUTF8AndSize                                       -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyUnicode_Compare                                             -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyUnicode_Contains                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyUnicode_DecodeUTF8Stateful                                  -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyUnicode_FromKindAndData                                     -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyUnicode_FromString                                          -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] PyUnicode_Splitlines                                          -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] Py_BuildValue                                                 -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] _PyArg_NoKeywords                                             -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] _PyCFunction_FastCallKeywords                                 -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] _PyDict_MaybeUntrack                                          -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] _PyModule_ClearDict                                           -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] _PyObject_FastCallKeywords                                    -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] _PyObject_GC_NewVar                                           -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] _PyObject_GenericSetAttrWithDict                              -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] _PyObject_GetDictPtr                                          -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] _PyTuple_Resize                                               -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] _PyType_LookupId                                              -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] _PyUnicodeWriter_PrepareInternal                              -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000604ac                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000060b00                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000060e80                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000006138c                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000061a6c                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000623ac                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000062b8c                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000634ec                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000063820                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000638ac                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000006686c                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000066aa0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000066f8c                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000066fac                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000006768c                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000067c6c                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000068100                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000068580                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000685ec                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000068fac                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000069240                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000006950c                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000006978c                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000bd5d8                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000beb78                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000bf320                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000bf4d0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000bfedc                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000c0ee0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000c1768                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000c1780                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000c17f0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000c1800                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000c4f30                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000c4f4c                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000c5000                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000c5780                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000c5790                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000c6b00                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000c6eb0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000cb068                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000d3180                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000df1f8                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000e0de4                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000e4428                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000eb558                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000eb8fc                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000ebb80                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000ebfe0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000ec018                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000f1d10                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000f1d24                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000f1d98                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000f1da8                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000f1de0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000f1f10                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000f200c                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000f2620                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000f64b0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000f6a58                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000fafe0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000000fb848                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001005a0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000102550                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000104cfc                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001086b0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000010f798                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000111380                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000113b60                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000113b80                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000011d9c0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000011ef30                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000011f110                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001205cc                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000120704                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000012073c                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000120900                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000120958                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001209b0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000120d50                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000120d80                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000120db0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000012116c                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000012d400                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000134e90                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000134ed0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000139b7c                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000139ba0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000013ebf8                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000013ec10                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000013ecb0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000013edd0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000143d80                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000143f30                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000144140                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000146180                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001489f0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000151fe0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000015f110                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000015f1b0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000162ec0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000162f40                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001658a0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001666d0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000174818                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000182270                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000184e80                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000184f20                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000184f38                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000018512c                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000186b90                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001880e0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000188100                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000188130                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000188180                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000018e750                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000019294c                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000195208                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000199700                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001a306c                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001a3d00                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001a4748                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001ac010                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001ad960                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001adbf0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001add3c                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001b8b70                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001f68e8                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001fb498                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001fb4b0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001fb4dc                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001fb690                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001fb6f0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001fbb10                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000001fbfd0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x00000000002164a0                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000220308                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x0000000000233440                                            -      -            
+     0.02%             1  libpython3.6m.so.1.0                       [.] 0x000000000028bd80                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] headerGet                                                     -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] rpmTagGetTagType                                              -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] rpmtdFreeData                                                 -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] rpmvsVerify                                                   -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x00000000000154cc                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x00000000000156ac                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x00000000000167cc                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x0000000000016ce0                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x0000000000016f80                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x000000000001e180                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x000000000001e2f8                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x000000000001e460                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x000000000001e508                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x000000000001eac4                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x000000000001eb90                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x000000000001f34c                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x0000000000020c80                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x0000000000022180                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x00000000000221b0                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x00000000000221ec                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x0000000000031180                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x00000000000311c4                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x00000000000667a0                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x00000000000686e8                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x0000000000068700                                            -      -            
+     0.02%             1  librpm.so.8.1.0                            [.] 0x00000000000699f0                                            -      -            
+     0.02%             1  librpmio.so.8.1.0                          [.] rpmFileHasSuffix                                              -      -            
+     0.02%             1  librpmio.so.8.1.0                          [.] rpmKeyringFree                                                -      -            
+     0.02%             1  librpmio.so.8.1.0                          [.] 0x00000000000147a0                                            -      -            
+     0.02%             1  libsolv.so.1                               [.] pool_id2str                                                   -      -            
+     0.02%             1  libsolv.so.1                               [.] pool_rel2id                                                   -      -            
+     0.02%             1  libsolv.so.1                               [.] pool_str2id                                                   -      -            
+     0.02%             1  libsolv.so.1                               [.] repodata_add_dirnumnum                                        -      -            
+     0.02%             1  libsolv.so.1                               [.] repodata_key2id                                               -      -            
+     0.02%             1  libsolv.so.1                               [.] solvable_set_str                                              -      -            
+     0.02%             1  libsolv.so.1                               [.] 0x000000000000aaec                                            -      -            
+     0.02%             1  libsolv.so.1                               [.] 0x000000000000ac4c                                            -      -            
+     0.02%             1  libsolv.so.1                               [.] 0x000000000000cd40                                            -      -            
+     0.02%             1  libsolv.so.1                               [.] 0x000000000000e420                                            -      -            
+     0.02%             1  libsolv.so.1                               [.] 0x000000000000e428                                            -      -            
+     0.02%             1  libsolv.so.1                               [.] 0x000000000000f700                                            -      -            
+     0.02%             1  libsolv.so.1                               [.] 0x000000000000f720                                            -      -            
+     0.02%             1  libsolv.so.1                               [.] 0x0000000000026c1c                                            -      -            
+     0.02%             1  libsolv.so.1                               [.] 0x0000000000026d58                                            -      -            
+     0.02%             1  libsolv.so.1                               [.] 0x0000000000026da4                                            -      -            
+     0.02%             1  libsolv.so.1                               [.] 0x0000000000033710                                            -      -            
+     0.02%             1  libsolv.so.1                               [.] 0x0000000000033744                                            -      -            
+     0.02%             1  libsolv.so.1                               [.] 0x00000000000413a8                                            -      -            
+     0.02%             1  libsolv.so.1                               [.] 0x0000000000042010                                            -      -            
+     0.02%             1  libsolv.so.1                               [.] 0x00000000000424b0                                            -      -            
+     0.02%             1  libsolv.so.1                               [.] 0x0000000000088ac0                                            -      -            
+     0.02%             1  libsolv.so.1                               [.] 0x0000000000088ad0                                            -      -            
+     0.02%             1  libsolvext.so.1                            [.] 0x00000000000251e0                                            -      -            
+     0.02%             1  libsolvext.so.1                            [.] 0x0000000000025464                                            -      -            
+     0.02%             1  libsqlite3.so.0.8.6                        [.] 0x00000000000118f8                                            -      -            
+     0.02%             1  libsqlite3.so.0.8.6                        [.] 0x0000000000055d88                                            -      -            
+     0.02%             1  libsqlite3.so.0.8.6                        [.] 0x0000000000064980                                            -      -            
+     0.02%             1  libsqlite3.so.0.8.6                        [.] 0x00000000000671d0                                            -      -            
+     0.02%             1  libsqlite3.so.0.8.6                        [.] 0x0000000000067250                                            -      -            
+     0.02%             1  libsqlite3.so.0.8.6                        [.] 0x0000000000069cf0                                            -      -            
+     0.02%             1  libsqlite3.so.0.8.6                        [.] 0x0000000000069d88                                            -      -            
+     0.02%             1  libsqlite3.so.0.8.6                        [.] 0x0000000000099780                                            -      -            
+     0.02%             1  libsqlite3.so.0.8.6                        [.] 0x000000000009a050                                            -      -            
+     0.02%             1  libsqlite3.so.0.8.6                        [.] 0x000000000009daec                                            -      -            
+     0.02%             1  libsqlite3.so.0.8.6                        [.] 0x00000000000a5650                                            -      -            
+     0.02%             1  libsqlite3.so.0.8.6                        [.] 0x00000000000a70a0                                            -      -            
+     0.02%             1  libsqlite3.so.0.8.6                        [.] 0x00000000000c491c                                            -      -            
+     0.02%             1  libsqlite3.so.0.8.6                        [.] 0x00000000000c4960                                            -      -            
+     0.02%             1  libsqlite3.so.0.8.6                        [.] 0x00000000000c87bc                                            -      -            
+     0.02%             1  libsqlite3.so.0.8.6                        [.] 0x00000000000cc4f0                                            -      -            
+     0.02%             1  libstdc++.so.6.0.25                        [.] operator delete                                               -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x000000000000196c                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x0000000000001ac0                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x0000000000001c20                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x00000000000068d8                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x0000000000007d9c                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x0000000000007da0                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x0000000000007db0                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x0000000000007e24                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x0000000000007ee8                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x0000000000007f60                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x0000000000007f80                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x00000000000081d8                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x000000000000a098                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x000000000000b3bc                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x000000000000b3e8                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x000000000000e020                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x000000000000e400                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x000000000000ee04                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x000000000000eec4                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x0000000000011efc                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x0000000000011f3c                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x0000000000012080                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x00000000000128b8                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x00000000000129f4                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x00000000000177e0                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x0000000000017e88                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x0000000000017ea0                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x0000000000018ac0                                            -      -            
+     0.02%             1  libyaml-0.so.2.0.5                         [.] 0x00000000000192e0                                            -      -            
+     0.02%             1  libz.so.1.2.11                             [.] 0x000000000000997c                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x0000000000000980                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x0000000000000c14                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x0000000000005044                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x0000000000008034                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x000000000000808c                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x0000000000008094                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x000000000000abcc                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000002e1080                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000002e4e10                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000002e5750                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x0000000000364a88                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x0000000000365bfc                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x0000000000365e4c                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x0000000000365e8c                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x000000000036e664                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x000000000036e700                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x0000000000370270                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x0000000000370280                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x000000000037167c                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000003718fc                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000003d2178                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000003d6134                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x000000000044243c                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x0000000000443470                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x0000000000450530                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000004505f8                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000004505fc                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x0000000000450c7c                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x0000000000450d40                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x000000000049e2ec                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000004ae1fc                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000004af9ac                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000004afc48                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000004afeac                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000004b95fc                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000004b9728                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000004c1250                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000004c13ac                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000006276c0                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000006300fc                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000006aeeec                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000006af8fc                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000006afb34                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000006afb48                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000006b1444                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000006ce9a0                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000006cf984                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x00000000006cfb70                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x000000000072cf9c                                            -      -            
+     0.02%             1  [unknown]                                  [H] 0x000000000072e0ec                                            -      -            
+
+
+#
+# (Tip: To separate samples by time use perf report --sort time,overhead,sym)
+#

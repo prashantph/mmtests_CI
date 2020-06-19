@@ -1,0 +1,328 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 48K of event 'cycles'
+# Event count (approx.): 480460000000
+#
+# Overhead       Samples  Shared Object            Symbol                                          IPC   [IPC Coverage]
+# ........  ............  .......................  ..............................................  ....................
+#
+    36.02%         17307  [vdso]                   [.] __do_get_tspec                              -      -            
+            |
+            ---__do_get_tspec
+               __kernel_gettimeofday
+               start_thread
+               __clone
+
+    26.20%         12590  [vdso]                   [.] __kernel_gettimeofday                       -      -            
+            |
+            ---__kernel_gettimeofday
+               |          
+               |--16.05%--start_task
+               |          start_thread
+               |          __clone
+               |          
+                --10.16%--__kernel_gettimeofday
+                          start_thread
+                          __clone
+
+    19.14%          9198  rt-migrate-test          [.] start_task                                  -      -            
+            |
+            ---start_task
+               start_thread
+               __clone
+
+     8.61%          4139  [vdso]                   [.] data_page_branch                            -      -            
+            |
+            ---data_page_branch
+               |          
+               |--7.18%--data_page_branch
+               |          start_thread
+               |          __clone
+               |          
+                --1.43%--__kernel_gettimeofday
+                          start_thread
+                          __clone
+
+     6.59%          3168  rt-migrate-test          [.] 00000022.plt_call.gettimeofday@@GLIBC_2.17  -      -            
+            |
+            ---00000022.plt_call.gettimeofday@@GLIBC_2.17
+               start_task
+               start_thread
+               __clone
+
+     1.06%           511  [vdso]                   [.] __get_datapage                              -      -            
+            |
+            ---__get_datapage
+               __kernel_gettimeofday
+               start_thread
+               __clone
+
+     0.79%           380  [kernel.kallsyms]        [k] _raw_spin_lock                              -      -            
+            |
+            ---_raw_spin_lock
+               |          
+                --0.75%--futex_wait_setup
+                          futex_wait_setup
+                          futex_wait
+                          do_futex
+                          __se_sys_futex
+                          system_call
+                          __pthread_barrier_wait
+                          start_task
+                          start_task
+                          start_thread
+                          __clone
+
+     0.24%           116  [kernel.kallsyms]        [k] nohz_balance_exit_idle                      -      -            
+     0.15%            71  [kernel.kallsyms]        [k] find_busiest_group                          -      -            
+     0.07%            35  [kernel.kallsyms]        [k] find_next_and_bit                           -      -            
+     0.07%            34  [kernel.kallsyms]        [k] snooze_loop                                 -      -            
+     0.06%            29  [kernel.kallsyms]        [k] idle_cpu                                    -      -            
+     0.04%            21  [kernel.kallsyms]        [k] osq_lock                                    -      -            
+     0.04%            17  [kernel.kallsyms]        [k] _raw_spin_trylock                           -      -            
+     0.04%            17  [kernel.kallsyms]        [k] ktime_get                                   -      -            
+     0.03%            15  [kernel.kallsyms]        [k] _raw_spin_lock_irqsave                      -      -            
+     0.02%            12  [kernel.kallsyms]        [k] kick_ilb                                    -      -            
+     0.01%             7  [kernel.kallsyms]        [k] plist_add                                   -      -            
+     0.01%             6  [kernel.kallsyms]        [k] menu_select                                 -      -            
+     0.01%             6  [kernel.kallsyms]        [k] update_rq_clock                             -      -            
+     0.01%             6  libc-2.28.so             [.] vfprintf@@GLIBC_2.17                        -      -            
+     0.01%             6  [unknown]                [H] 0x0000000000385c6c                          -      -            
+     0.01%             5  [kernel.kallsyms]        [k] __softirqentry_text_start                   -      -            
+     0.01%             5  [kernel.kallsyms]        [k] do_idle                                     -      -            
+     0.01%             5  [kernel.kallsyms]        [k] load_balance                                -      -            
+     0.01%             4  [kernel.kallsyms]        [k] __schedule                                  -      -            
+     0.01%             4  [kernel.kallsyms]        [k] fast_exception_return                       -      -            
+     0.01%             4  [kernel.kallsyms]        [k] find_next_bit                               -      -            
+     0.01%             4  [kernel.kallsyms]        [k] futex_wait_setup                            -      -            
+     0.01%             4  [kernel.kallsyms]        [k] pick_next_task_fair                         -      -            
+     0.01%             4  [kernel.kallsyms]        [k] rcu_gp_kthread                              -      -            
+     0.01%             4  [kernel.kallsyms]        [k] rebalance_domains                           -      -            
+     0.01%             4  [kernel.kallsyms]        [k] system_call_exit                            -      -            
+     0.01%             4  [kernel.kallsyms]        [k] trigger_load_balance                        -      -            
+     0.01%             4  [kernel.kallsyms]        [k] try_to_wake_up                              -      -            
+     0.01%             4  [kernel.kallsyms]        [k] update_blocked_averages                     -      -            
+     0.01%             4  [kernel.kallsyms]        [k] update_dl_rq_load_avg                       -      -            
+     0.01%             3  [kernel.kallsyms]        [k] __bitmap_and                                -      -            
+     0.01%             3  [kernel.kallsyms]        [k] __next_timer_interrupt                      -      -            
+     0.01%             3  [kernel.kallsyms]        [k] __note_gp_changes                           -      -            
+     0.01%             3  [kernel.kallsyms]        [k] __update_load_avg_cfs_rq                    -      -            
+     0.01%             3  [kernel.kallsyms]        [k] _raw_spin_unlock_irqrestore                 -      -            
+     0.01%             3  [kernel.kallsyms]        [k] calc_global_load_tick                       -      -            
+     0.01%             3  [kernel.kallsyms]        [k] cpuacct_charge                              -      -            
+     0.01%             3  [kernel.kallsyms]        [k] cpumask_next_and                            -      -            
+     0.01%             3  [kernel.kallsyms]        [k] cpupri_set                                  -      -            
+     0.01%             3  [kernel.kallsyms]        [k] housekeeping_cpumask                        -      -            
+     0.01%             3  [kernel.kallsyms]        [k] hrtimer_force_reprogram                     -      -            
+     0.01%             3  [kernel.kallsyms]        [k] perf_event_task_tick                        -      -            
+     0.01%             3  [kernel.kallsyms]        [k] radix_tree_lookup                           -      -            
+     0.01%             3  [kernel.kallsyms]        [k] rcu_irq_enter                               -      -            
+     0.01%             3  [kernel.kallsyms]        [k] rcu_sched_clock_irq                         -      -            
+     0.01%             3  [kernel.kallsyms]        [k] update_rt_rq_load_avg                       -      -            
+     0.01%             3  [unknown]                [H] 0x000000000038f530                          -      -            
+     0.01%             3  [unknown]                [H] 0x00000000003d9c38                          -      -            
+     0.01%             3  [unknown]                [H] 0x000000000072daec                          -      -            
+     0.00%             2  [kernel.kallsyms]        [k] __audit_syscall_entry                       -      -            
+     0.00%             2  [kernel.kallsyms]        [k] __mutex_lock.isra.1                         -      -            
+     0.00%             2  [kernel.kallsyms]        [k] __se_sys_write                              -      -            
+     0.00%             2  [kernel.kallsyms]        [k] _raw_spin_lock_irq                          -      -            
+     0.00%             2  [kernel.kallsyms]        [k] activate_task                               -      -            
+     0.00%             2  [kernel.kallsyms]        [k] clockevents_program_event                   -      -            
+     0.00%             2  [kernel.kallsyms]        [k] cpuidle_enter                               -      -            
+     0.00%             2  [kernel.kallsyms]        [k] dedicated_cede_loop                         -      -            
+     0.00%             2  [kernel.kallsyms]        [k] dequeue_rt_stack                            -      -            
+     0.00%             2  [kernel.kallsyms]        [k] dequeue_task_rt                             -      -            
+     0.00%             2  [kernel.kallsyms]        [k] dput.part.4                                 -      -            
+     0.00%             2  [kernel.kallsyms]        [k] flush_count_cache                           -      -            
+     0.00%             2  [kernel.kallsyms]        [k] fput                                        -      -            
+     0.00%             2  [kernel.kallsyms]        [k] futex_wait_queue_me                         -      -            
+     0.00%             2  [kernel.kallsyms]        [k] get_futex_key                               -      -            
+     0.00%             2  [kernel.kallsyms]        [k] hardware_interrupt_relon_hv                 -      -            
+     0.00%             2  [kernel.kallsyms]        [k] irq_exit                                    -      -            
+     0.00%             2  [kernel.kallsyms]        [k] llist_add_batch                             -      -            
+     0.00%             2  [kernel.kallsyms]        [k] load_fp_state                               -      -            
+     0.00%             2  [kernel.kallsyms]        [k] memcpy_power7                               -      -            
+     0.00%             2  [kernel.kallsyms]        [k] menu_reflect                                -      -            
+     0.00%             2  [kernel.kallsyms]        [k] raise_softirq                               -      -            
+     0.00%             2  [kernel.kallsyms]        [k] rcu_idle_exit                               -      -            
+     0.00%             2  [kernel.kallsyms]        [k] task_tick_fair                              -      -            
+     0.00%             2  [kernel.kallsyms]        [k] task_tick_rt                                -      -            
+     0.00%             2  [kernel.kallsyms]        [k] tick_nohz_idle_exit                         -      -            
+     0.00%             2  [kernel.kallsyms]        [k] tick_sched_do_timer                         -      -            
+     0.00%             2  [kernel.kallsyms]        [k] tick_sched_timer                            -      -            
+     0.00%             2  [kernel.kallsyms]        [k] timerqueue_add                              -      -            
+     0.00%             2  [kernel.kallsyms]        [k] update_curr                                 -      -            
+     0.00%             2  [kernel.kallsyms]        [k] update_curr_rt                              -      -            
+     0.00%             2  libperl.so.5.26.3        [.] Perl_PerlIO_get_base                        -      -            
+     0.00%             2  libpthread-2.28.so       [.] __libc_write                                -      -            
+     0.00%             2  [unknown]                [H] 0x000000000000221c                          -      -            
+     0.00%             2  [unknown]                [H] 0x0000000000370290                          -      -            
+     0.00%             2  [unknown]                [H] 0x000000000037a890                          -      -            
+     0.00%             2  [unknown]                [H] 0x000000000038b534                          -      -            
+     0.00%             2  [unknown]                [H] 0x000000000038b688                          -      -            
+     0.00%             2  [unknown]                [H] 0x00000000003d5e34                          -      -            
+     0.00%             1  [kernel.kallsyms]        [k] __audit_syscall_exit                        -      -            
+     0.00%             1  [kernel.kallsyms]        [k] __fget                                      -      -            
+     0.00%             1  [kernel.kallsyms]        [k] __list_del_entry_valid                      -      -            
+     0.00%             1  [kernel.kallsyms]        [k] __msecs_to_jiffies                          -      -            
+     0.00%             1  [kernel.kallsyms]        [k] __pollwait                                  -      -            
+     0.00%             1  [kernel.kallsyms]        [k] __sb_start_write                            -      -            
+     0.00%             1  [kernel.kallsyms]        [k] __se_sys_futex                              -      -            
+     0.00%             1  [kernel.kallsyms]        [k] __switch_to                                 -      -            
+     0.00%             1  [kernel.kallsyms]        [k] __unqueue_futex                             -      -            
+     0.00%             1  [kernel.kallsyms]        [k] _nohz_idle_balance                          -      -            
+     0.00%             1  [kernel.kallsyms]        [k] _switch                                     -      -            
+     0.00%             1  [kernel.kallsyms]        [k] acct_account_cputime                        -      -            
+     0.00%             1  [kernel.kallsyms]        [k] arch_local_irq_restore                      -      -            
+     0.00%             1  [kernel.kallsyms]        [k] attach_entity_load_avg                      -      -            
+     0.00%             1  [kernel.kallsyms]        [k] avc_lookup                                  -      -            
+     0.00%             1  [kernel.kallsyms]        [k] blk_mq_free_request                         -      -            
+     0.00%             1  [kernel.kallsyms]        [k] clear_user_page                             -      -            
+     0.00%             1  [kernel.kallsyms]        [k] cpuidle_enter_state                         -      -            
+     0.00%             1  [kernel.kallsyms]        [k] cpuidle_not_available                       -      -            
+     0.00%             1  [kernel.kallsyms]        [k] deactivate_task                             -      -            
+     0.00%             1  [kernel.kallsyms]        [k] decrementer_common                          -      -            
+     0.00%             1  [kernel.kallsyms]        [k] decrementer_set_next_event                  -      -            
+     0.00%             1  [kernel.kallsyms]        [k] dequeue_task_fair                           -      -            
+     0.00%             1  [kernel.kallsyms]        [k] enqueue_entity                              -      -            
+     0.00%             1  [kernel.kallsyms]        [k] enqueue_hrtimer                             -      -            
+     0.00%             1  [kernel.kallsyms]        [k] enqueue_task_fair                           -      -            
+     0.00%             1  [kernel.kallsyms]        [k] exc_virt_0x4c00_system_call                 -      -            
+     0.00%             1  [kernel.kallsyms]        [k] finish_task_switch                          -      -            
+     0.00%             1  [kernel.kallsyms]        [k] futex_wait                                  -      -            
+     0.00%             1  [kernel.kallsyms]        [k] giveup_all                                  -      -            
+     0.00%             1  [kernel.kallsyms]        [k] hrtimer_active                              -      -            
+     0.00%             1  [kernel.kallsyms]        [k] hrtimer_forward                             -      -            
+     0.00%             1  [kernel.kallsyms]        [k] hrtimer_interrupt                           -      -            
+     0.00%             1  [kernel.kallsyms]        [k] hrtimer_start_range_ns                      -      -            
+     0.00%             1  [kernel.kallsyms]        [k] icp_hv_eoi                                  -      -            
+     0.00%             1  [kernel.kallsyms]        [k] ktime_get_update_offsets_now                -      -            
+     0.00%             1  [kernel.kallsyms]        [k] memset                                      -      -            
+     0.00%             1  [kernel.kallsyms]        [k] mutex_spin_on_owner                         -      -            
+     0.00%             1  [kernel.kallsyms]        [k] pick_next_task_stop                         -      -            
+     0.00%             1  [kernel.kallsyms]        [k] pipe_read                                   -      -            
+     0.00%             1  [kernel.kallsyms]        [k] profile_tick                                -      -            
+     0.00%             1  [kernel.kallsyms]        [k] rb_commit                                   -      -            
+     0.00%             1  [kernel.kallsyms]        [k] rcu_all_qs                                  -      -            
+     0.00%             1  [kernel.kallsyms]        [k] rcu_idle_enter                              -      -            
+     0.00%             1  [kernel.kallsyms]        [k] rcu_irq_exit                                -      -            
+     0.00%             1  [kernel.kallsyms]        [k] rcu_qs                                      -      -            
+     0.00%             1  [kernel.kallsyms]        [k] resched_curr                                -      -            
+     0.00%             1  [kernel.kallsyms]        [k] restore_math                                -      -            
+     0.00%             1  [kernel.kallsyms]        [k] run_posix_cpu_timers                        -      -            
+     0.00%             1  [kernel.kallsyms]        [k] save_fpu                                    -      -            
+     0.00%             1  [kernel.kallsyms]        [k] sched_clock_cpu                             -      -            
+     0.00%             1  [kernel.kallsyms]        [k] sched_ttwu_pending                          -      -            
+     0.00%             1  [kernel.kallsyms]        [k] scheduler_tick                              -      -            
+     0.00%             1  [kernel.kallsyms]        [k] security_compute_sid.part.15                -      -            
+     0.00%             1  [kernel.kallsyms]        [k] select_task_rq_rt                           -      -            
+     0.00%             1  [kernel.kallsyms]        [k] set_task_rq_fair                            -      -            
+     0.00%             1  [kernel.kallsyms]        [k] tick_nohz_idle_stop_tick                    -      -            
+     0.00%             1  [kernel.kallsyms]        [k] timer_interrupt                             -      -            
+     0.00%             1  [kernel.kallsyms]        [k] timerqueue_del                              -      -            
+     0.00%             1  [kernel.kallsyms]        [k] tracing_mark_write                          -      -            
+     0.00%             1  [kernel.kallsyms]        [k] ttwu_do_wakeup.isra.6                       -      -            
+     0.00%             1  [kernel.kallsyms]        [k] update_group_capacity                       -      -            
+     0.00%             1  [kernel.kallsyms]        [k] update_process_times                        -      -            
+     0.00%             1  [kernel.kallsyms]        [k] wake_q_add_safe                             -      -            
+     0.00%             1  [kernel.kallsyms]        [k] wake_up_q                                   -      -            
+     0.00%             1  [vdso]                   [.] __kernel_clock_gettime                      -      -            
+     0.00%             1  bash                     [.] xmalloc                                     -      -            
+     0.00%             1  gzip                     [.] 0x00000000000047e0                          -      -            
+     0.00%             1  libc-2.28.so             [.] _IO_default_xsputn                          -      -            
+     0.00%             1  libc-2.28.so             [.] _IO_old_init                                -      -            
+     0.00%             1  libc-2.28.so             [.] __GI___printf_fp_l                          -      -            
+     0.00%             1  libc-2.28.so             [.] __gconv_transform_utf8_internal             -      -            
+     0.00%             1  libc-2.28.so             [.] __mpn_mul_1                                 -      -            
+     0.00%             1  libc-2.28.so             [.] _itoa_word                                  -      -            
+     0.00%             1  libglib-2.0.so.0.5600.4  [.] g_list_length                               -      -            
+     0.00%             1  libpthread-2.28.so       [.] __pthread_barrier_wait                      -      -            
+     0.00%             1  libpthread-2.28.so       [.] __pthread_mutex_unlock_usercnt              -      -            
+     0.00%             1  [unknown]                [H] 0x0000000000000984                          -      -            
+     0.00%             1  [unknown]                [H] 0x0000000000000c08                          -      -            
+     0.00%             1  [unknown]                [H] 0x0000000000002228                          -      -            
+     0.00%             1  [unknown]                [H] 0x0000000000008014                          -      -            
+     0.00%             1  [unknown]                [H] 0x0000000000008028                          -      -            
+     0.00%             1  [unknown]                [H] 0x0000000000008030                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000000ab74                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000000cbf4                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000002e16a0                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000002e18bc                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000002f143c                          -      -            
+     0.00%             1  [unknown]                [H] 0x0000000000364a88                          -      -            
+     0.00%             1  [unknown]                [H] 0x0000000000364aa0                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000036549c                          -      -            
+     0.00%             1  [unknown]                [H] 0x0000000000365504                          -      -            
+     0.00%             1  [unknown]                [H] 0x0000000000365834                          -      -            
+     0.00%             1  [unknown]                [H] 0x0000000000365894                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000003658a0                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000003658e0                          -      -            
+     0.00%             1  [unknown]                [H] 0x0000000000365a6c                          -      -            
+     0.00%             1  [unknown]                [H] 0x0000000000365cc0                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000003661fc                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000036e67c                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000036e77c                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000036e784                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000036eba4                          -      -            
+     0.00%             1  [unknown]                [H] 0x0000000000370270                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000003703fc                          -      -            
+     0.00%             1  [unknown]                [H] 0x0000000000370c88                          -      -            
+     0.00%             1  [unknown]                [H] 0x0000000000371624                          -      -            
+     0.00%             1  [unknown]                [H] 0x0000000000371cd8                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000037210c                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000003721f0                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000037a804                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000037a81c                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000037a8b0                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000037a8d4                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000037a8d8                          -      -            
+     0.00%             1  [unknown]                [H] 0x0000000000382bec                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000003840b8                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000003840cc                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000038413c                          -      -            
+     0.00%             1  [unknown]                [H] 0x0000000000384538                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000003875fc                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000038761c                          -      -            
+     0.00%             1  [unknown]                [H] 0x0000000000387f0c                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000038b524                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000038b590                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000038b6b4                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000038bb7c                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000038f4f0                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000038f5a0                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000038fa20                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000038fb00                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000003d2024                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000003d2050                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000003d9c34                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000006aed20                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000006aed80                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000006aedbc                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000006aee00                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000006aeee4                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000006aef8c                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000006aef90                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000006aefbc                          -      -            
+     0.00%             1  [unknown]                [k] 0x00000000006aefd4                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000006af2c0                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000006af3a0                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000006af490                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000006af510                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000006afb34                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000006afb88                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000006b00cc                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000006b069c                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000006b1b1c                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000006ce230                          -      -            
+     0.00%             1  [unknown]                [H] 0x00000000006ce5e8                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000072ccc8                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000072db58                          -      -            
+     0.00%             1  [unknown]                [H] 0x000000000072dc10                          -      -            
+
+
+#
+# (Tip: To add Node.js USDT(User-Level Statically Defined Tracing): perf buildid-cache --add `which node`)
+#

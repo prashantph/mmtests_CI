@@ -1,0 +1,6 @@
+start :: 1591976327
+test begin :: sqlite 1591976329
+test end :: sqlite 1591976431
+time :: sqlite 0.42 user 0.82 system 92.44 elapsed
+finish :: 1591976431
+status :: 0

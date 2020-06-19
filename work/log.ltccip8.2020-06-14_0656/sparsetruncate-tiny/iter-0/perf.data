@@ -1,0 +1,765 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 76  of event 'cycles'
+# Event count (approx.): 760000000
+#
+# Overhead       Samples  Shared Object      Symbol                            IPC   [IPC Coverage]
+# ........  ............  .................  ................................  ....................
+#
+    38.16%            29  [kernel.kallsyms]  [k] snooze_loop                   -      -            
+            |
+            ---snooze_loop
+               snooze_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     5.26%             4  [vdso]             [.] __kernel_clock_gettime        -      -            
+            |
+            ---__kernel_clock_gettime
+               |          
+               |--2.63%--__clock_gettime
+               |          0x7fff881512b8
+               |          0x7fff8800a074
+               |          0x7fff88009f14
+               |          0x7fff8800a074
+               |          0x7fff8800a074
+               |          0x7fff8800093c
+               |          JavaCalls::call_helper
+               |          os::os_exception_wrapper
+               |          JavaCalls::call_virtual
+               |          JavaCalls::call_virtual
+               |          thread_entry
+               |          JavaThread::thread_main_inner
+               |          JavaThread::run
+               |          java_start
+               |          start_thread
+               |          __clone
+               |          
+                --2.63%--__kernel_clock_gettime
+                          |          
+                          |--1.32%--0x7fff881512b8
+                          |          0x7fff8800a074
+                          |          0x7fff88009f14
+                          |          0x7fff8800a074
+                          |          0x7fff8800a074
+                          |          0x7fff8800093c
+                          |          JavaCalls::call_helper
+                          |          os::os_exception_wrapper
+                          |          JavaCalls::call_virtual
+                          |          JavaCalls::call_virtual
+                          |          thread_entry
+                          |          JavaThread::thread_main_inner
+                          |          JavaThread::run
+                          |          java_start
+                          |          start_thread
+                          |          __clone
+                          |          
+                           --1.32%--0x7fff88151274
+                                     0x7fff8800a074
+                                     0x7fff88009f14
+                                     0x7fff8800a074
+                                     0x7fff8800a074
+                                     0x7fff8800093c
+                                     JavaCalls::call_helper
+                                     os::os_exception_wrapper
+                                     JavaCalls::call_virtual
+                                     JavaCalls::call_virtual
+                                     thread_entry
+                                     JavaThread::thread_main_inner
+                                     JavaThread::run
+                                     java_start
+                                     start_thread
+                                     __clone
+
+     2.63%             2  [kernel.kallsyms]  [k] __crc32c_le                   -      -            
+            |
+            ---__crc32c_le
+               chksum_update
+               crypto_shash_update
+               ext4_handle_dirty_dirent_node
+               ext4_delete_entry
+               ext4_unlink
+               vfs_unlink
+               do_unlinkat
+               system_call
+               0x7ffff7e2cbec
+               0x1000105c
+               0x7ffff7d349f8
+               0x7ffff7d34be4
+               0
+
+     2.63%             2  libc-2.28.so       [.] _IO_vfscanf@@GLIBC_2.17       -      -            
+            |
+            ---_IO_vfscanf@@GLIBC_2.17
+               _IO_vsscanf
+               sscanf@@GLIBC_2.17
+               0x7ffff7f386e8
+               0x7ffff7f3a96c
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  [kernel.kallsyms]  [k] __d_lookup                    -      -            
+            |
+            ---__d_lookup
+               lookup_fast
+               security_inode_permission
+               do_last
+               path_openat
+               do_filp_open
+               do_sys_open
+               system_call
+               __GI___libc_open
+               0x7ffff7f39ef0
+               0x7ffff7f39ecc
+               0x7ffff7f3aa48
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  [kernel.kallsyms]  [k] __handle_mm_fault             -      -            
+            |
+            ---__handle_mm_fault
+               __handle_mm_fault
+               handle_mm_fault
+               __do_page_fault
+               do_page_fault
+               handle_page_fault
+               _dl_map_object_from_fd
+               _dl_map_object_from_fd
+               _dl_map_object
+               openaux
+               _dl_catch_exception
+               _dl_map_object_deps
+               dl_main
+               _dl_sysdep_start
+               _dl_start_final
+               _dl_start
+               _start
+
+     1.32%             1  [kernel.kallsyms]  [k] __se_sys_newfstat             -      -            
+            |
+            ---__se_sys_newfstat
+               __se_sys_newfstat
+               system_call
+               __fxstat64
+               _IO_file_stat
+               _IO_file_doallocate
+               _IO_doallocbuf
+               _IO_file_underflow@@GLIBC_2.17
+               _IO_default_uflow
+               __uflow
+               _IO_getline_info
+               _IO_fgets
+               procps_linux_version
+               meminfo
+               0x100007604
+               0x100017430
+               0x100004ec4
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  [kernel.kallsyms]  [k] arch_local_irq_restore        -      -            
+            |
+            ---arch_local_irq_restore
+               getname
+               getname
+               do_sys_open
+               system_call
+               __GI___libc_open
+               0x7ffff7f39ef0
+               0x7ffff7f39ecc
+               0x7ffff7f3a958
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  [kernel.kallsyms]  [k] do_task_stat                  -      -            
+            |
+            ---do_task_stat
+               do_task_stat
+               do_task_stat
+               proc_single_show
+               seq_read
+               __se_sys_read
+               system_call
+               read
+               0x7ffff7f39f74
+               0x7ffff7f39ecc
+               0x7ffff7f3a958
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  [kernel.kallsyms]  [k] dput.part.4                   -      -            
+            |
+            ---dput.part.4
+               dput.part.4
+               do_last
+               path_openat
+               do_filp_open
+               do_sys_open
+               system_call
+               __GI___libc_open
+               0x7ffff7f39950
+               0x7ffff7f398ec
+               0x7ffff7f39b84
+               0x7ffff7f3a8c4
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  [kernel.kallsyms]  [k] ext4_xattr_ibody_get          -      -            
+            |
+            ---ext4_xattr_ibody_get
+               ext4_xattr_ibody_get
+               ext4_xattr_get
+               ext4_xattr_security_get
+               __vfs_getxattr
+               cap_inode_need_killpriv
+               security_inode_need_killpriv
+               file_remove_privs
+               __generic_file_write_iter
+               ext4_file_write_iter
+               new_sync_write
+               __se_sys_write
+               system_call
+               0x7ffff7e2a794
+               0x7ffff7da39c4
+               0
+               0x7ffff7da2810
+               0x7ffff7da52a8
+               0x7ffff7da57f4
+               0x7ffff7da7b9c
+               0x7ffff7da7e04
+               0x7ffff7d57d10
+               0x7ffff7d57d98
+               0x7ffff7d34a00
+               0x7ffff7d34be4
+               0
+
+     1.32%             1  [kernel.kallsyms]  [k] find_next_and_bit             -      -            
+            |
+            ---find_next_and_bit
+               cpumask_next_and
+               find_busiest_group
+               load_balance
+               rebalance_domains
+               __softirqentry_text_start
+               irq_exit
+               timer_interrupt
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     1.32%             1  [kernel.kallsyms]  [k] find_next_bit                 -      -            
+            |
+            ---find_next_bit
+               nr_context_switches
+               show_stat
+               seq_read
+               proc_reg_read
+               __se_sys_read
+               system_call
+               read
+               getstat
+               0
+               0x100004a68
+               0x10000292c
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  [kernel.kallsyms]  [k] hrtimer_active                -      -            
+            |
+            ---hrtimer_active
+               task_tick_fair
+               scheduler_tick
+               update_process_times
+               tick_sched_timer
+               __hrtimer_run_queues
+               hrtimer_interrupt
+               timer_interrupt
+               decrementer_common
+               __vsnprintf_chk@@GLIBC_2.17
+               __snprintf_chk@@GLIBC_2.17
+               0x7ffff7f398ec
+               0x7ffff7f39b84
+               0x7ffff7f3a8c4
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  [kernel.kallsyms]  [k] idle_cpu                      -      -            
+            |
+            ---idle_cpu
+               _nohz_idle_balance
+               pick_next_task_fair
+               __schedule
+               schedule
+               schedule_timeout
+               rcu_gp_kthread
+               kthread
+               ret_from_kernel_thread
+
+     1.32%             1  [kernel.kallsyms]  [k] inode_permission              -      -            
+            |
+            ---inode_permission
+               inode_permission
+               inode_permission
+               link_path_walk
+               path_openat
+               do_filp_open
+               do_sys_open
+               system_call
+               __GI___libc_open
+               0x7ffff7f39950
+               0x7ffff7f398ec
+               0x7ffff7f39b84
+               0x7ffff7f3a8c4
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  [kernel.kallsyms]  [k] kmem_cache_alloc              -      -            
+            |
+            ---kmem_cache_alloc
+               kmem_cache_alloc
+               single_open
+               proc_single_open
+               do_dentry_open
+               do_last
+               path_openat
+               do_filp_open
+               do_sys_open
+               system_call
+               __GI___libc_open
+               0x7ffff7f39ef0
+               0x7ffff7f39ecc
+               0x7ffff7f3aa48
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  [kernel.kallsyms]  [k] link_path_walk                -      -            
+            |
+            ---link_path_walk
+               link_path_walk
+               path_openat
+               do_filp_open
+               do_sys_open
+               system_call
+               __GI___libc_open
+               0x7ffff7f39ef0
+               0x7ffff7f39ecc
+               0x7ffff7f3a958
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  [kernel.kallsyms]  [k] lockref_get_not_dead          -      -            
+            |
+            ---lockref_get_not_dead
+               lookup_fast
+               walk_component
+               link_path_walk
+               path_openat
+               do_filp_open
+               do_sys_open
+               system_call
+               __GI___libc_open
+               0x7ffff7f39ef0
+               0x7ffff7f39ecc
+               0x7ffff7f3a958
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  [kernel.kallsyms]  [k] memset                        -      -            
+            |
+            ---memset
+               flush_to_ldisc
+               process_one_work
+               worker_thread
+               kthread
+               ret_from_kernel_thread
+
+     1.32%             1  [kernel.kallsyms]  [k] msr_check_and_set             -      -            
+            |
+            ---0xc00000000001e9c4
+               0x7ffff7f39f74
+               0x7ffff7f39ecc
+               0x7ffff7f3a958
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  [kernel.kallsyms]  [k] page_cache_free_page          -      -            
+            |
+            ---page_cache_free_page
+               delete_from_page_cache_batch
+               0
+               truncate_inode_pages_range
+               ext4_evict_inode
+               evict
+               do_unlinkat
+               system_call
+               0x7ffff7e2cbec
+               0x1000105c
+               0x7ffff7d349f8
+               0x7ffff7d34be4
+               0
+
+     1.32%             1  [kernel.kallsyms]  [k] security_inode_permission     -      -            
+            |
+            ---security_inode_permission
+               link_path_walk
+               path_openat
+               do_filp_open
+               do_sys_open
+               system_call
+               __GI___libc_open
+               0x7ffff7f39ef0
+               0x7ffff7f39ecc
+               0x7ffff7f3a958
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  [kernel.kallsyms]  [k] strncpy_from_user             -      -            
+            |
+            ---strncpy_from_user
+               strncpy_from_user
+               getname_flags
+               user_path_at_empty
+               __se_sys_newstat
+               system_call
+               __xstat64
+               0x7ffff7f3a7f8
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  [kernel.kallsyms]  [k] system_call                   -      -            
+            |
+            ---system_call
+               0
+               read
+               0x7ffff7f39f74
+               0x7ffff7f39ecc
+               0x7ffff7f3a958
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  [kernel.kallsyms]  [k] update_fast_timekeeper        -      -            
+            |
+            ---update_fast_timekeeper
+               timekeeping_update
+               timekeeping_advance
+               tick_do_update_jiffies64.part.4
+               tick_irq_enter
+               irq_enter
+               timer_interrupt
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     1.32%             1  [vdso]             [.] __get_datapage                -      -            
+            |
+            ---__get_datapage
+               __kernel_clock_gettime
+               0x7fff881512b8
+               0x7fff8800a074
+               0x7fff88009f14
+               0x7fff8800a074
+               0x7fff8800a074
+               0x7fff8800093c
+               JavaCalls::call_helper
+               os::os_exception_wrapper
+               JavaCalls::call_virtual
+               JavaCalls::call_virtual
+               thread_entry
+               JavaThread::thread_main_inner
+               JavaThread::run
+               java_start
+               start_thread
+               __clone
+
+     1.32%             1  bash               [.] 0x000000000002dce0            -      -            
+            |
+            ---0x10002dce0
+               0x100081930
+               0x100082cb0
+               0x100087660
+               0x10004e740
+               execute_command_internal
+               execute_command_internal
+               execute_command
+               0x1000534fc
+               execute_command_internal
+               execute_command
+               reader_loop
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  ld-2.28.so         [.] _dl_lookup_symbol_x           -      -            
+            |
+            ---_dl_lookup_symbol_x
+               _dl_relocate_object
+               dl_main
+               _dl_sysdep_start
+               _dl_start_final
+               _dl_start
+               _start
+
+     1.32%             1  libc-2.28.so       [.] _IO_default_xsputn            -      -            
+            |
+            ---_IO_default_xsputn
+               vfprintf@@GLIBC_2.17
+               __vsnprintf_chk@@GLIBC_2.17
+               __snprintf_chk@@GLIBC_2.17
+               0x7ffff7f39ecc
+               0x7ffff7f3aa48
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  libc-2.28.so       [.] __GI_____strtoull_l_internal  -      -            
+            |
+            ---__GI_____strtoull_l_internal
+               __strtoull_internal
+               _IO_vfscanf@@GLIBC_2.17
+               _IO_vsscanf
+               sscanf@@GLIBC_2.17
+               0x7ffff7f386e8
+               0x7ffff7f3a96c
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  libc-2.28.so       [.] __mbrtowc                     -      -            
+            |
+            ---__mbrtowc
+               escape_str
+               0x7ffff7f39ba4
+               0x7ffff7f3a8c4
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  libc-2.28.so       [.] _int_malloc                   -      -            
+            |
+            ---_int_malloc
+               __libc_calloc
+               0x7ffff7f35ae0
+               0x7ffff7f383a8
+               0x7ffff7f39bb4
+               0x7ffff7f3a8c4
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  libjvm.so          [.] os::javaTimeNanos             -      -            
+            |
+            ---os::javaTimeNanos
+               0x7fff88151274
+               0x7fff8800a074
+               0x7fff88009f14
+               0x7fff8800a074
+               0x7fff8800a074
+               0x7fff8800093c
+               JavaCalls::call_helper
+               os::os_exception_wrapper
+               JavaCalls::call_virtual
+               JavaCalls::call_virtual
+               thread_entry
+               JavaThread::thread_main_inner
+               JavaThread::run
+               java_start
+               start_thread
+               __clone
+
+     1.32%             1  [unknown]          [H] 0x0000000000008048            -      -            
+            |
+            ---0x8048
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     1.32%             1  [unknown]          [H] 0x00000000002e56e0            -      -            
+            |
+            ---0x2e56e0
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     1.32%             1  [unknown]          [H] 0x000000000036f954            -      -            
+            |
+            ---0x36f954
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     1.32%             1  [unknown]          [H] 0x0000000000371a0c            -      -            
+            |
+            ---0x371a0c
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     1.32%             1  [unknown]          [H] 0x0000000000388160            -      -            
+            |
+            ---0x388160
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     1.32%             1  [unknown]          [H] 0x00000000003d66b8            -      -            
+            |
+            ---0x3d66b8
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     1.32%             1  [unknown]          [H] 0x000000000044208c            -      -            
+            |
+            ---0x44208c
+               make_child
+               make_child
+               0x10004f084
+               execute_command_internal
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               0x1000534fc
+               execute_command_internal
+               execute_command
+               reader_loop
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.32%             1  [unknown]          [H] 0x00000000004ae268            -      -            
+            |
+            ---0x4ae268
+               call_block_remove.part.2
+               pSeries_lpar_flush_hash_range
+               flush_hash_range
+               __flush_tlb_pending
+               zap_pte_range
+               unmap_page_range
+               unmap_vmas
+               exit_mmap
+               mmput
+               do_exit
+               do_group_exit
+               __se_sys_exit_group
+               system_call
+
+     1.32%             1  [unknown]          [H] 0x000000000072de2c            -      -            
+            |
+            ---0x72de2c
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+
+
+#
+# (Tip: Sample related events with: perf record -e '{cycles,instructions}:S')
+#

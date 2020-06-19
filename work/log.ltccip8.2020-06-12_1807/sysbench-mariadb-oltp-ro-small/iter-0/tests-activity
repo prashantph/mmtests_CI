@@ -1,0 +1,19 @@
+1591974019 run-mmtests: Start
+1591974019 run-mmtests: Iteration 0 start
+1591974020 sysbench-bench: source-install
+1591974020 mariadbbuild-bench: source-install
+1591976159 mariadbbuild-bench: source-installed
+1591976187 sysbench-bench: source-installed
+1591976187 run-mmtests: begin sysbench
+1591976192 sysbench-bench: database-init
+1591976214 sysbench-bench: sysbench-1
+1591976263 sysbench-bench: sysbench-5
+1591976273 sysbench-bench: sysbench-12
+1591976279 sysbench-bench: sysbench-21
+1591976284 sysbench-bench: sysbench-30
+1591976288 sysbench-bench: sysbench-48
+1591976292 sysbench-bench: sysbench-79
+1591976297 sysbench-bench: sysbench-110
+1591976302 sysbench-bench: sysbench-141
+1591976320 run-mmtests: Iteration 0 end
+1591976320 run-mmtests: End

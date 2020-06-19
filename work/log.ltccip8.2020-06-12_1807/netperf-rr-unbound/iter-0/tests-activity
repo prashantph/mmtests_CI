@@ -1,0 +1,46 @@
+1591988378 run-mmtests: Start
+1591988378 run-mmtests: Iteration 0 start
+1591988379 run-mmtests: begin netperf-udp-rr
+1591988382 netperf-bench: iteration 1
+1591988382 netperf-bench: size 1
+1591988424 netperf-bench: iteration 2
+1591988424 netperf-bench: size 1
+1591988466 netperf-bench: iteration 3
+1591988466 netperf-bench: size 1
+1591988509 netperf-bench: iteration 4
+1591988509 netperf-bench: size 1
+1591988551 netperf-bench: iteration 5
+1591988551 netperf-bench: size 1
+1591988593 netperf-bench: iteration 6
+1591988593 netperf-bench: size 1
+1591988635 netperf-bench: iteration 7
+1591988635 netperf-bench: size 1
+1591988677 netperf-bench: iteration 8
+1591988677 netperf-bench: size 1
+1591988719 netperf-bench: iteration 9
+1591988719 netperf-bench: size 1
+1591988761 netperf-bench: iteration 10
+1591988761 netperf-bench: size 1
+1591988810 run-mmtests: begin netperf-tcp-rr
+1591988813 netperf-bench: iteration 1
+1591988813 netperf-bench: size 1
+1591988855 netperf-bench: iteration 2
+1591988855 netperf-bench: size 1
+1591988897 netperf-bench: iteration 3
+1591988897 netperf-bench: size 1
+1591988939 netperf-bench: iteration 4
+1591988939 netperf-bench: size 1
+1591988981 netperf-bench: iteration 5
+1591988981 netperf-bench: size 1
+1591989023 netperf-bench: iteration 6
+1591989023 netperf-bench: size 1
+1591989065 netperf-bench: iteration 7
+1591989065 netperf-bench: size 1
+1591989107 netperf-bench: iteration 8
+1591989107 netperf-bench: size 1
+1591989149 netperf-bench: iteration 9
+1591989149 netperf-bench: size 1
+1591989192 netperf-bench: iteration 10
+1591989192 netperf-bench: size 1
+1591989240 run-mmtests: Iteration 0 end
+1591989240 run-mmtests: End

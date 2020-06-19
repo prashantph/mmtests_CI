@@ -1,0 +1,10 @@
+1590493569 run-mmtests: Start
+1590493570 run-mmtests: Iteration 0 start
+1590493570 run-mmtests: begin iozone
+1590493570 iozone-bench: iteration 1/5
+1590497717 iozone-bench: iteration 2/5
+1590501978 iozone-bench: iteration 3/5
+1590506157 iozone-bench: iteration 4/5
+1590510478 iozone-bench: iteration 5/5
+1590514924 run-mmtests: Iteration 0 end
+1590514924 run-mmtests: End

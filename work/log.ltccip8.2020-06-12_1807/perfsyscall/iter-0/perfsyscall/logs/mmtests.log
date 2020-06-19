@@ -1,0 +1,55 @@
+Updating Subscription Management repositories.
+Unable to read consumer identity
+This system is not registered to Red Hat Subscription Management. You can use subscription-manager to register.
+Last metadata expiration check: 0:40:50 ago on Sat 13 Jun 2020 09:41:37 AM IST.
+Package python36-devel-3.6.8-2.module+el8.1.0+3334+5cb623d7.ppc64le is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+Installed python3-devel
+Downloaded file already available at /home/mmtests/work/sources/linux-5.1.tar.xz
+mv: cannot move 'linux-5.1' to 'perfbuild-5.1/linux-5.1': Directory not empty
+/home/mmtests/work/sources/perfbuild-5.1 /home/mmtests/work/sources/perfbuild-5.1 /home/mmtests/work/sources
+Extracting /home/mmtests/work/tmp/3033767/0001-perf-add-syscall-benchmark.patch
+can't find file to patch at input line 5
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff --git a/tools/perf/bench/Build b/tools/perf/bench/Build
+|index eafce1a130a1..abc461b16ff0 100644
+|--- a/tools/perf/bench/Build
+|+++ b/tools/perf/bench/Build
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 16
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff --git a/tools/perf/bench/bench.h b/tools/perf/bench/bench.h
+|index 6c9fcd757f31..128823ab0a2d 100644
+|--- a/tools/perf/bench/bench.h
+|+++ b/tools/perf/bench/bench.h
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+patching file tools/perf/bench/syscall.c
+can't find file to patch at input line 114
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff --git a/tools/perf/builtin-bench.c b/tools/perf/builtin-bench.c
+|index 17a6bcd01aa6..66a4cce0b18d 100644
+|--- a/tools/perf/builtin-bench.c
+|+++ b/tools/perf/builtin-bench.c
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+3 out of 3 hunks ignored
+FATAL perfbuild-install: Failed to apply perf add syscall patch
+FATAL perfsyscall-bench: perfbuild install script returned error

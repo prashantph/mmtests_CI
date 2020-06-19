@@ -1,0 +1,10 @@
+start :: 1591218405
+test begin :: netperf-udp 1591218405
+test end :: netperf-udp 1591220309
+time :: netperf-udp 34.44 user 1276.48 system 1897.53 elapsed
+test begin :: netperf-tcp 1591220309
+test end :: netperf-tcp 1591220315
+Command exited with non-zero status 255
+time :: netperf-tcp 0.17 user 0.08 system 0.20 elapsed
+finish :: 1591220315
+status :: 255

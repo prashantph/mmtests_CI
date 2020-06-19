@@ -1,0 +1,6 @@
+start :: 1590471155
+test begin :: blogbench 1590471163
+test end :: blogbench 1590473300
+time :: blogbench 947.44 user 9809.01 system 2122.93 elapsed
+finish :: 1590473300
+status :: 0

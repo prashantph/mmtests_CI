@@ -1,0 +1,2186 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 186  of event 'cycles'
+# Event count (approx.): 1860000000
+#
+# Overhead       Samples  Shared Object        Symbol                                      IPC   [IPC Coverage]
+# ........  ............  ...................  ..........................................  ....................
+#
+    32.80%            61  [kernel.kallsyms]    [k] snooze_loop                             -      -            
+            |
+            ---snooze_loop
+               snooze_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     5.38%            10  [kernel.kallsyms]    [k] __crc32c_le                             -      -            
+            |
+            ---__crc32c_le
+               chksum_update
+               crypto_shash_update
+               |          
+               |--2.69%--jbd2_journal_commit_transaction
+               |          kjournald2
+               |          kthread
+               |          ret_from_kernel_thread
+               |          
+               |--1.08%--journal_submit_commit_record.part.3
+               |          jbd2_journal_commit_transaction
+               |          kjournald2
+               |          kthread
+               |          ret_from_kernel_thread
+               |          
+               |--0.54%--ext4_handle_dirty_dirent_node
+               |          add_dirent_to_buf
+               |          ext4_add_entry
+               |          ext4_create
+               |          lookup_open
+               |          do_last
+               |          path_openat
+               |          do_filp_open
+               |          do_sys_open
+               |          system_call
+               |          __open64
+               |          posixOpen
+               |          verifyDbFile
+               |          robust_open
+               |          unixOpen
+               |          pager_write
+               |          insertCell
+               |          sqlite3BtreeInsert
+               |          sqlite3VdbeExec
+               |          sqlite3_step
+               |          shell_exec.constprop.16
+               |          process_input
+               |          main
+               |          generic_start_main.isra.0
+               |          __libc_start_main
+               |          0
+               |          
+               |--0.54%--ext4_inode_csum
+               |          ext4_inode_csum_set
+               |          ext4_do_update_inode.isra.6
+               |          ext4_mark_iloc_dirty
+               |          ext4_mark_inode_dirty
+               |          ext4_ext_rm_leaf
+               |          ext4_ext_remove_space
+               |          ext4_truncate
+               |          ext4_evict_inode
+               |          evict
+               |          do_unlinkat
+               |          system_call
+               |          __GI___unlink
+               |          unixDelete
+               |          pager_end_transaction
+               |          sqlite3BtreeCommitPhaseTwo.part.529
+               |          sqlite3VdbeHalt
+               |          sqlite3VdbeExec
+               |          sqlite3_step
+               |          shell_exec.constprop.16
+               |          process_input
+               |          main
+               |          generic_start_main.isra.0
+               |          __libc_start_main
+               |          0
+               |          
+                --0.54%--ext4_block_bitmap_csum_set
+                          ext4_free_blocks
+                          ext4_ext_rm_leaf
+                          ext4_ext_remove_space
+                          ext4_truncate
+                          ext4_evict_inode
+                          evict
+                          do_unlinkat
+                          system_call
+                          __GI___unlink
+                          unixDelete
+                          pager_end_transaction
+                          sqlite3BtreeCommitPhaseTwo.part.529
+                          sqlite3VdbeHalt
+                          sqlite3VdbeExec
+                          sqlite3_step
+                          shell_exec.constprop.16
+                          process_input
+                          main
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     2.69%             5  libc-2.28.so         [.] __clock_gettime                         -      -            
+            |
+            ---__clock_gettime
+               os::javaTimeNanos
+               |          
+               |--2.15%--0x7fff88151274
+               |          0x7fff8800a074
+               |          0x7fff88009f14
+               |          0x7fff8800a074
+               |          0x7fff8800a074
+               |          0x7fff8800093c
+               |          JavaCalls::call_helper
+               |          os::os_exception_wrapper
+               |          JavaCalls::call_virtual
+               |          JavaCalls::call_virtual
+               |          thread_entry
+               |          JavaThread::thread_main_inner
+               |          JavaThread::run
+               |          java_start
+               |          start_thread
+               |          __clone
+               |          
+                --0.54%--0x7fff881512b8
+                          0x7fff8800a074
+                          0x7fff88009f14
+                          0x7fff8800a074
+                          0x7fff8800a074
+                          0x7fff8800093c
+                          JavaCalls::call_helper
+                          os::os_exception_wrapper
+                          JavaCalls::call_virtual
+                          JavaCalls::call_virtual
+                          thread_entry
+                          JavaThread::thread_main_inner
+                          JavaThread::run
+                          java_start
+                          start_thread
+                          __clone
+
+     2.15%             4  [kernel.kallsyms]    [k] find_busiest_group                      -      -            
+            |
+            ---find_busiest_group
+               |          
+               |--1.61%--find_busiest_group
+               |          load_balance
+               |          |          
+               |          |--1.08%--pick_next_task_fair
+               |          |          __schedule
+               |          |          schedule
+               |          |          io_schedule
+               |          |          bit_wait_io
+               |          |          out_of_line_wait_on_bit
+               |          |          __wait_on_buffer
+               |          |          jbd2_journal_commit_transaction
+               |          |          kjournald2
+               |          |          kthread
+               |          |          ret_from_kernel_thread
+               |          |          
+               |           --0.54%--rebalance_domains
+               |                     __softirqentry_text_start
+               |                     irq_exit
+               |                     timer_interrupt
+               |                     plpar_hcall_norets
+               |                     dedicated_cede_loop
+               |                     cpuidle_enter_state
+               |                     cpuidle_enter
+               |                     do_idle
+               |                     cpu_startup_entry
+               |                     start_secondary
+               |                     start_secondary_prolog
+               |          
+                --0.54%--cpumask_next_and
+                          find_busiest_group
+                          load_balance
+                          rebalance_domains
+                          _nohz_idle_balance
+                          __softirqentry_text_start
+                          irq_exit
+                          __do_irq
+                          call_do_irq
+                          do_IRQ
+                          plpar_hcall_norets
+                          dedicated_cede_loop
+                          cpuidle_enter_state
+                          cpuidle_enter
+                          do_idle
+                          cpu_startup_entry
+                          rest_init
+                          start_kernel
+                          start_here_common
+
+     1.61%             3  [vdso]               [.] __do_get_tspec                          -      -            
+            |
+            ---__do_get_tspec
+               __kernel_clock_gettime
+               |          
+               |--1.08%--0x7fff881512b8
+               |          0x7fff8800a074
+               |          0x7fff88009f14
+               |          0x7fff8800a074
+               |          0x7fff8800a074
+               |          0x7fff8800093c
+               |          JavaCalls::call_helper
+               |          os::os_exception_wrapper
+               |          JavaCalls::call_virtual
+               |          JavaCalls::call_virtual
+               |          thread_entry
+               |          JavaThread::thread_main_inner
+               |          JavaThread::run
+               |          java_start
+               |          start_thread
+               |          __clone
+               |          
+                --0.54%--0x7fff88151274
+                          0x7fff8800a074
+                          0x7fff88009f14
+                          0x7fff8800a074
+                          0x7fff8800a074
+                          0x7fff8800093c
+                          JavaCalls::call_helper
+                          os::os_exception_wrapper
+                          JavaCalls::call_virtual
+                          JavaCalls::call_virtual
+                          thread_entry
+                          JavaThread::thread_main_inner
+                          JavaThread::run
+                          java_start
+                          start_thread
+                          __clone
+
+     1.61%             3  [vdso]               [.] __kernel_clock_gettime                  -      -            
+            |
+            ---__kernel_clock_gettime
+               |          
+               |--1.08%--__kernel_clock_gettime
+               |          |          
+               |          |--0.54%--0x7fff881512b8
+               |          |          0x7fff8800a074
+               |          |          0x7fff88009f14
+               |          |          0x7fff8800a074
+               |          |          0x7fff8800a074
+               |          |          0x7fff8800093c
+               |          |          JavaCalls::call_helper
+               |          |          os::os_exception_wrapper
+               |          |          JavaCalls::call_virtual
+               |          |          JavaCalls::call_virtual
+               |          |          thread_entry
+               |          |          JavaThread::thread_main_inner
+               |          |          JavaThread::run
+               |          |          java_start
+               |          |          start_thread
+               |          |          __clone
+               |          |          
+               |           --0.54%--0x7fff88151274
+               |                     0x7fff8800a074
+               |                     0x7fff88009f14
+               |                     0x7fff8800a074
+               |                     0x7fff8800a074
+               |                     0x7fff8800093c
+               |                     JavaCalls::call_helper
+               |                     os::os_exception_wrapper
+               |                     JavaCalls::call_virtual
+               |                     JavaCalls::call_virtual
+               |                     thread_entry
+               |                     JavaThread::thread_main_inner
+               |                     JavaThread::run
+               |                     java_start
+               |                     start_thread
+               |                     __clone
+               |          
+                --0.54%--__clock_gettime
+                          0x7fff881512b8
+                          0x7fff8800a074
+                          0x7fff88009f14
+                          0x7fff8800a074
+                          0x7fff8800a074
+                          0x7fff8800093c
+                          JavaCalls::call_helper
+                          os::os_exception_wrapper
+                          JavaCalls::call_virtual
+                          JavaCalls::call_virtual
+                          thread_entry
+                          JavaThread::thread_main_inner
+                          JavaThread::run
+                          java_start
+                          start_thread
+                          __clone
+
+     1.61%             3  libjvm.so            [.] os::javaTimeNanos                       -      -            
+            |
+            ---os::javaTimeNanos
+               0x7fff88151274
+               0x7fff8800a074
+               0x7fff88009f14
+               0x7fff8800a074
+               0x7fff8800a074
+               0x7fff8800093c
+               JavaCalls::call_helper
+               os::os_exception_wrapper
+               JavaCalls::call_virtual
+               JavaCalls::call_virtual
+               thread_entry
+               JavaThread::thread_main_inner
+               JavaThread::run
+               java_start
+               start_thread
+               __clone
+
+     1.08%             2  [kernel.kallsyms]    [k] __copy_tofrom_user_power7               -      -            
+            |
+            ---__copy_tofrom_user_power7
+               |          
+               |--0.54%--_copy_to_user
+               |          __se_sys_llseek
+               |          system_call
+               |          __libc_lseek64
+               |          seekAndWriteFd
+               |          0x7fffffffb790
+               |          unixWrite
+               |          pagerAddPageToRollbackJournal
+               |          pager_write
+               |          sqlite3PagerCommitPhaseOne.part.550
+               |          sqlite3BtreeCommitPhaseOne.part.551
+               |          sqlite3VdbeHalt
+               |          sqlite3VdbeExec
+               |          sqlite3_step
+               |          shell_exec.constprop.16
+               |          process_input
+               |          main
+               |          generic_start_main.isra.0
+               |          __libc_start_main
+               |          0
+               |          
+                --0.54%--copyin
+                          0
+                          iov_iter_copy_from_user_atomic
+                          generic_perform_write
+                          __generic_file_write_iter
+                          ext4_file_write_iter
+                          new_sync_write
+                          __se_sys_write
+                          system_call
+                          __libc_write
+                          seekAndWriteFd
+                          0
+                          unixWrite
+                          pager_write_pagelist
+                          sqlite3PagerCommitPhaseOne.part.550
+                          sqlite3BtreeCommitPhaseOne.part.551
+                          sqlite3VdbeHalt
+                          sqlite3VdbeExec
+                          sqlite3_step
+                          shell_exec.constprop.16
+                          process_input
+                          main
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     1.08%             2  [kernel.kallsyms]    [k] __d_lookup_rcu                          -      -            
+            |
+            ---__d_lookup_rcu
+               lookup_fast
+               0
+               |          
+               |--0.54%--path_lookupat.isra.12
+               |          filename_lookup.part.21
+               |          __se_sys_newstat
+               |          system_call
+               |          __xstat64
+               |          file_status
+               |          0x1000ad2e8
+               |          0x1000ad6dc
+               |          search_for_command
+               |          0x10004f030
+               |          execute_command_internal
+               |          0x1000552bc
+               |          execute_command_internal
+               |          execute_command
+               |          reader_loop
+               |          main
+               |          generic_start_main.isra.0
+               |          __libc_start_main
+               |          0
+               |          
+                --0.54%--walk_component
+                          link_path_walk
+                          filename_parentat.isra.19.part.20
+                          do_unlinkat
+                          system_call
+                          __GI___unlink
+                          unixDelete
+                          pager_end_transaction
+                          sqlite3BtreeCommitPhaseTwo.part.529
+                          sqlite3VdbeHalt
+                          sqlite3VdbeExec
+                          sqlite3_step
+                          shell_exec.constprop.16
+                          process_input
+                          main
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     1.08%             2  [kernel.kallsyms]    [k] blk_mq_sched_try_merge                  -      -            
+            |
+            ---blk_mq_sched_try_merge
+               dd_bio_merge
+               __blk_mq_sched_bio_merge
+               blk_mq_make_request
+               generic_make_request
+               submit_bio
+               ext4_io_submit
+               ext4_writepages
+               do_writepages
+               __filemap_fdatawrite_range
+               file_write_and_wait_range
+               ext4_sync_file
+               __se_sys_fdatasync
+               system_call
+               fdatasync
+               unixSync
+               |          
+               |--0.54%--unixWrite
+               |          syncJournal
+               |          sqlite3PagerCommitPhaseOne.part.550
+               |          sqlite3BtreeCommitPhaseOne.part.551
+               |          sqlite3VdbeHalt
+               |          sqlite3VdbeExec
+               |          sqlite3_step
+               |          shell_exec.constprop.16
+               |          process_input
+               |          main
+               |          generic_start_main.isra.0
+               |          __libc_start_main
+               |          0
+               |          
+                --0.54%--0x10148040
+                          syncJournal
+                          sqlite3PagerCommitPhaseOne.part.550
+                          sqlite3BtreeCommitPhaseOne.part.551
+                          sqlite3VdbeHalt
+                          sqlite3VdbeExec
+                          sqlite3_step
+                          shell_exec.constprop.16
+                          process_input
+                          main
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     1.08%             2  [kernel.kallsyms]    [k] chacha20_block                          -      -            
+            |
+            ---chacha20_block
+               extract_crng_user
+               extract_crng_user
+               urandom_read
+               __se_sys_read
+               system_call
+               read
+               0x1000065a8
+               0x7fffffffd6f0
+               0x100002b58
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.08%             2  [kernel.kallsyms]    [k] current_time                            -      -            
+            |
+            ---current_time
+               |          
+               |--0.54%--__ext4_new_inode
+               |          ext4_create
+               |          lookup_open
+               |          do_last
+               |          path_openat
+               |          do_filp_open
+               |          do_sys_open
+               |          system_call
+               |          __open64
+               |          posixOpen
+               |          0x1a4
+               |          robust_open
+               |          unixOpen
+               |          pager_write
+               |          insertCell
+               |          sqlite3BtreeInsert
+               |          sqlite3VdbeExec
+               |          sqlite3_step
+               |          shell_exec.constprop.16
+               |          process_input
+               |          main
+               |          generic_start_main.isra.0
+               |          __libc_start_main
+               |          0
+               |          
+                --0.54%--file_update_time
+                          __generic_file_write_iter
+                          ext4_file_write_iter
+                          new_sync_write
+                          __se_sys_write
+                          system_call
+                          __libc_write
+                          seekAndWriteFd
+                          0x7fffffffb830
+                          unixWrite
+                          writeJournalHdr
+                          pager_write
+                          insertCell
+                          sqlite3BtreeInsert
+                          sqlite3VdbeExec
+                          sqlite3_step
+                          shell_exec.constprop.16
+                          process_input
+                          main
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     1.08%             2  [kernel.kallsyms]    [k] do_idle                                 -      -            
+            |
+            ---do_idle
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     1.08%             2  [kernel.kallsyms]    [k] fast_exception_return                   -      -            
+            |          
+            |--0.54%--0xc00000000000df68
+            |          __libc_fcntl64
+            |          0x7fffffffb880
+            |          unixFileLock
+            |          unixLock
+            |          pagerLockDb.part.46
+            |          pager_wait_on_lock.part.59
+            |          sqlite3VdbeHalt
+            |          sqlite3VdbeExec
+            |          sqlite3_step
+            |          shell_exec.constprop.16
+            |          process_input
+            |          main
+            |          generic_start_main.isra.0
+            |          __libc_start_main
+            |          0
+            |          
+             --0.54%--0xc00000000000df2c
+                       seekAndWriteFd
+                       0x7fffffffb7e0
+                       unixWrite
+                       pagerAddPageToRollbackJournal
+                       pager_write
+                       insertCell
+                       sqlite3BtreeInsert
+                       sqlite3VdbeExec
+                       sqlite3_step
+                       shell_exec.constprop.16
+                       process_input
+                       main
+                       generic_start_main.isra.0
+                       __libc_start_main
+                       0
+
+     1.08%             2  [kernel.kallsyms]    [k] memset                                  -      -            
+            |
+            ---memset
+               |          
+               |--0.54%--ext4_bio_write_page
+               |          mpage_submit_page
+               |          mpage_process_page_bufs
+               |          mpage_prepare_extent_to_map
+               |          ext4_writepages
+               |          do_writepages
+               |          __filemap_fdatawrite_range
+               |          file_write_and_wait_range
+               |          ext4_sync_file
+               |          __se_sys_fdatasync
+               |          system_call
+               |          fdatasync
+               |          unixSync
+               |          0x7fffffffb8b0
+               |          sqlite3PagerSync
+               |          sqlite3PagerCommitPhaseOne.part.550
+               |          sqlite3BtreeCommitPhaseOne.part.551
+               |          sqlite3VdbeHalt
+               |          sqlite3VdbeExec
+               |          sqlite3_step
+               |          shell_exec.constprop.16
+               |          process_input
+               |          main
+               |          generic_start_main.isra.0
+               |          __libc_start_main
+               |          0
+               |          
+                --0.54%--kmem_cache_alloc
+                          ext4_init_io_end
+                          ext4_writepages
+                          do_writepages
+                          __filemap_fdatawrite_range
+                          file_write_and_wait_range
+                          ext4_sync_file
+                          __se_sys_fdatasync
+                          system_call
+                          fdatasync
+                          unixSync
+                          unixWrite
+                          syncJournal
+                          sqlite3PagerCommitPhaseOne.part.550
+                          sqlite3BtreeCommitPhaseOne.part.551
+                          sqlite3VdbeHalt
+                          sqlite3VdbeExec
+                          sqlite3_step
+                          shell_exec.constprop.16
+                          process_input
+                          main
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     1.08%             2  [kernel.kallsyms]    [k] msr_check_and_set                       -      -            
+            |          
+            |--0.54%--0xc00000000001e9d0
+            |          __libc_fcntl64
+            |          0x10
+            |          unixFileLock
+            |          unixLock
+            |          pagerLockDb.part.46
+            |          sqlite3BtreeBeginTrans
+            |          sqlite3VdbeExec
+            |          sqlite3_step
+            |          shell_exec.constprop.16
+            |          process_input
+            |          main
+            |          generic_start_main.isra.0
+            |          __libc_start_main
+            |          0
+            |          
+             --0.54%--0xc00000000001e9c4
+                       _dl_sysdep_read_whole_file
+                       _dl_load_cache_lookup
+                       _dl_map_object
+                       openaux
+                       _dl_catch_exception
+                       _dl_map_object_deps
+                       dl_main
+                       _dl_sysdep_start
+                       _dl_start_final
+                       _dl_start
+                       _start
+
+     1.08%             2  libperl.so.5.26.3    [.] Perl_yylex                              -      -            
+            |
+            ---Perl_yylex
+               Perl_yyparse
+               |          
+               |--0.54%--0x7ffff7e44ce8
+               |          Perl_pp_require
+               |          Perl_runops_standard
+               |          Perl_call_sv
+               |          Perl_call_list
+               |          0x7ffff7d1bcd0
+               |          Perl_newATTRSUB_x
+               |          Perl_utilize
+               |          Perl_yyparse
+               |          0x7ffff7e44ce8
+               |          Perl_pp_require
+               |          Perl_runops_standard
+               |          Perl_call_sv
+               |          Perl_call_list
+               |          0x7ffff7d1bcd0
+               |          Perl_newATTRSUB_x
+               |          Perl_utilize
+               |          Perl_yyparse
+               |          perl_parse
+               |          0x100000e7c
+               |          generic_start_main.isra.0
+               |          __libc_start_main
+               |          0
+               |          
+                --0.54%--perl_parse
+                          0x100000e7c
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     0.54%             1  [JIT] tid 7480       [.] 0x00007fff881512d0                      -      -            
+            |
+            ---0x7fff881512d0
+               0x7fff881512b8
+               0x7fff8800a074
+               0x7fff88009f14
+               0x7fff8800a074
+               0x7fff8800a074
+               0x7fff8800093c
+               JavaCalls::call_helper
+               os::os_exception_wrapper
+               JavaCalls::call_virtual
+               JavaCalls::call_virtual
+               thread_entry
+               JavaThread::thread_main_inner
+               JavaThread::run
+               java_start
+               start_thread
+               __clone
+
+     0.54%             1  [kernel.kallsyms]    [k] __fget                                  -      -            
+            |
+            ---__fget
+               __fdget
+               __se_sys_epoll_wait
+               system_call
+               epoll_wait
+               epoll_wait
+               0x1387bcc80
+               0x138797070
+               g_main_context_check
+               0x7fff8ac98e68
+               g_main_loop_run
+               0x1385dcd10
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  [kernel.kallsyms]    [k] __jbd2_journal_file_buffer              -      -            
+            |
+            ---__jbd2_journal_file_buffer
+               __jbd2_journal_file_buffer
+               jbd2_journal_write_metadata_buffer
+               jbd2_journal_commit_transaction
+               kjournald2
+               kthread
+               ret_from_kernel_thread
+
+     0.54%             1  [kernel.kallsyms]    [k] __mark_inode_dirty                      -      -            
+            |
+            ---__mark_inode_dirty
+               __mark_inode_dirty
+               0
+               ext4_setattr
+               notify_change
+               chown_common.isra.1
+               __se_sys_fchown
+               system_call
+               __GI___fchown
+               posixFchown
+               unixOpen
+               pager_write
+               insertCell
+               sqlite3BtreeInsert
+               sqlite3VdbeExec
+               sqlite3_step
+               shell_exec.constprop.16
+               process_input
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  [kernel.kallsyms]    [k] __pmd_alloc                             -      -            
+            |
+            ---__pmd_alloc
+               copy_page_range
+               copy_mm
+               copy_process.isra.4.part.5
+               _do_fork.constprop.7
+               ppc_clone
+               __libc_fork
+               __libc_fork
+               make_child
+               0x10004f084
+               execute_command_internal
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               0x1000534fc
+               execute_command_internal
+               execute_command
+               reader_loop
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  [kernel.kallsyms]    [k] __schedule                              -      -            
+            |
+            ---__schedule
+               __schedule
+               schedule
+               io_schedule
+               wait_on_page_bit.constprop.13
+               __filemap_fdatawait_range
+               file_write_and_wait_range
+               ext4_sync_file
+               __se_sys_fdatasync
+               system_call
+               fdatasync
+               unixSync
+               0x10148040
+               syncJournal
+               sqlite3PagerCommitPhaseOne.part.550
+               sqlite3BtreeCommitPhaseOne.part.551
+               sqlite3VdbeHalt
+               sqlite3VdbeExec
+               sqlite3_step
+               shell_exec.constprop.16
+               process_input
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  [kernel.kallsyms]    [k] _raw_spin_lock                          -      -            
+            |
+            ---_raw_spin_lock
+               rcu_gp_kthread
+               rcu_gp_kthread
+               kthread
+               ret_from_kernel_thread
+
+     0.54%             1  [kernel.kallsyms]    [k] _raw_spin_lock_bh                       -      -            
+            |
+            ---_raw_spin_lock_bh
+               packet_poll
+               packet_poll
+               sock_poll
+               ep_read_events_proc
+               ep_eventpoll_poll
+               do_sys_poll
+               __se_sys_poll
+               system_call
+               __poll
+               __poll
+               g_poll
+               0x7fff8ac98ee4
+               g_main_loop_run
+               0x1385dcd10
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  [kernel.kallsyms]    [k] _raw_spin_lock_irqsave                  -      -            
+            |
+            ---_raw_spin_lock_irqsave
+               hrtimer_interrupt
+               0
+               timer_interrupt
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.54%             1  [kernel.kallsyms]    [k] arch_local_irq_restore                  -      -            
+            |
+            ---arch_local_irq_restore
+               generic_make_request_checks
+               0
+               generic_make_request
+               __map_bio
+               __split_and_process_non_flush
+               __split_and_process_bio
+               dm_process_bio
+               dm_make_request
+               generic_make_request
+               submit_bio
+               submit_bh_wbc
+               jbd2_journal_commit_transaction
+               kjournald2
+               kthread
+               ret_from_kernel_thread
+
+     0.54%             1  [kernel.kallsyms]    [k] cleanup_module                          -      -            
+            |
+            ---cleanup_module
+               ext4_io_submit
+               ext4_writepages
+               do_writepages
+               __filemap_fdatawrite_range
+               file_write_and_wait_range
+               ext4_sync_file
+               __se_sys_fdatasync
+               system_call
+               fdatasync
+               unixSync
+               0x7fffffffb8b0
+               sqlite3PagerSync
+               sqlite3PagerCommitPhaseOne.part.550
+               sqlite3BtreeCommitPhaseOne.part.551
+               sqlite3VdbeHalt
+               sqlite3VdbeExec
+               sqlite3_step
+               shell_exec.constprop.16
+               process_input
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  [kernel.kallsyms]    [k] ext4_dirty_inode                        -      -            
+            |
+            ---ext4_dirty_inode
+               ext4_dirty_inode
+               __mark_inode_dirty
+               ext4_da_update_reserve_space
+               ext4_ext_map_blocks
+               ext4_map_blocks
+               ext4_writepages
+               do_writepages
+               __filemap_fdatawrite_range
+               file_write_and_wait_range
+               ext4_sync_file
+               __se_sys_fdatasync
+               system_call
+               fdatasync
+               unixSync
+               0x10148040
+               syncJournal
+               sqlite3PagerCommitPhaseOne.part.550
+               sqlite3BtreeCommitPhaseOne.part.551
+               sqlite3VdbeHalt
+               sqlite3VdbeExec
+               sqlite3_step
+               shell_exec.constprop.16
+               process_input
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  [kernel.kallsyms]    [k] ext4_do_update_inode.isra.6             -      -            
+            |
+            ---ext4_do_update_inode.isra.6
+               ext4_do_update_inode.isra.6
+               ext4_mark_iloc_dirty
+               ext4_mark_inode_dirty
+               ext4_dirty_inode
+               __mark_inode_dirty
+               generic_update_time
+               file_update_time
+               __generic_file_write_iter
+               ext4_file_write_iter
+               new_sync_write
+               __se_sys_write
+               system_call
+               __libc_write
+               seekAndWriteFd
+               0
+               unixWrite
+               pager_write_pagelist
+               sqlite3PagerCommitPhaseOne.part.550
+               sqlite3BtreeCommitPhaseOne.part.551
+               sqlite3VdbeHalt
+               sqlite3VdbeExec
+               sqlite3_step
+               shell_exec.constprop.16
+               process_input
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  [kernel.kallsyms]    [k] ext4_ext_rm_leaf                        -      -            
+            |
+            ---ext4_ext_rm_leaf
+               ext4_ext_remove_space
+               ext4_truncate
+               ext4_evict_inode
+               evict
+               do_unlinkat
+               system_call
+               __GI___unlink
+               unixDelete
+               pager_end_transaction
+               sqlite3BtreeCommitPhaseTwo.part.529
+               sqlite3VdbeHalt
+               sqlite3VdbeExec
+               sqlite3_step
+               shell_exec.constprop.16
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  [kernel.kallsyms]    [k] filenametr_cmp                          -      -            
+            |
+            ---filenametr_cmp
+               hashtab_search
+               security_compute_sid.part.15
+               selinux_inode_create
+               security_inode_create
+               lookup_open
+               do_last
+               path_openat
+               do_filp_open
+               do_sys_open
+               system_call
+               __open64
+               posixOpen
+               verifyDbFile
+               robust_open
+               unixOpen
+               pager_write
+               insertCell
+               sqlite3BtreeInsert
+               sqlite3VdbeExec
+               sqlite3_step
+               shell_exec.constprop.16
+               process_input
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  [kernel.kallsyms]    [k] hrtimer_cancel                          -      -            
+            |
+            ---hrtimer_cancel
+               tick_nohz_restart_sched_tick
+               0
+               tick_nohz_idle_exit
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.54%             1  [kernel.kallsyms]    [k] hrtimer_force_reprogram                 -      -            
+            |
+            ---hrtimer_force_reprogram
+               hrtimer_try_to_cancel.part.2
+               hrtimer_try_to_cancel.part.2
+               hrtimer_cancel
+               tick_nohz_stop_tick
+               tick_nohz_idle_stop_tick
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.54%             1  [kernel.kallsyms]    [k] icp_hv_get_irq                          -      -            
+            |
+            ---icp_hv_get_irq
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.54%             1  [kernel.kallsyms]    [k] idle_cpu                                -      -            
+            |
+            ---idle_cpu
+               _nohz_idle_balance
+               pick_next_task_fair
+               __schedule
+               schedule
+               schedule_timeout
+               rcu_gp_kthread
+               kthread
+               ret_from_kernel_thread
+
+     0.54%             1  [kernel.kallsyms]    [k] jbd2_journal_commit_transaction         -      -            
+            |
+            ---jbd2_journal_commit_transaction
+               jbd2_journal_commit_transaction
+               kjournald2
+               kthread
+               ret_from_kernel_thread
+
+     0.54%             1  [kernel.kallsyms]    [k] kmem_cache_alloc                        -      -            
+            |
+            ---kmem_cache_alloc
+               kmem_cache_alloc
+               jbd2__journal_start
+               __ext4_journal_start_sb
+               ext4_da_write_begin
+               generic_perform_write
+               __generic_file_write_iter
+               ext4_file_write_iter
+               new_sync_write
+               __se_sys_write
+               system_call
+               __libc_write
+               seekAndWriteFd
+               0x7fffffffb7e0
+               unixWrite
+               syncJournal
+               sqlite3PagerCommitPhaseOne.part.550
+               sqlite3BtreeCommitPhaseOne.part.551
+               sqlite3VdbeHalt
+               sqlite3VdbeExec
+               sqlite3_step
+               shell_exec.constprop.16
+               process_input
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  [kernel.kallsyms]    [k] kmem_cache_free                         -      -            
+            |
+            ---kmem_cache_free
+               free_buffer_head
+               0
+               try_to_free_buffers
+               jbd2_journal_try_to_free_buffers
+               ext4_releasepage
+               try_to_release_page
+               block_invalidatepage
+               ext4_invalidatepage
+               truncate_cleanup_page
+               truncate_inode_pages_range
+               ext4_evict_inode
+               evict
+               do_unlinkat
+               system_call
+               __GI___unlink
+               unixDelete
+               pager_end_transaction
+               sqlite3BtreeCommitPhaseTwo.part.529
+               sqlite3VdbeHalt
+               sqlite3VdbeExec
+               sqlite3_step
+               shell_exec.constprop.16
+               process_input
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  [kernel.kallsyms]    [k] ktime_get                               -      -            
+            |
+            ---ktime_get
+               clockevents_program_event
+               0
+               tick_program_event
+               hrtimer_interrupt
+               timer_interrupt
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.54%             1  [kernel.kallsyms]    [k] ktime_get_update_offsets_now            -      -            
+            |
+            ---ktime_get_update_offsets_now
+               hrtimer_interrupt
+               0
+               timer_interrupt
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.54%             1  [kernel.kallsyms]    [k] load_balance                            -      -            
+            |
+            ---load_balance
+               load_balance
+               rebalance_domains
+               __softirqentry_text_start
+               irq_exit
+               timer_interrupt
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.54%             1  [kernel.kallsyms]    [k] menu_select                             -      -            
+            |
+            ---menu_select
+               menu_select
+               cpuidle_select
+               do_idle
+               cpu_startup_entry
+               rest_init
+               start_kernel
+               start_here_common
+
+     0.54%             1  [kernel.kallsyms]    [k] mpage_process_page_bufs                 -      -            
+            |
+            ---mpage_process_page_bufs
+               mpage_prepare_extent_to_map
+               mpage_prepare_extent_to_map
+               ext4_writepages
+               do_writepages
+               __writeback_single_inode
+               writeback_sb_inodes
+               __writeback_inodes_wb
+               wb_writeback
+               wb_workfn
+               process_one_work
+               worker_thread
+               kthread
+               ret_from_kernel_thread
+
+     0.54%             1  [kernel.kallsyms]    [k] napi_complete_done                      -      -            
+            |
+            ---napi_complete_done
+               ibmveth_poll
+               ibmveth_poll
+               net_rx_action
+               __softirqentry_text_start
+               irq_exit
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.54%             1  [kernel.kallsyms]    [k] nf_hook_slow                            -      -            
+            |
+            ---nf_hook_slow
+               nf_hook_slow
+               ip_rcv
+               __netif_receive_skb_core
+               netif_receive_skb_internal
+               napi_gro_receive
+               ibmveth_poll
+               net_rx_action
+               __softirqentry_text_start
+               irq_exit
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.54%             1  [kernel.kallsyms]    [k] nft_do_chain_ipv4                       -      -            
+            |
+            ---nft_do_chain_ipv4
+               nf_hook_slow
+               ip_local_deliver
+               ip_rcv
+               __netif_receive_skb_core
+               netif_receive_skb_internal
+               napi_gro_receive
+               ibmveth_poll
+               net_rx_action
+               __softirqentry_text_start
+               irq_exit
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.54%             1  [kernel.kallsyms]    [k] prep_new_page                           -      -            
+            |
+            ---prep_new_page
+               get_page_from_freelist
+               __alloc_pages_nodemask
+               alloc_pages_current
+               pmd_fragment_alloc
+               __pmd_alloc
+               copy_page_range
+               copy_mm
+               copy_process.isra.4.part.5
+               _do_fork.constprop.7
+               ppc_clone
+               __libc_fork
+               __libc_fork
+               make_child
+               0x10004e60c
+               execute_command_internal
+               0x1000553ec
+               execute_command_internal
+               execute_command
+               reader_loop
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  [kernel.kallsyms]    [k] radix_tree_lookup                       -      -            
+            |
+            ---radix_tree_lookup
+               generic_handle_irq
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.54%             1  [kernel.kallsyms]    [k] rcu_gp_kthread                          -      -            
+            |
+            ---rcu_gp_kthread
+               rcu_gp_kthread
+               kthread
+               ret_from_kernel_thread
+
+     0.54%             1  [kernel.kallsyms]    [k] rcu_idle_enter                          -      -            
+            |
+            ---rcu_idle_enter
+               do_idle
+               cpu_startup_entry
+               rest_init
+               start_kernel
+               start_here_common
+
+     0.54%             1  [kernel.kallsyms]    [k] rcu_irq_exit                            -      -            
+            |
+            ---rcu_irq_exit
+               irq_exit
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.54%             1  [kernel.kallsyms]    [k] rebalance_domains                       -      -            
+            |
+            ---rebalance_domains
+               _nohz_idle_balance
+               _nohz_idle_balance
+               __softirqentry_text_start
+               irq_exit
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               rest_init
+               start_kernel
+               start_here_common
+
+     0.54%             1  [kernel.kallsyms]    [k] release_pages                           -      -            
+            |
+            ---release_pages
+               release_pages
+               free_pages_and_swap_cache
+               tlb_flush_mmu
+               tlb_finish_mmu
+               exit_mmap
+               mmput
+               do_exit
+               do_group_exit
+               __se_sys_exit_group
+               system_call
+
+     0.54%             1  [kernel.kallsyms]    [k] scsi_mq_get_budget                      -      -            
+            |
+            ---scsi_mq_get_budget
+               blk_mq_do_dispatch_sched
+               0
+               blk_mq_sched_dispatch_requests
+               __blk_mq_run_hw_queue
+               __blk_mq_delay_run_hw_queue
+               blk_mq_run_hw_queue
+               blk_mq_sched_insert_requests
+               blk_mq_flush_plug_list
+               blk_flush_plug_list
+               blk_finish_plug
+               ext4_writepages
+               do_writepages
+               __filemap_fdatawrite_range
+               file_write_and_wait_range
+               ext4_sync_file
+               __se_sys_fdatasync
+               system_call
+               fdatasync
+               unixSync
+               unixWrite
+               syncJournal
+               sqlite3PagerCommitPhaseOne.part.550
+               sqlite3BtreeCommitPhaseOne.part.551
+               sqlite3VdbeHalt
+               sqlite3VdbeExec
+               sqlite3_step
+               shell_exec.constprop.16
+               process_input
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  [kernel.kallsyms]    [k] smp_call_function_single                -      -            
+            |
+            ---smp_call_function_single
+               smp_call_function_single
+               event_function_call
+               perf_event_for_each_child
+               _perf_ioctl
+               perf_ioctl
+               do_vfs_ioctl
+               __se_sys_ioctl
+               system_call
+               __GI___ioctl
+               perf_evsel__disable
+               0x3
+               perf_evlist__disable
+               cmd_record
+               0x1001a9ed4
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  [kernel.kallsyms]    [k] update_vsyscall                         -      -            
+            |
+            ---update_vsyscall
+               timekeeping_update
+               timekeeping_advance
+               tick_do_update_jiffies64.part.4
+               tick_irq_enter
+               irq_enter
+               timer_interrupt
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.54%             1  gawk                 [.] 0x0000000000017d00                      -      -            
+            |
+            ---0x100017d00
+               0x10001b3b4
+               0x100024370
+               0x10000e618
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  libc-2.28.so         [.] __GI___memmem                           -      -            
+            |
+            ---__GI___memmem
+               __GI___memmem
+               _nl_find_locale
+               setlocale
+               rpmcliInit
+               0x1000019a0
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  libc-2.28.so         [.] __mbrtowc                               -      -            
+            |
+            ---__mbrtowc
+               mbschr
+               mbschr
+               0x1000aba9c
+               0x1000abfe8
+               set_locale_var
+               set_default_lang
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  libc-2.28.so         [.] __memcpy_power7                         -      -            
+            |
+            ---__memcpy_power7
+               _IO_getdelim
+               0x10000d3a4
+               0x100009190
+               0x10000a054
+               0x10000b978
+               0x100003a9c
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  libc-2.28.so         [.] __strlen_power8                         -      -            
+            |
+            ---__strlen_power8
+               mbschr
+               0x1000aba9c
+               set_locale_var
+               set_default_lang
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  libc-2.28.so         [.] _int_malloc                             -      -            
+            |
+            ---_int_malloc
+               __libc_calloc
+               Perl_safesyscalloc
+               Perl_yylex
+               Perl_yyparse
+               0x7ffff7e44ce8
+               Perl_pp_require
+               Perl_runops_standard
+               Perl_call_sv
+               Perl_call_list
+               0x7ffff7d1bcd0
+               Perl_newATTRSUB_x
+               Perl_utilize
+               Perl_yyparse
+               0x7ffff7e44ce8
+               Perl_pp_require
+               Perl_runops_standard
+               Perl_call_sv
+               Perl_call_list
+               0x7ffff7d1bcd0
+               Perl_newATTRSUB_x
+               Perl_utilize
+               Perl_yyparse
+               perl_parse
+               0x100000e7c
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  libc-2.28.so         [.] realloc                                 -      -            
+            |
+            ---realloc
+               local_getline
+               local_getline
+               process_input
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  libcrypto.so.1.1.1c  [.] 0x0000000000219d40                      -      -            
+            |
+            ---0x7ffff7689d40
+               0x7ffff7689494
+               0x7ffff7664fbc
+               SHA256_Update
+               0x7ffff760b920
+               EVP_DigestUpdate
+               rpmDigestUpdate
+               rpmDigestBundleUpdate
+               headerCheck
+               rpmdbNextIterator
+               0x7ffff7efc060
+               rpmcliArgIter
+               rpmcliQuery
+               0x1000020f4
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  libdb-5.3.so         [.] 0x0000000000030f80                      -      -            
+            |
+            ---0x7ffff7be0f80
+               __db_pthread_mutex_unlock
+               __memp_mf_discard
+               __memp_fclose
+               __db_refresh
+               __db_close
+               __db_close_pp
+               0x7ffff7ec8ce8
+               0x7ffff7ecc028
+               0x7ffff7ed80f0
+               rpmtsCloseDB
+               rpmtsFree
+               0x100001ef8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  libperl.so.5.26.3    [.] Perl_alloccopstash                      -      -            
+            |
+            ---Perl_alloccopstash
+               Perl_newSTATEOP
+               Perl_yyparse
+               0x7ffff7e44ce8
+               Perl_pp_require
+               Perl_runops_standard
+               Perl_call_sv
+               Perl_call_list
+               0x7ffff7d1bcd0
+               Perl_newATTRSUB_x
+               Perl_utilize
+               Perl_yyparse
+               0x7ffff7e44ce8
+               Perl_pp_require
+               Perl_runops_standard
+               Perl_call_sv
+               Perl_call_list
+               0x7ffff7d1bcd0
+               Perl_newATTRSUB_x
+               Perl_utilize
+               Perl_yyparse
+               perl_parse
+               0x100000e7c
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  libperl.so.5.26.3    [.] Perl_keyword                            -      -            
+            |
+            ---Perl_keyword
+               Perl_yylex
+               Perl_yyparse
+               0x7ffff7e44ce8
+               Perl_pp_require
+               Perl_runops_standard
+               Perl_call_sv
+               Perl_call_list
+               0x7ffff7d1bcd0
+               Perl_newATTRSUB_x
+               Perl_utilize
+               Perl_yyparse
+               perl_parse
+               0x100000e7c
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  libperl.so.5.26.3    [.] Perl_op_sibling_splice                  -      -            
+            |
+            ---Perl_op_sibling_splice
+               Perl_op_append_elem
+               Perl_yyparse
+               0x7ffff7e44ce8
+               Perl_pp_require
+               Perl_runops_standard
+               Perl_call_sv
+               Perl_call_list
+               0x7ffff7d1bcd0
+               Perl_newATTRSUB_x
+               Perl_utilize
+               Perl_yyparse
+               perl_parse
+               0x100000e7c
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  libperl.so.5.26.3    [.] Perl_pp_or                              -      -            
+            |
+            ---Perl_pp_or
+               Perl_runops_standard
+               perl_run
+               0x100000fa0
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  libperl.so.5.26.3    [.] Perl_pp_seq                             -      -            
+            |
+            ---Perl_pp_seq
+               perl_run
+               0x100000fa0
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  libperl.so.5.26.3    [.] Perl_sv_clear                           -      -            
+            |
+            ---Perl_sv_clear
+               Perl_sv_free2
+               0x7ffff7d1c7f8
+               0x7ffff7d1c3c0
+               0x7ffff7d1c3c0
+               0x7ffff7d1c3c0
+               0x7ffff7d1c3c0
+               Perl_finalize_optree
+               0x7ffff7d1e33c
+               Perl_newPROG
+               Perl_yyparse
+               0x7ffff7e44ce8
+               Perl_pp_require
+               Perl_runops_standard
+               Perl_call_sv
+               Perl_call_list
+               0x7ffff7d1bcd0
+               Perl_newATTRSUB_x
+               Perl_utilize
+               Perl_yyparse
+               0x7ffff7e44ce8
+               Perl_pp_require
+               Perl_runops_standard
+               Perl_call_sv
+               Perl_call_list
+               0x7ffff7d1bcd0
+               Perl_newATTRSUB_x
+               Perl_utilize
+               Perl_yyparse
+               perl_parse
+               0x100000e7c
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  libperl.so.5.26.3    [.] Perl_yyparse                            -      -            
+            |
+            ---Perl_yyparse
+               0x7ffff7e44ce8
+               Perl_pp_require
+               Perl_runops_standard
+               Perl_call_sv
+               Perl_call_list
+               0x7ffff7d1bcd0
+               Perl_newATTRSUB_x
+               Perl_utilize
+               Perl_yyparse
+               0x7ffff7e44ce8
+               Perl_pp_require
+               Perl_runops_standard
+               Perl_call_sv
+               Perl_call_list
+               0x7ffff7d1bcd0
+               Perl_newATTRSUB_x
+               Perl_utilize
+               Perl_yyparse
+               perl_parse
+               0x100000e7c
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  libperl.so.5.26.3    [.] 0x0000000000033a40                      -      -            
+            |
+            ---0x7ffff7d13a40
+               Perl_newSTATEOP
+               Perl_yyparse
+               0x7ffff7e44ce8
+               Perl_pp_require
+               Perl_runops_standard
+               Perl_call_sv
+               Perl_call_list
+               0x7ffff7d1bcd0
+               Perl_newATTRSUB_x
+               Perl_utilize
+               Perl_yyparse
+               0x7ffff7e44ce8
+               Perl_pp_require
+               Perl_runops_standard
+               Perl_call_sv
+               Perl_call_list
+               0x7ffff7d1bcd0
+               Perl_newATTRSUB_x
+               Perl_utilize
+               Perl_yyparse
+               perl_parse
+               0x100000e7c
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  librpmio.so.8.1.0    [.] 0x000000000001429c                      -      -            
+            |
+            ---0x7ffff7e6429c
+               0x7ffff7e6460c
+               0x7ffff7e64914
+               rpmInitMacros
+               rpmReadConfigFiles
+               rpmcliConfigured
+               rpmcliInit
+               0x1000019a0
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  sed                  [.] 0x00000000000149fc                      -      -            
+            |
+            ---0x1000149fc
+               0x100014cd4
+               0x10000c818
+               0x10000aa7c
+               0x10000b95c
+               0x100003a9c
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  [unknown]            [H] 0x0000000000000c14                      -      -            
+            |
+            ---0xc14
+               icp_hv_cause_ipi
+               smp_pseries_cause_ipi
+               arch_send_call_function_single_ipi
+               generic_exec_single
+               smp_call_function_single_async
+               __blk_complete_request
+               blk_mq_complete_request
+               scsi_mq_done
+               handle_cmd_rsp
+               ibmvscsi_handle_crq
+               ibmvscsi_task
+               tasklet_action_common.isra.3
+               __softirqentry_text_start
+               irq_exit
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               rest_init
+               start_kernel
+               start_here_common
+
+     0.54%             1  [unknown]            [H] 0x0000000000008048                      -      -            
+            |
+            ---0x8048
+               tce_freemulti_pSeriesLP
+               __iommu_free
+               ppc_iommu_unmap_sg
+               dma_iommu_unmap_sg
+               scsi_dma_unmap
+               handle_cmd_rsp
+               ibmvscsi_handle_crq
+               ibmvscsi_task
+               tasklet_action_common.isra.3
+               __softirqentry_text_start
+               irq_exit
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               rest_init
+               start_kernel
+               start_here_common
+
+     0.54%             1  [unknown]            [H] 0x00000000002e4e90                      -      -            
+            |
+            ---0x2e4e90
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.54%             1  [unknown]            [H] 0x00000000002e56dc                      -      -            
+            |
+            ---0x2e56dc
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.54%             1  [unknown]            [H] 0x00000000003023f8                      -      -            
+            |
+            ---0x3023f8
+               tce_freemulti_pSeriesLP
+               __iommu_free
+               ppc_iommu_unmap_sg
+               dma_iommu_unmap_sg
+               scsi_dma_unmap
+               handle_cmd_rsp
+               ibmvscsi_handle_crq
+               ibmvscsi_task
+               tasklet_action_common.isra.3
+               __softirqentry_text_start
+               irq_exit
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               rest_init
+               start_kernel
+               start_here_common
+
+     0.54%             1  [unknown]            [H] 0x000000000036867c                      -      -            
+            |
+            ---0x36867c
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.54%             1  [unknown]            [H] 0x000000000036e9b8                      -      -            
+            |
+            ---0x36e9b8
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.54%             1  [unknown]            [H] 0x000000000037a808                      -      -            
+            |
+            ---0x37a808
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.54%             1  [unknown]            [H] 0x0000000000385cb0                      -      -            
+            |
+            ---0x385cb0
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               rest_init
+               start_kernel
+               start_here_common
+
+     0.54%             1  [unknown]            [H] 0x000000000038f5a0                      -      -            
+            |
+            ---0x38f5a0
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               rest_init
+               start_kernel
+               start_here_common
+
+     0.54%             1  [unknown]            [H] 0x00000000003d6544                      -      -            
+            |
+            ---0x3d6544
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.54%             1  [unknown]            [H] 0x0000000000452d58                      -      -            
+            |
+            ---0x452d58
+               tce_build_pSeriesLP.isra.1
+               ppc_iommu_map_sg
+               dma_iommu_map_sg
+               scsi_dma_map
+               ibmvscsi_queuecommand
+               scsi_queue_rq
+               blk_mq_dispatch_rq_list
+               blk_mq_do_dispatch_sched
+               blk_mq_sched_dispatch_requests
+               __blk_mq_run_hw_queue
+               __blk_mq_delay_run_hw_queue
+               blk_mq_run_hw_queue
+               blk_mq_sched_insert_requests
+               blk_mq_flush_plug_list
+               blk_flush_plug_list
+               blk_finish_plug
+               jbd2_journal_commit_transaction
+               kjournald2
+               kthread
+               ret_from_kernel_thread
+
+     0.54%             1  [unknown]            [H] 0x000000000061791c                      -      -            
+            |
+            ---0x61791c
+               vio_disable_interrupts
+               ibmvscsi_handle_event
+               __handle_irq_event_percpu
+               handle_irq_event
+               handle_fasteoi_irq
+               generic_handle_irq
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               rest_init
+               start_kernel
+               start_here_common
+
+     0.54%             1  [unknown]            [H] 0x000000000062f390                      -      -            
+            |
+            ---0x62f390
+               tce_build_pSeriesLP.isra.1
+               ppc_iommu_map_sg
+               dma_iommu_map_sg
+               scsi_dma_map
+               ibmvscsi_queuecommand
+               scsi_queue_rq
+               blk_mq_dispatch_rq_list
+               blk_mq_do_dispatch_sched
+               blk_mq_sched_dispatch_requests
+               __blk_mq_run_hw_queue
+               __blk_mq_delay_run_hw_queue
+               blk_mq_run_hw_queue
+               blk_mq_sched_insert_requests
+               blk_mq_flush_plug_list
+               blk_flush_plug_list
+               blk_finish_plug
+               ext4_writepages
+               do_writepages
+               __filemap_fdatawrite_range
+               file_write_and_wait_range
+               ext4_sync_file
+               __se_sys_fdatasync
+               system_call
+               fdatasync
+               unixSync
+               0x10148040
+               syncJournal
+               sqlite3PagerCommitPhaseOne.part.550
+               sqlite3BtreeCommitPhaseOne.part.551
+               sqlite3VdbeHalt
+               sqlite3VdbeExec
+               sqlite3_step
+               shell_exec.constprop.16
+               process_input
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     0.54%             1  [unknown]            [H] 0x000000000069b0fc                      -      -            
+            |
+            ---0x69b0fc
+               ibmveth_rxq_recycle_buffer
+               ibmveth_poll
+               net_rx_action
+               __softirqentry_text_start
+               irq_exit
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.54%             1  [unknown]            [H] 0x00000000006b02b4                      -      -            
+            |
+            ---0x6b02b4
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               rest_init
+               start_kernel
+               start_here_common
+
+     0.54%             1  [unknown]            [H] 0x00000000006b02c8                      -      -            
+            |
+            ---0x6b02c8
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     0.54%             1  [unknown]            [H] 0x00000000006fbedc                      -      -            
+            |
+            ---0x6fbedc
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               rest_init
+               start_kernel
+               start_here_common
+
+
+
+#
+# (Tip: To change sampling frequency to 100 Hz: perf record -F 100)
+#

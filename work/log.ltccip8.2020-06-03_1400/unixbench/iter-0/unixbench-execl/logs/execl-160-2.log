@@ -1,0 +1,47 @@
+make all
+make[1]: Entering directory '/home/mmtests/work/sources/unixbench-5.1.3-installed'
+Checking distribution of files
+./pgms  exists
+./src  exists
+./testdir  exists
+./tmp  exists
+./results  exists
+make[1]: Leaving directory '/home/mmtests/work/sources/unixbench-5.1.3-installed'
+sh: 3dinfo: command not found
+
+   #    #  #    #  #  #    #          #####   ######  #    #   ####   #    #
+   #    #  ##   #  #   #  #           #    #  #       ##   #  #    #  #    #
+   #    #  # #  #  #    ##            #####   #####   # #  #  #       ######
+   #    #  #  # #  #    ##            #    #  #       #  # #  #       #    #
+   #    #  #   ##  #   #  #           #    #  #       #   ##  #    #  #    #
+    ####   #    #  #  #    #          #####   ######  #    #   ####   #    #
+
+   Version 5.1.3                      Based on the Byte Magazine Unix Benchmark
+
+   Multi-CPU version                  Version 5 revisions by Ian Smith,
+                                      Sunnyvale, CA, USA
+   January 13, 2011                   johantheghost at yahoo period com
+
+
+160 x Execl Throughput  1 2 3
+
+========================================================================
+   BYTE UNIX Benchmarks (Version 5.1.3)
+
+   System: ltccip8.aus.stglabs.ibm.com: GNU/Linux
+   OS: GNU/Linux -- 4.18.0-184.el8.ppc64le -- #1 SMP Wed Feb 26 04:19:23 UTC 2020
+   Machine: ppc64le (ppc64le)
+   Language: en_US.utf8 (charmap="UTF-8", collate="UTF-8")
+   14:58:58 up 51 days,  2:23,  3 users,  load average: 122.87, 71.27, 66.32; runlevel 3
+
+------------------------------------------------------------------------
+Benchmark Run: Wed Jun 03 2020 14:58:58 - 15:00:37
+0 CPUs in system; running 160 parallel copies of tests
+
+Execl Throughput                              34587.6 lps   (29.8 s, 2 samples)
+
+System Benchmarks Partial Index              BASELINE       RESULT    INDEX
+Execl Throughput                                 43.0      34587.6   8043.6
+                                                                   ========
+System Benchmarks Index Score (Partial Only)                         8043.6
+

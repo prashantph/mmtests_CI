@@ -1,0 +1,5 @@
+5442 threads, waking 680 at a time
+using futex sem operations
+main thread burns: 8749
+worker burn count total 5949315 min 1085 max 4123 avg 1093.222 +- 0.122%
+run time 30 seconds 198310 worker burns per second

@@ -1,0 +1,33 @@
+spawn ./singleuser
+
+AIM Independent Resource Benchmark - Suite IX v1.1, January 22, 1996
+Copyright (c) 1996 - 2001 Caldera International, Inc.
+All Rights Reserved
+
+Machine's name                                    : ltccip8.aus.stglabs.ibm.com
+Machine's configuration                           : 4.18.0-184.el8.ppc64le
+Number of seconds to run each test [2 to 1000]    : 15
+Path to disk files                                : /home/mmtests/work/testdisk/data
+
+
+Starting time:      Fri Jun 12 21:52:16 2020
+Projected Run Time: 0:01:00
+Projected finish:   Fri Jun 12 21:53:16 2020
+
+
+
+------------------------------------------------------------------------------------------------------------
+ Test        Test        Elapsed  Iteration    Iteration          Operation
+Number       Name      Time (sec)   Count   Rate (loops/sec)    Rate (ops/sec)
+------------------------------------------------------------------------------------------------------------
+     1 page_test           15.00       6360  424.00000       720800.00 System Allocations & Pages/second
+     2 brk_test            15.01        872   58.09460       987608.26 System Memory Allocations/second
+     3 exec_test           15.00       1351   90.06667          450.33 Program Loads/second
+     4 fork_test           15.01        521   34.71019         3471.02 Task Creations/second
+------------------------------------------------------------------------------------------------------------
+Projected Completion time:  Fri Jun 12 21:53:16 2020
+Actual Completion time:     Fri Jun 12 21:53:16 2020
+Difference:                 0:00:00
+
+AIM Independent Resource Benchmark - Suite IX
+   Testing over

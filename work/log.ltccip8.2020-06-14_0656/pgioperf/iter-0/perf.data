@@ -1,0 +1,1912 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 7K of event 'cycles'
+# Event count (approx.): 77140000000
+#
+# Overhead       Samples  Shared Object            Symbol                                       IPC   [IPC Coverage]
+# ........  ............  .......................  ...........................................  ....................
+#
+    89.76%          6924  [kernel.kallsyms]        [k] snooze_loop                              -      -            
+            |
+            ---snooze_loop
+               |          
+                --89.75%--snooze_loop
+                          cpuidle_enter_state
+                          cpuidle_enter
+                          do_idle
+                          cpu_startup_entry
+                          |          
+                          |--73.88%--start_secondary
+                          |          start_secondary_prolog
+                          |          
+                           --15.87%--rest_init
+                                     start_kernel
+                                     start_here_common
+
+     1.02%            79  [kernel.kallsyms]        [k] jbd2_journal_grab_journal_head           -      -            
+            |
+            ---jbd2_journal_grab_journal_head
+               jbd2_journal_try_to_free_buffers
+               |          
+                --0.92%--ext4_releasepage
+                          try_to_release_page
+                          invalidate_inode_page
+                          invalidate_mapping_pages
+                          drop_pagecache_sb
+                          iterate_supers
+                          drop_caches_sysctl_handler
+                          proc_sys_write
+                          __se_sys_write
+                          system_call
+                          __GI___libc_write
+                          0x1000055bc
+                          0x7fffffffd430
+                          _IO_cookie_write
+                          new_do_write
+                          _IO_do_write@@GLIBC_2.17
+                          _IO_file_close_it@@GLIBC_2.17
+                          fclose@@GLIBC_2.17
+                          0x100005278
+                          0x100004000
+                          0x100002340
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     0.70%            54  [kernel.kallsyms]        [k] __slab_free                              -      -            
+            |
+            ---__slab_free
+               |          
+                --0.57%--kmem_cache_free
+                          |          
+                           --0.53%--0
+
+     0.36%            28  [kernel.kallsyms]        [k] _raw_spin_lock                           -      -            
+     0.30%            23  [kernel.kallsyms]        [k] __list_del_entry_valid                   -      -            
+     0.22%            17  [kernel.kallsyms]        [k] drop_buffers                             -      -            
+     0.19%            15  [kernel.kallsyms]        [k] ___d_drop                                -      -            
+     0.18%            14  [kernel.kallsyms]        [k] menu_select                              -      -            
+     0.17%            13  [kernel.kallsyms]        [k] do_idle                                  -      -            
+     0.13%            10  [kernel.kallsyms]        [k] _raw_spin_lock_irqsave                   -      -            
+     0.13%            10  [kernel.kallsyms]        [k] find_next_bit                            -      -            
+     0.13%            10  [kernel.kallsyms]        [k] ktime_get                                -      -            
+     0.12%             9  [kernel.kallsyms]        [k] __next_timer_interrupt                   -      -            
+     0.12%             9  [kernel.kallsyms]        [k] free_pcppages_bulk                       -      -            
+     0.10%             8  [kernel.kallsyms]        [k] _atomic_dec_and_lock                     -      -            
+     0.10%             8  [kernel.kallsyms]        [k] _raw_spin_trylock                        -      -            
+     0.10%             8  [kernel.kallsyms]        [k] find_next_and_bit                        -      -            
+     0.10%             8  [kernel.kallsyms]        [k] page_counter_uncharge                    -      -            
+     0.10%             8  [vdso]                   [.] __kernel_clock_gettime                   -      -            
+     0.09%             7  [kernel.kallsyms]        [k] __copy_tofrom_user_power7                -      -            
+     0.09%             7  [kernel.kallsyms]        [k] release_pages                            -      -            
+     0.08%             6  [kernel.kallsyms]        [k] free_buffer_head                         -      -            
+     0.08%             6  [kernel.kallsyms]        [k] rcu_cblist_dequeue                       -      -            
+     0.08%             6  [kernel.kallsyms]        [k] rcu_idle_exit                            -      -            
+     0.08%             6  libc-2.28.so             [.] __gconv_transform_utf8_internal          -      -            
+     0.06%             5  [kernel.kallsyms]        [k] _raw_spin_lock_irq                       -      -            
+     0.06%             5  [kernel.kallsyms]        [k] cpuidle_enter_state                      -      -            
+     0.06%             5  [kernel.kallsyms]        [k] flush_count_cache                        -      -            
+     0.06%             5  [kernel.kallsyms]        [k] rcu_idle_enter                           -      -            
+     0.06%             5  [kernel.kallsyms]        [k] try_to_free_buffers                      -      -            
+     0.06%             5  [kernel.kallsyms]        [k] unlock_page                              -      -            
+     0.05%             4  [kernel.kallsyms]        [k] _raw_spin_unlock_irqrestore              -      -            
+     0.05%             4  [kernel.kallsyms]        [k] exc_virt_0x4c00_system_call              -      -            
+     0.05%             4  [kernel.kallsyms]        [k] find_busiest_group                       -      -            
+     0.05%             4  [kernel.kallsyms]        [k] find_get_entries                         -      -            
+     0.05%             4  [kernel.kallsyms]        [k] kmem_cache_free                          -      -            
+     0.05%             4  [kernel.kallsyms]        [k] sched_ttwu_pending                       -      -            
+     0.04%             3  [kernel.kallsyms]        [k] __mod_zone_page_state                    -      -            
+     0.04%             3  [kernel.kallsyms]        [k] __remove_mapping                         -      -            
+     0.04%             3  [kernel.kallsyms]        [k] __update_load_avg_cfs_rq                 -      -            
+     0.04%             3  [kernel.kallsyms]        [k] dedicated_cede_loop                      -      -            
+     0.04%             3  [kernel.kallsyms]        [k] dentry_unlink_inode                      -      -            
+     0.04%             3  [kernel.kallsyms]        [k] drop_pagecache_sb                        -      -            
+     0.04%             3  [kernel.kallsyms]        [k] es_do_reclaim_extents                    -      -            
+     0.04%             3  [kernel.kallsyms]        [k] fast_exception_return                    -      -            
+     0.04%             3  [kernel.kallsyms]        [k] free_unref_page_commit                   -      -            
+     0.04%             3  [kernel.kallsyms]        [k] idle_cpu                                 -      -            
+     0.04%             3  [kernel.kallsyms]        [k] menu_reflect                             -      -            
+     0.04%             3  [kernel.kallsyms]        [k] radix_tree_clear_tags                    -      -            
+     0.04%             3  [kernel.kallsyms]        [k] sched_clock_cpu                          -      -            
+     0.04%             3  [kernel.kallsyms]        [k] tick_nohz_next_event                     -      -            
+     0.04%             3  [vdso]                   [.] __do_get_tspec                           -      -            
+     0.04%             3  libc-2.28.so             [.] __clock_gettime                          -      -            
+     0.03%             2  [kernel.kallsyms]        [k] __block_commit_write.isra.6              -      -            
+     0.03%             2  [kernel.kallsyms]        [k] __fdget_pos                              -      -            
+     0.03%             2  [kernel.kallsyms]        [k] __list_lru_walk_one                      -      -            
+     0.03%             2  [kernel.kallsyms]        [k] __pagevec_lru_add_fn                     -      -            
+     0.03%             2  [kernel.kallsyms]        [k] __schedule                               -      -            
+     0.03%             2  [kernel.kallsyms]        [k] __softirqentry_text_start                -      -            
+     0.03%             2  [kernel.kallsyms]        [k] __srcu_read_unlock                       -      -            
+     0.03%             2  [kernel.kallsyms]        [k] __update_load_avg_se                     -      -            
+     0.03%             2  [kernel.kallsyms]        [k] _cond_resched                            -      -            
+     0.03%             2  [kernel.kallsyms]        [k] avc_lookup                               -      -            
+     0.03%             2  [kernel.kallsyms]        [k] cpuidle_select                           -      -            
+     0.03%             2  [kernel.kallsyms]        [k] enqueue_task_fair                        -      -            
+     0.03%             2  [kernel.kallsyms]        [k] finish_task_switch                       -      -            
+     0.03%             2  [kernel.kallsyms]        [k] free_unref_page_list                     -      -            
+     0.03%             2  [kernel.kallsyms]        [k] generic_file_buffered_read               -      -            
+     0.03%             2  [kernel.kallsyms]        [k] get_next_timer_interrupt                 -      -            
+     0.03%             2  [kernel.kallsyms]        [k] get_nohz_timer_target                    -      -            
+     0.03%             2  [kernel.kallsyms]        [k] handle_percpu_irq                        -      -            
+     0.03%             2  [kernel.kallsyms]        [k] hrtimer_next_event_without               -      -            
+     0.03%             2  [kernel.kallsyms]        [k] jbd2_journal_try_to_free_buffers         -      -            
+     0.03%             2  [kernel.kallsyms]        [k] llist_add_batch                          -      -            
+     0.03%             2  [kernel.kallsyms]        [k] lockref_put_or_lock                      -      -            
+     0.03%             2  [kernel.kallsyms]        [k] mem_cgroup_uncharge_list                 -      -            
+     0.03%             2  [kernel.kallsyms]        [k] mem_cgroup_update_lru_size               -      -            
+     0.03%             2  [kernel.kallsyms]        [k] path_put                                 -      -            
+     0.03%             2  [kernel.kallsyms]        [k] rb_erase                                 -      -            
+     0.03%             2  [kernel.kallsyms]        [k] rcu_gp_kthread                           -      -            
+     0.03%             2  [kernel.kallsyms]        [k] rcu_irq_exit                             -      -            
+     0.03%             2  [kernel.kallsyms]        [k] rcu_sched_clock_irq                      -      -            
+     0.03%             2  [kernel.kallsyms]        [k] rcu_segcblist_enqueue                    -      -            
+     0.03%             2  [kernel.kallsyms]        [k] resched_curr                             -      -            
+     0.03%             2  [kernel.kallsyms]        [k] sched_clock                              -      -            
+     0.03%             2  [kernel.kallsyms]        [k] sd_setup_read_write_cmnd                 -      -            
+     0.03%             2  [kernel.kallsyms]        [k] selinux_inode_free_security              -      -            
+     0.03%             2  [kernel.kallsyms]        [k] smp_ipi_demux_relaxed                    -      -            
+     0.03%             2  [kernel.kallsyms]        [k] system_call                              -      -            
+     0.03%             2  [kernel.kallsyms]        [k] tick_nohz_get_sleep_length               -      -            
+     0.03%             2  [kernel.kallsyms]        [k] timerqueue_add                           -      -            
+     0.03%             2  libc-2.28.so             [.] _dl_addr                                 -      -            
+     0.03%             2  libtcl8.6.so             [.] TclpAlloc                                -      -            
+     0.03%             2  [unknown]                [H] 0x0000000000000c04                       -      -            
+     0.03%             2  [unknown]                [H] 0x000000000037027c                       -      -            
+     0.03%             2  [unknown]                [H] 0x0000000000371a0c                       -      -            
+     0.03%             2  [unknown]                [k] 0x00000000006aefd4                       -      -            
+     0.03%             2  [unknown]                [H] 0x00000000006afb78                       -      -            
+     0.01%             1  [JIT] tid 7480           [.] 0x00007fff88151248                       -      -            
+     0.01%             1  [JIT] tid 7480           [.] 0x00007fff881512ac                       -      -            
+     0.01%             1  [kernel.kallsyms]        [k] __bitmap_and                             -      -            
+     0.01%             1  [kernel.kallsyms]        [k] __d_free_external                        -      -            
+     0.01%             1  [kernel.kallsyms]        [k] __d_lookup_rcu                           -      -            
+     0.01%             1  [kernel.kallsyms]        [k] __delete_from_page_cache                 -      -            
+     0.01%             1  [kernel.kallsyms]        [k] __es_shrink                              -      -            
+     0.01%             1  [kernel.kallsyms]        [k] __find_linux_pte                         -      -            
+     0.01%             1  [kernel.kallsyms]        [k] __free_slab                              -      -            
+     0.01%             1  [kernel.kallsyms]        [k] __inc_node_page_state                    -      -            
+     0.01%             1  [kernel.kallsyms]        [k] __mod_node_page_state                    -      -            
+     0.01%             1  [kernel.kallsyms]        [k] __note_gp_changes                        -      -            
+     0.01%             1  [kernel.kallsyms]        [k] __put_page                               -      -            
+     0.01%             1  [kernel.kallsyms]        [k] __radix_tree_lookup                      -      -            
+     0.01%             1  [kernel.kallsyms]        [k] __radix_tree_replace                     -      -            
+     0.01%             1  [kernel.kallsyms]        [k] __raise_softirq_irqoff                   -      -            
+     0.01%             1  [kernel.kallsyms]        [k] __rb_insert_augmented                    -      -            
+     0.01%             1  [kernel.kallsyms]        [k] __se_sys_llseek                          -      -            
+     0.01%             1  [kernel.kallsyms]        [k] __srcu_read_lock                         -      -            
+     0.01%             1  [kernel.kallsyms]        [k] __switch_to                              -      -            
+     0.01%             1  [kernel.kallsyms]        [k] __wake_up_common                         -      -            
+     0.01%             1  [kernel.kallsyms]        [k] _copy_from_user                          -      -            
+     0.01%             1  [kernel.kallsyms]        [k] _nohz_idle_balance                       -      -            
+     0.01%             1  [kernel.kallsyms]        [k] activate_page                            -      -            
+     0.01%             1  [kernel.kallsyms]        [k] arch_free_page                           -      -            
+     0.01%             1  [kernel.kallsyms]        [k] arch_local_irq_restore                   -      -            
+     0.01%             1  [kernel.kallsyms]        [k] avc_has_perm_noaudit                     -      -            
+     0.01%             1  [kernel.kallsyms]        [k] bdev_try_to_free_page                    -      -            
+     0.01%             1  [kernel.kallsyms]        [k] cleanup_module                           -      -            
+     0.01%             1  [kernel.kallsyms]        [k] cleanup_module                           -      -            
+     0.01%             1  [kernel.kallsyms]        [k] collect_expired_timers                   -      -            
+     0.01%             1  [kernel.kallsyms]        [k] copypage_power7                          -      -            
+     0.01%             1  [kernel.kallsyms]        [k] cpuidle_enter                            -      -            
+     0.01%             1  [kernel.kallsyms]        [k] cpuidle_reflect                          -      -            
+     0.01%             1  [kernel.kallsyms]        [k] cpus_share_cache                         -      -            
+     0.01%             1  [kernel.kallsyms]        [k] d_shrink_del                             -      -            
+     0.01%             1  [kernel.kallsyms]        [k] deactivate_task                          -      -            
+     0.01%             1  [kernel.kallsyms]        [k] do_last                                  -      -            
+     0.01%             1  [kernel.kallsyms]        [k] do_mmap                                  -      -            
+     0.01%             1  [kernel.kallsyms]        [k] es_reclaim_extents                       -      -            
+     0.01%             1  [kernel.kallsyms]        [k] exc_virt_0x4a00_doorbell_super           -      -            
+     0.01%             1  [kernel.kallsyms]        [k] ext4_data_block_valid                    -      -            
+     0.01%             1  [kernel.kallsyms]        [k] ext4_es_free_extent                      -      -            
+     0.01%             1  [kernel.kallsyms]        [k] ext4_evict_inode                         -      -            
+     0.01%             1  [kernel.kallsyms]        [k] ext4_file_getattr                        -      -            
+     0.01%             1  [kernel.kallsyms]        [k] ext4_releasepage                         -      -            
+     0.01%             1  [kernel.kallsyms]        [k] free_pcp_prepare                         -      -            
+     0.01%             1  [kernel.kallsyms]        [k] from_kgid_munged                         -      -            
+     0.01%             1  [kernel.kallsyms]        [k] fsnotify                                 -      -            
+     0.01%             1  [kernel.kallsyms]        [k] fsnotify_destroy_marks                   -      -            
+     0.01%             1  [kernel.kallsyms]        [k] generic_perform_write                    -      -            
+     0.01%             1  [kernel.kallsyms]        [k] generic_write_end                        -      -            
+     0.01%             1  [kernel.kallsyms]        [k] giveup_all                               -      -            
+     0.01%             1  [kernel.kallsyms]        [k] icp_hv_cause_ipi                         -      -            
+     0.01%             1  [kernel.kallsyms]        [k] iput                                     -      -            
+     0.01%             1  [kernel.kallsyms]        [k] irq_enter                                -      -            
+     0.01%             1  [kernel.kallsyms]        [k] irq_exit                                 -      -            
+     0.01%             1  [kernel.kallsyms]        [k] irq_work_needs_cpu                       -      -            
+     0.01%             1  [kernel.kallsyms]        [k] kmem_cache_alloc                         -      -            
+     0.01%             1  [kernel.kallsyms]        [k] lockref_mark_dead                        -      -            
+     0.01%             1  [kernel.kallsyms]        [k] mark_page_accessed                       -      -            
+     0.01%             1  [kernel.kallsyms]        [k] mem_cgroup_css_released                  -      -            
+     0.01%             1  [kernel.kallsyms]        [k] memcg_kmem_get_cache                     -      -            
+     0.01%             1  [kernel.kallsyms]        [k] memset                                   -      -            
+     0.01%             1  [kernel.kallsyms]        [k] need_update                              -      -            
+     0.01%             1  [kernel.kallsyms]        [k] next_zone                                -      -            
+     0.01%             1  [kernel.kallsyms]        [k] nr_running                               -      -            
+     0.01%             1  [kernel.kallsyms]        [k] num_to_str                               -      -            
+     0.01%             1  [kernel.kallsyms]        [k] pSeries_lpar_hpte_insert                 -      -            
+     0.01%             1  [kernel.kallsyms]        [k] page_cache_sync_readahead                -      -            
+     0.01%             1  [kernel.kallsyms]        [k] pagecache_get_page                       -      -            
+     0.01%             1  [kernel.kallsyms]        [k] path_init                                -      -            
+     0.01%             1  [kernel.kallsyms]        [k] pick_next_task_fair                      -      -            
+     0.01%             1  [kernel.kallsyms]        [k] plpar_hcall                              -      -            
+     0.01%             1  [kernel.kallsyms]        [k] pseries_get_random_long                  -      -            
+     0.01%             1  [kernel.kallsyms]        [k] radix_tree_lookup_slot                   -      -            
+     0.01%             1  [kernel.kallsyms]        [k] rcu_all_qs                               -      -            
+     0.01%             1  [kernel.kallsyms]        [k] rcu_core                                 -      -            
+     0.01%             1  [kernel.kallsyms]        [k] rcu_irq_enter                            -      -            
+     0.01%             1  [kernel.kallsyms]        [k] rcu_needs_cpu                            -      -            
+     0.01%             1  [kernel.kallsyms]        [k] rcu_qs                                   -      -            
+     0.01%             1  [kernel.kallsyms]        [k] refresh_cpu_vm_stats                     -      -            
+     0.01%             1  [kernel.kallsyms]        [k] scsi_queue_rq                            -      -            
+     0.01%             1  [kernel.kallsyms]        [k] show_pid_map                             -      -            
+     0.01%             1  [kernel.kallsyms]        [k] start_this_handle                        -      -            
+     0.01%             1  [kernel.kallsyms]        [k] system_call_exit                         -      -            
+     0.01%             1  [kernel.kallsyms]        [k] thread_pkey_regs_restore                 -      -            
+     0.01%             1  [kernel.kallsyms]        [k] thread_pkey_regs_save                    -      -            
+     0.01%             1  [kernel.kallsyms]        [k] tick_irq_enter                           -      -            
+     0.01%             1  [kernel.kallsyms]        [k] tick_nohz_idle_enter                     -      -            
+     0.01%             1  [kernel.kallsyms]        [k] tick_nohz_idle_exit                      -      -            
+     0.01%             1  [kernel.kallsyms]        [k] ttwu_do_wakeup.isra.6                    -      -            
+     0.01%             1  [kernel.kallsyms]        [k] unaccount_page_cache_page                -      -            
+     0.01%             1  [kernel.kallsyms]        [k] up_write                                 -      -            
+     0.01%             1  [kernel.kallsyms]        [k] update_curr                              -      -            
+     0.01%             1  [kernel.kallsyms]        [k] update_group_capacity                    -      -            
+     0.01%             1  [kernel.kallsyms]        [k] update_rq_clock                          -      -            
+     0.01%             1  [kernel.kallsyms]        [k] wait_on_page_bit_killable                -      -            
+     0.01%             1  [kernel.kallsyms]        [k] wake_page_function                       -      -            
+     0.01%             1  [kernel.kallsyms]        [k] wake_up_page_bit                         -      -            
+     0.01%             1  [kernel.kallsyms]        [k] workingset_update_node                   -      -            
+     0.01%             1  bash                     [.] legal_identifier                         -      -            
+     0.01%             1  bash                     [.] xmalloc                                  -      -            
+     0.01%             1  bash                     [.] 0x00000000000399d0                       -      -            
+     0.01%             1  bash                     [.] 0x000000000004fa24                       -      -            
+     0.01%             1  bash                     [.] 0x000000000006c8a0                       -      -            
+     0.01%             1  find                     [.] 0x0000000000007660                       -      -            
+     0.01%             1  find                     [.] 0x0000000000020288                       -      -            
+     0.01%             1  grep                     [.] 0x0000000000008b00                       -      -            
+     0.01%             1  libc-2.28.so             [.] __fcntl64_nocancel_adjusted              -      -            
+     0.01%             1  libc-2.28.so             [.] __mbrtowc                                -      -            
+     0.01%             1  libc-2.28.so             [.] __random                                 -      -            
+     0.01%             1  libc-2.28.so             [.] __random_r                               -      -            
+     0.01%             1  libc-2.28.so             [.] __strcpy_power8                          -      -            
+     0.01%             1  libc-2.28.so             [.] __strnlen_ppc_1                          -      -            
+     0.01%             1  libc-2.28.so             [.] cfree@GLIBC_2.17                         -      -            
+     0.01%             1  libc-2.28.so             [.] llseek@GLIBC_2.17                        -      -            
+     0.01%             1  libc-2.28.so             [.] malloc                                   -      -            
+     0.01%             1  libc-2.28.so             [.] realloc                                  -      -            
+     0.01%             1  libc-2.28.so             [.] sift_states_backward                     -      -            
+     0.01%             1  libglib-2.0.so.0.5600.4  [.] g_mutex_unlock                           -      -            
+     0.01%             1  libjvm.so                [.] PerfLongVariant::sample                  -      -            
+     0.01%             1  libperl.so.5.26.3        [.] Perl_op_linklist                         -      -            
+     0.01%             1  libperl.so.5.26.3        [.] Perl_yylex                               -      -            
+     0.01%             1  libtcl8.6.so             [.] Tcl_Alloc                                -      -            
+     0.01%             1  libtcl8.6.so             [.] Tcl_ParseBraces                          -      -            
+     0.01%             1  libtcl8.6.so             [.] 0x00000000000303e0                       -      -            
+     0.01%             1  libtcl8.6.so             [.] 0x00000000000db450                       -      -            
+     0.01%             1  libtcl8.6.so             [.] 0x00000000000eed6c                       -      -            
+     0.01%             1  libtcl8.6.so             [.] 0x0000000000118680                       -      -            
+     0.01%             1  libtcl8.6.so             [.] 0x0000000000160c0c                       -      -            
+     0.01%             1  libtcl8.6.so             [.] 0x000000000017bb70                       -      -            
+     0.01%             1  libtcl8.6.so             [.] 0x0000000000192980                       -      -            
+     0.01%             1  libtcl8.6.so             [.] 0x00000000001b9eec                       -      -            
+     0.01%             1  pgioperf                 [.] 00000022.plt_call.random@@GLIBC_2.17     -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000000100                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000000c00                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000000c08                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000000fb0                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000008014                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000000802c                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000000803c                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000008048                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000008054                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000008094                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000000aa20                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000000cc88                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000000ceb0                       -      -            
+     0.01%             1  [unknown]                [H] 0xc0000000000f7c80                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000002d85ac                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000002e0c68                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000002e0db8                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000002e49e4                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000002f1438                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000002f24f0                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000364a88                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000003652b0                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000003657f0                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000003658c8                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000003658f0                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000365cf4                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000365e70                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000366194                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000367de8                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000036c874                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000036eba4                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000036ecd4                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000036f050                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000370220                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000037025c                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000370270                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000003703f0                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000371854                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000003718ec                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000371d0c                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000372110                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000382c3c                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000384350                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000384578                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000385c6c                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000385c70                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000387604                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000388160                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000388164                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000038b38c                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000038b4e4                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000038b534                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000038bb7c                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000038bc38                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000038bcd4                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000038bfdc                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000038bfec                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000038fab0                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000038ffc8                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000003d1e34                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000003d2024                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000003d6dbc                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000003d6e24                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000003d9c8c                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000044237c                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000004505f0                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000004b9764                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000618918                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000064f110                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000064f154                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000659d74                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000006794cc                       -      -            
+     0.01%             1  [unknown]                [H] 0x0000000000679f20                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000006aedcc                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000006aeee4                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000006aef6c                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000006aef88                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000006af010                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000006af2d8                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000006af4f0                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000006af90c                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000006afb48                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000006aff68                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000006b02b4                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000006b1454                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000006cdd90                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000006cdf58                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000006ce5dc                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000006e907c                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000006fc194                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000006fc1b0                       -      -            
+     0.01%             1  [unknown]                [H] 0x00000000006fc1dc                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000072cf90                       -      -            
+     0.01%             1  [unknown]                [H] 0x000000000072dbfc                       -      -            
+
+
+#
+# (Tip: Sample related events with: perf record -e '{cycles,instructions}:S')
+#
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 90  of event 'cycles'
+# Event count (approx.): 900000000
+#
+# Overhead       Samples  Shared Object            Symbol                           IPC   [IPC Coverage]
+# ........  ............  .......................  ...............................  ....................
+#
+    14.44%            13  [kernel.kallsyms]        [k] snooze_loop                  -      -            
+            |
+            ---snooze_loop
+               snooze_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     4.44%             4  [vdso]                   [.] __kernel_clock_gettime       -      -            
+            |
+            ---__kernel_clock_gettime
+               |          
+               |--2.22%--__clock_gettime
+               |          0x7fff881512b8
+               |          0x7fff8800a074
+               |          0x7fff88009f14
+               |          0x7fff8800a074
+               |          0x7fff8800a074
+               |          0x7fff8800093c
+               |          JavaCalls::call_helper
+               |          os::os_exception_wrapper
+               |          JavaCalls::call_virtual
+               |          JavaCalls::call_virtual
+               |          thread_entry
+               |          JavaThread::thread_main_inner
+               |          JavaThread::run
+               |          java_start
+               |          start_thread
+               |          __clone
+               |          
+                --2.22%--__kernel_clock_gettime
+                          0x7fff88151274
+                          0x7fff8800a074
+                          0x7fff88009f14
+                          0x7fff8800a074
+                          0x7fff8800a074
+                          0x7fff8800093c
+                          JavaCalls::call_helper
+                          os::os_exception_wrapper
+                          JavaCalls::call_virtual
+                          JavaCalls::call_virtual
+                          thread_entry
+                          JavaThread::thread_main_inner
+                          JavaThread::run
+                          java_start
+                          start_thread
+                          __clone
+
+     3.33%             3  [vdso]                   [.] __do_get_tspec               -      -            
+            |
+            ---__do_get_tspec
+               __kernel_clock_gettime
+               |          
+               |--2.22%--0x7fff881512b8
+               |          0x7fff8800a074
+               |          0x7fff88009f14
+               |          0x7fff8800a074
+               |          0x7fff8800a074
+               |          0x7fff8800093c
+               |          JavaCalls::call_helper
+               |          os::os_exception_wrapper
+               |          JavaCalls::call_virtual
+               |          JavaCalls::call_virtual
+               |          thread_entry
+               |          JavaThread::thread_main_inner
+               |          JavaThread::run
+               |          java_start
+               |          start_thread
+               |          __clone
+               |          
+                --1.11%--0x7fff88151274
+                          0x7fff8800a074
+                          0x7fff88009f14
+                          0x7fff8800a074
+                          0x7fff8800a074
+                          0x7fff8800093c
+                          JavaCalls::call_helper
+                          os::os_exception_wrapper
+                          JavaCalls::call_virtual
+                          JavaCalls::call_virtual
+                          thread_entry
+                          JavaThread::thread_main_inner
+                          JavaThread::run
+                          java_start
+                          start_thread
+                          __clone
+
+     2.22%             2  [kernel.kallsyms]        [k] _raw_spin_lock               -      -            
+            |
+            ---_raw_spin_lock
+               |          
+               |--1.11%--selinux_task_to_inode
+               |          0
+               |          security_task_to_inode
+               |          pid_revalidate
+               |          lookup_fast
+               |          do_last
+               |          path_openat
+               |          do_filp_open
+               |          do_sys_open
+               |          system_call
+               |          __GI___libc_open
+               |          0x7ffff7f39950
+               |          0x7ffff7f398ec
+               |          0x7ffff7f39b84
+               |          0x7ffff7f3a8c4
+               |          readproc
+               |          0x10000b1f8
+               |          generic_start_main.isra.0
+               |          __libc_start_main
+               |          0
+               |          
+                --1.11%--__get_task_comm
+                          0
+                          proc_task_name
+                          proc_pid_status
+                          proc_single_show
+                          seq_read
+                          __se_sys_read
+                          system_call
+                          read
+                          0x7ffff7f39f74
+                          0x7ffff7f39ecc
+                          0x7ffff7f3aa48
+                          readproc
+                          0x10000b1f8
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     2.22%             2  [kernel.kallsyms]        [k] handle_mm_fault              -      -            
+            |
+            ---handle_mm_fault
+               handle_mm_fault
+               __do_page_fault
+               do_page_fault
+               handle_page_fault
+               |          
+               |--1.11%--mem_alloc_description<vec_usage>::mem_alloc_description
+               |          0x100839208
+               |          __libc_csu_init
+               |          generic_start_main.isra.0
+               |          __libc_start_main
+               |          0
+               |          
+                --1.11%--0x7ffff7d70028
+                          0x1000b4ea4
+                          0x1
+                          0x10006d5e0
+                          0x10004ebd4
+                          0x100051624
+                          0x10005529c
+                          0x100052564
+                          0x1000beaa0
+                          0x10007be0c
+                          0x100082b88
+                          0x100084b44
+                          0x100084d94
+                          0x10007cbc4
+                          0x10007d1f4
+                          0x100088200
+                          0x10004e740
+                          0x100051624
+                          0x100051ed4
+                          0x1000532fc
+                          0x100051e9c
+                          0x1000532fc
+                          0x100051e9c
+                          0x1000532fc
+                          0x100051e9c
+                          0x1000532fc
+                          0x100051e9c
+                          0x1000532fc
+                          0x100051e9c
+                          0x1000532fc
+                          0x100051e9c
+                          0x1000532fc
+                          0x100051e9c
+                          0x1000532fc
+                          0x100051e9c
+                          0x1000532fc
+                          0x100050d44
+                          0x1000532fc
+                          0x100031cb8
+                          0x10002f584
+                          0x7ffff7cf49f8
+                          0x7ffff7cf4be4
+                          0
+
+     2.22%             2  [kernel.kallsyms]        [k] mutex_unlock                 -      -            
+            |
+            ---mutex_unlock
+               |          
+               |--1.11%--kernfs_dop_revalidate
+               |          lookup_fast
+               |          walk_component
+               |          link_path_walk
+               |          path_lookupat.isra.12
+               |          filename_lookup.part.21
+               |          __se_sys_newstat
+               |          system_call
+               |          0x7ffff7de98a0
+               |          0x1000da0c4
+               |          0x1000db5ac
+               |          0x1000dc358
+               |          0x1000dc284
+               |          0x100090d44
+               |          0x100088338
+               |          0x10004e740
+               |          0x100051624
+               |          0x10005529c
+               |          0x100052564
+               |          0x1000beaa0
+               |          0x10007be0c
+               |          0x100082b88
+               |          0x100084b44
+               |          0x100084d94
+               |          0x10007cbc4
+               |          0x10007d1f4
+               |          0x100088200
+               |          0x10004e740
+               |          0x100051624
+               |          0x1000beaa0
+               |          0x1000bd9a0
+               |          0x1000bdc54
+               |          0x1000cd564
+               |          0x10004bd34
+               |          0x10004f9ec
+               |          0x100051624
+               |          0x1000532fc
+               |          0x100031cb8
+               |          0x10002f584
+               |          0x7ffff7cf49f8
+               |          0x7ffff7cf4be4
+               |          0
+               |          
+                --1.11%--seq_read
+                          __se_sys_read
+                          system_call
+                          read
+                          0x7ffff7f39f74
+                          0x7ffff7f39ecc
+                          0x7ffff7f3a958
+                          readproc
+                          0x10000b1f8
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     2.22%             2  [kernel.kallsyms]        [k] pid_revalidate               -      -            
+            |
+            ---pid_revalidate
+               |          
+               |--1.11%--pid_revalidate
+               |          lookup_fast
+               |          path_lookupat.isra.12
+               |          filename_lookup.part.21
+               |          __se_sys_newstat
+               |          system_call
+               |          __xstat64
+               |          0x7ffff7f3a7f8
+               |          readproc
+               |          0x10000b1f8
+               |          generic_start_main.isra.0
+               |          __libc_start_main
+               |          0
+               |          
+                --1.11%--lookup_fast
+                          0
+                          do_last
+                          path_openat
+                          do_filp_open
+                          do_sys_open
+                          system_call
+                          __GI___libc_open
+                          0x7ffff7f39ef0
+                          0x7ffff7f39ecc
+                          0x7ffff7f3aa48
+                          readproc
+                          0x10000b1f8
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     2.22%             2  [kernel.kallsyms]        [k] system_call_exit             -      -            
+            |
+            ---system_call_exit
+               system_call
+               |          
+               |--1.11%--__close
+               |          0x7ffff7f39f98
+               |          0x7ffff7f39ecc
+               |          0x7ffff7f3a958
+               |          readproc
+               |          0x10000b1f8
+               |          generic_start_main.isra.0
+               |          __libc_start_main
+               |          0
+               |          
+                --1.11%--__lxstat64
+                          realpath@@GLIBC_2.17
+                          lrealpath
+                          _cpp_find_file
+                          _cpp_stack_include
+                          0x10145956c
+                          _cpp_handle_directive
+                          _cpp_lex_token
+                          cpp_get_token_with_location
+                          c_lex_with_flags
+                          0x10087c9d8
+                          c_parse_file
+                          c_common_parse_file
+                          0x101368ac4
+                          toplev::main
+                          main
+                          generic_start_main.isra.0
+                          __libc_start_main
+                          0
+
+     2.22%             2  libbfd-2.30-73.el8.so    [.] bfd_elf_link_add_symbols     -      -            
+            |
+            ---bfd_elf_link_add_symbols
+               0x10002b500
+               0x10002c9b0
+               0x10002c8a0
+               0x100030458
+               0x10000e8c4
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     2.22%             2  libc-2.28.so             [.] _IO_vfscanf@@GLIBC_2.17      -      -            
+            |
+            ---_IO_vfscanf@@GLIBC_2.17
+               _IO_vfscanf@@GLIBC_2.17
+               _IO_vsscanf
+               sscanf@@GLIBC_2.17
+               0x7ffff7f386e8
+               0x7ffff7f3a96c
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  [kernel.kallsyms]        [k] __se_sys_newstat             -      -            
+            |
+            ---__se_sys_newstat
+               system_call
+               0x7ffff7de98a0
+               0x7ffff7dea9e4
+               0x1000ad16c
+               0x1000ad2e8
+               0x1000ad6dc
+               0x1000adaf0
+               0x10004f030
+               0x100051624
+               0x1000553ec
+               0x100052564
+               0x1000beaa0
+               0x10007be0c
+               0x100082b88
+               0x100084b44
+               0x100084d94
+               0x10007cbc4
+               0x10007d1f4
+               0x100088200
+               0x10004e740
+               0x100051624
+               0x100051ed4
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100050d44
+               0x1000532fc
+               0x100031cb8
+               0x10002f584
+               0x7ffff7cf49f8
+               0x7ffff7cf4be4
+               0
+
+     1.11%             1  [kernel.kallsyms]        [k] d_hash_and_lookup            -      -            
+            |
+            ---d_hash_and_lookup
+               proc_pid_readdir
+               proc_root_readdir
+               iterate_dir
+               __se_sys_getdents64
+               system_call
+               __getdents64
+               __GI___readdir64
+               0x7ffff7f38470
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  [kernel.kallsyms]        [k] do_syscall_trace_enter       -      -            
+            |
+            ---do_syscall_trace_enter
+               do_syscall_trace_enter
+               system_call_exit
+               read
+               0x10145c7bc
+               0x10145c7a4
+               _cpp_stack_file
+               _cpp_stack_include
+               0x10145956c
+               _cpp_handle_directive
+               _cpp_lex_token
+               cpp_get_token_with_location
+               c_lex_with_flags
+               0x10087c9d8
+               c_parse_file
+               c_common_parse_file
+               0x101368ac4
+               toplev::main
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  [kernel.kallsyms]        [k] dput.part.4                  -      -            
+            |
+            ---dput.part.4
+               dput.part.4
+               path_lookupat.isra.12
+               filename_lookup.part.21
+               __se_sys_newstat
+               system_call
+               __xstat64
+               0x7ffff7f3a7f8
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  [kernel.kallsyms]        [k] filenametr_cmp               -      -            
+            |
+            ---filenametr_cmp
+               hashtab_search
+               security_compute_sid.part.15
+               selinux_inode_create
+               security_inode_create
+               lookup_open
+               do_last
+               path_openat
+               do_filp_open
+               do_sys_open
+               system_call
+               __GI___libc_open
+               __gen_tempname
+               0x7fffffffbc40
+               mkstemps
+               0x10009d7d8
+               0x1000694a0
+               0x10006b224
+               0x1000683c8
+               0x10006b224
+               0x1000683c8
+               0x1000688f8
+               0x10006b224
+               0x1000683c8
+               0x10006b224
+               0x1000683c8
+               0x10006b224
+               0x1000683c8
+               0x10006b224
+               0x1000683c8
+               0x1000732dc
+               0x1000722d8
+               0x1000569c4
+               0x1000571ac
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  [kernel.kallsyms]        [k] find_next_and_bit            -      -            
+            |
+            ---find_next_and_bit
+               find_busiest_group
+               load_balance
+               rebalance_domains
+               __softirqentry_text_start
+               irq_exit
+               timer_interrupt
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     1.11%             1  [kernel.kallsyms]        [k] kmem_cache_free              -      -            
+            |
+            ---kmem_cache_free
+               kmem_cache_free
+               file_free_rcu
+               rcu_core
+               __softirqentry_text_start
+               irq_exit
+               timer_interrupt
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     1.11%             1  [kernel.kallsyms]        [k] kthread_data                 -      -            
+            |
+            ---kthread_data
+               wq_worker_comm
+               proc_task_name
+               do_task_stat
+               proc_single_show
+               seq_read
+               __se_sys_read
+               system_call
+               read
+               0x7ffff7f39f74
+               0x7ffff7f39ecc
+               0x7ffff7f3a958
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  [kernel.kallsyms]        [k] ktime_get                    -      -            
+            |
+            ---ktime_get
+               ktime_get
+               clockevents_program_event
+               tick_program_event
+               hrtimer_reprogram
+               hrtimer_start_range_ns
+               tick_nohz_stop_tick
+               tick_nohz_idle_stop_tick
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     1.11%             1  [kernel.kallsyms]        [k] memcpy_power7                -      -            
+            |
+            ---memcpy_power7
+               arch_dup_task_struct
+               0
+               copy_process.isra.4.part.5
+               _do_fork.constprop.7
+               ppc_clone
+               0x7ffff7dbc51c
+               0x7ffff7dbc4f4
+               0x10006d2bc
+               0x10007b598
+               0x100082b88
+               0x100084b44
+               0x100084d94
+               0x10007cbc4
+               0x10007d1f4
+               0x100088200
+               0x10004e740
+               0x100051624
+               0x100051ed4
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100050d44
+               0x1000532fc
+               0x100031cb8
+               0x10002f584
+               0x7ffff7cf49f8
+               0x7ffff7cf4be4
+               0
+
+     1.11%             1  [kernel.kallsyms]        [k] mempool_alloc                -      -            
+            |
+            ---mempool_alloc
+               mempool_alloc
+               bio_alloc_bioset
+               submit_bh_wbc
+               __block_write_full_page
+               blkdev_writepage
+               __writepage
+               write_cache_pages
+               generic_writepages
+               blkdev_writepages
+               do_writepages
+               __filemap_fdatawrite_range
+               fdatawrite_one_bdev
+               iterate_bdevs
+               sys_sync
+               system_call
+               sync
+               0x100001ca4
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  [kernel.kallsyms]        [k] mntput                       -      -            
+            |
+            ---mntput
+               vfs_statx
+               __se_sys_newfstatat
+               system_call
+               0x7ffff7cd9e18
+               0x10002fb68
+               0x100032214
+               0x100007b00
+               0x1000070fc
+               0x7ffff7be49f8
+               0x7ffff7be4be4
+               0
+
+     1.11%             1  [kernel.kallsyms]        [k] path_init                    -      -            
+            |
+            ---path_init
+               path_lookupat.isra.12
+               0
+               filename_lookup.part.21
+               __se_sys_newstat
+               system_call
+               0x7ffff7de98a0
+               0x1000ad658
+               0x1000adaf0
+               0x10004f030
+               0x100051624
+               0x1000553ec
+               0x100052564
+               0x1000beaa0
+               0x10007be0c
+               0x100082b88
+               0x100084b44
+               0x100084d94
+               0x10007cbc4
+               0x10007d1f4
+               0x100088200
+               0x10004e740
+               0x100051624
+               0x1000beaa0
+               0x1000bd9a0
+               0x1000bdc54
+               0x1000cd564
+               0x10004bd34
+               0x10004f9ec
+               0x100051624
+               0x1000532fc
+               0x100031cb8
+               0x10002f584
+               0x7ffff7cf49f8
+               0x7ffff7cf4be4
+               0
+
+     1.11%             1  [kernel.kallsyms]        [k] perf_iterate_sb_cpu          -      -            
+            |
+            ---perf_iterate_sb_cpu
+               perf_iterate_sb_cpu
+               perf_event_mmap
+               mmap_region
+               do_mmap
+               vm_mmap_pgoff
+               ksys_mmap_pgoff
+               __se_sys_mmap
+               system_call
+               mmap64
+               _dl_map_object_from_fd
+               _dl_map_object
+               openaux
+               _dl_catch_exception
+               _dl_map_object_deps
+               dl_main
+               _dl_sysdep_start
+               _dl_start_final
+               _dl_start
+               _start
+
+     1.11%             1  [kernel.kallsyms]        [k] pid_task                     -      -            
+            |
+            ---pid_task
+               proc_pid_readdir
+               proc_root_readdir
+               iterate_dir
+               __se_sys_getdents64
+               system_call
+               __getdents64
+               __GI___readdir64
+               0x7ffff7f38470
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  [kernel.kallsyms]        [k] rcu_all_qs                   -      -            
+            |
+            ---rcu_all_qs
+               _cond_resched
+               kmem_cache_alloc
+               getname
+               do_sys_open
+               system_call
+               __GI___libc_open
+               0x7ffff7f39ef0
+               0x7ffff7f39ecc
+               0x7ffff7f3aa48
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  [kernel.kallsyms]        [k] selinux_inode_permission     -      -            
+            |
+            ---selinux_inode_permission
+               security_inode_permission
+               0
+               inode_permission
+               link_path_walk
+               path_lookupat.isra.12
+               filename_lookup.part.21
+               __se_sys_newstat
+               system_call
+               __xstat64
+               file_status
+               0x1000ad2e8
+               0x1000ad6dc
+               search_for_command
+               0x10004f030
+               execute_command_internal
+               parse_and_execute
+               command_substitute
+               0x100082b88
+               0x100083e9c
+               0x100087660
+               0x10004e740
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command_internal
+               0x1000548c0
+               0x10004fe24
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command_internal
+               0x1000548c0
+               0x10004fe24
+               execute_command_internal
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               execute_command_internal
+               execute_command
+               reader_loop
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  [kernel.kallsyms]        [k] set_root                     -      -            
+            |
+            ---set_root
+               path_init
+               0
+               path_lookupat.isra.12
+               filename_lookup.part.21
+               __se_sys_newstat
+               system_call
+               __xstat64
+               0x7ffff7f3a7f8
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  [kernel.kallsyms]        [k] show_interrupts              -      -            
+            |
+            ---show_interrupts
+               seq_printf
+               0
+               show_interrupts
+               seq_read
+               proc_reg_read
+               __se_sys_read
+               system_call
+               read
+               read
+               _IO_file_read
+               _IO_file_underflow@@GLIBC_2.17
+               __underflow
+               _IO_getdelim
+               0x12930c6c8
+               0x129308ca8
+               0x7fffa5f29c88
+               g_main_context_dispatch
+               0x7fffa5f28f98
+               g_main_loop_run
+               0x129303218
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  [kernel.kallsyms]        [k] tick_nohz_next_event         -      -            
+            |
+            ---tick_nohz_next_event
+               tick_nohz_get_sleep_length
+               menu_select
+               cpuidle_select
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     1.11%             1  [kernel.kallsyms]        [k] timerqueue_del               -      -            
+            |
+            ---timerqueue_del
+               timerqueue_del
+               hrtimer_start_range_ns
+               tick_nohz_stop_tick
+               tick_nohz_idle_stop_tick
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     1.11%             1  [kernel.kallsyms]        [k] try_to_wake_up               -      -            
+            |
+            ---try_to_wake_up
+               try_to_wake_up
+               watchdog_timer_fn
+               __hrtimer_run_queues
+               hrtimer_interrupt
+               timer_interrupt
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     1.11%             1  [kernel.kallsyms]        [k] unlock_page                  -      -            
+            |
+            ---unlock_page
+               do_wp_page
+               __handle_mm_fault
+               handle_mm_fault
+               __do_page_fault
+               do_page_fault
+               handle_page_fault
+               0x7ffff7d6e284
+               0x7ffff7d6fee8
+               0
+               0x1000b4ea4
+               0x100096090
+               0x1000969ac
+               0x10006212c
+               0x10006822c
+               0x10006e314
+               0x100052dac
+               0x1000553ec
+               0x100052564
+               0x100051ed4
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100051e9c
+               0x1000532fc
+               0x100050d44
+               0x1000532fc
+               0x100031cb8
+               0x10002f584
+               0x7ffff7cf49f8
+               0x7ffff7cf4be4
+               0
+
+     1.11%             1  as                       [.] 0x000000000001cf18           -      -            
+            |
+            ---0x10001cf18
+               0x1000358d4
+               0x10000ca98
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  cc1                      [.] _cpp_lex_token               -      -            
+            |
+            ---_cpp_lex_token
+               _cpp_handle_directive
+               _cpp_lex_token
+               cpp_get_token_with_location
+               c_lex_with_flags
+               0x10087c9d8
+               c_parse_file
+               c_common_parse_file
+               0x101368ac4
+               toplev::main
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  cc1                      [.] df_bb_refs_record            -      -            
+            |
+            ---df_bb_refs_record
+               df_scan_blocks
+               0x1012f0264
+               execute_one_pass
+               execute_pass_list
+               cgraph_node::expand
+               symbol_table::compile
+               symbol_table::finalize_compilation_unit
+               0x101368b74
+               toplev::main
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  cc1                      [.] gimplify_expr                -      -            
+            |
+            ---gimplify_expr
+               0x100b0670c
+               gimplify_expr
+               0x100b02cd4
+               gimplify_expr
+               0x100b05bdc
+               gimplify_expr
+               0x100b069cc
+               gimplify_expr
+               0x100b08bd0
+               gimplify_expr
+               gimplify_expr
+               0x100b01d78
+               gimplify_expr
+               gimplify_function_tree
+               0x100981448
+               symbol_table::finalize_compilation_unit
+               0x101368b74
+               toplev::main
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  cc1                      [.] ht_lookup_with_hash          -      -            
+            |
+            ---ht_lookup_with_hash
+               _cpp_lex_token
+               cpp_get_token_with_location
+               c_lex_with_flags
+               c_parser_declspecs
+               0x10087dddc
+               0x10087d0b0
+               c_parse_file
+               c_common_parse_file
+               0x101368ac4
+               toplev::main
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  cc1                      [.] register_operand             -      -            
+            |
+            ---register_operand
+               0x1010eb10c
+               input_operand
+               0x1010f4b04
+               0x100b66394
+               execute_one_pass
+               execute_pass_list
+               cgraph_node::expand
+               symbol_table::compile
+               symbol_table::finalize_compilation_unit
+               0x101368b74
+               toplev::main
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  cc1                      [.] type_cache_hasher::equal     -      -            
+            |
+            ---type_cache_hasher::equal
+               type_hash_canon
+               build_function_type
+               0x100848ad4
+               start_decl
+               0x10087e3c4
+               0x10087d0b0
+               c_parse_file
+               c_common_parse_file
+               0x101368ac4
+               toplev::main
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  cc1                      [.] 0x0000000000278f2c           -      -            
+            |
+            ---0x100278f2c
+               output_asm_insn
+               0x100a862cc
+               0x100a8520c
+               execute_one_pass
+               execute_pass_list
+               cgraph_node::expand
+               symbol_table::compile
+               symbol_table::finalize_compilation_unit
+               0x101368b74
+               toplev::main
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  cc1                      [.] 0x00000000009bc818           -      -            
+            |
+            ---0x1009bc818
+               df_update_entry_exit_and_calls
+               df_process_deferred_rescans
+               df_finish_pass
+               0x100b67e5c
+               execute_one_pass
+               execute_pass_list
+               cgraph_node::expand
+               symbol_table::compile
+               symbol_table::finalize_compilation_unit
+               0x101368b74
+               toplev::main
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  cc1                      [.] 0x00000000009c43e8           -      -            
+            |
+            ---0x1009c43e8
+               0x1009c9640
+               df_insn_rescan
+               df_compute_regs_ever_live
+               0x1012f0270
+               execute_one_pass
+               execute_pass_list
+               cgraph_node::expand
+               symbol_table::compile
+               symbol_table::finalize_compilation_unit
+               0x101368b74
+               toplev::main
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  cc1                      [.] 0x0000000000f7ce40           -      -            
+            |
+            ---0x100f7ce40
+               rtx_cost
+               0x100a6188c
+               init_expmed
+               initialize_rtl
+               init_function_start
+               cgraph_node::expand
+               symbol_table::compile
+               symbol_table::finalize_compilation_unit
+               0x101368b74
+               toplev::main
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  cc1                      [.] 0x00000000011ac120           -      -            
+            |
+            ---0x1011ac120
+               0x1011abfd4
+               delete_trivially_dead_insns
+               0x100b63d70
+               execute_one_pass
+               execute_pass_list
+               cgraph_node::expand
+               symbol_table::compile
+               symbol_table::finalize_compilation_unit
+               0x101368b74
+               toplev::main
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  ld-2.28.so               [.] memset                       -      -            
+            |
+            ---memset
+               _dl_map_object_from_fd
+               _dl_map_object
+               openaux
+               _dl_catch_exception
+               _dl_map_object_deps
+               dl_main
+               _dl_sysdep_start
+               _dl_start_final
+               _dl_start
+               _start
+
+     1.11%             1  ld.bfd                   [.] 0x00000000000135a8           -      -            
+            |
+            ---0x1000135a8
+               0x100013784
+               0x1000142d8
+               0x1000101bc
+               0x1000387d4
+               0x10000e510
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  ld.bfd                   [.] 0x00000000000233e8           -      -            
+            |
+            ---0x1000233e8
+               0x100024924
+               0x10002bcf4
+               0x10002beb0
+               0x10002be90
+               0x100030848
+               0x10000e8c4
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  libbfd-2.30-73.el8.so    [.] bfd_hash_insert              -      -            
+            |
+            ---bfd_hash_insert
+               bfd_hash_lookup
+               bfd_link_hash_lookup
+               0x7ffff7e7072c
+               bfd_elf_link_add_symbols
+               0x10002b500
+               0x10002c9b0
+               0x10002c8a0
+               0x100030458
+               0x10000e8c4
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  libbfd-2.30-73.el8.so    [.] bfd_link_hash_traverse       -      -            
+            |
+            ---bfd_link_hash_traverse
+               0x7ffff7e69620
+               bfd_elf_size_dynamic_sections
+               0x10004d4f0
+               0x10003d96c
+               0x100030b28
+               0x10000e8c4
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  libbfd-2.30-73.el8.so    [.] 0x00000000000ae8b8           -      -            
+            |
+            ---0x7ffff7e6e8b8
+               bfd_hash_traverse
+               bfd_elf_final_link
+               0x100039690
+               0x10000e924
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  libc-2.28.so             [.] _IO_file_xsputn@@GLIBC_2.17  -      -            
+            |
+            ---_IO_file_xsputn@@GLIBC_2.17
+               fwrite_unlocked
+               0x100008bc4
+               0x10000957c
+               0x100009c0c
+               0x10000a5ec
+               0x1000055b4
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  libc-2.28.so             [.] __memchr_power8              -      -            
+            |
+            ---__memchr_power8
+               0x100008380
+               0x100009128
+               0x100009384
+               0x100009d2c
+               0x10000a5ec
+               0x100005600
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  libc-2.28.so             [.] __memset_power8              -      -            
+            |
+            ---__memset_power8
+               ggc_internal_cleared_alloc
+               make_node
+               0x100cebd9c
+               ht_lookup
+               get_identifier
+               add_builtin_function
+               0x1013aafb4
+               c_common_nodes_and_builtins
+               c_init_decl_processing
+               c_objc_common_init
+               toplev::main
+               main
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  libc-2.28.so             [.] __strrchr_power8             -      -            
+            |
+            ---__strrchr_power8
+               0x7ffff7f385a0
+               0x7ffff7f3a96c
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  libc-2.28.so             [.] _dl_addr                     -      -            
+            |
+            ---_dl_addr
+               _dl_addr
+               ptmalloc_init
+               malloc_hook_ini
+               malloc
+               _nl_normalize_codeset
+               _nl_load_locale_from_archive
+               _nl_find_locale
+               setlocale
+               0x100001de8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  libc-2.28.so             [.] cfree@GLIBC_2.17             -      -            
+            |
+            ---cfree@GLIBC_2.17
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  libglib-2.0.so.0.5600.4  [.] g_main_context_check         -      -            
+            |
+            ---g_main_context_check
+               0x7fff8ac98e68
+               g_main_loop_run
+               0x1385dcd10
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  libprocps.so.7.1.0       [.] 0x00000000000088bc           -      -            
+            |
+            ---0x7ffff7f388bc
+               0x7ffff7f3aa64
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  libprocps.so.7.1.0       [.] 0x000000000000a8a0           -      -            
+            |
+            ---0x7ffff7f3a8a0
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+     1.11%             1  [unknown]                [.] 0x00007ffff7d91cf0           -      -            
+            |
+            ---0x7ffff7d91cf0
+               0x100032c04
+               0x100032c04
+               0x100035d5c
+               0x1000399d8
+               0x10003df4c
+               0x10003183c
+               0x1000be5e4
+               0x1000bd9a0
+               0x1000bdc54
+               0x1000cd564
+               0x10004bd34
+               0x10004f9ec
+               0x100051624
+               0x1000532fc
+               0x100031cb8
+               0x10002f584
+               0x7ffff7cf49f8
+               0x7ffff7cf4be4
+               0
+
+     1.11%             1  [unknown]                [.] 0x00007ffff7d91e00           -      -            
+            |
+            ---0x7ffff7d91e00
+               0x100032c04
+               0x100035d5c
+               0x1000399d8
+               0x10003df4c
+               0x10003183c
+               0x1000be5e4
+               0x1000bd9a0
+               0x1000bdc54
+               0x1000cd564
+               0x10004bd34
+               0x10004f9ec
+               0x100051624
+               0x1000532fc
+               0x100031cb8
+               0x10002f584
+               0x7ffff7cf49f8
+               0x7ffff7cf4be4
+               0
+
+     1.11%             1  [unknown]                [.] 0x0000000100020280           -      -            
+            |
+            ---0x100020280
+               0x100020020
+               0x10000a984
+               0x100012558
+               0x1000094a8
+               0x100012558
+               0x10000948c
+               0x100012558
+               0x10000948c
+               0x100012558
+               0x100007c64
+               0x1000070fc
+               0x7ffff7be49f8
+               0x7ffff7be4be4
+               0
+
+     1.11%             1  [unknown]                [H] 0x00000000002e1350           -      -            
+            |
+            ---0x2e1350
+               __do_irq
+               call_do_irq
+               do_IRQ
+               plpar_hcall_norets
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               rest_init
+               start_kernel
+               start_here_common
+
+     1.11%             1  [unknown]                [H] 0x00000000003715b4           -      -            
+            |
+            ---0x3715b4
+               dedicated_cede_loop
+               cpuidle_enter_state
+               cpuidle_enter
+               do_idle
+               cpu_startup_entry
+               start_secondary
+               start_secondary_prolog
+
+     1.11%             1  [unknown]                [H] 0x000000000038b47c           -      -            
+            |
+            ---0x38b47c
+               icp_hv_cause_ipi
+               smp_pseries_cause_ipi
+               smp_send_reschedule
+               kick_ilb
+               scheduler_tick
+               update_process_times
+               tick_sched_timer
+               __hrtimer_run_queues
+               hrtimer_interrupt
+               timer_interrupt
+               errseq_sample
+               do_dentry_open
+               do_last
+               path_openat
+               do_filp_open
+               do_sys_open
+               system_call
+               __GI___libc_open
+               0x7ffff7f39ef0
+               0x7ffff7f39ecc
+               0x7ffff7f3a958
+               readproc
+               0x10000b1f8
+               generic_start_main.isra.0
+               __libc_start_main
+               0
+
+
+
+#
+# (Tip: See assembly instructions with percentage: perf annotate <symbol>)
+#

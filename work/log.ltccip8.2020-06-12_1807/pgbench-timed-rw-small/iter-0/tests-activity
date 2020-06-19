@@ -1,0 +1,19 @@
+1591965471 run-mmtests: Start
+1591965471 run-mmtests: Iteration 0 start
+1591965474 postgresbuild-bench: source-install
+1591965565 postgresbuild-bench: source-installed
+1591965570 run-mmtests: begin pgbench
+1591965571 pgbench-bench: init
+1591965579 pgbench-bench: warmup
+1591967379 pgbench-bench: 1
+1591967679 pgbench-bench: 8
+1591967979 pgbench-bench: 12
+1591968279 pgbench-bench: 24
+1591968580 pgbench-bench: 32
+1591968880 pgbench-bench: 48
+1591969180 pgbench-bench: 80
+1591969480 pgbench-bench: 112
+1591969781 pgbench-bench: 144
+1591970081 pgbench-bench: 160
+1591970397 run-mmtests: Iteration 0 end
+1591970397 run-mmtests: End

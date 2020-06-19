@@ -10,17 +10,11 @@ RUNDATE=$(date +"%F_%H%M")
 TEMP_LOG=/tmp/MMtest_suite.log.$HOSTNAME.$RUNDATE
 echo "Starting MMTEST suite "
 date |tee -a  $TEMP_LOG
-if [ -d "/home/mmtests" ] 
-then
-    echo "Directory MMTests exists." 
-	#rm -rf /home/schbench
-else
-	echo "Warning: Directory /home/MMTests does not exists."
-fi
 
-Config_dir=/home/mmtests/configs
-Log_dir=/home/mmtests/work/log
-Result_dir=/home/mmtests/Results	
+Home_dir=`pwd`
+Config_dir=$Home_dir/configs
+Log_dir=$Home_dir/work/log
+Result_dir=$Home_dir/Results	
 #Running the choosen test suite 
 workloads=($(ls -ltr $Config_dir| awk '{print  $9}'))
 for i in "${workloads[@]}"
@@ -29,7 +23,7 @@ do
 	date |tee -a  $TEMP_LOG
 	echo "starting test $workload_name "|tee -a  $TEMP_LOG
 	./run-mmtests.sh --config configs/$i $workload_name
-	rm -rf /home/mmtests/work/testdisk/*
+	rm -rf $Home_dir/work/testdisk/*
 	date |tee -a  $TEMP_LOG
 	echo " test $workload_name ended"|tee -a  $TEMP_LOG
 	sleep 5
@@ -61,12 +55,8 @@ fi
  #else
  #       echo $benchmark
  #fi
-
-#./bin/extract-mmtests.pl -d work/log -b  $benchmark  -n $i --print-header >> $Result_dir/$i.out
-#echo "./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  $benchmark  -n $i --print-header >> $Result_dir/$i.out "
-#./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  $benchmark  -n $i --print-header >> $Result_dir/$i.out 
-
 #done
+
 echo "post processing now..."
 workload_list=($(ls -ltr $Log_dir| awk '{print  $9}'))
 
@@ -85,6 +75,8 @@ do
         done
 done
 
+echo "prost process pass 2 - generating result cvs"
+sh $Home_dir/post_proc_main.sh $Result_dir $HOSTNAME
 
 mv $Log_dir $Log_dir.$HOSTNAME.$RUNDATE
 mv $Result_dir $Result_dir.$HOSTNAME.$RUNDATE

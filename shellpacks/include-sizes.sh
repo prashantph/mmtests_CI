@@ -116,7 +116,7 @@ getmemtotals() {
 	getpagesize
 	gethugepagesize
 	export MEMTOTAL_BYTES=`free -b | grep Mem: | awk '{print $2}'`
-	export MEMTOTAL_BYTES=$(($MEMTOTAL_BYTES/1024))
+	export MEMTOTAL_BYTES=$(($MEMTOTAL_BYTES/10))
 	export MEMTOTAL_PAGES=$(($MEMTOTAL_BYTES/$PAGESIZE))
 	export MEMTOTAL_HUGEPAGES=$(($MEMTOTAL_BYTES/$HUGE_PAGESIZE))
 }

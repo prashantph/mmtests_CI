@@ -1,0 +1,10 @@
+warning, lockinfo data was 0
+warning, lockinfo data was 0
+warning, lockinfo data was 0
+warning, lockinfo data was 0
+warning, lockinfo data was 0
+2 threads, waking 1 at a time
+using futex sem operations
+main thread burns: 28933586
+worker burn count total 11463499 min 5688696 max 5774803 avg 5731749.500 +- 0.751%
+run time 30 seconds 382116 worker burns per second

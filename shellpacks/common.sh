@@ -20,7 +20,7 @@ if [ "`which check-confidence.pl 2> /dev/null`" = "" ]; then
 fi
 
 MEMTOTAL_BYTES=`free -b | grep Mem: | awk '{print $2}'`
- export MEMTOTAL_BYTES=$(($MEMTOTAL_BYTES/1024))
+ export MEMTOTAL_BYTES=$(($MEMTOTAL_BYTES/10))
 NUMCPUS=$(grep -c '^processor' /proc/cpuinfo)
 NUMNODES=`grep ^Node /proc/zoneinfo | awk '{print $2}' | sort | uniq | wc -l`
 LLC_INDEX=`find /sys/devices/system/cpu/ -type d -name "index*" | sed -e 's/.*index//' | sort -n | tail -1`

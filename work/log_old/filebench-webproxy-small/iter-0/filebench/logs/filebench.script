@@ -1,0 +1,6 @@
+	load /root/mmtests/work/sources/filebench-1.4.9.1-installed/share/filebench/workloads/webproxy
+	set $dir=/root/mmtests/work/testdisk/data
+	set $meanfilesize=16384
+	set $nfiles=123923
+	set $nthreads=8
+	run 64

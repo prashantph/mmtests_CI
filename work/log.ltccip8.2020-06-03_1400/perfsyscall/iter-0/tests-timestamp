@@ -1,0 +1,6 @@
+start :: 1591181928
+test begin :: perfsyscall 1591181929
+test end :: perfsyscall 1591182065
+time :: perfsyscall 50.42 user 74.00 system 130.16 elapsed
+finish :: 1591182065
+status :: 0

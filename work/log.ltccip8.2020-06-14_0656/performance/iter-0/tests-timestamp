@@ -1,0 +1,9 @@
+start :: 1592109944
+test begin :: aim9 1592109945
+test end :: aim9 1592110677
+time :: aim9 0.35 user 0.16 system 724.60 elapsed
+test begin :: pft 1592110678
+test end :: pft 1592110709
+time :: pft 741.41 user 17.29 system 18.31 elapsed
+finish :: 1592110709
+status :: 0

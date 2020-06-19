@@ -1,0 +1,8 @@
+/sys/devices/system/cpu/vulnerabilities/itlb_multihit:Not affected
+/sys/devices/system/cpu/vulnerabilities/l1tf:Not affected
+/sys/devices/system/cpu/vulnerabilities/mds:Not affected
+/sys/devices/system/cpu/vulnerabilities/meltdown:Mitigation: RFI Flush, L1D private per thread
+/sys/devices/system/cpu/vulnerabilities/spec_store_bypass:Mitigation: Kernel entry/exit barrier (eieio)
+/sys/devices/system/cpu/vulnerabilities/spectre_v1:Mitigation: __user pointer sanitization, ori31 speculation barrier enabled
+/sys/devices/system/cpu/vulnerabilities/spectre_v2:Mitigation: Indirect branch cache disabled, Software link stack flush
+/sys/devices/system/cpu/vulnerabilities/tsx_async_abort:Not affected

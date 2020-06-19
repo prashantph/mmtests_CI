@@ -1,0 +1,42 @@
+sysbench --mysql-user=root --mysql-password=mmtests-default --mysql-db=sbtest --mysql-socket=/tmp/mysql.sock --mysql-table-engine=innodb --test=oltp --oltp-read-only --oltp-test-mode=complex --oltp-table-size=891000 --num-threads=5 run
+sysbench 0.4.12:  multi-threaded system evaluation benchmark
+
+No DB drivers specified, using mysql
+Running the test with following options:
+Number of threads: 5
+
+Doing OLTP test.
+Running mixed OLTP test
+Doing read-only test
+Using Special distribution (12 iterations,  1 pct of values are returned in 75 pct cases)
+Using "BEGIN" for starting transactions
+Using auto_inc on the id column
+Maximum number of requests for OLTP test is limited to 10000
+Threads started!
+Done.
+
+OLTP test statistics:
+    queries performed:
+        read:                            140112
+        write:                           0
+        other:                           20016
+        total:                           160128
+    transactions:                        10008  (3140.32 per sec.)
+    deadlocks:                           0      (0.00 per sec.)
+    read/write requests:                 140112 (43964.42 per sec.)
+    other operations:                    20016  (6280.63 per sec.)
+
+Test execution summary:
+    total time:                          3.1869s
+    total number of events:              10008
+    total time taken by event execution: 15.8712
+    per-request statistics:
+         min:                                  1.38ms
+         avg:                                  1.59ms
+         max:                                  2.72ms
+         approx.  95 percentile:               1.84ms
+
+Threads fairness:
+    events (avg/stddev):           2001.6000/50.23
+    execution time (avg/stddev):   3.1742/0.00
+

@@ -1,0 +1,6 @@
+start :: 1592013616
+test begin :: xfsio 1592013617
+test end :: xfsio 1592013779
+time :: xfsio 1.66 user 19.80 system 147.52 elapsed
+finish :: 1592013779
+status :: 0

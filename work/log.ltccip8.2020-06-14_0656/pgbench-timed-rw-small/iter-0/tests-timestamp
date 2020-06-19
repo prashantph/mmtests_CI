@@ -1,0 +1,6 @@
+start :: 1592097997
+test begin :: pgbench 1592098100
+test end :: pgbench 1592102927
+time :: pgbench 113.76 user 396.89 system 4813.25 elapsed
+finish :: 1592102927
+status :: 0

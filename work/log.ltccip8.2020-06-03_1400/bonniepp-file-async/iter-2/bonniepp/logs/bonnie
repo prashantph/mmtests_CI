@@ -1,0 +1,12 @@
+Using uid:0, gid:0.
+Writing intelligently...done
+Rewriting...done
+Reading intelligently...done
+start 'em...done...done...done...done...done...
+Version  1.98       ------Sequential Output------ --Sequential Input- --Random-
+                    -Per Chr- --Block-- -Rewrite- -Per Chr- --Block-- --Seeks--
+Name:Size etc        /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP  /sec %CP
+ltccip8.aus 200306M            140m  12 64.9m   5            118m   3 441.5   4
+Latency                       84738us    6152ms               101ms     265ms
+
+1.98,1.98,ltccip8.aus.stglabs.ibm.com,1,1593216635,200306M,,8192,5,,,143029,12,66474,5,,,120902,3,441.5,4,,,,,,,,,,,,,,,,,,,84738us,6152ms,,101ms,265ms,,,,,,

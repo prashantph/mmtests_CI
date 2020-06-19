@@ -1,0 +1,6 @@
+start :: 1590493570
+test begin :: iozone 1590493570
+test end :: iozone 1590514924
+time :: iozone 97.29 user 1528.85 system 21335.55 elapsed
+finish :: 1590514924
+status :: 0

@@ -1,0 +1,15 @@
+start :: 1592110717
+test begin :: sockperf-tcp-throughput 1592110719
+test end :: sockperf-tcp-throughput 1592112343
+time :: sockperf-tcp-throughput 236.99 user 1888.31 system 1617.73 elapsed
+test begin :: sockperf-tcp-under-load 1592112343
+test end :: sockperf-tcp-under-load 1592112624
+time :: sockperf-tcp-under-load 132.81 user 183.49 system 274.40 elapsed
+test begin :: sockperf-udp-throughput 1592112624
+test end :: sockperf-udp-throughput 1592114248
+time :: sockperf-udp-throughput 82.31 user 1822.20 system 1617.60 elapsed
+test begin :: sockperf-udp-under-load 1592114249
+test end :: sockperf-udp-under-load 1592114529
+time :: sockperf-udp-under-load 129.07 user 152.73 system 274.18 elapsed
+finish :: 1592114529
+status :: 0

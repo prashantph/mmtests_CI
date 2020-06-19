@@ -1,0 +1,1645 @@
+start :: 1591249113
+version :: 345f82bee77cbf09ba57f470a1cfc1ae413c97df
+arch :: ppc64le
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: env2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UNKNOWN group default qlen 1000
+    link/ether 7e:50:6c:7a:40:02 brd ff:ff:ff:ff:ff:ff
+3: net0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UNKNOWN group default qlen 1000
+    link/ether 7e:50:6c:7a:40:03 brd ff:ff:ff:ff:ff:ff
+    inet 9.3.90.189/24 brd 9.3.90.255 scope global noprefixroute net0
+       valid_lft forever preferred_lft forever
+    inet6 2002:903:15f:558:7c50:6cff:fe7a:4003/64 scope global dynamic noprefixroute 
+       valid_lft 2591913sec preferred_lft 604713sec
+    inet6 fe80::7c50:6cff:fe7a:4003/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+mount :: start
+sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime,seclabel)
+proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
+devtmpfs on /dev type devtmpfs (rw,nosuid,seclabel,size=51242560k,nr_inodes=800665,mode=755)
+securityfs on /sys/kernel/security type securityfs (rw,nosuid,nodev,noexec,relatime)
+tmpfs on /dev/shm type tmpfs (rw,nosuid,nodev,seclabel)
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,seclabel,gid=5,mode=620,ptmxmode=000)
+tmpfs on /run type tmpfs (rw,nosuid,nodev,seclabel,mode=755)
+tmpfs on /sys/fs/cgroup type tmpfs (ro,nosuid,nodev,noexec,seclabel,mode=755)
+cgroup on /sys/fs/cgroup/systemd type cgroup (rw,nosuid,nodev,noexec,relatime,seclabel,xattr,release_agent=/usr/lib/systemd/systemd-cgroups-agent,name=systemd)
+pstore on /sys/fs/pstore type pstore (rw,nosuid,nodev,noexec,relatime,seclabel)
+bpf on /sys/fs/bpf type bpf (rw,nosuid,nodev,noexec,relatime,mode=700)
+cgroup on /sys/fs/cgroup/cpu,cpuacct type cgroup (rw,nosuid,nodev,noexec,relatime,seclabel,cpu,cpuacct)
+cgroup on /sys/fs/cgroup/rdma type cgroup (rw,nosuid,nodev,noexec,relatime,seclabel,rdma)
+cgroup on /sys/fs/cgroup/blkio type cgroup (rw,nosuid,nodev,noexec,relatime,seclabel,blkio)
+cgroup on /sys/fs/cgroup/pids type cgroup (rw,nosuid,nodev,noexec,relatime,seclabel,pids)
+cgroup on /sys/fs/cgroup/perf_event type cgroup (rw,nosuid,nodev,noexec,relatime,seclabel,perf_event)
+cgroup on /sys/fs/cgroup/net_cls,net_prio type cgroup (rw,nosuid,nodev,noexec,relatime,seclabel,net_cls,net_prio)
+cgroup on /sys/fs/cgroup/cpuset type cgroup (rw,nosuid,nodev,noexec,relatime,seclabel,cpuset)
+cgroup on /sys/fs/cgroup/devices type cgroup (rw,nosuid,nodev,noexec,relatime,seclabel,devices)
+cgroup on /sys/fs/cgroup/hugetlb type cgroup (rw,nosuid,nodev,noexec,relatime,seclabel,hugetlb)
+cgroup on /sys/fs/cgroup/freezer type cgroup (rw,nosuid,nodev,noexec,relatime,seclabel,freezer)
+cgroup on /sys/fs/cgroup/memory type cgroup (rw,nosuid,nodev,noexec,relatime,seclabel,memory)
+configfs on /sys/kernel/config type configfs (rw,relatime)
+/dev/mapper/rhel_ltccip8-root on / type ext4 (rw,relatime,seclabel)
+selinuxfs on /sys/fs/selinux type selinuxfs (rw,relatime)
+systemd-1 on /proc/sys/fs/binfmt_misc type autofs (rw,relatime,fd=35,pgrp=1,timeout=0,minproto=5,maxproto=5,direct,pipe_ino=80928)
+mqueue on /dev/mqueue type mqueue (rw,relatime,seclabel)
+debugfs on /sys/kernel/debug type debugfs (rw,relatime,seclabel)
+hugetlbfs on /dev/hugepages type hugetlbfs (rw,relatime,seclabel,pagesize=16M)
+/dev/sda2 on /boot type ext4 (rw,relatime,seclabel)
+/dev/mapper/rhel_ltccip8-home on /home type ext4 (rw,relatime,seclabel)
+binfmt_misc on /proc/sys/fs/binfmt_misc type binfmt_misc (rw,relatime)
+tracefs on /sys/kernel/debug/tracing type tracefs (rw,relatime,seclabel)
+tmpfs on /run/user/0 type tmpfs (rw,nosuid,nodev,relatime,seclabel,size=10255680k,mode=700)
+/proc/mounts :: start
+sysfs /sys sysfs rw,seclabel,nosuid,nodev,noexec,relatime 0 0
+proc /proc proc rw,nosuid,nodev,noexec,relatime 0 0
+devtmpfs /dev devtmpfs rw,seclabel,nosuid,size=51242560k,nr_inodes=800665,mode=755 0 0
+securityfs /sys/kernel/security securityfs rw,nosuid,nodev,noexec,relatime 0 0
+tmpfs /dev/shm tmpfs rw,seclabel,nosuid,nodev 0 0
+devpts /dev/pts devpts rw,seclabel,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000 0 0
+tmpfs /run tmpfs rw,seclabel,nosuid,nodev,mode=755 0 0
+tmpfs /sys/fs/cgroup tmpfs ro,seclabel,nosuid,nodev,noexec,mode=755 0 0
+cgroup /sys/fs/cgroup/systemd cgroup rw,seclabel,nosuid,nodev,noexec,relatime,xattr,release_agent=/usr/lib/systemd/systemd-cgroups-agent,name=systemd 0 0
+pstore /sys/fs/pstore pstore rw,seclabel,nosuid,nodev,noexec,relatime 0 0
+bpf /sys/fs/bpf bpf rw,nosuid,nodev,noexec,relatime,mode=700 0 0
+cgroup /sys/fs/cgroup/cpu,cpuacct cgroup rw,seclabel,nosuid,nodev,noexec,relatime,cpu,cpuacct 0 0
+cgroup /sys/fs/cgroup/rdma cgroup rw,seclabel,nosuid,nodev,noexec,relatime,rdma 0 0
+cgroup /sys/fs/cgroup/blkio cgroup rw,seclabel,nosuid,nodev,noexec,relatime,blkio 0 0
+cgroup /sys/fs/cgroup/pids cgroup rw,seclabel,nosuid,nodev,noexec,relatime,pids 0 0
+cgroup /sys/fs/cgroup/perf_event cgroup rw,seclabel,nosuid,nodev,noexec,relatime,perf_event 0 0
+cgroup /sys/fs/cgroup/net_cls,net_prio cgroup rw,seclabel,nosuid,nodev,noexec,relatime,net_cls,net_prio 0 0
+cgroup /sys/fs/cgroup/cpuset cgroup rw,seclabel,nosuid,nodev,noexec,relatime,cpuset 0 0
+cgroup /sys/fs/cgroup/devices cgroup rw,seclabel,nosuid,nodev,noexec,relatime,devices 0 0
+cgroup /sys/fs/cgroup/hugetlb cgroup rw,seclabel,nosuid,nodev,noexec,relatime,hugetlb 0 0
+cgroup /sys/fs/cgroup/freezer cgroup rw,seclabel,nosuid,nodev,noexec,relatime,freezer 0 0
+cgroup /sys/fs/cgroup/memory cgroup rw,seclabel,nosuid,nodev,noexec,relatime,memory 0 0
+configfs /sys/kernel/config configfs rw,relatime 0 0
+/dev/mapper/rhel_ltccip8-root / ext4 rw,seclabel,relatime 0 0
+selinuxfs /sys/fs/selinux selinuxfs rw,relatime 0 0
+systemd-1 /proc/sys/fs/binfmt_misc autofs rw,relatime,fd=35,pgrp=1,timeout=0,minproto=5,maxproto=5,direct,pipe_ino=80928 0 0
+mqueue /dev/mqueue mqueue rw,seclabel,relatime 0 0
+debugfs /sys/kernel/debug debugfs rw,seclabel,relatime 0 0
+hugetlbfs /dev/hugepages hugetlbfs rw,seclabel,relatime,pagesize=16M 0 0
+/dev/sda2 /boot ext4 rw,seclabel,relatime 0 0
+/dev/mapper/rhel_ltccip8-home /home ext4 rw,seclabel,relatime 0 0
+binfmt_misc /proc/sys/fs/binfmt_misc binfmt_misc rw,relatime 0 0
+tracefs /sys/kernel/debug/tracing tracefs rw,seclabel,relatime 0 0
+tmpfs /run/user/0 tmpfs rw,seclabel,nosuid,nodev,relatime,size=10255680k,mode=700 0 0
+test begin :: iozone 1591249114
+file start :: /proc/vmstat
+nr_free_pages 1517136
+nr_zone_inactive_anon 1775
+nr_zone_active_anon 1368
+nr_zone_inactive_file 1876
+nr_zone_active_file 3635
+nr_zone_unevictable 0
+nr_zone_write_pending 214
+nr_mlock 0
+nr_page_table_pages 138
+nr_kernel_stack 15376
+nr_bounce 0
+nr_zspages 0
+nr_free_cma 0
+numa_hit 3054052578
+numa_miss 86110389
+numa_foreign 86110389
+numa_interleave 541687
+numa_local 3053932592
+numa_other 86230375
+nr_inactive_anon 1775
+nr_active_anon 1368
+nr_inactive_file 1876
+nr_active_file 3635
+nr_unevictable 0
+nr_slab_reclaimable 9162
+nr_slab_unreclaimable 61178
+nr_isolated_anon 0
+nr_isolated_file 0
+workingset_refault 12831657
+workingset_activate 4150
+workingset_restore 5003
+workingset_nodereclaim 2369
+nr_anon_pages 1373
+nr_mapped 6559
+nr_file_pages 214
+nr_dirty 0
+nr_writeback 0
+nr_writeback_temp 794
+nr_shmem 0
+nr_shmem_hugepages 0
+nr_shmem_pmdmapped 0
+nr_anon_transparent_hugepages 0
+nr_unstable 252965
+nr_vmscan_write 1735028
+nr_vmscan_immediate_reclaim 75318686
+nr_dirtied 75398244
+nr_written 0
+nr_kernel_misc_reclaimable 2097
+nr_dirty_threshold 454125
+nr_dirty_background_threshold 151367
+pgpgin 1068105791
+pgpgout 4687242024
+pswpin 16002
+pswpout 252962
+pgalloc_dma 0
+pgalloc_dma32 0
+pgalloc_normal 3148774799
+pgalloc_movable 0
+allocstall_dma 0
+allocstall_dma32 0
+allocstall_normal 2
+allocstall_movable 492
+pgskip_dma 0
+pgskip_dma32 0
+pgskip_normal 0
+pgskip_movable 0
+pgfree 3150292544
+pgactivate 3598059
+pgdeactivate 2766356
+pglazyfree 0
+pgfault 3636312566
+pgmajfault 14989
+pglazyfreed 0
+pgrefill 2778616
+pgsteal_kswapd 74929165
+pgsteal_direct 31923
+pgscan_kswapd 78360486
+pgscan_direct 37896
+pgscan_direct_throttle 0
+zone_reclaim_failed 0
+pginodesteal 7
+slabs_scanned 3084756
+kswapd_inodesteal 23030
+kswapd_low_wmark_hit_quickly 368
+kswapd_high_wmark_hit_quickly 62125
+pageoutrun 104314
+pgrotated 1222539
+drop_pagecache 2
+drop_slab 2
+oom_kill 0
+numa_pte_updates 3633542
+numa_huge_pte_updates 0
+numa_hint_faults 2299841
+numa_hint_faults_local 1964691
+numa_pages_migrated 281780
+pgmigrate_success 281780
+pgmigrate_fail 8
+compact_migrate_scanned 0
+compact_free_scanned 0
+compact_isolated 0
+compact_stall 0
+compact_fail 0
+compact_success 0
+compact_daemon_wake 0
+compact_daemon_migrate_scanned 0
+compact_daemon_free_scanned 0
+htlb_buddy_alloc_success 0
+htlb_buddy_alloc_fail 0
+unevictable_pgs_culled 38839
+unevictable_pgs_scanned 0
+unevictable_pgs_rescued 36094
+unevictable_pgs_mlocked 36094
+unevictable_pgs_munlocked 36094
+unevictable_pgs_cleared 0
+unevictable_pgs_stranded 0
+thp_fault_alloc 0
+thp_fault_fallback 0
+thp_collapse_alloc 0
+thp_collapse_alloc_failed 0
+thp_file_alloc 0
+thp_file_mapped 0
+thp_split_page 0
+thp_split_page_failed 0
+thp_deferred_split_page 0
+thp_split_pmd 0
+thp_zero_page_alloc 0
+thp_zero_page_alloc_failed 0
+thp_swpout 0
+thp_swpout_fallback 0
+balloon_inflate 0
+balloon_deflate 0
+balloon_migrate 0
+swap_ra 6222
+swap_ra_hit 4222
+file start :: /proc/zoneinfo
+Node 0, zone      DMA
+  pages free     0
+        min      0
+        low      0
+        high     0
+        spanned  0
+        present  0
+        managed  0
+        protection: (0, 0, 0, 0, 0)
+Node 0, zone    DMA32
+  pages free     0
+        min      0
+        low      0
+        high     0
+        spanned  0
+        present  0
+        managed  0
+        protection: (0, 0, 0, 0, 0)
+Node 0, zone   Normal
+  pages free     0
+        min      0
+        low      0
+        high     0
+        spanned  0
+        present  0
+        managed  0
+        protection: (0, 0, 0, 0, 0)
+Node 0, zone  Movable
+  pages free     0
+        min      0
+        low      0
+        high     0
+        spanned  0
+        present  0
+        managed  0
+        protection: (0, 0, 0, 0, 0)
+Node 0, zone   Device
+  pages free     0
+        min      0
+        low      0
+        high     0
+        spanned  0
+        present  0
+        managed  0
+        protection: (0, 0, 0, 0, 0)
+Node 2, zone      DMA
+  pages free     0
+        min      0
+        low      0
+        high     0
+        spanned  0
+        present  0
+        managed  0
+        protection: (0, 0, 3059, 3059, 3059)
+Node 2, zone    DMA32
+  pages free     0
+        min      0
+        low      0
+        high     0
+        spanned  0
+        present  0
+        managed  0
+        protection: (0, 0, 3059, 3059, 3059)
+Node 2, zone   Normal
+  per-node stats
+      nr_inactive_anon 957
+      nr_active_anon 752
+      nr_inactive_file 1072
+      nr_active_file 1077
+      nr_unevictable 0
+      nr_slab_reclaimable 6575
+      nr_slab_unreclaimable 48010
+      nr_isolated_anon 0
+      nr_isolated_file 0
+      workingset_refault 1266131
+      workingset_activate 3656
+      workingset_restore 3112
+      workingset_nodereclaim 1748
+      nr_anon_pages 106
+      nr_mapped    2360
+      nr_file_pages 176
+      nr_dirty     0
+      nr_writeback 0
+      nr_writeback_temp 5
+      nr_shmem     0
+      nr_shmem_hugepages 0
+      nr_shmem_pmdmapped 0
+      nr_anon_transparent_hugepages 0
+      nr_unstable  252075
+      nr_vmscan_write 1735003
+      nr_vmscan_immediate_reclaim 33720685
+      nr_dirtied   33867047
+      nr_written   0
+      nr_kernel_misc_reclaimable 1810
+  pages free     722055
+        min      2756
+        low      3540
+        high     4324
+        spanned  819200
+        present  819200
+        managed  784397
+        protection: (0, 0, 0, 0, 0)
+      nr_free_pages 722055
+      nr_zone_inactive_anon 957
+      nr_zone_active_anon 752
+      nr_zone_inactive_file 1072
+      nr_zone_active_file 1077
+      nr_zone_unevictable 0
+      nr_zone_write_pending 176
+      nr_mlock     0
+      nr_page_table_pages 129
+      nr_kernel_stack 10240
+      nr_bounce    0
+      nr_zspages   0
+      nr_free_cma  0
+      numa_hit     2864880177
+      numa_miss    4383244
+      numa_foreign 81727145
+      numa_interleave 214345
+      numa_local   2864817408
+      numa_other   4446013
+  pagesets
+    cpu: 0
+              count: 3
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 1
+              count: 4
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 2
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 3
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 4
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 5
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 6
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 7
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 8
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 9
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 10
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 11
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 12
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 13
+              count: 3
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 14
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 15
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 16
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 17
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 18
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 19
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 20
+              count: 3
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 21
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 22
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 23
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 24
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 25
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 26
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 27
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 28
+              count: 3
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 29
+              count: 1
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 30
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 31
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 32
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 33
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 34
+              count: 2
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 35
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 36
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 37
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 38
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 39
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 40
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 41
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 42
+              count: 3
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 43
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 44
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 45
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 46
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 47
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 48
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 49
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 50
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 51
+              count: 2
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 52
+              count: 4
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 53
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 54
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 55
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 56
+              count: 1
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 57
+              count: 2
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 58
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 59
+              count: 1
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 60
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 61
+              count: 1
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 62
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 63
+              count: 1
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 64
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 65
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 66
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 67
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 68
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 69
+              count: 3
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 70
+              count: 3
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 71
+              count: 4
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 72
+              count: 4
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 73
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 74
+              count: 1
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 75
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 76
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 77
+              count: 2
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 78
+              count: 1
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 79
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+  node_unreclaimable:  0
+  start_pfn:           0
+Node 2, zone  Movable
+  pages free     0
+        min      0
+        low      0
+        high     0
+        spanned  0
+        present  0
+        managed  0
+        protection: (0, 0, 0, 0, 0)
+Node 2, zone   Device
+  pages free     0
+        min      0
+        low      0
+        high     0
+        spanned  0
+        present  0
+        managed  0
+        protection: (0, 0, 0, 0, 0)
+Node 3, zone      DMA
+  pages free     0
+        min      0
+        low      0
+        high     0
+        spanned  0
+        present  0
+        managed  0
+        protection: (0, 0, 3195, 3195, 3195)
+Node 3, zone    DMA32
+  pages free     0
+        min      0
+        low      0
+        high     0
+        spanned  0
+        present  0
+        managed  0
+        protection: (0, 0, 3195, 3195, 3195)
+Node 3, zone   Normal
+  per-node stats
+      nr_inactive_anon 818
+      nr_active_anon 616
+      nr_inactive_file 804
+      nr_active_file 2558
+      nr_unevictable 0
+      nr_slab_reclaimable 2587
+      nr_slab_unreclaimable 13168
+      nr_isolated_anon 0
+      nr_isolated_file 0
+      workingset_refault 11565526
+      workingset_activate 494
+      workingset_restore 1891
+      workingset_nodereclaim 621
+      nr_anon_pages 1267
+      nr_mapped    4199
+      nr_file_pages 38
+      nr_dirty     0
+      nr_writeback 0
+      nr_writeback_temp 789
+      nr_shmem     0
+      nr_shmem_hugepages 0
+      nr_shmem_pmdmapped 0
+      nr_anon_transparent_hugepages 0
+      nr_unstable  890
+      nr_vmscan_write 25
+      nr_vmscan_immediate_reclaim 41598001
+      nr_dirtied   41531197
+      nr_written   0
+      nr_kernel_misc_reclaimable 287
+  pages free     795081
+        min      2875
+        low      3693
+        high     4511
+        spanned  819200
+        present  819200
+        managed  818056
+        protection: (0, 0, 0, 0, 0)
+      nr_free_pages 795081
+      nr_zone_inactive_anon 818
+      nr_zone_active_anon 616
+      nr_zone_inactive_file 804
+      nr_zone_active_file 2558
+      nr_zone_unevictable 0
+      nr_zone_write_pending 38
+      nr_mlock     0
+      nr_page_table_pages 9
+      nr_kernel_stack 5136
+      nr_bounce    0
+      nr_zspages   0
+      nr_free_cma  0
+      numa_hit     189183566
+      numa_miss    81727145
+      numa_foreign 4383244
+      numa_interleave 327342
+      numa_local   189126349
+      numa_other   81784362
+  pagesets
+    cpu: 0
+              count: 2
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 1
+              count: 4
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 2
+              count: 4
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 3
+              count: 4
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 4
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 5
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 6
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 7
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 8
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 9
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 10
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 11
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 12
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 13
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 14
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 15
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 16
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 17
+              count: 3
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 18
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 19
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 20
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 21
+              count: 3
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 22
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 23
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 24
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 25
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 26
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 27
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 28
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 29
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 30
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 31
+              count: 1
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 32
+              count: 4
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 33
+              count: 4
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 34
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 35
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 36
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 37
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 38
+              count: 3
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 39
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 40
+              count: 1
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 41
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 42
+              count: 4
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 43
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 44
+              count: 4
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 45
+              count: 1
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 46
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 47
+              count: 4
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 48
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 49
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 50
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 51
+              count: 1
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 52
+              count: 3
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 53
+              count: 1
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 54
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 55
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 56
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 57
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 58
+              count: 2
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 59
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 60
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 61
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 62
+              count: 0
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 63
+              count: 1
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 64
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 65
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 66
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 67
+              count: 4
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 68
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 69
+              count: 3
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 70
+              count: 1
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 71
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 72
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 73
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 74
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 75
+              count: 4
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 76
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 77
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 78
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+    cpu: 79
+              count: 5
+              high:  6
+              batch: 1
+  vm stats threshold: 125
+  node_unreclaimable:  0
+  start_pfn:           819200
+Node 3, zone  Movable
+  pages free     0
+        min      0
+        low      0
+        high     0
+        spanned  0
+        present  0
+        managed  0
+        protection: (0, 0, 0, 0, 0)
+Node 3, zone   Device
+  pages free     0
+        min      0
+        low      0
+        high     0
+        spanned  0
+        present  0
+        managed  0
+        protection: (0, 0, 0, 0, 0)
+file start :: /proc/meminfo
+MemTotal:       102556992 kB
+MemFree:        97096704 kB
+MemAvailable:   97000832 kB
+Buffers:           70592 kB
+Cached:           331456 kB
+SwapCached:        17728 kB
+Active:           320192 kB
+Inactive:         233664 kB
+Active(anon):      87552 kB
+Inactive(anon):   113600 kB
+Active(file):     232640 kB
+Inactive(file):   120064 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:       4194240 kB
+SwapFree:        3805632 kB
+Dirty:             13696 kB
+Writeback:             0 kB
+AnonPages:        151616 kB
+Mapped:            87872 kB
+Shmem:             50816 kB
+KReclaimable:     586368 kB
+Slab:            4501760 kB
+SReclaimable:     586368 kB
+SUnreclaim:      3915392 kB
+KernelStack:       15376 kB
+PageTables:         8832 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    55472704 kB
+Committed_AS:    1097472 kB
+VmallocTotal:   541165879296 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+Percpu:           194560 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:      16384 kB
+Hugetlb:               0 kB
+file start :: /proc/schedstat
+version 15
+timestamp 4743697099
+cpu0 0 0 0 0 0 0 16046399817660 229551034451366 321717965
+domain0 0000,00000000,000000ff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu1 0 0 0 0 0 0 11254876945176 228322975211434 222544319
+domain0 0000,00000000,000000ff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu2 0 0 0 0 0 0 11808333850974 227849755053702 183017430
+domain0 0000,00000000,000000ff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu3 0 0 0 0 0 0 10004948230246 227360109849490 148161986
+domain0 0000,00000000,000000ff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu4 0 0 0 0 0 0 10188943708842 228746905894248 203580038
+domain0 0000,00000000,000000ff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu5 0 0 0 0 0 0 9109203840060 227202605907038 134189158
+domain0 0000,00000000,000000ff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu6 0 0 0 0 0 0 9222298444630 227568039086060 136511030
+domain0 0000,00000000,000000ff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu7 0 0 0 0 0 0 8565600055228 227617952540302 106638914
+domain0 0000,00000000,000000ff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu8 0 0 0 0 0 0 12849863687328 229454295338568 247669651
+domain0 0000,00000000,0000ff00 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu9 0 0 0 0 0 0 10998488936950 227606246320442 169316028
+domain0 0000,00000000,0000ff00 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu10 0 0 0 0 0 0 10152646273442 228084806864988 137834597
+domain0 0000,00000000,0000ff00 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu11 0 0 0 0 0 0 9253892876006 228002138714054 109010791
+domain0 0000,00000000,0000ff00 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu12 0 0 0 0 0 0 9450252775204 227910717509612 155756226
+domain0 0000,00000000,0000ff00 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu13 0 0 0 0 0 0 9406353805406 228217258241454 105440740
+domain0 0000,00000000,0000ff00 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu14 0 0 0 0 0 0 9034644603522 227626035888478 103547512
+domain0 0000,00000000,0000ff00 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu15 0 0 0 0 0 0 9026197144022 227225946475408 82614666
+domain0 0000,00000000,0000ff00 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu16 0 0 0 0 0 0 10137096176534 227423114184324 225107250
+domain0 0000,00000000,00ff0000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu17 0 0 0 0 0 0 14803835681530 225808352770914 163195116
+domain0 0000,00000000,00ff0000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu18 0 0 0 0 0 0 10091669145596 225902899644044 144817235
+domain0 0000,00000000,00ff0000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu19 0 0 0 0 0 0 9661571524786 225235281303180 107952881
+domain0 0000,00000000,00ff0000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu20 0 0 0 0 0 0 9342444064698 225350107805100 142311394
+domain0 0000,00000000,00ff0000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu21 0 0 0 0 0 0 9012604389772 225528956976918 98648132
+domain0 0000,00000000,00ff0000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu22 0 0 0 0 0 0 8489959490812 225881667353352 96894747
+domain0 0000,00000000,00ff0000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu23 0 0 0 0 0 0 8030733257296 225637504075868 77281049
+domain0 0000,00000000,00ff0000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu24 0 0 0 0 0 0 10836614091690 228938271020238 184398704
+domain0 0000,00000000,ff000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu25 0 0 0 0 0 0 8711746235846 227019023744320 129568008
+domain0 0000,00000000,ff000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu26 0 0 0 0 0 0 8568264405466 227143284448886 107062239
+domain0 0000,00000000,ff000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu27 0 0 0 0 0 0 8029022680418 227313740533204 82329010
+domain0 0000,00000000,ff000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu28 0 0 0 0 0 0 8469423341466 227460670316348 125629339
+domain0 0000,00000000,ff000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu29 0 0 0 0 0 0 7976802343522 227275439161252 86524662
+domain0 0000,00000000,ff000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu30 0 0 0 0 0 0 7917189546812 226643312579350 82788827
+domain0 0000,00000000,ff000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu31 0 0 0 0 0 0 7650093848440 227084855422132 67542352
+domain0 0000,00000000,ff000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu32 0 0 0 0 0 0 10377657203742 228766028631504 197824739
+domain0 0000,000000ff,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu33 0 0 0 0 0 0 9136439880058 227622947072470 140275127
+domain0 0000,000000ff,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu34 0 0 0 0 0 0 8797936246028 227692936545096 120711709
+domain0 0000,000000ff,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu35 0 0 0 0 0 0 8403472547924 226944381307508 91448882
+domain0 0000,000000ff,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu36 0 0 0 0 0 0 8750473782746 227423641347710 128842618
+domain0 0000,000000ff,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu37 0 0 0 0 0 0 8510361933912 227159261568956 90477164
+domain0 0000,000000ff,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu38 0 0 0 0 0 0 8121276932028 227539729228336 84712056
+domain0 0000,000000ff,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu39 0 0 0 0 0 0 7944956893542 227356566287218 68863341
+domain0 0000,000000ff,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu40 0 0 0 0 0 0 10637304159076 227374988963752 156681550
+domain0 0000,0000ff00,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu41 0 0 0 0 0 0 9614736302410 225938373964148 110067941
+domain0 0000,0000ff00,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu42 0 0 0 0 0 0 8719372393424 225848357115904 98295170
+domain0 0000,0000ff00,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu43 0 0 0 0 0 0 8141752635424 225431962614098 74974885
+domain0 0000,0000ff00,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu44 0 0 0 0 0 0 8995162880044 225797752280498 107957002
+domain0 0000,0000ff00,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu45 0 0 0 0 0 0 8172984833244 225829690158076 79183248
+domain0 0000,0000ff00,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu46 0 0 0 0 0 0 8430921688626 226078405103298 71917633
+domain0 0000,0000ff00,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu47 0 0 0 0 0 0 9139381210988 225874018484698 57358909
+domain0 0000,0000ff00,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 0000,0000ffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu48 0 0 0 0 0 0 9258108819000 60322691874694 210780019
+domain0 0000,00ff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu49 0 0 0 0 0 0 8266520521436 57659784142650 164186750
+domain0 0000,00ff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu50 0 0 0 0 0 0 8022386532628 57285761083302 158126972
+domain0 0000,00ff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu51 0 0 0 0 0 0 7611323367306 56941670972332 140199676
+domain0 0000,00ff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu52 0 0 0 0 0 0 7926080210016 56785489950158 166239950
+domain0 0000,00ff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu53 0 0 0 0 0 0 7547219895408 57055783678360 138007312
+domain0 0000,00ff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu54 0 0 0 0 0 0 7471490251020 56568020104386 134943626
+domain0 0000,00ff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu55 0 0 0 0 0 0 7331749388644 56851571818474 125757060
+domain0 0000,00ff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu56 0 0 0 0 0 0 8092124317862 57932085875132 183080091
+domain0 0000,ff000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu57 0 0 0 0 0 0 7530421342710 56935658084636 146349628
+domain0 0000,ff000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu58 0 0 0 0 0 0 7546819496206 56694268896570 146564211
+domain0 0000,ff000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu59 0 0 0 0 0 0 7233013354990 56457900986194 130371663
+domain0 0000,ff000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu60 0 0 0 0 0 0 7523487063640 56191807936842 156700038
+domain0 0000,ff000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu61 0 0 0 0 0 0 7107587174560 55933398708370 129580028
+domain0 0000,ff000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu62 0 0 0 0 0 0 7132974890312 56118501162638 132958489
+domain0 0000,ff000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu63 0 0 0 0 0 0 6864117968624 56282832856938 120839785
+domain0 0000,ff000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu64 0 0 0 0 0 0 8839090248910 58341592629800 207106373
+domain0 00ff,00000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu65 0 0 0 0 0 0 8254867215236 57029671600284 177977801
+domain0 00ff,00000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu66 0 0 0 0 0 0 7993281451730 56077355647470 159103706
+domain0 00ff,00000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu67 0 0 0 0 0 0 7666359520472 56473545976048 145785227
+domain0 00ff,00000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu68 0 0 0 0 0 0 7870552908036 56392399230008 163216377
+domain0 00ff,00000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu69 0 0 0 0 0 0 7483454180392 56349463107922 138931417
+domain0 00ff,00000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu70 0 0 0 0 0 0 7391462654436 56251030699756 133868371
+domain0 00ff,00000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu71 0 0 0 0 0 0 7129864682104 56270966818022 125810513
+domain0 00ff,00000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu72 0 0 0 0 0 0 8282182698028 57578081519510 177424617
+domain0 ff00,00000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu73 0 0 0 0 0 0 7917686006224 56158444599532 155760447
+domain0 ff00,00000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu74 0 0 0 0 0 0 7799556477516 55779169988102 147444381
+domain0 ff00,00000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu75 0 0 0 0 0 0 7522638986244 55830564770156 135306061
+domain0 ff00,00000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu76 0 0 0 0 0 0 7756755855656 55653740394636 154345102
+domain0 ff00,00000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu77 0 0 0 0 0 0 7396885621798 55280873210252 133576879
+domain0 ff00,00000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu78 0 0 0 0 0 0 7280660094238 55588237971560 129519746
+domain0 ff00,00000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cpu79 0 0 0 0 0 0 7255734124104 55437870581610 123146965
+domain0 ff00,00000000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain1 ffff,ffff0000,00000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+domain2 ffff,ffffffff,ffffffff 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+file start :: /proc/diskstats
+   8       0 sda 4782964 20155 2136209534 199464123 22106144 3480506 9306116816 416105746 0 55496200 462916680 0 0 0 0
+   8       1 sda1 32 0 5120 190 0 0 0 0 0 270 100 0 0 0 0
+   8       2 sda2 340 1 105378 5130 19 9 464 235 0 1010 3870 0 0 0 0
+   8       3 sda3 4782570 20154 2136094940 199458524 22106125 3480497 9306116352 416105510 0 55495570 462912480 0 0 0 0
+ 253       0 dm-0 46274 0 4849090 1808230 3606002 0 59202632 270444850 0 8100310 272253080 0 0 0 0
+ 253       1 dm-1 16041 0 2053888 1134630 252962 0 32379136 21716600 0 232670 22851230 0 0 0 0
+ 253       2 dm-2 4747972 0 2129181466 181292710 21742797 0 9214534584 334680050 0 47713280 515972760 0 0 0 0
