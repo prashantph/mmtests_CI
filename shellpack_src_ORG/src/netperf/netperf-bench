@@ -1,0 +1,106 @@
+#!/bin/bash
+# This script installs netperf and runs the regression tests
+###SHELLPACK preamble netperf-bench 2.4.5
+PROTOCOLS="UDP_STREAM TCP_STREAM"
+BUFFER_SIZES="64 128 256 1024 2048 3312 4096 6144 8192 10240 12288 14336 16384"
+
+TASKSET_SERVER=
+TASKSET_CLIENT=
+SERVER_HOST=127.0.0.1
+if [ "$REMOTE_SERVER_HOST" != "" ]; then
+	SERVER_HOST=$REMOTE_SERVER_HOST
+fi
+
+###SHELLPACK parseargBegin
+###SHELLPACK parseargInstall
+###SHELLPACK parseargBindings
+###SHELLPACK parseargParam    --iterations   ITERATIONS
+###SHELLPACK parseargParam    --protocol     PROTOCOL
+###SHELLPACK parseargParam    --buffer-sizes BUFFER_SIZES
+###SHELLPACK parseargEnd
+###SHELLPACK monitor_hooks
+
+###SHELLPACK check_install_required netperf-${VERSION}
+###SHELLPACK init_complete
+
+BUFFER_SIZES=`echo $BUFFER_SIZES | sed -e 's/,/ /g'`
+
+export REMOTE_SERVER_SCRIPT=$SCRIPTDIR/shellpacks/shellpack-bench-netperf
+case $SERVERSIDE_COMMAND in
+start)
+	echo Killing old servers
+	killall netserver
+
+	echo Starting server
+	mmtests_activity netperf-$SERVERSIDE_NAME
+	monitor_pre_hook $LOGDIR_RESULTS netperf-$SERVERSIDE_NAME
+	NETROOT=$SHELLPACK_SOURCES/netperf-${VERSION}-installed 
+	$TASKSET_SERVER $NETROOT/bin/netserver || die Failed to start netserver
+	sleep 2
+	exit $SHELLPACK_SUCCESS
+	;;
+stop)
+	monitor_post_hook $LOGDIR_RESULTS netperf-$SERVERSIDE_NAME
+	echo Killing old servers
+	killall netserver
+	exit $SHELLPACK_SUCCESS
+	;;
+flush)
+	exit $SHELLPACK_SUCCESS
+	;;
+none)
+	echo Killing old servers
+	killall netserver
+
+	echo Starting server
+	NETROOT=$SHELLPACK_SOURCES/netperf-${VERSION}-installed 
+	$TASKSET_SERVER $NETROOT/bin/netserver || die Failed to start netserver
+	sleep 2
+	;;
+*)
+	die Unrecognised server-side command
+	;;
+esac
+
+echo $PROTOCOL > $LOGDIR_RESULTS/protocols
+EXTRA=
+if [ "$PROTOCOL" = "UDP_STREAM" ]; then
+	EXTRA="-P 15895"
+fi
+
+for SIZE in $BUFFER_SIZES; do
+monitor_pre_hook $LOGDIR_RESULTS $SIZE
+mmtests_server_ctl start --serverside-name $PROTOCOL-$SIZE
+###SHELLPACK iteration_begin $ITERATIONS
+	mmtests_activity size $SIZE
+	MSGSIZE_OPT=
+	SOCKETSIZE_OPT=
+	if [ "$PROTOCOL" = "UDP_STREAM" -o "$PROTOCOL" = "TCP_STREAM" -o "$PROTOCOL" = "STREAM_STREAM" ]; then
+		MSGSIZE_OPT="-m $SIZE -M $SIZE"
+	fi
+	if [ "$REMOTE_SERVER_HOST" != "" ]; then
+		# UDP_STREAM on a 10GbE network was found to lose excessive
+		# packets unless the socket sizes were increase. These values
+		# resulted in minimal packet loss.
+		if [ "$PROTOCOL" = "UDP_STREAM" ]; then
+			SOCKETSIZE_OPT="-s 851968 -S 851968"
+		fi
+	fi
+	
+	echo Running test $PROTOCOL iteration $ITERATION/$ITERATIONS size $SIZE
+	NETPERF_OPTS="\
+		-t $PROTOCOL \
+		-i 3,3 -I 95,5 \
+		-H $SERVER_HOST \
+		-- $SOCKETSIZE_OPT $MSGSIZE_OPT $EXTRA"
+	echo $TASKSET_CLIENT "netperf" $NETPERF_OPTS
+	eval $TASKSET_CLIENT $NETROOT/bin/netperf $NETPERF_OPTS \
+			2>&1 | tee $LOGDIR_RESULTS/$PROTOCOL-${SIZE}.$ITERATION \
+			|| die Failed to run netperf
+###SHELLPACK iteration_end
+mmtests_server_ctl stop --serverside-name $PROTOCOL-$SIZE
+monitor_post_hook $LOGDIR_RESULTS $SIZE
+done
+killall netserver
+
+exit $SHELLPACK_SUCCESS

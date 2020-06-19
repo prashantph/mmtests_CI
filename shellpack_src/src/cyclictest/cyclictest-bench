@@ -1,0 +1,88 @@
+#!/bin/bash
+# cyclictest
+###SHELLPACK preamble cyclictest-bench v1.5
+MIRROR_LOCATION="$WEBROOT/kernbench"
+KERNEL_VERSION=5.2.14
+WEB_LOCATION=https://www.kernel.org/pub/linux/kernel/v5.x
+
+CYCLICTEST_BACKGROUND=none
+
+###SHELLPACK parseargBegin
+###SHELLPACK parseargInstall
+###SHELLPACK parseargParam   --duration		CYCLICTEST_DURATION
+###SHELLPACK parseargParam   --background	CYCLICTEST_BACKGROUND
+###SHELLPACK parseargYes     --affinity		CYCLICTEST_AFFINITY
+###SHELLPACK parseargEnd
+###SHELLPACK monitor_hooks
+
+###SHELLPACK init_only_start
+###SHELLPACK check_external_install_required_continue rttestbuild rttestbuild-${VERSION} ${VERSION}
+
+case $CYCLICTEST_BACKGROUND in
+kernbench)
+	echo Preparing kernel tree for background job
+	cd $SHELLPACK_DATA
+	rm -f ./linux-$KERNEL_VERSION.tar.gz
+	sources_fetch $WEB_LOCATION/linux-$KERNEL_VERSION.tar.gz $MIRROR_LOCATION/linux-$KERNEL_VERSION.tar.gz ./linux-$KERNEL_VERSION.tar.gz
+	tar xf linux-$KERNEL_VERSION.tar.gz || die "Failed to extract"
+	cd linux-$KERNEL_VERSION || die "Unexpected layout"
+	yes '' | make defconfig &>/dev/null || die "Failed to make defconfig"
+	make -j$NUMCPUS clean &> /dev/null
+
+	cat << EOF > build-loop.sh
+	cleanup() {
+		killall -KILL make
+	}
+	trap cleanup EXIT
+	cd $SHELLPACK_DATA/linux-$KERNEL_VERSION
+	while [ 1 ]; do
+		make -j$NUMCPUS vmlinux &> /dev/null
+		make clean &> /dev/null
+	done
+EOF
+	chmod a+x build-loop.sh
+	;;
+esac
+###SHELLPACK init_only_end
+
+cd $SHELLPACK_SOURCES/rttestbuild-${VERSION}-installed || die "Failed to change to rttest directory"
+if [ "$CYCLICTEST_AFFINITY" = "yes" ]; then
+	CYCLICTEST_AFFINITY_PARAM=-a
+fi
+
+BACKGROUND_PID=
+case $CYCLICTEST_BACKGROUND in
+hackbench)
+	./hackbench -P -g $NUMCPUS -l 200000000 &
+	BACKGROUND_PID=$!
+	echo "Background hackbench $PID"
+	;;
+kernbench)
+	$SHELLPACK_DATA/linux-$KERNEL_VERSION/build-loop.sh &
+	BACKGROUND_PID=$!
+	echo "Background kernbench $PID"
+	;;
+none)
+	echo "No background task specified"
+	;;
+*)
+	die "Unrecognised background task $CYCLICTEST_BACKGROUND"
+	;;
+esac
+monitor_pre_hook $LOGDIR_RESULTS $P
+echo Starting cyclictest threads
+if [ "$CYCLICTEST_FINEGRAINED" != "yes" ]; then
+	./cyclictest --mlockall -p99 --threads $CYCLICTEST_AFFINITY_PARAM \
+		--distance=0 --duration=$CYCLICTEST_DURATION --quiet 2>&1 | \
+		tee $LOGDIR_RESULTS/cyclictest.log
+else
+	./cyclictest --mlockall -p99 --threads $CYCLICTEST_AFFINITY_PARAM \
+		--distance=0 --duration=$CYCLICTEST_DURATION -v 2>&1 | \
+		stdout-buffer > $LOGDIR_RESULTS/cyclictest.log
+	xz $LOGDIR_RESULTS/cyclictest.log
+fi
+if [ "$BACKGROUND_PID" != "" ]; then
+	shutdown_pid $CYCLICTEST_BACKGROUND $BACKGROUND_PID
+fi
+monitor_post_hook $LOGDIR_RESULTS $P
+exit $SHELLPACK_SUCCESS

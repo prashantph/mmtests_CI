@@ -1,0 +1,77 @@
+#!/bin/bash
+# This script installs mariadb and leaves it ready for benchmarking
+###SHELLPACK preamble mariadb-install 10.4.11
+
+MARIADB_USER=nobody
+MARIADB_GROUP=nogroup
+
+NUMCPUS=`grep processor /proc/cpuinfo | wc -l`
+
+###SHELLPACK parseargBegin
+###SHELLPACK parseargParam --mariadb-user	 MARIADB_USER
+###SHELLPACK parseargEnd
+
+for PACKAGE in bison gcc-c++ libstdc++-devel zlib-devel ncurses-devel libncurses5 libtool automake autoconf cmake libxml2-devel boost-devel bzr libopenssl-devel; do
+	install-depends $PACKAGE
+done
+
+MARIADB_CONF=/etc/my.cnf
+MARIADB_DATADIR=$SHELLPACK_DATA/dbdata
+
+# Only updates the first occurance of the parameter
+update_entry_cnf() {
+	PARAMETER=$1
+	VALUE=$2
+
+	LINE=`grep -n "^$PARAMETER" $MARIADB_CONF | cut -d: -f1 | head -1`
+	if [ "$LINE" = "" ]; then
+		LINE=`grep -n "^#$PARAMETER" $MARIADB_CONF | cut -d: -f1 | head -1`
+		if [ "$LINE" = "" ]; then
+			die Failed to locate parameter $PARAMETER
+		fi
+	fi
+	LINEC=`wc -l $MARIADB_CONF | awk '{print $1}'`
+	head -$(($LINE-1)) $MARIADB_CONF > ${MARIADB_CONF}.tmp
+	echo $PARAMETER = $VALUE >> ${MARIADB_CONF}.tmp
+	tail -$(($LINEC-$LINE)) $MARIADB_CONF >> ${MARIADB_CONF}.tmp
+
+	mv ${MARIADB_CONF}.tmp $MARIADB_CONF
+}
+
+WEB_LOCATION=http://ftp.heanet.ie/mirrors/mariadb/mariadb-${VERSION}/source
+WEB_LOCATION_ALT=http://archive.mariadb.org//mariadb-${VERSION}/source
+MIRROR_LOCATION=$WEBROOT/mariadb/
+###SHELLPACK sources_fetch mariadb-${VERSION}.tar.gz mariadbbuild-${VERSION}
+###SHELLPACK build_start mariadbbuild-${VERSION}
+###SHELLPACK self_extract 0001-mariadb-nopamauth.patch
+cat $SHELLPACK_TEMP/0001-mariadb-nopamauth.patch | patch -p1
+###SHELLPACK build_cmake mariadbbuild-${VERSION}
+###SHELLPACK make_retry
+###SHELLPACK make_make_install
+
+echo Initialising database for user $MARIADB_USER
+chmod a+x $HOME
+cd $SHELLPACK_SOURCES/mariadbbuild-${VERSION}-installed || die Failed to change to installation directory.
+mkdir -p $SHELLPACK_SOURCES/mariadbbuild-${VERSION}-installed/etc
+mkdir -p /etc/mysql/conf.d/
+mkdir -p /var/log/mysql/
+
+scripts/mysql_install_db --user=$MARIADB_USER --basedir=`pwd` --datadir=$MARIADB_DATADIR || die Failed to run mysql_install_db script
+
+# Update the max connection count if necessary
+# update_entry_cnf thread_concurrency $((NUMCPUS*2))
+
+# Write user directive
+# HEAD=`grep -n "\[mysqld\]" $MARIADB_CONF | awk -F : '{print $1}'`
+# LINECOUNT=`wc -l $MARIADB_CONF | awk '{print $1}'`
+# head -$HEAD $MARIADB_CONF > ${MARIADB_CONF}.tmp
+# echo "user = $MARIADB_USER" >> ${MARIADB_CONF}.tmp
+# tail -$((LINECOUNT-HEAD)) $MARIADB_CONF >> ${MARIADB_CONF}.tmp
+# mv ${MARIADB_CONF}.tmp $MARIADB_CONF
+echo "[mysqld]" > $MARIADB_CONF
+echo "user = nobody" >> $MARIADB_CONF
+
+echo mariadb successfully installed
+exit $SHELLPACK_SUCCESS
+
+###SHELLPACK include_file 0001-mariadb-nopamauth.patch

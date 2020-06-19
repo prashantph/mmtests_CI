@@ -1,0 +1,162 @@
+v0.16
+o Multiple reporting corrects
+o Avoid getting stuck in highalloc
+o Add vmscale benchmark
+o Multiple corrections to loopdd benchmark
+o Multiple corrections to stutter benchmark
+o Extended iostat reporting
+o Optionally specify min number of tiobench clients
+
+v0.15
+o Use .xz for kernel taballs
+o Remove patch rejections files
+o Increase range of parameters tested for tlbflush microbenchmark
+
+v0.14
+o Report per-thread performance on ebizzy
+o Add tlbflush microbenchmark
+o Add pigz as a potential scheduler benchmark
+o Alter compress configuration file to avoid logging useless data
+o Add ftrace analysis scripts
+
+v0.13
+o Allow monitor-only mode logs to be compared
+o Fix URL for ffsb
+o Remove obsolete starve benchmark, replace with ebizzy
+o Many cosmetic reporting issues
+o Add basic analysis scripts for ftrace logs
+o Add abiliity to report some results as quartiles
+o Add fio benchmark
+o Add ku-latency benchmark
+o Re-add speccpu benchmark and reporting script
+
+v0.12
+o Add monitor for /proc/interrupts
+o Do not unnecessarily load oprofile
+o Timed munlock test and different NUMA binding policy
+o Record exit code
+o Do not run ft for NAS class D testing
+
+v0.11
+o Reporting script for parallel write latency
+o Reporting script for iostat
+o Additional configs for parallel write patterns
+o Do not monitor top for specjvm configuration
+o Optionally only monitor active processes with top
+o Benchmark for on-disk compression
+o Benchmark for timed buffer allocation (relavant to THP)
+o Benchmark for mutilate, a memcached workload generator
+o Benchmark for ebizzy
+o New configuration for pgbench that is scheduler orientated
+o Suppress useless messages from reaim 
+o Report pages in/out statistics properly in vmstat
+o Monitor that enables numad
+o Monitor for NUMA memory balance
+o Fixed tiobench installation script
+o Adapt to sourceforge download links
+o Report latencies as recorded by tiobench
+o Add blktrace post-process that analyses requests completed during stalls
+o Add helper script for extracting annotated profiles
+
+v0.10
+o Adjust stap to kernel 3.9
+o Do not log usemem output as it can block on IO for anon tests
+o Collapse some of the micro tests
+o Rework reaim benchmark
+o Remove signal_test from reaim configs as it's stupid
+o Add ability to hog memory which simplifies some NUMA tests
+o Adjust watch-dstate.pl to handle removal of get_request_wait
+o Fix top monitor to avoid duplicate output
+o Remove ft from nas tests memory requirements are excessive
+o Improve reporting script for highalloc tests
+o Fix missing dependencies for dbench and memcachetest
+
+v0.09
+o Many small improvements to reporting, more graphs etc.
+o Increase duration of dbench benchmarks to cope better with noise
+o Add generic graph-mmtests.sh script for comparing test runs
+o Improve monitoring of processes stuck in dstate
+o Do not record top-related informtion for hackbench, too much IO, unhelpful
+o Add more configurations related to read IO starvation monitoring
+
+v0.08
+o Preliminary support for rendering HTML reports
+o specjbb configs for single JVMs
+o specjbb extraction script changes for single JVMs
+o nas reporting scripts
+
+v0.07
+o Add benchmark for specjbb
+o Run multiple instances of tiobench and report variances
+o Basic NUMA monitoring scripts
+o Describe the components of autonumbench and add a configuration file
+
+v0.06
+o Automatically install packages (need name mappings for other distros)
+o Add benchmark for autonumabench
+o Add support for benchmarking NAS with MPI
+o Add pgbench for autonumabench (may need a bit more work)
+o Upgrade postgres version to 9.2.1
+o Upgrade kernel verion used for kernbench to 3.0 for newer toolchains
+o Alter mailserver config to finish in a reasonable time
+o Add monitor for perf sched
+o Add moinitor that gathers ftrace information with trace-cmd
+o Add preliminary monitors for NUMA stats (very basic)
+o Specify ftrace events to monitor from config file
+o Remove the bulk of whats left of VMRegress
+o Convert shellpacks to a template format to auto-generate boilerplate code
+o Collect lock_stat information if enabled
+o Run multiple iterations of aim9
+o Add basic regression tests for Cross Memory Attach
+o Copy with preempt being enabled in highalloc stres tests
+o Have largedd cope with a missing large file to work with
+o Add a monitor-only mode to just capture logs
+o Report receive-side throughput in netperf for results
+
+v0.05
+o Move driver and config scripts into their own directory
+o Add bin/extract-mmtests.pl and bin/compare-mmtests.pl
+o Remove references to Irish kernel.org mirror
+o Small tidy up
+
+v0.04
+o Add benchmarks for tbench, pipetest, lmbench, starve, memcachedtest
+o Add basic benchmark to run trinity fuzz testing tool
+o Add monitor that runs parallel IO in the background. Measures how much
+  IO interferes with a target workload.
+o Allow limited run of sysbench to save time
+o Add helpers for running oprofile, taken from libhugetlbfs
+o Add fsmark configurations suitable for page reclaim and metadata tests
+o Add a mailserver simulator (needs work, takes too long to run)
+o Tune page fault test configuration for page allocator comparisons
+o Allow greater skew when running STREAM on NUMA machines
+o Add a monitor that roughly measures interactive app startup times
+o Add a monitor that tracks read() latency (useful for interactivity tests)
+o Add script for calculating quartiles (incomplete, not tested properly)
+o Add config examples for measuring interactivity during IO (not validated)
+o Add background allocator for hugepage allocations (not validated)
+o Patch SystemTap installation to work with 3.4 and later kernels
+o Allow use of out-of-box THP configuration
+
+v0.03
+o Add a page allocator micro-benchmark
+o Add monitor for tracking processes stuck in D state
+o Add a page fault micro-benchmark
+o Add a memory compaction micro-benchmark
+o Patch a tiobench divide-by-0 error
+o Adapt systemtap for >= 3.3 kernel
+o Reporting scripts for kernbench
+o Reporting scripts for ddresidency
+
+v0.02
+o Added benchmark for running dbench3, dbench4, tiobench
+o Added benchmark for ffsb that can generate work profiles similar to the
+  ffsb tests used for btrfs
+o iozone can now run in single mode to allow better specification of what
+  the test should do
+o Corrected name of fraganalysis script in makefile
+o Polished reporting a little, added some support for comparing iostat
+  reports
+
+v0.01
+o Initial public release

@@ -1,0 +1,41 @@
+package DataTypes;
+
+use base qw(Exporter);
+
+our @EXPORT = qw(DATA_NONE DATA_TIME_SECONDS DATA_TIME_NSECONDS DATA_TIME_USECONDS DATA_TIME_MSECONDS DATA_TIME_CYCLES DATA_ACTIONS DATA_ACTIONS_PER_SECOND DATA_ACTIONS_PER_MINUTE DATA_BAD_ACTIONS DATA_OPS_PER_SECOND DATA_OPS_PER_MINUTE DATA_KBYTES_PER_SECOND DATA_MBYTES_PER_SECOND DATA_MBITS_PER_SECOND DATA_TRANS_PER_SECOND DATA_TRANS_PER_MINUTE DATA_SUCCESS_PERCENT);
+
+use constant DATA_NONE			=> 0;
+use constant DATA_TIME_SECONDS		=> 1;
+use constant DATA_TIME_NSECONDS		=> 2;
+use constant DATA_TIME_USECONDS		=> 3;
+use constant DATA_TIME_MSECONDS		=> 4;
+use constant DATA_TIME_CYCLES		=> 5;
+use constant DATA_BAD_ACTIONS		=> 6;
+
+use constant DATA_ACTIONS		=> 7;
+use constant DATA_ACTIONS_PER_SECOND	=> 8;
+use constant DATA_ACTIONS_PER_MINUTE	=> 9;
+use constant DATA_OPS_PER_SECOND	=> 10;
+use constant DATA_OPS_PER_MINUTE	=> 11;
+use constant DATA_KBYTES_PER_SECOND	=> 13;
+use constant DATA_MBYTES_PER_SECOND	=> 14;
+use constant DATA_MBITS_PER_SECOND	=> 15;
+use constant DATA_TRANS_PER_SECOND	=> 16;
+use constant DATA_TRANS_PER_MINUTE	=> 17;
+use constant DATA_SUCCESS_PERCENT	=> 18;
+
+use constant DATA_RATIO_SPEEDUP		=> 19;
+use constant DATA_REQ_PER_SECOND	=> 20;
+use constant DATA_SIZE_SECTOR		=> 21;
+use constant DATA_SIZE_QUEUED		=> 22;
+use constant DATA_FREQUENCY_MHZ		=> 23;
+use constant DATA_CONSUMPTION_WATT	=> 24;
+use constant DATA_USAGE_PERCENT		=> 25;
+use constant DATA_SIZE_BYTES		=> 26;
+use constant DATA_SIZE_KBYTES		=> 27;
+use constant DATA_SIZE_MBYTES		=> 28;
+use constant DATA_SIZE_PAGES		=> 29;
+use constant DATA_BALANCE		=> 30;
+use constant DATA_CONVERGENCE		=> 31;
+
+1;

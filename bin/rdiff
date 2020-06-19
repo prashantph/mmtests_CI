@@ -1,0 +1,7 @@
+#!/usr/bin/perl
+
+use FindBin qw($Bin);
+use lib "$Bin/lib/";
+use MMTests::Stat;
+
+print rdiff($ARGV[0], $ARGV[1]);

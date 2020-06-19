@@ -1,0 +1,35 @@
+#!/bin/bash
+
+###SHELLPACK preamble parsec-bench 0
+
+###SHELLPACK parseargBegin
+###SHELLPACK parseargInstall
+###SHELLPACK parseargParam	--parallel	PARSEC_PARALLEL
+###SHELLPACK parseargParam	--iterations    PARSEC_ITERATIONS
+###SHELLPACK parseargParam	--size		PARSEC_SIZE
+###SHELLPACK parseargParam	--workload	PARSEC_WORKLOAD
+###SHELLPACK parseargParam	--threads	PARSEC_THREADS
+###SHELLPACK parseargEnd
+###SHELLPACK monitor_hooks
+###SHELLPACK init_complete
+
+round_power_2_cpus() {
+	POWER=1
+	while [ $((1<<$POWER)) -lt $((PARSEC_THREADS+1)) ]; do
+		POWER=$((POWER+1))
+	done
+	PARSEC_THREADS=$((1<<(POWER-1)))
+}
+round_power_2_cpus
+echo $PARSEC_THREADS > $LOGDIR_RESULTS/nr-threads
+
+cd $SHELLPACK_SOURCES/parsecbuild-$VERSION-installed || die "Parsec build directory does not exist"
+source env.sh || die "Failed to source env.sh"
+monitor_pre_hook $LOGDIR_RESULTS $P
+###SHELLPACK iteration_begin $PARSEC_ITERATIONS
+	$TIME_CMD -o $LOGDIR_RESULTS/time.$ITERATION \
+		parsecmgmt -a run -c $PARSEC_PARALLEL -i $PARSEC_SIZE -p $PARSEC_WORKLOAD -n $PARSEC_THREADS 2>&1 | tee $LOGDIR_RESULTS/parsec.log.$ITERATION
+###SHELLPACK iteration_end $PARSEC_ITERATIONS
+monitor_post_hook $LOGDIR_RESULTS $P
+
+exit $SHELLPACK_SUCCESS

@@ -1,0 +1,95 @@
+#!/bin/bash
+###SHELLPACK preamble siege-bench 4.0.2
+
+ITER_REPS=150
+
+###SHELLPACK parseargBegin
+###SHELLPACK parseargInstall
+###SHELLPACK parseargParam --max-users         MAX_USERS
+###SHELLPACK parseargParam --iterations        ITERATIONS
+###SHELLPACK parseargParam --reps-per-iter     ITER_REPS
+###SHELLPACK parseargParam --time-per-iter     ITER_TIME
+###SHELLPACK parseargEnd
+###SHELLPACK monitor_hooks
+
+###SHELLPACK check_install_required siege-${VERSION}
+echo Shutting down apache server...
+$SHELLPACK_INCLUDE/shellpack-bench-apachebuild --stop || die Failed to shutdown apache http server for restart.
+###SHELLPACK init_complete
+
+echo Starting apache server...
+$SHELLPACK_INCLUDE/shellpack-bench-apachebuild --start || die Failed to start apache http server.
+sleep 5
+
+ITER_ARG=
+if [ "$ITER_TIME" != "" ]; then
+	ITER_ARG="-t ${ITER_TIME}s"
+	TIMEOUT_ARG=$((ITER_TIME*3/2))
+else
+	ITER_ARG="-r $ITER_REPS"
+	TIMEOUT_ARG=
+fi
+
+if [ -e /proc/sys/net/ipv4/tcp_tw_recycle ]; then
+	echo Enabling tcp_tw_recycle
+	sysctl -w net.ipv4.tcp_tw_recycle=1
+else
+	echo Enabling tcp_tw_reuse
+	sysctl -w net.ipv4.tcp_tw_reuse=1
+fi
+echo Disabling TCP timestamp shuffling
+sysctl net.ipv4.tcp_timestamps=0
+
+echo Setting files limit $((MAX_USERS*1000))
+
+# Bump the system hard limit first if it's too small otherwise the
+# following ulimit will fail with EPERM.
+cur_limit=$(sysctl fs.nr_open | awk '{print $3}')
+
+if [ $cur_limit -lt $((MAX_USERS*1000)) ]; then
+	sysctl -w fs.nr_open=$((MAX_USERS*1000))
+fi
+
+ulimit -n $((MAX_USERS*1000))
+
+echo Running up to $MAX_USERS users, $ITERATIONS iterations per user
+###SHELLPACK threads_powertwo_begin 1 $MAX_USERS
+	monitor_pre_hook $LOGDIR_RESULTS $NR_THREADS
+	for ITER in `seq 1 $ITERATIONS`; do
+		echo Running $ITER/$ITERATIONS: siege -b $ITER_ARG -c $NR_THREADS
+		RETRY=1
+		FAILURES=0
+		while [ $RETRY -eq 1 ]; do
+			ATTEMPTS=$((ATTEMPTS+1))
+			RETRY=0
+			$TIME_CMD -o $LOGDIR_RESULTS/siege-${NR_THREADS}-${ITER}.time \
+				$SHELLPACK_SOURCES/siege-${VERSION}-installed/bin/siege -b $ITER_ARG \
+					-c $NR_THREADS \
+						http://localhost/siege.html \
+						2>&1 | grep -v HTTP/ | tee $LOGDIR_RESULTS/siege-${NR_THREADS}-${ITER}.log &
+			PIDWAIT=$!
+			wait_on_pid_exit $! $TIMEOUT_ARG
+			if [ $? -ne 0 ]; then
+				echo WARNING: Retry due to siege timeout
+				killall -KILL siege
+				FAILURES=$((FAILURES+1))
+				RETRY=1
+			fi
+
+			echo Waiting on tcp_wait state to drop to an acceptable level
+			WAITING=`ss -Hnta state time-wait | wc -l`
+			while [ $WAITING -gt 1024 ]; do
+				echo o $WAITING
+				sleep 5
+				WAITING=`ss -Hnta state time-wait | wc -l`
+			done
+		done
+		if [ $FAILURES -ne 0 ]; then
+			echo $FAILURES > $LOGDIR_RESULTS/siege-${NR_THREADS}-${ITER}.failures
+		fi
+	done
+	monitor_post_hook $LOGDIR_RESULTS $NR_THREADS
+###SHELLPACK threads_powertwo_end
+
+echo siege completed successfully
+exit $SHELLPACK_SUCCESS

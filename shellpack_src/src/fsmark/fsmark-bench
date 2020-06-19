@@ -1,0 +1,85 @@
+#!/bin/bash
+# This script installs fsmark and runs the regression tests
+
+###SHELLPACK preamble fsmark-bench 3.3
+MIN_THREADS=1
+MAX_THREADS=1
+NR_SUB_DIRECTORIES=100
+NR_FILES_PER_ITERATION=50000
+ITERATIONS=63
+FILESIZE=0
+
+###SHELLPACK parseargBegin
+###SHELLPACK parseargInstall
+###SHELLPACK parseargParam --min-threads            MIN_THREADS
+###SHELLPACK parseargParam --max-threads            MAX_THREADS
+###SHELLPACK parseargParam --filesize               FILESIZE
+###SHELLPACK parseargParam --nr-files-per-iteration NR_FILES_PER_ITERATION
+###SHELLPACK parseargParam --nr-top-directories     FSMARK_NR_TOP_DIRECTORIES
+###SHELLPACK parseargParam --nr-sub-directories     NR_SUB_DIRECTORIES
+###SHELLPACK parseargParam --sync-mode              FSMARK_SYNCMODE
+###SHELLPACK parseargParam --iterations             ITERATIONS
+###SHELLPACK parseargEnd
+###SHELLPACK monitor_hooks
+
+###SHELLPACK check_install_required fsmark-${VERSION}
+###SHELLPACK init_complete
+
+ln -s $SHELLPACK_DATA /tmp/fsmark-$$
+
+# Scale iterations to fit on the disk
+ACTUAL_DISKSIZE=`df -k $SHELLPACK_DATA | tail -1 | awk '{print $2}'`
+ACTUAL_DISKSIZE=$((ACTUAL_DISKSIZE*1024))
+USABLE_DISKSIZE=$((ACTUAL_DISKSIZE*7/10))
+ESTIMATED_USAGE=$((FILESIZE*NR_FILES_PER_ITERATION*ITERATIONS))
+
+echo Requested iterations: $ITERATIONS, estimated usage $((ESTIMATED_USAGE/(1048576*1024)))GB, diskspace $((ACTUAL_DISKSIZE/(1048576*1024)))GB
+while [ $ESTIMATED_USAGE -gt $USABLE_DISKSIZE ]; do
+	ITERATIONS=$((ITERATIONS-1))
+	ESTIMATED_USAGE=$((FILESIZE*NR_FILES_PER_ITERATION*ITERATIONS))
+done
+echo Testing iterations: $ITERATIONS, estimated usage $((ESTIMATED_USAGE/(1048576*1024)))GB, diskspace $((ACTUAL_DISKSIZE/(1048576*1024)))GB
+
+if [ $ITERATIONS -le 0 ]; then
+	die Disk is too small to potentially run benchmark
+fi
+
+PARAM_EXTRA=
+if [ "$FSMARK_KEEP_FILES" = "yes" ]; then
+	PARAM_EXTRA+=" -k"
+fi
+
+###SHELLPACK threads_large_stride_begin $MIN_THREADS $MAX_THREADS
+	NR_TOP_DIRECTORIES=0
+	if [ "$FSMARK_NR_TOP_DIRECTORIES" = "nr_threads" ]; then
+		NR_TOP_DIRECTORIES=$NR_THREADS
+	else
+		NR_TOP_DIRECTORIES=$FSMARK_NR_TOP_DIRECTORIES
+	fi
+	PARAMETERS=$PARAM_EXTRA
+	PARAMETERS+=" -D $NR_SUB_DIRECTORIES"
+	PARAMETERS+=" -S$FSMARK_SYNCMODE"
+	PARAMETERS+=" -n $(($NR_FILES_PER_ITERATION/$NR_TOP_DIRECTORIES))"
+	PARAMETERS+=" -s $FILESIZE"
+	PARAMETERS+=" -L $ITERATIONS"
+	PARAMETERS+=" -t $NR_THREADS"
+	for TOPDIR in `seq 1 $NR_TOP_DIRECTORIES`; do
+		mkdir -p /tmp/fsmark-$$/$TOPDIR
+		PARAMETERS+=" -d /tmp/fsmark-$$/$TOPDIR"
+	done
+
+	# Cleanup previous thread count data
+	echo Cleaning up old fs_mark test files
+	rm -rf $SHELLPACK_DATA/*
+
+	monitor_pre_hook $LOGDIR_RESULTS $NR_THREADS
+	echo ./fs_mark $PARAMETERS
+	eval ./fs_mark $PARAMETERS &> $LOGDIR_RESULTS/fsmark-${NR_THREADS}.log
+	monitor_post_hook $LOGDIR_RESULTS $NR_THREADS
+	gzip $LOGDIR_RESULTS/fsmark-${NR_THREADS}.log
+###SHELLPACK threads_stride_end
+
+rm /tmp/fsmark-$$
+rm -rf $SHELLPACK_DATA/fsmark-$$
+
+exit $SHELLPACK_SUCCESS

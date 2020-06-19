@@ -1,0 +1,20 @@
+#!/bin/bash
+###SHELLPACK preamble pedsort-install 1
+GIT_LOCATION=https://pdos.csail.mit.edu/mosbench/mosbench.git
+MIRROR_LOCATION="$WEBROOT/mosbench/"
+
+install-depends libdb-devel
+if [ ! -e /usr/include/db.h ]; then
+	install-depends libdb-4_8-devel
+fi
+install-depends python
+
+###SHELLPACK parseargBegin
+###SHELLPACK parseargEnd
+
+###SHELLPACK git_fetch pedsort-${VERSION}.tar.gz pedsort-${VERSION}-installed
+
+###SHELLPACK build_start pedsort-${VERSION}-installed
+###SHELLPACK make -C psearchy/mkdb/
+
+echo pedsort installed successfully

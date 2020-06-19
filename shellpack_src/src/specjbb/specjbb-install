@@ -1,0 +1,12 @@
+#!/bin/bash
+
+###SHELLPACK preamble specjvm-install 2005_kitv1.07
+WEB_LOCATION="NOT_AVAILABLE"
+MIRROR_LOCATION="$WEBROOT/spec"
+
+###SHELLPACK parseargBegin
+###SHELLPACK parseargEnd
+
+###SHELLPACK sources_fetch SPECjbb${VERSION}.tar.gz specjbb-${VERSION}-installed
+
+exit $SHELLPACK_SUCCESS

@@ -1,0 +1,40 @@
+# MM Test Parameters
+export MMTESTS="fsmark"
+
+# Test disk to setup (optional)
+#export TESTDISK_RAID_DEVICES=
+#export TESTDISK_RAID_MD_DEVICE=/dev/md0
+#export TESTDISK_RAID_OFFSET=63
+#export TESTDISK_RAID_SIZE=250019532
+#export TESTDISK_RAID_TYPE=raid0
+#export TESTDISK_PARTITION=/dev/sda6
+#export TESTDISK_FILESYSTEM=ext3
+#export TESTDISK_MKFS_PARAM="-f -d agcount=8"
+#export TESTDISK_MOUNT_ARGS=inode64,delaylog,logbsize=262144,nobarrier
+
+# List of monitors
+export RUN_MONITOR=yes
+export MONITORS_ALWAYS=
+export MONITORS_GZIP="proc-vmstat top slabinfo proc-meminfo"
+export MONITORS_WITH_LATENCY="vmstat iostat"
+export MONITOR_UPDATE_FREQUENCY=10
+
+# FS-Mark
+export FSMARK_MIN_THREADS=1
+export FSMARK_MAX_THREADS=1
+export FSMARK_FILESIZE=4096
+export FSMARK_NR_TOP_DIRECTORIES=16
+export FSMARK_NR_SUB_DIRECTORIES=10000
+
+# NR_FILES_PER_ITERATION is calculated to create files that consume
+# MEMTOTAL_BYTES*2 in total but report Files/sec each time roughly
+# 50% of memory's worth of files have been generated.
+#
+# Note that FSMARK_ITERATIONS may get automatically
+# truncated if the test partition is not large enough.
+#
+# The calculation looks strange as fs_mark interprets nr_files per
+# iteration in a non-intuitive manner that is dependant on the
+# value of other parameters.
+export FSMARK_ITERATIONS=60
+export FSMARK_NR_FILES_PER_ITERATION=$((MEMTOTAL_BYTES*2*FSMARK_NR_TOP_DIRECTORIES/$FSMARK_FILESIZE/$FSMARK_ITERATIONS))

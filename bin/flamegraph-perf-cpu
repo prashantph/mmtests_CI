@@ -1,0 +1,134 @@
+#!/bin/bash
+# This script generates a flame graph from a CPU perf profile using Brendan
+# Gregg's FlameGraph tool. Basic usage is as follows
+#
+# For a full CPU profile based flamegraph
+#   perf record -a -g -- sleep 30
+#   flamegraph-perf-sched -i perf.data
+#
+# To reduce the overhead, -F can be used
+#   perf record -F 99 -a -g -- sleep 30
+#   flamegraph-perf-sched -i perf.data
+#
+# To create an off-cpu callgraph
+#   echo 1 > /proc/sys/kernel/sched_schedstats
+#   perf record -e sched:sched_stat_sleep -e sched:sched_switch -e sched:sched_process_exit -a -g -- sleep 30
+#   flamegraph-perf-sched -i perf.data --sleep
+#   echo 0 > /proc/sys/kernel/sched_schedstats
+export SCRIPT=`basename $0 | sed -e 's/\./\\\./'`
+export SCRIPTDIR=`echo $0 | sed -e "s/$SCRIPT//"`/..
+export FLAMEGRAPH=$SCRIPTDIR/FlameGraph
+export PATH=$FLAMEGRAPH:$SCRIPTDIR/bin:$PATH
+
+TEMP_DIR=
+function cleanup() {
+	if [ "$TEMP_DIR" != "" ]; then
+		rm -rf $TEMP_DIR
+	fi
+}
+trap cleanup EXIT
+
+if [ ! -d $FLAMEGRAPH ]; then
+	pushd $SCRIPTDIR > /dev/null
+	git clone https://github.com/brendangregg/FlameGraph || exit -1
+fi
+if [ ! -e $FLAMEGRAPH/stackcollapse-perf.pl ]; then
+	echo ERROR: FlameGraph stackcollapse-perf.pl is not available and could not be cloned
+	exit -1
+fi
+if [ "`which perf 2>/dev/null`" = "" ]; then
+	echo ERROR: perf is not available
+	exit -1
+fi
+
+TEMP_DIR=`mktemp -d`
+OUTPUT=kernel.svg
+INPUT=perf.data
+TITLE="flamegraph: `basename $INPUT`"
+ICICLE=
+REVERSE=
+WIDTH=
+PREPROCESS=none
+
+# Command line parser
+SLEEP=
+while [ "$1" != "" ]; do
+	case "$1" in
+	-k|--vmlinux)
+		VMLINUX="-k $2"
+		shift 2
+		;;
+	-i|--input)
+		INPUT=$2
+		shift 2
+		;;
+	-o|--output)
+		OUTPUT=$2
+		shift 2
+		;;
+	-t|--title)
+		TITLE="$2"
+		shift 2
+		;;
+	-w|--width)
+		WIDTH="--width $2"
+		shift 2
+		;;
+	--icicle)
+		ICICLE=--inverted
+		shift
+		;;
+	--reverse)
+		REVERSE=--reverse
+		shift
+		;;
+	--sleep)
+		PREPROCESS=perf-inject
+		shift
+		;;
+	--merge-events)
+		PREPROCESS=merge-events
+		shift
+		;;
+	*)
+		echo WARNING: Unrecognised option $1
+		shift
+	esac
+done
+
+SLEEP_TITLE=
+COLOR_SWITCH=
+case $PREPROCESS in
+none)
+	perf $VMLINUX script -i $INPUT > $TEMP_DIR/perf.out || exit -1
+	$FLAMEGRAPH/stackcollapse-perf.pl $TEMP_DIR/perf.out > $TEMP_DIR/folded.out || exit -1
+	;;
+perf-inject)
+	SLEEP_TITLE=" Off-CPU (perf inject)"
+	COLOR_SWITCH="--colors=io"
+	perf inject $VMLINUX -v -s -i $INPUT -o $INPUT-injected
+	perf script -F comm,pid,tid,cpu,time,period,event,ip,sym,dso,trace -i $INPUT-injected | awk '
+		NF > 4 { exec = $1; period_ms = int($5 / 1000000) }
+		NF > 1 && NF <= 4 && period_ms > 0 { print $2 }
+		NF < 2 && period_ms > 0 { printf "%s\n%d\n\n", exec, period_ms }' | $FLAMEGRAPH/stackcollapse.pl > $TEMP_DIR/folded.out
+	rm $INPUT-injected
+	;;
+merge-events)
+	SLEEP_TITLE=" Off-CPU (merged events manually)"
+	COLOR_SWITCH="--colors=io"
+	perf script -F comm,pid,tid,cpu,time,period,event,ip,sym,dso,trace -i $INPUT | merge-perf-events.pl | awk '
+		NF > 4 { exec = $1; period_ms = int($5 / 1000000) }
+		NF > 1 && NF <= 4 && period_ms > 0 { print $2 }
+		NF < 2 && period_ms > 0 { printf "%s\n%d\n\n", exec, period_ms }' | $FLAMEGRAPH/stackcollapse.pl > $TEMP_DIR/folded.out
+	;;
+*)
+	echo ERROR: Unknown processing event
+	exit -1
+	;;
+esac
+echo $FLAMEGRAPH/flamegraph.pl $WIDTH $ICICLE $REVERSE $COLOR_SWITCH --title "$TITLE$SLEEP_TITLE" $TEMP_DIR/folded.out
+$FLAMEGRAPH/flamegraph.pl $WIDTH $ICICLE $REVERSE $COLOR_SWITCH --title "$TITLE$SLEEP_TITLE" $TEMP_DIR/folded.out > $OUTPUT || exit -1
+
+echo outputted to $OUTPUT
+rm -rf $TEMP_DIR
+exit 0

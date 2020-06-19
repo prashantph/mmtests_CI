@@ -1,0 +1,83 @@
+Model name : POWER9
+Starting MMTEST suite 
+Thu May 28 13:48:32 IST 2020
+Directory MMTests exists.
+post processing now...
+perfsyscall
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  perfsyscall  -n perfsyscall --print-header >> /root/mmtests/Results/perfsyscall.out 
+perfpipe
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  perfpipe  -n perfpipe-cpufreq --print-header >> /root/mmtests/Results/perfpipe-cpufreq.out 
+io
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  io  -n io-alltests --print-header >> /root/mmtests/Results/io-alltests.out 
+sockperf-tcp-throughput
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  sockperf-tcp-throughput  -n sockperf-unbound --print-header >> /root/mmtests/Results/sockperf-unbound.out 
+performance
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  performance  -n performance --print-header >> /root/mmtests/Results/performance.out 
+sockperf-tcp-throughput
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  sockperf-tcp-throughput  -n sockperf-tcp-throughput --print-header >> /root/mmtests/Results/sockperf-tcp-throughput.out 
+netperf-unix
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  netperf-unix  -n netperf-unbound --print-header >> /root/mmtests/Results/netperf-unbound.out 
+netperf-unix
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  netperf-unix  -n netperf-rr-unbound --print-header >> /root/mmtests/Results/netperf-rr-unbound.out 
+scale
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  scale  -n scale-short --print-header >> /root/mmtests/Results/scale-short.out 
+iperf
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  iperf  -n iperf-s14-r10000-tcp-unbound --print-header >> /root/mmtests/Results/iperf-s14-r10000-tcp-unbound.out 
+xfsio
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  xfsio  -n xfsio --print-header >> /root/mmtests/Results/xfsio.out 
+sparsetruncate
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  sparsetruncate  -n sparsetruncate-tiny --print-header >> /root/mmtests/Results/sparsetruncate-tiny.out 
+pgioperf
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  pgioperf  -n pgioperf --print-header >> /root/mmtests/Results/pgioperf.out 
+iozone
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  iozone  -n iozone --print-header >> /root/mmtests/Results/iozone.out 
+hackbench
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  hackbench  -n hackbench-process-pipes --print-header >> /root/mmtests/Results/hackbench-process-pipes.out 
+forkintensive
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  forkintensive  -n forkintensive --print-header >> /root/mmtests/Results/forkintensive.out 
+filebench
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  filebench  -n filebench-webproxy-small --print-header >> /root/mmtests/Results/filebench-webproxy-small.out 
+stress
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  stress  -n stress --print-header >> /root/mmtests/Results/stress.out 
+fio
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  fio  -n fio-randread-direct-multi --print-header >> /root/mmtests/Results/fio-randread-direct-multi.out 
+sysbench
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  sysbench  -n sysbench-postgres-oltp-rw-small --print-header >> /root/mmtests/Results/sysbench-postgres-oltp-rw-small.out 
+usemem
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  usemem  -n usemem-swap-ramdisk --print-header >> /root/mmtests/Results/usemem-swap-ramdisk.out 
+schbench
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  schbench  -n schbench --print-header >> /root/mmtests/Results/schbench.out 
+wp
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  wp  -n wp-tlbflush --print-header >> /root/mmtests/Results/wp-tlbflush.out 
+usemem
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  usemem  -n usemem-stress-numa-compact --print-header >> /root/mmtests/Results/usemem-stress-numa-compact.out 
+thpscale
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  thpscale  -n thpscale --print-header >> /root/mmtests/Results/thpscale.out 
+rt
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  rt  -n rt-migration --print-header >> /root/mmtests/Results/rt-migration.out 
+paralleldd
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  paralleldd  -n paralleldd-read-small --print-header >> /root/mmtests/Results/paralleldd-read-small.out 
+sqlite
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  sqlite  -n sqlite-insert-small --print-header >> /root/mmtests/Results/sqlite-insert-small.out 
+filebench
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  filebench  -n filebench-oltp-small --print-header >> /root/mmtests/Results/filebench-oltp-small.out 
+filebench
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  filebench  -n filebench-oltp-directio-small --print-header >> /root/mmtests/Results/filebench-oltp-directio-small.out 
+sysbench
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  sysbench  -n sysbench-mariadb-oltp-ro-small --print-header >> /root/mmtests/Results/sysbench-mariadb-oltp-ro-small.out 
+bonniepp
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  bonniepp  -n bonniepp-file-async --print-header >> /root/mmtests/Results/bonniepp-file-async.out 
+bonnie
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  bonnie  -n bonnie-dir-async --print-header >> /root/mmtests/Results/bonnie-dir-async.out 
+blogbench
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  blogbench  -n blogbench --print-header >> /root/mmtests/Results/blogbench.out 
+unixbench
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  unixbench  -n unixbench --print-header >> /root/mmtests/Results/unixbench.out 
+pgbench
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  pgbench  -n pgbench-timed-rw-small --print-header >> /root/mmtests/Results/pgbench-timed-rw-small.out 
+stream
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  stream  -n stream-omp-nodes --print-header >> /root/mmtests/Results/stream-omp-nodes.out 
+sembench
+./bin/extract-mmtests.pl -d Log_dir.ltccidistro6p9.2020-05-26_1058 -b  sembench  -n sembench-futex --print-header >> /root/mmtests/Results/sembench-futex.out 
+Ending  MMTEST suite 
+Thu May 28 13:48:38 IST 2020

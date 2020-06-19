@@ -1,0 +1,413 @@
+#!/bin/bash
+export SCRIPT=`basename $0 | sed -e 's/\./\\\./'`
+export SCRIPTDIR=`echo $0 | sed -e "s/$SCRIPT//"`/..
+cd $SCRIPTDIR/configs || exit
+
+NOATIME_FSCONFIGS="
+config-db-pgbench-timed-ro-medium
+config-db-pgbench-timed-ro-small
+config-db-pgbench-timed-rw-medium
+config-db-pgbench-timed-rw-small
+config-db-pgbench-timed-ro-medium-tuned
+config-db-pgbench-timed-ro-small-tuned
+config-db-pgbench-timed-rw-medium-tuned
+config-db-pgbench-timed-rw-small-tuned
+config-db-pgbench-timed-ro-small-full-tuned
+config-db-pgbench-timed-ro-small-full-hugetlbfs-tuned
+config-db-sysbench-mariadb-oltp-ro-medium
+config-db-sysbench-mariadb-oltp-ro-small
+config-db-sysbench-mariadb-oltp-rw-medium
+config-db-sysbench-mariadb-oltp-rw-small
+config-db-sysbench-postgres-oltp-ro-medium
+config-db-sysbench-postgres-oltp-ro-small
+config-db-sysbench-postgres-oltp-rw-medium
+config-db-sysbench-postgres-oltp-rw-small
+config-io-pgioperf
+config-workload-usemem
+"
+
+RAMCONFIGS="
+config-io-iozone-ram
+config-io-iozone-ram-dio
+"
+
+DEADLINE_FSCONFIGS="
+config-io-fio-randread-async-randwrite
+config-io-fio-randread-async-seqwrite
+config-io-fio-randread-sync-heavywrite
+config-io-fio-randread-sync-randwrite
+config-io-bonnie-file-async
+config-io-bonnie-dir-async
+config-io-bonnie-file-fsync
+config-io-bonnie-dir-fsync
+"
+
+FSCONFIGS="
+config-io-dbench4-async
+config-io-dbench4-async-traceschedwq
+config-io-dbench4-fsync
+config-io-fio-randread-direct-multi
+config-io-fsmark-small-file-stream
+config-io-fsmark-xfsrepair
+config-pagereclaim-performance
+config-pagereclaim-stutter
+config-io-xfsrepair
+config-hpc-nas-c-class-mpi-full
+config-hpc-nas-c-class-mpi-half
+config-hpc-nas-c-class-mpi-third
+config-hpc-nas-c-class-mpi-pair
+config-hpc-nas-c-class-mpi-minparallel
+config-hpc-nas-d-class-mpi-bind-full
+config-hpc-nas-d-class-mpi-bind-half
+config-hpc-nas-d-class-mpi-bind-third
+config-hpc-nas-d-class-mpi-full
+config-hpc-nas-d-class-mpi-half
+config-hpc-nas-d-class-mpi-third
+config-hpc-nas-d-class-mpi-pair
+config-hpc-nas-d-class-mpi-minparallel
+config-workload-mailserver
+config-workload-kernbench-max
+config-workload-kerndevel
+config-workload-dedup
+config-workload-shellscripts
+config-io-sparsetruncate-tiny
+config-io-sparsetruncate-small
+config-io-sparsetruncate-large
+config-workload-thpfioscale
+config-workload-thpfioscale-defrag
+config-workload-thpfioscale-madvhugepage
+config-reaim-io-alltests
+config-reaim-io-compute
+config-reaim-io-disk
+config-reaim-io-disk-large
+config-reaim-io-new_dbase
+config-reaim-io-new_fserver-large
+config-reaim-io-shared
+config-reaim-highsys
+config-reaim-stress
+config-io-bonnie-file-async
+config-io-bonnie-dir-async
+config-io-bonnie-file-fsync
+config-io-bonnie-dir-fsync
+config-io-bonniepp-file-async
+config-io-bonniepp-dir-async
+config-io-bonniepp-file-fsync
+config-io-bonniepp-dir-fsync
+config-io-iozone
+config-io-iozone-small
+config-io-iozone-dio
+config-io-seeker-file-read
+config-io-seeker-file-write
+config-io-filebench-varmail-small
+config-io-filebench-varmail-medium
+config-io-filebench-varmail-large
+config-io-filebench-oltp-small
+config-io-filebench-oltp-large
+config-io-filebench-oltp-directio-small
+config-io-filebench-oltp-directio-large
+config-io-filebench-webserver-small
+config-io-filebench-webproxy-small
+config-io-filebench-webproxy-medium
+config-io-filebench-webproxy-large
+config-workload-kvmstart-memhog-frag-fio-randread
+config-workload-kvmstart-memhog-frag-singlefile
+config-workload-kvmstart-memhog-frag-singlefile-nothp
+config-workload-pedsort
+config-workload-pedsort-light
+config-workload-thpscale
+config-workload-thpscale-madvhugepage
+config-workload-will-it-scale-io
+config-io-iozone-doublemem-async
+config-io-iozone-doublemem-fsync
+config-db-sqlite-insert-small
+config-db-sqlite-insert-medium
+config-io-blogbench
+config-io-fio-randread-async-randwrite
+config-io-fio-randread-async-seqwrite
+config-io-fio-randread-sync-heavywrite
+config-io-fio-randread-sync-randwrite
+config-io-fio-seqread-doublemem-4k-4t
+config-io-fio-seqread-doublemem-32k-4t
+config-io-fio-sync-maxrandwrite
+config-io-fio-sync-maxrandwrite-ftrace
+config-io-fio-sync-maxrandwrite-long-ftrace
+config-io-paralleldd-read-small
+config-io-paralleldd-read-large
+config-io-paralleldd-read-small-multi
+config-io-paralleldd-read-large-multi
+config-io-S-startup
+config-workload-libmicro-file
+config-io-xfsio
+config-workload-unixbench-io-fsbuffer
+config-workload-unixbench-io-fsdisk
+config-workload-unixbench-io-fstime
+config-workload-simoop-short
+config-speccpu2017-speed
+config-speccpu2017-speed-parallel-quarter
+config-speccpu2017-speed-parallel-half
+config-speccpu2017-speed-parallel-full
+config-speccpu2017-rate-parallel-quarter
+config-speccpu2017-rate-parallel-half
+config-speccpu2017-rate-parallel-full
+config-hpc-parsec-pthreads-half
+config-hpc-parsec-pthreads-full
+config-functional-ltp-cve
+config-functional-ltp-lite
+config-functional-xfstests-auto
+"
+
+rm -f *-ext3 *-ext4 *-btrfs *-btrfs-nocow *-xfs *-raid0 *-raid1 *-raid5
+
+for CONFIG in $RAMCONFIGS; do
+	if [ ! -e $CONFIG ]; then
+		echo Missing: $CONFIG
+		continue
+	fi
+
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/ram0/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=ext3/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM=/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=barrier=0/' \
+			> $CONFIG-ext3
+
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/ram0/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=ext4/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM="-F -E lazy_itable_init=0"/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=barrier=0/' \
+			> $CONFIG-ext4
+
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/ram0/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=btrfs/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM="-f"/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=nobarrier/' \
+			> $CONFIG-btrfs
+
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/ram0/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=btrfs/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM="-f"/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=nobarrier,nodatacow/' \
+			> $CONFIG-btrfs-nocow
+
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/ram0/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=xfs/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM="-f"/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=/' \
+			> $CONFIG-xfs
+
+#	for FS in ext3 ext4 btrfs xfs; do
+#		sed -i '/export TESTDISK_RD_PREALLOC/d' ${CONFIG}-$FS
+#		sed -i '/export TESTDISK_RD_PREALLOC_NODE/d' ${CONFIG}-$FS
+#		sed -i '/export TESTDISK_RD_SIZE/d' ${CONFIG}-$FS
+#
+#		echo >> ${CONFIG}-$FS
+#		echo '# Use 1/5 of NUMA node size to leave space for pagecache and other stuff' >> ${CONFIG}-$FS
+#		echo '# Also note we may be on UMA machine after all' >> ${CONFIG}-$FS
+#		echo 'export TESTDISK_RD_PREALLOC=yes' >> ${CONFIG}-$FS
+#		echo 'export TESTDISK_RD_PREALLOC_NODE=${MMTESTS_NODE_ID_BY_SIZE[$((NUMNODES-1))]}' >> ${CONFIG}-$FS
+#		echo 'export TESTDISK_RD_SIZE=$((${MMTESTS_NODE_SIZE[$TESTDISK_RD_PREALLOC_NODE]}/5))' >> ${CONFIG}-$FS
+#	done
+done
+for CONFIG in $FSCONFIGS; do
+	if [ ! -e $CONFIG ]; then
+		echo Missing: $CONFIG
+		continue
+	fi
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/sda6/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=ext3/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM=/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=barrier=0/' \
+			> $CONFIG-ext3
+
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/sda6/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=ext4/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM="-F -E lazy_itable_init=0"/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=barrier=0/' \
+			> $CONFIG-ext4
+
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/sda6/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=btrfs/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM="-f"/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=nobarrier/' \
+			> $CONFIG-btrfs
+
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/sda6/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=btrfs/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM="-f"/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=nobarrier,nodatacow/' \
+			> $CONFIG-btrfs-nocow
+
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/sda6/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=xfs/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM="-f"/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=/' \
+			> $CONFIG-xfs
+
+done
+for CONFIG in $DEADLINE_FSCONFIGS; do
+	if [ ! -e $CONFIG ]; then
+		echo Missing: $CONFIG
+		continue
+	fi
+	OUT_CONFIG=`echo $CONFIG | sed -e 's/^config-/config-deadline-/'`
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/sda6/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=ext3/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM=/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=barrier=0/' \
+			> $OUT_CONFIG-ext3
+
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/sda6/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=ext4/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM="-F -E lazy_itable_init=0"/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=barrier=0/' \
+			> $OUT_CONFIG-ext4
+
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/sda6/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=btrfs/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM="-f"/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=nobarrier/' \
+			> $OUT_CONFIG-btrfs
+
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/sda6/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=btrfs/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM="-f"/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=nobarrier,nodatacow/' \
+			> $OUT_CONFIG-btrfs-nocow
+
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/sda6/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=xfs/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM="-f"/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=/' \
+			> $OUT_CONFIG-xfs
+	echo "export TESTDISK_IO_SCHEDULER=deadline" >> $OUT_CONFIG-ext3
+	echo "export TESTDISK_IO_SCHEDULER=deadline" >> $OUT_CONFIG-ext4
+	echo "export TESTDISK_IO_SCHEDULER=deadline" >> $OUT_CONFIG-btrfs
+	echo "export TESTDISK_IO_SCHEDULER=deadline" >> $OUT_CONFIG-btrfs-nocow
+	echo "export TESTDISK_IO_SCHEDULER=deadline" >> $OUT_CONFIG-xfs
+done
+
+for CONFIG in $NOATIME_FSCONFIGS; do
+	if [ ! -e $CONFIG ]; then
+		echo Missing: $CONFIG
+		continue
+	fi
+	OUT_CONFIG=`echo $CONFIG | sed -e 's/^config-/config-deadline-/'`
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/sda6/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=ext3/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM=/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=barrier=0,noatime/' \
+			> $CONFIG-ext3
+
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/sda6/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=ext4/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM="-F -E lazy_itable_init=0"/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=barrier=0,noatime/' \
+			> $CONFIG-ext4
+
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/sda6/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=btrfs/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM="-f"/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=noatime,nobarrier/' \
+			> $CONFIG-btrfs
+
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/sda6/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=btrfs/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM="-f"/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=noatime,nobarrier,nodatacow/' \
+			> $CONFIG-btrfs-nocow
+
+
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/sda6/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=xfs/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM="-f"/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=noatime/' \
+			> $CONFIG-xfs
+
+done
+
+
+LIMITMEM_CONFIGS="
+"
+for CONFIG in $LIMITMEM_CONFIGS; do
+	DESTCONFIG=`echo $CONFIG | sed -e 's/dhp__/dhp-2048M__/'`
+
+	if [ ! -e $CONFIG ]; then
+		echo Missing: $CONFIG
+		continue
+	fi
+
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/sda6/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=ext3/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM=/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=barrier=0/' \
+			> $DESTCONFIG-ext3
+
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/sda6/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=ext4/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM="-F -E lazy_itable_init=0"/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=barrier=0,noatime/' \
+			> $DESTCONFIG-ext4
+
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/sda6/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=btrfs/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM="-f"/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=nobarrier/' \
+			> $DESTCONFIG-btrfs
+
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=\/dev\/sda6/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=xfs/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM="-f"/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=/' \
+			> $DESTCONFIG-xfs
+done
+
+TMPFS_CONFIGS="
+config-io-paralleldd-read-small
+config-pagereclaim-performance
+"
+
+for CONFIG in $TMPFS_CONFIGS; do
+	if [ ! -e $CONFIG ]; then
+		echo Missing: $CONFIG
+		continue
+	fi
+	cat $CONFIG | sed \
+		-e 's/.*export TESTDISK_PARTITION.*/export TESTDISK_PARTITION=none/' \
+		-e 's/.*export TESTDISK_FILESYSTEM=.*/export TESTDISK_FILESYSTEM=tmpfs/' \
+		-e 's/.*export TESTDISK_MKFS_PARAM=.*/export TESTDISK_MKFS_PARAM=/' \
+		-e 's/.*export TESTDISK_MOUNT_ARGS=.*/export TESTDISK_MOUNT_ARGS=/' \
+			> $CONFIG-tmpfs
+done
+
+for FS in xfs ext3 ext4 btrfs btrfs-nocow; do
+	for TYPE in rotary ssd; do
+		for CONFIG in `ls config-*-$FS`; do
+			cp $CONFIG $CONFIG-$TYPE-raid0
+			cp $CONFIG $CONFIG-$TYPE-raid1
+			cp $CONFIG $CONFIG-$TYPE-raid5
+		done
+	done
+done
