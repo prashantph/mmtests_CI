@@ -1,6 +1,7 @@
 #!/bin/bash
 
-script_dir=/home/mmtests/post_scripts
+Home_dir=`pwd`
+script_dir=$Home_dir/post_scripts
 
 workload_list=($(ls -ltr $script_dir| awk '{print  $9}'))
 

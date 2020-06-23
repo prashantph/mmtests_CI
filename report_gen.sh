@@ -1,6 +1,7 @@
 #!/bin/bash
 Log_dir=$1
-Result_dir=/home/mmtests/Results
+Home_dir=`pwd`
+Result_dir=$Home_dir/Results
 
 if [ ! -d $Result_dir ]
 then 

@@ -10,9 +10,9 @@ if [ -e /etc/redhat-release ];
 	yum -y install patch*
 elif [ -e /etc/SuSE-release ];
   then 
-	yum  install -y time*
-	yum  install -y perl*
-	yum  install -y patch*
+	zypper install -y time*
+	zypper install -y perl*
+	zypper install -y patch*
 	
                         elif [ -e /etc/os-release ];
                                 then osdetails=`lsb_release -a 2>/dev/null | grep -i 'Description' | awk '{print $2$3;}'`;
@@ -24,6 +24,7 @@ fi
 
 
 echo "setting up Binary Search module"
+git cone https://github.com/daoswald/List-BinarySearch.git
 cd $Home_dir/List-BinarySearch
  perl Makefile.PL
     make

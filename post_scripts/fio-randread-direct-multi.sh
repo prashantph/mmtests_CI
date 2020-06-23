@@ -1,6 +1,7 @@
 #!/bin/bash
 
-Result_dir=/home/mmtests/$1
+Home_dir=`pwd`
+Result_dir=$Home_dir/$1
 cvs_dir=$Result_dir/Final_csv
 csv_file=$cvs_dir/fio-randread-direct-multi/result.csv
 
