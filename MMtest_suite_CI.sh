@@ -15,6 +15,19 @@ Home_dir=`pwd`
 Config_dir=$Home_dir/configs
 Log_dir=$Home_dir/work/log
 Result_dir=$Home_dir/Results	
+
+#check if source die already available ; delete if there to avaoid possible errors
+if [ -d "$Home_dir/work/sources/postgresbuild-11.3" ]
+then 
+	rm -rf $Home_dir/work/sources/postgresbuild-11.3*
+fi
+if [ -d "$Home_dir/work/sources/sockperf-0*" ]
+then 
+	rm -rf $Home_dir/work/sources/sockperf-0*
+fi
+
+
+
 #Running the choosen test suite 
 workloads=($(ls -ltr $Config_dir| awk '{print  $9}'))
 for i in "${workloads[@]}"
