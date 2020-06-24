@@ -1,1 +1,0 @@
-./sbin/bonnie++ -r 0 -d /home/mmtests/work/testdisk/data -s 200306 -n 0 -f -m ltccip8.aus.stglabs.ibm.com -R 128

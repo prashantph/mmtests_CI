@@ -1,6 +1,0 @@
-start :: 1592389477
-test begin :: sqlite 1592389479
-test end :: sqlite 1592389571
-time :: sqlite 0.58 user 1.21 system 80.87 elapsed
-finish :: 1592389571
-status :: 0

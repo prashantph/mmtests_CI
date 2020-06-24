@@ -1,1 +1,3 @@
-declare -ax CONFIGS=([0]="configs/config-db-sysbench-postgres-oltp-rw-small")
+declare -ax CONFIGS=([0]="configs/config-workload-stream-omp-nodes")
+declare -ax MMTESTS_NODE_ID_BY_SIZE=([0]="0" [1]="7" [2]="6" [3]="1")
+declare -ax MMTESTS_NODE_SIZE=([0]="262715473920" [1]="273504272384" [6]="272162095104" [7]="264123711488")

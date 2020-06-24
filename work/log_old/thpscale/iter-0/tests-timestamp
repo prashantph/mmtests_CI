@@ -1,6 +1,0 @@
-start :: 1590556643
-test begin :: thpscale 1590556644
-test end :: thpscale 1590556765
-time :: thpscale 22.62 user 101.01 system 105.86 elapsed
-finish :: 1590556765
-status :: 0

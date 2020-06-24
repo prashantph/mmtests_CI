@@ -1,6 +1,0 @@
-start :: 1592013822
-test begin :: sembench-futex 1592013823
-test end :: sembench-futex 1592023910
-time :: sembench-futex 3208.19 user 40362.47 system 10080.21 elapsed
-finish :: 1592023910
-status :: 0

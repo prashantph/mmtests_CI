@@ -1,6 +1,0 @@
-start :: 1591176751
-test begin :: stream 1591176756
-test end :: stream 1591176777
-time :: stream 12.85 user 0.79 system 7.44 elapsed
-finish :: 1591176777
-status :: 0

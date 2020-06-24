@@ -1,6 +1,0 @@
-start :: 1590556520
-test begin :: usemem 1590556521
-test end :: usemem 1590556637
-time :: usemem 242.85 user 35.53 system 110.80 elapsed
-finish :: 1590556637
-status :: 0

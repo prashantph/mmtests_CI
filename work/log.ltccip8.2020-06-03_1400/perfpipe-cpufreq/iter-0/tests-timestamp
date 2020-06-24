@@ -1,6 +1,0 @@
-start :: 1591184225
-test begin :: perfpipe 1591184226
-test end :: perfpipe 1591184338
-time :: perfpipe 13.93 user 143.82 system 105.84 elapsed
-finish :: 1591184338
-status :: 0

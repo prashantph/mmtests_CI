@@ -1,7 +1,0 @@
-start :: 1591989247
-test begin :: iperf3 1591989249
-test end :: iperf3 1591989256
-Command exited with non-zero status 255
-time :: iperf3 0.24 user 0.09 system 0.29 elapsed
-finish :: 1591989256
-status :: 255

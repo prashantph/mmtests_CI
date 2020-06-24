@@ -1,6 +1,0 @@
-start :: 1592108339
-test begin :: fio 1592108341
-test end :: fio 1592109324
-time :: fio 15.44 user 22.17 system 973.01 elapsed
-finish :: 1592109324
-status :: 0

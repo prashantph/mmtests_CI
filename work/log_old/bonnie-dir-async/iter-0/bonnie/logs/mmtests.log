@@ -1,6 +1,0 @@
-Downloaded file already available at /root/mmtests/work/sources/bonnie%2B%2B-1.03e.tgz
-~/mmtests/work/sources/bonnie-1.03e ~/mmtests/work/sources/bonnie-1.03e ~/mmtests/work/sources
-Extracting /root/mmtests/work/tmp/482625/bonnie-detailed-io-report.patch
-/root/mmtests/shellpacks/shellpack-install-bonnie: line 81: patch: command not found
-FATAL bonnie-install: Failed to apply detailed IO patch
-FATAL bonnie-bench: bonnie install script returned error

@@ -1,6 +1,0 @@
-start :: 1591976718
-test begin :: paralleldd 1591976720
-test end :: paralleldd 1591976782
-time :: paralleldd 353.76 user 888.04 system 54.42 elapsed
-finish :: 1591976782
-status :: 0

@@ -1,7 +1,0 @@
-# Running 'sched/pipe' benchmark:
-# Executed 500000 pipe operations between two processes
-
-     Total time: 3.381 [sec]
-
-       6.763466 usecs/op
-         147853 ops/sec

@@ -1,2 +1,0 @@
-c-0  snooze    0
-c-1  Shared Cede   10

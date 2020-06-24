@@ -1,6 +1,0 @@
-start :: 1592102935
-test begin :: filebench 1592102936
-test end :: filebench 1592102969
-time :: filebench 98.33 user 215.87 system 22.46 elapsed
-finish :: 1592102969
-status :: 0

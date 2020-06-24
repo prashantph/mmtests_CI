@@ -1,6 +1,0 @@
-start :: 1591416302
-test begin :: blogbench 1591416314
-test end :: blogbench 1591418760
-time :: blogbench 3238.53 user 152070.11 system 2431.47 elapsed
-finish :: 1591418760
-status :: 0

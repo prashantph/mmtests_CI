@@ -1,6 +1,0 @@
-Killing old servers
-/root/mmtests/shellpacks/shellpack-bench-netperf: line 157: killall: command not found
-Starting server
-Starting netserver at port 12865
-set_up_server could not establish a listen endpoint for  port 12865 with family AF_UNSPEC
-FATAL netperf-bench: Failed to start netserver

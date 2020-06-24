@@ -1,6 +1,0 @@
-1591220322 run-mmtests: Start
-1591220322 run-mmtests: Iteration 0 start
-1591220323 run-mmtests: begin netperf-udp-rr
-1591220329 run-mmtests: begin netperf-tcp-rr
-1591220335 run-mmtests: Iteration 0 end
-1591220335 run-mmtests: End

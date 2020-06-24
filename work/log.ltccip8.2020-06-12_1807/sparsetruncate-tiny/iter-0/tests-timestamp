@@ -1,6 +1,0 @@
-start :: 1591976439
-test begin :: sparsetruncate 1591976440
-test end :: sparsetruncate 1591976449
-time :: sparsetruncate 0.26 user 0.11 system 0.30 elapsed
-finish :: 1591976449
-status :: 0

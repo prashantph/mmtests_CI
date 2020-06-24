@@ -1,6 +1,0 @@
-1591421608 run-mmtests: Start
-1591421608 run-mmtests: Iteration 0 start
-1591421609 run-mmtests: begin sqlite
-1591421610 sqlite-bench: sqlite-insert
-1591421711 run-mmtests: Iteration 0 end
-1591421711 run-mmtests: End
