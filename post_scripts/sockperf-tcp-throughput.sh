@@ -1,9 +1,7 @@
 #!/bin/bash
-
-Home_dir=`pwd`
-Result_dir=$Home_dir/$1
+Result_dir=/home/mmtests/$1
 cvs_dir=$Result_dir/Final_csv
-csv_file=$cvs_dir/socketperf-tcp/results.csv
+csv_file=$cvs_dir/socketperf-tcp/result.csv
 if [ ! -d "$cvs_dir/socketperf-tcp" ]
 then
         mkdir -p $cvs_dir/socketperf-tcp
@@ -18,3 +16,4 @@ MS_850=$(grep '^850 ' $Result_dir/sockperf-tcp-throughput.out | head -1 | awk '{
 kernel=$(uname -r)
 #echo "Build_Name,MsgSize_14,MS_100,MS_300,MS_500,MS_850"
 echo "$kernel,$MS_14,$MS_100,$MS_300,$MS_500,$MS_850" > $csv_file
+cat $csv_file
