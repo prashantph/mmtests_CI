@@ -47,7 +47,7 @@ do
 	date |tee -a  $TEMP_LOG
 	echo "starting test $workload_name "|tee -a  $TEMP_LOG
 	./run-mmtests.sh --config configs/$i $workload_name
-	rm -rf $Home_dir/work/testdisk/*
+	rm -rf $Home_dir/work/testdisk $Home_dir/work/tmp
 	date |tee -a  $TEMP_LOG
 	echo " test $workload_name ended"|tee -a  $TEMP_LOG
 	sleep 5
