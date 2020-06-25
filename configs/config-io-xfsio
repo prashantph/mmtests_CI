@@ -21,7 +21,7 @@ export MONITORS_WITH_LATENCY="vmstat iostat"
 export MONITOR_UPDATE_FREQUENCY=10
 
 # xfsio
-export XFSIO_ITERATIONS=7
+export XFSIO_ITERATIONS=2
 export XFSIO_TESTCASES=pwrite-single-rewrite-async
 export XFSIO_SIZE=$((MEMTOTAL_BYTES*3))
 export TESTDISK_FS_SIZE=$(((XFSIO_SIZE+1048576*1024)/1048576))m
