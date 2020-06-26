@@ -1,12 +1,13 @@
 #!/bin/bash
-Result_dir=/home/mmtests/$1
+Home_dir=`pwd`
+Result_dir=$Home_dir/$1
 cvs_dir=$Result_dir/Final_csv
 csv_file=$cvs_dir/unixbench/result.csv
 if [ ! -d "$cvs_dir/unixbench" ]
 then
         mkdir -p $cvs_dir/unixbench
 fi
-Log_dir=/home/mmtests/work/log
+Log_dir=$Home_dir/work/log
 #cp $Log_dir/unixbench/iter-0/unixbench-dhry2reg/logs/dhry2reg-* $Result_dir
 
 dry_min=$(grep -m1 unixbench-dhry2reg $Result_dir/unixbench.out | awk '{ print $4 }')
