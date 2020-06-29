@@ -1,7 +1,7 @@
 
 Home_dir=`pwd`
 #!/bin/bash
-Result_dir=$Home_dir/$1
+Result_dir=$1
 cvs_dir=$Result_dir/Final_csv
 csv_file=$cvs_dir/xfsio/result.csv
 if [ ! -d "$cvs_dir/xfsio" ]
