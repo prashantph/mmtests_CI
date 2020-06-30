@@ -24,7 +24,7 @@ export MONITOR_UPDATE_FREQUENCY=10
 
 # futexbench
 export FUTEXBENCH_MIN_THREADS=2
-export FUTEXBENCH_MAX_THREADS=$((NUMCPUS*64))
+export FUTEXBENCH_MAX_THREADS=$((NUMCPUS))
 export FUTEXBENCH_SHARED=no
 
 # IPCScale
@@ -40,17 +40,17 @@ export IPCSCALE_RUNTIME=5 # secs
 
 # sembench
 export SEMBENCH_MIN_THREADS=2
-export SEMBENCH_MAX_THREADS=$((NUMCPUS*64))
+export SEMBENCH_MAX_THREADS=$((NUMCPUS))
 
 # futexwait
 export FUTEXWAIT_ITERATIONS=3
 export FUTEXWAIT_MIN_THREADS=2
-export FUTEXWAIT_MAX_THREADS=$((NUMCPUS*64))
+export FUTEXWAIT_MAX_THREADS=$((NUMCPUS))
 
 # filelockperf
 export FILELOCKPERF_ITERATIONS=3
 export FILELOCKPERF_MIN_THREADS=2
-export FILELOCKPERF_MAX_THREADS=$((NUMCPUS*8))
+export FILELOCKPERF_MAX_THREADS=$((NUMCPUS))
 export FILELOCKPERF_LOCKITERS=1024 # number of times each thread does a lock/unlock pair.
  # single: single file for all tasks
  # multi: each task deals with its own file

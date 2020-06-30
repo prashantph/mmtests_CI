@@ -37,7 +37,7 @@ export AIM9_TESTTIME=15
 export AIM9_TESTLIST=page_test,brk_test,exec_test,fork_test
 
 # EBizzy
-export EBIZZY_MAX_THREADS=$((NUMCPUS*4))
+export EBIZZY_MAX_THREADS=$((NUMCPUS))
 export EBIZZY_DURATION=30
 export EBIZZY_ITERATIONS=2
 

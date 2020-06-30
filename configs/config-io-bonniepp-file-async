@@ -1,5 +1,9 @@
+### The bonnie IO benchmark generates a number of basic IO patterns simulating
+### the operations of a busy file server. The dataset size of 2*RAM with 1024
+### files and the IO is asynchronous.
+
 # MM Test Parameters
-export MMTESTS="sembench-futex"
+export MMTESTS="bonniepp"
 
 # Test disk to setup (optional)
 #export TESTDISK_RAID_DEVICES=
@@ -15,10 +19,12 @@ export MMTESTS="sembench-futex"
 # List of monitors
 export RUN_MONITOR=yes
 export MONITORS_ALWAYS=
-export MONITORS_GZIP="perf-record proc-vmstat mpstat"
-export MONITORS_WITH_LATENCY="vmstat"
+export MONITORS_GZIP="perf-record proc-vmstat top"
+export MONITORS_WITH_LATENCY="vmstat iostat"
 export MONITOR_UPDATE_FREQUENCY=10
 
-# sembench
-export SEMBENCH_MIN_THREADS=2
-export SEMBENCH_MAX_THREADS=$((NUMCPUS))
+# bonnie
+export MMTEST_ITERATIONS=2
+export BONNIE_DATASET_SIZE=$((MEMTOTAL_BYTES))
+#export BONNIE_CHAR_IO_SIZE=$((MEMTOTAL_BYTES))
+export BONNIE_FSYNC=no
