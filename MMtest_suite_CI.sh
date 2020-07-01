@@ -11,17 +11,6 @@ TEMP_LOG=/tmp/MMtest_suite.log.$HOSTNAME.$RUNDATE
 echo "Starting MMTEST suite "
 date |tee -a  $TEMP_LOG
 
-if [ -d "/mmtests" ]
-then 
-	if [ -d "/mmtests/mmtests_CI" ]
-	then 
-		echo "remove Older version of test suite"
-		rm -rf /mmtests/mmtests_CI
-	fi
-	cp -r /root/mmtests_CI /mmtests
-	cd /mmtests/mmtests_CI
-fi	
-
 Home_dir=`pwd`
 Config_dir=$Home_dir/configs
 Log_dir=$Home_dir/work/log
@@ -99,8 +88,11 @@ do
         done
 done
 
+#post process to add lines to csv file
+kernel=$(uname -r)
 echo "prost process pass 2 - generating result cvs"
-sh $Home_dir/post_proc_main.sh $Result_dir $HOSTNAME
+sh $Home_dir/post_proc_main.sh $Result_dir $kernel
+sh $Home_dir/copy_csv_data.sh
 
 mv $Log_dir $Log_dir.$HOSTNAME.$RUNDATE
 mv $Result_dir $Result_dir.$HOSTNAME.$RUNDATE
