@@ -24,7 +24,7 @@ fi
 
 
 echo "setting up Binary Search module"
-git cone https://github.com/daoswald/List-BinarySearch.git
+git clone https://github.com/daoswald/List-BinarySearch.git
 cd $Home_dir/List-BinarySearch
  perl Makefile.PL
     make
