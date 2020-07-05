@@ -23,7 +23,7 @@ then
 fi	
 
 Home_dir=`pwd`
-Config_dir=$Home_dir/configs
+Config_file=$Home_dir/file_configs.txt
 Log_dir=$Home_dir/work/log
 Result_dir=$Home_dir/Results	
 
@@ -40,7 +40,7 @@ fi
 
 
 #Running the choosen test suite 
-workloads=($(ls -ltr $Config_dir| awk '{print  $9}'))
+workloads=($(cat $Config_file))
 for i in "${workloads[@]}"
 do
 	workload_name=`echo $i |cut -d '-' -f3-`
@@ -52,7 +52,6 @@ do
 	echo " test $workload_name ended"|tee -a  $TEMP_LOG
 	sleep 5
 done
-
 #post process output part1
 echo "post processing now..."
 if [ ! -d "$Result_dir" ]
