@@ -30,9 +30,3 @@ config-io-blogbench
 config-io-pgioperf
 config-reaim-io-alltests
 config-io-fio-randread-direct-multi
-config-io-filebench-webproxy-small
-config-io-filebench-oltp-small
-config-io-filebench-oltp-directio-small
-config-io-bonniepp-file-async
-config-io-bonnie-dir-async
-config-io-xfsio
