@@ -85,13 +85,15 @@ echo "post processing now..."
 #for i in "${workload_list[@]}"
 #do
 
- benchmark=`echo $i |cut -d '-' -f1`
- bench=($(ls $Log_dir/$i/iter-0|grep $benchmark))
+ benchmark=`echo $workload_name |cut -d '-' -f1`
+ bench=($(ls $Log_dir/$workload_name/iter-0|grep $benchmark))
         for k in "${bench[@]}"
         do
-                if [ -d "$Log_dir/$i/iter-0/$k" ]
+                if [ -d "$Log_dir/$workload_name/iter-0/$k" ]
                 then
-                ./bin/extract-mmtests.pl -d $Log_dir -b $k  -n $i --print-header >> $Result_dir/$i.out
+                    echo $k $i 
+                    sleep 5
+                ./bin/extract-mmtests.pl -d $Log_dir -b $k  -n $workload_name --print-header >> $Result_dir/$workload_name.out
 		#perf report -n --no-children --sort=dso,symbol  -i $Log_dir/$i/iter-0/perf-record-$k >> $Log_dir/$i/iter-0/perf.data
                 fi
         done
