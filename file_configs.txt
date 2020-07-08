@@ -12,14 +12,12 @@ config-scheduler-schbench
 config-scheduler-perfpipe-cpufreq
 config-scheduler-forkintensive
 config-pagereclaim-performance
-config-pagealloc-performance
 config-network-sockperf-unbound
 config-network-sockperf-tcp-throughput
 config-network-netperf-unbound
 config-network-netperf-rr-unbound
 config-network-iperf-s14-r10000-tcp-unbound
 config-ipc-scale-short
-config-db-sysbench-postgres-oltp-rw-small
 config-db-sysbench-mariadb-oltp-ro-small
 config-db-sqlite-insert-small
 config-db-pgbench-timed-rw-small
