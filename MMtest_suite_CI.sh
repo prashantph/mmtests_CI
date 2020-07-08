@@ -11,16 +11,16 @@ TEMP_LOG=/tmp/MMtest_suite.log.$HOSTNAME.$RUNDATE
 echo "Starting MMTEST suite "
 date |tee -a  $TEMP_LOG
 
-#if [ -d "/mmtests" ]
-#then 
-#	if [ -d "/mmtests/mmtests_CI" ]
-#	then 
-#		echo "remove Older version of test suite"
-#		rm -rf /mmtests/mmtests_CI
-#	fi
-#	cp -r /root/mmtests_CI /mmtests
-#	cd /mmtests/mmtests_CI
-#fi	
+if [ -d "/mmtests" ]
+then 
+	if [ -d "/mmtests/mmtests_CI" ]
+	then 
+		echo "remove Older version of test suite"
+		rm -rf /mmtests/mmtests_CI
+	fi
+	cp -r /root/mmtests_CI /mmtests
+	cd /mmtests/mmtests_CI
+fi	
 
 Home_dir=`pwd`
 Config_file=$Home_dir/file_configs.txt
