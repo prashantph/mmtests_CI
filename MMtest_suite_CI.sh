@@ -94,12 +94,12 @@ echo "post processing now..."
                     echo $k $i 
                     sleep 5
                 ./bin/extract-mmtests.pl -d $Log_dir -b $k  -n $workload_name --print-header >> $Result_dir/$workload_name.out
+                echo "prost process pass 2 - generating result cvs"
+                sh $Home_dir/post_proc_main.sh $Result_dir $kernelrelease $k
 		#perf report -n --no-children --sort=dso,symbol  -i $Log_dir/$i/iter-0/perf-record-$k >> $Log_dir/$i/iter-0/perf.data
                 fi
         done
 
-echo "prost process pass 2 - generating result cvs"
-sh $Home_dir/post_proc_main.sh $Result_dir $kernelrelease
 
 done
 sh $Home_dir/copy_csv_data.sh
