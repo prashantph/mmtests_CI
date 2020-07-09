@@ -27,4 +27,4 @@ for i in "${workload_list[@]}"
 do
 	#echo $i 
 	expect $Home_dir/ex_create.exp  $i $Power $distro$distro_version 
-
+done
