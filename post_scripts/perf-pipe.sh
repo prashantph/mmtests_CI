@@ -2,7 +2,7 @@
 
 Home_dir=`pwd`
 Result_dir=$1
-Log_dir="/mmtests/mmtests_CI/work/log.rakshithlinux3.2020-07-12_1239/perfpipe-cpufreq/iter-0/perfpipe/logs"
+Log_dir="/mmtests/mmtests_CI/work/log/perfpipe-cpufreq/iter-0/perfpipe/logs"
 cvs_dir=$Result_dir/Final_csv
 csv_file=$cvs_dir/perfpipe/result.csv
 echo "$Log_dir"

@@ -2,7 +2,7 @@
 
 Home_dir=`pwd`
 Result_dir=$1
-Log_dir="/mmtests/mmtests_CI/work/log.rakshithlinux3.2020-07-12_1239/iperf-s14-r10000-tcp-unbound/iter-0/iperf3/logs/"
+Log_dir="/mmtests/mmtests_CI/work/log/iperf-s14-r10000-tcp-unbound/iter-0/iperf3/logs/"
 cvs_dir=$Result_dir/Final_csv
 csv_file=$cvs_dir/iperf/result.csv
 echo "$Log_dir"
