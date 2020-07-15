@@ -93,6 +93,10 @@ echo "post processing now..."
                 then
                     echo $k $i 
                     sleep 5
+		    if [ $workload_name == "scale-short" ]
+		then 
+    			./bin/extract-mmtests.pl -d work/log -b ipcscale-waitforzero -n scale-short --print-header  >> $Result_dir/$workload_name.out 
+		fi
                 ./bin/extract-mmtests.pl -d $Log_dir -b $k  -n $workload_name --print-header >> $Result_dir/$workload_name.out
                 echo "prost process pass 2 - generating result cvs"
                 sh $Home_dir/post_proc_main.sh $Result_dir $kernelrelease $k
