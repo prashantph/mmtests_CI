@@ -1,6 +1,6 @@
+#!/bin/bash
 
 Home_dir=`pwd`
-#!/bin/bash
 Result_dir=$1
 cvs_dir=$Result_dir/Final_csv
 csv_file=$cvs_dir/xfsio/result.csv
