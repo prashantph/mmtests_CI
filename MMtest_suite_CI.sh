@@ -102,6 +102,8 @@ echo "post processing now..."
 
 
 done
+mv $Result_dir/Final_csv $Result_dir/old_cvs
+sh $Home_dir/post_proc_main1.sh $Result_dir $kernelrelease 
 sh $Home_dir/copy_csv_data.sh
 mv $Log_dir $Log_dir.$HOSTNAME.$RUNDATE
 mv $Result_dir $Result_dir.$HOSTNAME.$RUNDATE
