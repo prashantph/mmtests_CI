@@ -8,6 +8,12 @@ then
         mkdir -p $cvs_dir/thpscale
 fi
 kernel=$(uname -r)
-fault_base=$(grep fault-base-1 $Result_dir/thpscale.out  | head -1 | awk '{ print $4 }')
-echo "$kernel,$fault_base" >> $csv_file
+combined=""
+params=($(tail -n +2 $Result_dir/thpscale.out|awk '{print $1}'|uniq))
+for i in "${params[@]}"
+do
+ ops=$(grep "^$i" $Result_dir/thpscale.out | head -1 | awk '{ print $4 }')
+  combined="${combined}${combined:+,}$ops"
+done
+echo "$kernel,$combined" >> $csv_file
 cat $csv_file

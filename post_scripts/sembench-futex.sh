@@ -9,8 +9,9 @@ then
 fi
 kernel=$(uname -r)
 combined=""
-#for i in $(grep sembench-futex sembench-futex.out); do // extract all the data
-for i in sembench-futex-2 sembench-futex-10240; do
+params=($(tail -n +2 $Result_dir/sembench-futex.out|awk '{print $1}'|uniq))
+for i in "${params[@]}"
+do
   ops=$(grep -w "$i"     $Result_dir/sembench-futex.out | awk '{print $4}')
   combined="${combined}${combined:+,}$ops"
 done

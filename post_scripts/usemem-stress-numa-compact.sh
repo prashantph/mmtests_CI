@@ -10,9 +10,11 @@ fi
 
 kernel=$(uname -r)
 combined=""
-#for i in $(grep sembench-futex sembench-futex.out); do // extract all the data
-for i in syst-1 syst-3 syst-4 elsp-1 elsp-3 elsp-4; do
-  ops=$(grep $i $Result_dir/usemem-stress-numa-compact.out | head -1 | awk '{ print $4 }')
+combined=""
+params=($(tail -n +2 $Result_dir/usemem-stress-numa-compact.out|awk '{print $1}'|uniq))
+for i in "${params[@]}"
+do
+ ops=$(grep "^$i" $Result_dir/usemem-stress-numa-compact.out | head -1 | awk '{ print $4 }')
   combined="${combined}${combined:+,}$ops"
 done
 echo "$kernel,$combined" > $csv_file

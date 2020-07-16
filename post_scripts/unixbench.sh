@@ -11,9 +11,16 @@ Log_dir=$Home_dir/work/log
 #cp $Log_dir/unixbench/iter-0/unixbench-dhry2reg/logs/dhry2reg-* $Result_dir
 
 dry_min=$(grep -m1 unixbench-dhry2reg $Result_dir/unixbench.out | awk '{ print $4 }')
-dry_max=$(grep unixbench-dhry2reg $Result_dir/unixbench.out | grep -v unixbench-dhry2reg-1|head -1 | awk '{ print $4 }')
+#dry_max=$(grep unixbench-dhry2reg $Result_dir/unixbench.out | grep -v unixbench-dhry2reg-1|head -1 | awk '{ print $4 }')
 #dry_max=$(grep lps dhry2reg-320-1.log | awk '{ print $6 }')
 #dmax=$(ls | grep -v dhry2reg-1 | head -1 )
+max=$(grep unixbench-dhry2reg $Result_dir/unixbench.out | grep -v unixbench-dhry2reg-1|head -1 | awk '{ print $3}')
+#compare 3rd col value with 1.
+if [ $max -eq 1 ]; then
+	dry_max=$(grep unixbench-dhry2reg $Result_dir/unixbench.out | grep -v unixbench-dhry2reg-1|head -1 | awk '{ print $4 }')	
+else
+	dry_max=$(grep unixbench-dhry2reg $Result_dir/unixbench.out | grep -v unixbench-dhry2reg-1|head -1 | awk '{ print $3 }' | cut -d'1' -f2)
+fi
 execl_min=$(grep -m1 unixbench-execl $Result_dir/unixbench.out | awk '{ print $4 }')
 execl_max=$(grep unixbench-execl $Result_dir/unixbench.out | grep -v unixbench-execl-1 | head -1 | awk '{ print $4 }' )
 pipe_min=$(grep -m1 unixbench-pipe $Result_dir/unixbench.out | awk '{ print $4 }')
