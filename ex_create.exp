@@ -15,7 +15,7 @@ spawn ssh root@perf-jenkins.aus.stglabs.ibm.com "rm -rf /tmp/$workload ; mkdir -
         password: {send "$pass\r"; exp_continue}
                   }
 
-spawn ssh root@perf-jenkins.aus.stglabs.ibm.com "cat /tmp/$workload/$power/$distro/result.csv | grep -Ev 'BUILD NAME' >> /PSP_Linux_CI/$workload/$power/$distro/result.csv"
+spawn ssh root@perf-jenkins.aus.stglabs.ibm.com "cat /tmp/$workload/$power/$distro/result.csv | grep -Ev 'BUILD NAME' >> /PSP_Linux_CI/mmtest_$workload/$power/$distro/result.csv"
      set pass "passw0rd"
      expect {
      password: {send "$pass\r"; exp_continue}
