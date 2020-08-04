@@ -1,0 +1,201 @@
+#!/bin/bash
+# This script installs mariadb and leaves it ready for benchmarking
+P=mariadb-install
+DEFAULT_VERSION=10.4.11
+. $SHELLPACK_INCLUDE/common.sh
+TIME_CMD=`which time`
+if [ "$TIME_CMD" = "" ]; then
+        TIMEFORMAT="%2Uuser %2Ssystem %Relapsed %P%%CPU"
+        TIME_CMD="time"
+fi
+
+MARIADB_USER=nobody
+MARIADB_GROUP=nogroup
+
+NUMCPUS=`grep processor /proc/cpuinfo | wc -l`
+
+# Basic argument parser
+TASKSET_SERVER=
+TASKSET_CLIENT=
+TASKSET_ALL=
+SERVERSIDE_COMMAND=none
+SERVERSIDE_NAME=`date +%Y%m%d-%H%M-%S`
+
+while [ "$1" != "" ]; do
+	case "$1" in
+	-v)
+		VERSION=$2
+		shift 2
+		;;
+	--serverside-command)
+		SERVERSIDE_COMMAND=$2
+		shift 2
+		;;
+	--serverside-name)
+		SERVERSIDE_NAME=$2
+		shift 2
+		;;
+	--mariadb-user)
+		MARIADB_USER=$2
+		shift 2
+		;;
+	*)
+		echo Unrecognised option: $1
+		shift
+	esac
+done
+if [ "$TASKSET_SERVER" != "" ]; then
+	echo TASKSET_SERVER: $TASKSET_SERVER
+	echo TASKSET_CLIENT: $TASKSET_CLIENT
+fi
+if [ -z "$VERSION" ]; then
+	VERSION=$DEFAULT_VERSION
+fi
+
+for PACKAGE in bison gcc-c++ libstdc++-devel zlib-devel ncurses-devel libncurses5 libtool automake autoconf cmake libxml2-devel boost-devel bzr libopenssl-devel; do
+	install-depends $PACKAGE
+done
+
+MARIADB_CONF=/etc/my.cnf
+MARIADB_DATADIR=$SHELLPACK_DATA/dbdata
+
+# Only updates the first occurance of the parameter
+update_entry_cnf() {
+	PARAMETER=$1
+	VALUE=$2
+
+	LINE=`grep -n "^$PARAMETER" $MARIADB_CONF | cut -d: -f1 | head -1`
+	if [ "$LINE" = "" ]; then
+		LINE=`grep -n "^#$PARAMETER" $MARIADB_CONF | cut -d: -f1 | head -1`
+		if [ "$LINE" = "" ]; then
+			die Failed to locate parameter $PARAMETER
+		fi
+	fi
+	LINEC=`wc -l $MARIADB_CONF | awk '{print $1}'`
+	head -$(($LINE-1)) $MARIADB_CONF > ${MARIADB_CONF}.tmp
+	echo $PARAMETER = $VALUE >> ${MARIADB_CONF}.tmp
+	tail -$(($LINEC-$LINE)) $MARIADB_CONF >> ${MARIADB_CONF}.tmp
+
+	mv ${MARIADB_CONF}.tmp $MARIADB_CONF
+}
+
+WEB_LOCATION=http://ftp.heanet.ie/mirrors/mariadb/mariadb-${VERSION}/source
+WEB_LOCATION_ALT=http://archive.mariadb.org//mariadb-${VERSION}/source
+MIRROR_LOCATION=$WEBROOT/mariadb/
+# Unconditionally fetch the tar to find out the real version number
+TARFILE=mariadb-${VERSION}.tar.gz
+sources_fetch $WEB_LOCATION/$TARFILE $MIRROR_LOCATION/$TARFILE $SHELLPACK_SOURCES/$TARFILE $WEB_LOCATION_ALT/$TARFILE
+cd $SHELLPACK_SOURCES
+tar -xf $TARFILE
+if [ $? -ne 0 ]; then
+	error "$P: tar xf mariadb-${VERSION}.tar.gz failed"
+	popd > /dev/null
+	exit $SHELLPACK_ERROR
+fi
+
+# Rename directory to something we expect.
+DST_DIR=`tar tf $TARFILE | head -n 1 | awk -F / '{print $1}'`
+mv $DST_DIR mariadbbuild-${VERSION}
+pushd mariadbbuild-${VERSION} > /dev/null || die Failed to rename tar
+pushd $SHELLPACK_SOURCES/mariadbbuild-${VERSION} || die Failed to change to source directory
+for FILE in `find -name "*"`; do
+	touch $FILE
+done
+LINESTART=`grep -n "==== BEGIN 0001-mariadb-nopamauth.patch" $0 | tail -1 | awk -F : '{print $1}'`
+LINEEND=`grep -n "==== END 0001-mariadb-nopamauth.patch" $0 | tail -1 | awk -F : '{print $1}'`
+if [ "$LINEEND" = "" ]; then
+	LINECOUNT=`wc -l $0 | awk '{print $1}'`
+fi
+if [ "$LINESTART" = "" ]; then
+	die Failed to find start of file 0001-mariadb-nopamauth.patch
+fi
+echo Extracting $SHELLPACK_TEMP/0001-mariadb-nopamauth.patch
+sed -n $((LINESTART+1)),$((LINEEND-1))p $0 > $SHELLPACK_TEMP/0001-mariadb-nopamauth.patch
+cat $SHELLPACK_TEMP/0001-mariadb-nopamauth.patch | patch -p1
+cmake . -DCMAKE_INSTALL_PREFIX=$SHELLPACK_SOURCES/mariadbbuild-${VERSION}-installed 
+if [ $? -ne 0 ]; then
+	error "$P: cmake failed"
+	popd > /dev/null
+	exit $SHELLPACK_ERROR
+fi
+make -j$NUMCPUS 
+if [ $? -ne 0 ]; then
+	make -j$NUMCPUS 
+	if [ $? -ne 0 ]; then
+		error "$P: make failed"
+		popd > /dev/null
+		exit $SHELLPACK_ERROR
+	fi
+fi
+export CFLAGS="${MMTESTS_BUILD_CFLAGS:--O2} $MMTESTS_BUILD_CFLAGS_EXTRA"
+make -j$NUMCPUS
+if [ $? -ne 0 ]; then
+	if [ "$MAKE_RETRY" = "yes" ]; then
+		make -j$NUMCPUS 
+	fi
+	error "$P: make failed"
+	popd > /dev/null
+	exit $SHELLPACK_ERROR
+fi
+make install
+if [ $? -ne 0 ]; then
+	error "$P: make install failed"
+	popd > /dev/null
+	exit $SHELLPACK_ERROR
+fi
+
+echo Initialising database for user $MARIADB_USER
+chmod a+x $HOME
+cd $SHELLPACK_SOURCES/mariadbbuild-${VERSION}-installed || die Failed to change to installation directory.
+mkdir -p $SHELLPACK_SOURCES/mariadbbuild-${VERSION}-installed/etc
+mkdir -p /etc/mysql/conf.d/
+mkdir -p /var/log/mysql/
+
+scripts/mysql_install_db --user=$MARIADB_USER --basedir=`pwd` --datadir=$MARIADB_DATADIR || die Failed to run mysql_install_db script
+
+# Update the max connection count if necessary
+# update_entry_cnf thread_concurrency $((NUMCPUS*2))
+
+# Write user directive
+# HEAD=`grep -n "\[mysqld\]" $MARIADB_CONF | awk -F : '{print $1}'`
+# LINECOUNT=`wc -l $MARIADB_CONF | awk '{print $1}'`
+# head -$HEAD $MARIADB_CONF > ${MARIADB_CONF}.tmp
+# echo "user = $MARIADB_USER" >> ${MARIADB_CONF}.tmp
+# tail -$((LINECOUNT-HEAD)) $MARIADB_CONF >> ${MARIADB_CONF}.tmp
+# mv ${MARIADB_CONF}.tmp $MARIADB_CONF
+echo "[mysqld]" > $MARIADB_CONF
+echo "user = nobody" >> $MARIADB_CONF
+
+echo mariadb successfully installed
+exit $SHELLPACK_SUCCESS
+
+==== BEGIN 0001-mariadb-nopamauth.patch ====
+--- a/scripts/mysql_install_db.sh	2020-01-17 10:45:00.465852933 +0000
++++ b/scripts/mysql_install_db.sh	2020-01-17 10:40:29.730617924 +0000
+@@ -480,25 +480,6 @@
+ 
+ if test -n "$user"
+ then
+-  chown $user "$pamtooldir/auth_pam_tool_dir" && \
+-  chmod 0700 "$pamtooldir/auth_pam_tool_dir"
+-  if test $? -ne 0
+-  then
+-      echo "Cannot change ownership of the '$pamtooldir/auth_pam_tool_dir' directory"
+-      echo " to the '$user' user. Check that you have the necessary permissions and try again."
+-      exit 1
+-  fi
+-  if test -z "$srcdir"
+-  then
+-    chown 0 "$pamtooldir/auth_pam_tool_dir/auth_pam_tool" && \
+-    chmod 04755 "$pamtooldir/auth_pam_tool_dir/auth_pam_tool"
+-    if test $? -ne 0
+-    then
+-        echo "Couldn't set an owner to '$pamtooldir/auth_pam_tool_dir/auth_pam_tool'."
+-        echo " It must be root, the PAM authentication plugin doesn't work otherwise.."
+-        echo
+-    fi
+-  fi
+   args="$args --user=$user"
+ fi
+ 
+==== END 0001-mariadb-nopamauth.patch ====

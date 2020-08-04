@@ -1,0 +1,24 @@
+#!/bin/bash
+###SHELLPACK preamble monitor 0
+###SHELLPACK init_complete
+
+cleanup()
+{
+	rm /tmp/mmtests-monitor.pid
+	exit
+}
+trap cleanup SIGTERM
+trap cleanup SIGINT
+
+echo $$ > /tmp/mmtests-monitor.pid
+if [ "$MONITOR_FOREVER" = "yes" ]; then
+	echo Run kill $$ or kill \`cat /tmp/mmtests-monitor.pid\` to finish monitoring.
+	while [ 1 ]; do
+		sleep 60
+	done
+else
+	echo Hit enter, run kill $$ or kill \`cat /tmp/mmtests-monitor.pid\` to finish monitoring.
+	read INPUT
+fi
+
+exit $SHELLPACK_SUCCESS

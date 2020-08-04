@@ -1,0 +1,44 @@
+#!/bin/bash
+# This script installs ltp and runs the regression tests
+###SHELLPACK preamble ltp-bench 20190115
+LTP_RUN_TESTS="controllers"
+
+###SHELLPACK parseargBegin
+###SHELLPACK parseargInstall
+###SHELLPACK parseargParam --ltp-tests LTP_RUN_TESTS
+###SHELLPACK parseargParam --ltp-args LTP_RUN_ARGS
+###SHELLPACK parseargEnd
+###SHELLPACK monitor_hooks
+
+###SHELLPACK check_install_required ltp-${VERSION}
+###SHELLPACK init_complete
+
+grep -v oom runtest/mm > runtest/mm-lite
+grep -v fanotify runtest/syscalls > runtest/syscalls-lite
+
+LTP_RUN_TESTS=`echo $LTP_RUN_TESTS | tr ',' ' '`
+
+for TESTNAME in $LTP_RUN_TESTS; do
+	echo Executing $TEST LTP test
+
+	monitor_pre_hook $LOGDIR_RESULTS $TESTNAME
+	if [ "$TESTNAME" = "test-direct-process" ]; then
+		# This is part of a CPU hotplug reproduction case. It hammers
+		# process creation and is intended as a scheduler stress test
+		save_rc ./testcases/bin/process -b 10 -d 5 | tee $LOGDIR_RESULTS/ltp-${TESTNAME}.log
+	elif [ -e runtest/$TESTNAME ]; then
+		save_rc ./runltp -f $TESTNAME $LTP_RUN_ARGS		\
+			-l $LOGDIR_RESULTS/ltp-${TESTNAME}.log 		\
+			-C $LOGDIR_RESULTS/ltp-${TESTNAME}.failed	\
+			-d $SHELLPACK_DATA				\
+				| tee $LOGDIR_RESULTS/log-${TESTNAME}
+	else
+		die "No method available to run $TESTNAME"
+	fi
+	recover_rc
+	echo $? > $LOGDIR_RESULTS/${TESTNAME}.status
+	monitor_post_hook $LOGDIR_RESULTS $TESTNAME
+done
+
+echo
+exit $SHELLPACK_SUCCESS

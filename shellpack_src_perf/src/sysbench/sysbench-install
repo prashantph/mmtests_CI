@@ -1,0 +1,62 @@
+#!/bin/bash
+###SHELLPACK preamble sysbench-install 0.4.12
+
+VERSION=0.4.12
+DBUSER=root
+DBPASSWORD=shellpack-mysqlbench
+DBDRIVER=postgres
+
+###SHELLPACK parseargBegin
+###SHELLPACK parseargParam	--dbdriver	DBDRIVER
+###SHELLPACK parseargEnd
+
+WEB_LOCATION=http://www.skynet.ie/~mel/mmtests-archive/sysbench
+MIRROR_LOCATION=$WEBROOT/sysbench
+
+# Select database driver
+case $DBDRIVER in
+mariadb)
+	echo Checking mariadb installation
+	DBDRIVER_VERSION=10.4.11
+	CONFIGURE_ARGS=
+	;;
+postgres)
+	echo Checking postgres installation
+	DBDRIVER_VERSION=11.3
+	CONFIGURE_ARGS="--without-mysql --with-pgsql"
+	;;
+*)
+	die Unrecognised dbdriver $DBDRIVER
+	;;
+esac
+
+# Build database and start it for sysbench config
+$SHELLPACK_TOPLEVEL/shellpack_src/src/refresh.sh ${DBDRIVER}build
+$SHELLPACK_INCLUDE/shellpack-bench-${DBDRIVER}build --start \
+        --effective_cachesize $((MEMTOTAL_BYTES*6/10)) \
+        --shared_buffers $((MEMTOTAL_BYTES/4)) \
+        --work_mem $((16*1048576)) || die Failed to get usable database installation
+
+echo Building sysbench for $DBDRIVER
+export PATH=$SHELLPACK_SOURCES/${DBDRIVER}build-${DBDRIVER_VERSION}-installed/bin:$PATH
+###SHELLPACK sources_fetch sysbench-${VERSION}.tar.gz sysbench-${VERSION}
+###SHELLPACK build_start sysbench-${VERSION}
+###SHELLPACK build_autoreconf
+# Patch sysbench to properly insert tables
+echo "--- sysbench/drivers/pgsql/drv_pgsql.c.orig	2010-12-03 14:14:59.000000000 +0000
++++ sysbench/drivers/pgsql/drv_pgsql.c	2010-12-03 14:15:23.000000000 +0000
+@@ -84,7 +84,7 @@
+ 
+ static drv_caps_t pgsql_drv_caps =
+ {
+-  0,
++  1,
+   1,
+   1,
+   0,
+" | patch -p0
+###SHELLPACK build_configure sysbench-${VERSION} $CONFIGURE_ARGS
+###SHELLPACK make_make_install
+
+echo sysbench for $DBDRIVER successfully installed
+exit $SHELLPACK_SUCCESS

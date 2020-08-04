@@ -1,0 +1,71 @@
+#!/bin/bash
+# Run aim9 benchmark
+
+###SHELLPACK preamble aim9-bench 9110
+
+WORKFILE=s9workfile-short
+HOSTNAME=`hostname`
+RELEASE=`uname -r`
+TESTTIME=15
+ITERATIONS=12
+TESTLIST=
+
+###SHELLPACK parseargBegin
+###SHELLPACK parseargInstall
+		--full)
+			WORKFILE=s9workfile-full
+			shift
+			;;
+		--test-list)
+			TESTLIST=$2
+			shift 2
+			;;
+		--time)
+			TESTTIME=$2
+			shift 2
+			;;
+###SHELLPACK parseargEnd
+###SHELLPACK monitor_hooks
+
+###SHELLPACK check_install_required aim9-${VERSION}
+###SHELLPACK init_complete
+
+# Create expect script
+EXPECT=`which expect`
+EXPECT_SCRIPT=$SHELLPACK_TEMP/aim9-expect
+cat > $EXPECT_SCRIPT <<EOF
+spawn ./singleuser
+expect "s name"             { exp_send $HOSTNAME\\r }
+expect "s configuration"    { exp_send $RELEASE\\r  }
+expect "Number of seconds"  { exp_send $TESTTIME\\r }
+expect "Path to disk files" { exp_send $SHELLPACK_DATA\\r }
+while {1} {
+  expect disk_rr exit
+}
+EOF
+chmod u+x $EXPECT_SCRIPT
+
+cd $SHELLPACK_SOURCES/aim9-${VERSION}-installed
+if [ "$TESTLIST" != "" ]; then
+	rm -f s9workfile
+	echo "# @(#) s9workfile:1.2 1/22/96 00:00:00
+# AIM Independent Resource Benchmark - Suite IX Workfile
+FILESIZE: 5M" >> s9workfile
+	TIFS=$IFS
+	IFS=,
+	for TESTNAME in $TESTLIST; do
+		echo $TESTNAME >> s9workfile
+	done
+	IFS=$TIFS
+else
+	cp $WORKFILE s9workfile
+fi
+
+monitor_pre_hook $LOGDIR_RESULTS $P
+###SHELLPACK iteration_begin $ITERATIONS
+	echo Starting iteration $ITERATION
+	$EXPECT -f $EXPECT_SCRIPT | tee $LOGDIR_RESULTS/aim9-$ITERATION
+###SHELLPACK iteration_end $ITERATIONS
+monitor_post_hook $LOGDIR_RESULTS $P
+
+exit $SHELLPACK_SUCCESS

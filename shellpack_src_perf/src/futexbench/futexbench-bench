@@ -1,0 +1,63 @@
+#!/bin/bash
+# Run perf-bench futex benchmark
+
+###SHELLPACK preamble futexbench-bench 5.1
+TESTTIME=15
+ITERATIONS=12
+TESTLIST=
+MAX_THREADS=$NUMCPUS
+
+###SHELLPACK parseargBegin
+###SHELLPACK parseargInstall
+###SHELLPACK parseargParam   --min-threads      FUTEXBENCH_MIN_THREADS
+###SHELLPACK parseargParam   --max-threads      FUTEXBENCH_MAX_THREADS
+###SHELLPACK parseargParam   --shared           FUTEXBENCH_SHARED
+###SHELLPACK parseargParam   --workloads	FUTEXBENCH_WORKLOADS
+###SHELLPACK parseargEnd
+###SHELLPACK monitor_hooks
+
+###SHELLPACK check_external_install_required perfbuild perfbuild-${VERSION} ${VERSION}
+###SHELLPACK init_complete
+
+PERF_DIR=$SHELLPACK_SOURCES/perfbuild-${VERSION}-installed/bin
+PERF_CMD=${PERF_DIR}/perf
+SHARED_OPT=""
+
+if [ "$FUTEXBENCH_SHARED" = "yes" ]; then
+    SHARED_OPT="-S"
+fi
+
+echo $FUTEXBENCH_WORKLOADS > $LOGDIR_RESULTS/workloads
+
+###SHELLPACK threads_large_stride_begin $FUTEXBENCH_MIN_THREADS $FUTEXBENCH_MAX_THREADS
+	for WORKLOAD in $FUTEXBENCH_WORKLOADS; do
+		mmtests_activity $WORKLOAD-$NR_THREADS
+		echo "Running test $WORKLOAD (shared=$FUTEXBENCH_SHARED)"
+		monitor_pre_hook $LOGDIR_RESULTS $NR_THREADS
+		$PERF_CMD bench futex $WORKLOAD -t $NR_THREADS $SHARED_OPT > $LOGDIR_RESULTS/$WORKLOAD-${NR_THREADS}.log 2>&1 &
+		PERF_PID=$!
+		echo -n Waiting on perf to exit..
+		TEST_EXIT=`ps h --pid $PERF_PID`
+		while [ "`ps h --pid $PERF_PID`" != "" ]; do
+			echo -n .
+			sleep 1
+			TEST_ERROR=`grep "wakeup all tasks" $LOGDIR_RESULTS/$WORKLOAD-${NR_THREADS}.log`
+			if [ "$TEST_ERROR" != "" ]; then
+				kill -9 $PERF_PID
+				echo WARNING: perf failed to wake all tasks
+				touch $LOGDIR_RESULTS/$WORKLOAD-${NR_THREADS}.failed
+				TEST_EXIT=""
+			else
+				TEST_EXIT=`ps h --pid $PERF_PID`
+			fi
+		done
+		wait $PERF_PID
+		EXIT_CODE=$?
+		echo
+		cat $LOGDIR_RESULTS/$WORKLOAD-${NR_THREADS}.log
+		echo Exit code $EXIT_CODE
+		monitor_post_hook $LOGDIR_RESULTS $NR_THREADS
+	done
+###SHELLPACK threads_stride_end
+
+exit $SHELLPACK_SUCCESS
