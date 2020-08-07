@@ -1,0 +1,83 @@
+#!/bin/bash
+###SHELLPACK preamble usemem-bench 0
+
+###SHELLPACK parseargBegin
+###SHELLPACK parseargParam	--size			USEMEM_WORKLOAD_SIZE
+###SHELLPACK parseargParam	--anon-percentage	USEMEM_PERCENTAGE_ANON
+###SHELLPACK parseargParam	--loops			USEMEM_LOOPS
+###SHELLPACK parseargParam	--iterations		USEMEM_ITERATIONS
+###SHELLPACK parseargParam	--min-threads		USEMEM_MIN_THREADS
+###SHELLPACK parseargParam	--max-threads		USEMEM_MAX_THREADS
+###SHELLPACK parseargParam	--fake-swap		USEMEM_FAKE_SWAP_MB
+###SHELLPACK parseargEnd
+###SHELLPACK monitor_hooks
+
+###SHELLPACK check_external_install_required_continue usemembuild usemembuild-${VERSION}-installed ${VERSION}
+###SHELLPACK init_complete
+
+if [ "$USEMEM_FAKE_SWAP_MB" != "" ]; then
+	swapoff -a
+	rmmod scsi_debug
+	modprobe scsi_debug dev_size_mb=$USEMEM_FAKE_SWAP_MB
+	SWAP_DEV=`lsscsi | grep scsi_debug | awk '{print $NF}'`
+	if [ "$SWAP_DEV" = "" ]; then
+		die Failed to identify scsi_debug device
+	fi
+	mkswap $SWAP_DEV || die Failed to create swap device
+	swapon $SWAP_DEV || die Failed to add swap device
+	swapon -s
+	echo always > /sys/kernel/mm/transparent_hugepage/defrag
+fi
+
+MEMTOTAL_ANON=$((0+USEMEM_WORKLOAD_SIZE*USEMEM_PERCENTAGE_ANON/100))
+MEMTOTAL_FILE=$((0+USEMEM_WORKLOAD_SIZE*(100-USEMEM_PERCENTAGE_ANON)/100))
+if [ $MEMTOTAL_FILE -gt 0 ]; then
+	create_random_file $((MEMTOTAL_FILE+32*1048576)) $SHELLPACK_TEMP/source_file
+fi
+
+echo Anon portion: $((MEMTOTAL_ANON/1048576))M
+echo File portion: $((MEMTOTAL_FILE/1048576))M
+
+###SHELLPACK threads_large_stride_begin $USEMEM_MIN_THREADS $USEMEM_MAX_THREADS
+	monitor_pre_hook $LOGDIR_RESULTS $NR_THREADS
+	###SHELLPACK iteration_begin $USEMEM_ITERATIONS
+		echo Starting usemem with $NR_THREADS threads iteration $ITERATION/$USEMEM_ITERATIONS
+
+		echo "#!/bin/bash
+		echo -n > $SHELLPACK_TEMP/usemem.pids
+
+		# Anon
+		if [ $MEMTOTAL_ANON -gt 0 ]; then
+			$SHELLPACK_SOURCES/usemembuild-$VERSION-installed/usemem	\
+				-t $NR_THREADS						\
+				-j 4096							\
+				-r $USEMEM_LOOPS					\
+				$((MEMTOTAL_ANON/NR_THREADS)) 2> /dev/null &
+			echo \$! >> $SHELLPACK_TEMP/usemem.pids
+		fi
+
+		# File
+		if [ $MEMTOTAL_FILE -gt 0 ]; then
+			$SHELLPACK_SOURCES/usemembuild-$VERSION-installed/usemem	\
+				-t $NR_THREADS						\
+				-f $SHELLPACK_TEMP/source_file				\
+				-j 4096							\
+				-r $USEMEM_LOOPS					\
+				--readonly						\
+				$((MEMTOTAL_FILE/NR_THREADS)) 2> /dev/null &
+			echo \$! >> $SHELLPACK_TEMP/usemem.pids
+		fi
+
+		for USEMEM_PID in \`cat $SHELLPACK_TEMP/usemem.pids\`; do
+			echo Waiting on pid \$USEMEM_PID
+			wait \$USEMEM_PID
+		done" > $SHELLPACK_TEMP/usemem.sh
+		chmod a+x $SHELLPACK_TEMP/usemem.sh
+		$TIME_CMD -o $LOGDIR_RESULTS/usemem-$NR_THREADS-$ITERATION $SHELLPACK_TEMP/usemem.sh
+		echo
+	###SHELLPACK iteration_end $USEMEM_ITERATIONS
+	monitor_post_hook $LOGDIR_RESULTS $NR_THREADS
+###SHELLPACK threads_stride_end
+
+exit $SHELLPACK_SUCCESS
+

@@ -1,0 +1,105 @@
+#!/bin/bash
+# mutilate installer
+###SHELLPACK preamble mutilate-install 1
+GIT_LOCATION=git://github.com/leverich/mutilate.git
+MIRROR_LOCATION="$WEBROOT/mutilate"
+
+install-depends libevent-devel scons
+install-depends gengetopt
+install-depends zeromq-devel gcc-c++
+
+###SHELLPACK parseargBegin
+###SHELLPACK parseargEnd
+
+###SHELLPACK git_fetch mutilate-${VERSION}.tar.gz mutilate-${VERSION}
+
+###SHELLPACK build_start mutilate-${VERSION}
+
+###SHELLPACK self_extract gtod.patch
+###SHELLPACK self_extract scons.patch
+cat $SHELLPACK_TEMP/gtod.patch | patch -p1 || exit $SHELLPACK_FAILURE
+cat $SHELLPACK_TEMP/scons.patch | patch -p1 || exit $SHELLPACK_FAILURE
+scons
+if [ $? -ne 0 ]; then
+	echo
+	echo Trying an alternative compiler: gcc47
+	install-depends gcc47-c++
+	echo "diff --git a/SConstruct b/SConstruct
+index b782d90c38e4..c87e2ec61119 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -12,6 +12,7 @@ env.Append(CCFLAGS = '-std=c++0x -D_GNU_SOURCE') # -D__STDC_FORMAT_MACROS')
+ if sys.platform == 'darwin':
+     env['CC']  = 'clang'
+     env['CXX'] = 'clang++'
++env['CXX'] = \"g++-4.7\"
+ 
+ conf = env.Configure(config_h = \"config.h\")
+ conf.Define(\"__STDC_FORMAT_MACROS\")" | patch -p1 || exit $SHELLPACK_ERROR
+
+	scons
+	if [ $? -ne 0 ]; then
+		echo
+		echo Trying an alternative compiler: gcc48
+		install-depends gcc48-c++
+		sed -i -e 's/g++-4.7/g++-4.8/' SConstruct
+		scons
+		if [ $? -ne 0 ]; then
+			die Failed to build mutilate
+		fi
+	fi
+fi
+
+mkdir -p ../mutilate-${VERSION}-installed/bin
+cp mutilate ../mutilate-${VERSION}-installed/bin
+
+echo mutilate installed successfully
+exit $SHELLPACK_SUCCESS
+
+==== BEGIN gtod.patch ====
+diff --git a/mutilate.cc b/mutilate.cc
+index cacf4db..af7f734 100644
+--- a/mutilate.cc
++++ b/mutilate.cc
+@@ -942,7 +942,7 @@ void do_mutilate(const vector<string>& servers, options_t& options,
+     //    now = get_time();
+     //#else
+     struct timeval now_tv;
+-    event_base_gettimeofday_cached(base, &now_tv);
++    gettimeofday(&now_tv, NULL);
+     now = tv_to_double(&now_tv);
+     //#endif
+==== END gtod.patch ====
+
+==== BEGIN scons.patch ====
+diff --git a/SConstruct b/SConstruct
+index 57d00548cbed..05d3aa09d590 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -16,19 +16,19 @@ env.Append(CCFLAGS = '-std=c++11 -D_GNU_SOURCE')
+ conf = env.Configure(config_h = "config.h")
+ conf.Define("__STDC_FORMAT_MACROS")
+ if not conf.CheckCXX():
+-    print "A compiler with C++11 support is required."
++    print("A compiler with C++11 support is required.")
+     Exit(1)
+-print "Checking for gengetopt...",
++print("Checking for gengetopt..."),
+ if env.Execute("@which gengetopt &> /dev/null"):
+-    print "not found (required)"
++    print("not found (required)")
+     Exit(1)
+-else: print "found"
++else: print("found")
+ if not conf.CheckLibWithHeader("event", "event2/event.h", "C++"):
+-    print "libevent required"
++    print("libevent required")
+     Exit(1)
+ conf.CheckDeclaration("EVENT_BASE_FLAG_PRECISE_TIMER", '#include <event2/event.h>', "C++")
+ if not conf.CheckLibWithHeader("pthread", "pthread.h", "C++"):
+-    print "pthread required"
++    print("pthread required")
+     Exit(1)
+ conf.CheckLib("rt", "clock_gettime", language="C++")
+ conf.CheckLibWithHeader("zmq", "zmq.hpp", "C++")
+==== END scons.patch ====

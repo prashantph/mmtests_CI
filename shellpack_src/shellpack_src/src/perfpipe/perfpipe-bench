@@ -1,0 +1,32 @@
+#!/bin/bash
+# Run perf-bench pipe benchmark
+
+###SHELLPACK preamble perfpipe-bench 5.1
+PERFPIPE_LOOPS=500000
+PERFPIPE_ITERATIONS=30
+
+###SHELLPACK parseargBegin
+###SHELLPACK parseargInstall
+###SHELLPACK parseargBindings
+###SHELLPACK parseargParam   --loops       PERFPIPE_LOOPS
+###SHELLPACK parseargParam   --iterations  PERFPIPE_ITERATIONS
+###SHELLPACK parseargEnd
+###SHELLPACK monitor_hooks
+
+###SHELLPACK check_external_install_required perfbuild perfbuild-${VERSION} ${VERSION}
+###SHELLPACK init_complete
+
+PERF_DIR=$SHELLPACK_SOURCES/perfbuild-${VERSION}-installed/bin
+PERF_CMD=${PERF_DIR}/perf
+
+echo Perf invocation: $TASKSET_ALL $PERF_CMD bench sched pipe -l $PERFPIPE_LOOPS
+monitor_pre_hook $LOGDIR_RESULTS $P
+###SHELLPACK iteration_begin $PERFPIPE_ITERATIONS
+	mmtests_activity bench
+	eval sh /mmtests/mmtests_CI/data_collection.sh 2 $LOGDIR_RESULTS $ITERATION &
+	$TASKSET_ALL $PERF_CMD bench sched pipe -l $PERFPIPE_LOOPS \
+			2>&1 | tee $LOGDIR_RESULTS/pipe-${ITERATION}.log
+###SHELLPACK iteration_end
+monitor_post_hook $LOGDIR_RESULTS $P
+
+exit $SHELLPACK_SUCCESS

@@ -1,0 +1,17 @@
+#!/bin/bash
+# Netperf installer
+###SHELLPACK preamble netperf-install 2.4.5
+WEB_LOCATION=http://www.skynet.ie/~mel/mmtests-archive/netperf
+MIRROR_LOCATION="$WEBROOT/netperf/"
+
+###SHELLPACK parseargBegin
+###SHELLPACK parseargEnd
+
+###SHELLPACK sources_fetch netperf-${VERSION}.tar.gz netperf-${VERSION}
+
+export MMTESTS_BUILD_CFLAGS_EXTRA="-DWANT_UNIX"
+###SHELLPACK build_start netperf-${VERSION}
+###SHELLPACK build_configure netperf-${VERSION}
+###SHELLPACK make_make_install
+
+echo Netperf installed successfully

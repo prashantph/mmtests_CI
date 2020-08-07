@@ -1,0 +1,203 @@
+#!/bin/bash
+#!/bin/bash
+###SHELLPACK preamble sysbench-bench 0.4.12
+install-depends gnuplot
+
+DBDRIVER=postgres
+DBUSER=nobody
+EFFECTIVE_CACHESIZE=$((756*1048576))
+SHARED_BUFFERS=$((32*1048576))
+WORK_MEM=$((32*1048576))
+MARIADB_VERSION=10.4.11
+POSTGRES_VERSION=11.3
+MARIADB_ADMIN_USER=root
+MARIADB_ADMIN_PASSWORD=mmtests-default
+RUN_CACHE_COLD=no
+
+###SHELLPACK parseargBegin
+###SHELLPACK parseargInstall
+###SHELLPACK parseargParam --effective-cachesize EFFECTIVE_CACHESIZE
+###SHELLPACK parseargParam --shared-buffers      SHARED_BUFFERS
+###SHELLPACK parseargParam --work-mem            WORK_MEM
+###SHELLPACK parseargParam --dbdriver            DBDRIVER
+###SHELLPACK parseargParam --max-threads         MAX_THREADS
+###SHELLPACK parseargParam --max-time            MAX_TIME
+###SHELLPACK parseargParam --max-transactions    MAX_TRANSACTIONS
+###SHELLPACK parseargParam --iterations          MAX_ITERATIONS
+###SHELLPACK parseargParam --workload-size       WORKLOAD_SIZE
+###SHELLPACK parseargYes   --read-only           READONLY
+###SHELLPACK parseargYes   --cache-cold          RUN_CACHE_COLD
+###SHELLPACK parseargEnd
+###SHELLPACK monitor_hooks
+
+MARIADB_TABLE_DRIVER=innodb
+MARIADB_START_OPTIONS="--innodb_buffer_pool_size=${SHARED_BUFFERS},--innodb_log_file_size=512M"
+OLTP_TESTTYPE=complex
+
+# Always scrub sources as the benchmark in question does not properly
+# reinitialise itself if the data partitions gets scrubbed
+###SHELLPACK init_only_start
+	rm -rf $SHELLPACK_SOURCES/mariadb*
+	rm -rf $SHELLPACK_SOURCES/sysbench*
+###SHELLPACK init_only_continue
+
+###SHELLPACK check_install_required sysbench-${VERSION} --dbdriver ${DBDRIVER}
+$SHELLPACK_TOPLEVEL/shellpack_src/src/refresh.sh ${DBDRIVER}build
+$SHELLPACK_INCLUDE/shellpack-bench-${DBDRIVER}build --stop
+###SHELLPACK init_complete
+
+# Calculate OLTP tablesize. 1 megabyte is around 4500 rows
+OLTP_TABLESIZE=$((WORKLOAD_SIZE/1048576*4500))
+
+# Set transaction type
+OLTP_TRANSTYPE=
+if [ "$READONLY" = "yes" ]; then
+	OLTP_TRANSTYPE=--oltp-read-only
+fi
+
+# Automatically calculate number of transactions if requested
+if [ "$MAX_TRANSACTIONS" = "auto" ]; then
+	if [ "$READONLY" = "yes" ]; then
+		CEILING=400000
+		FLOOR=1000
+	else
+		CEILING=10000
+		FLOOR=1000
+	fi
+	WEIGHT_MAINMEMORY=2
+	WEIGHT_DISK=80
+	cat > /tmp/points <<EOF
+0 $((CEILING/2))
+$SHARED_BUFFERS $CEILING
+$EFFECTIVE_CACHESIZE $((CEILING/WEIGHT_MAINMEMORY*3/2))
+$MEMTOTAL_BYTES $((CEILING/WEIGHT_MAINMEMORY))
+$((MEMTOTAL_BYTES*4/3)) $((CEILING/WEIGHT_MAINMEMORY/2))
+$((MEMTOTAL_BYTES*2)) $((CEILING/WEIGHT_DISK))
+$((MEMTOTAL_BYTES*8)) $((CEILING/WEIGHT_DISK*2))
+EOF
+
+	cat > /tmp/gnuplot.script <<EOF
+set terminal dumb
+set table "/tmp/coordinates"
+plot '/tmp/points' smooth cspline
+EOF
+	cat /tmp/gnuplot.script | gnuplot > /dev/null
+
+        MAX_TRANSACTIONS=`awk "{ if (\\$1 >= \$WORKLOAD_SIZE) print \\$2 }" /tmp/coordinates | head -1`
+	MAX_TRANSACTIONS=`perl -e "print int $MAX_TRANSACTIONS"`
+	if [ "$MAX_TRANSACTIONS" = "" ]; then
+		MAX_TRANSACTIONS=$FLOOR
+	fi
+	if [ $MAX_TRANSACTIONS -lt $FLOOR ]; then
+		MAX_TRANSACTIONS=$FLOOR
+	fi
+	if [ "$READONLY" != "yes" ]; then
+		MAX_TRANSACTIONS=$((MAX_TRANSACTIONS/8))
+	fi
+	mv /tmp/points $LOGDIR_RESULTS/sysbench-auto-points
+	mv /tmp/coordinates $LOGDIR_RESULTS/sysbench-auto-coordinates
+fi
+
+# Initialise database
+SYSBENCH_DB_OPTIONS=
+export PATH=$SHELLPACK_SOURCES/sysbench-${VERSION}-installed/bin:$PATH
+echo Configuring paths for $DBDRIVER
+if [ "$DBDRIVER" = "postgres" ]; then
+	SYSBENCH_DB_OPTIONS="--db-driver=pgsql --pgsql-db=pgtest"
+	PSQL=$SHELLPACK_SOURCES/postgresbuild-${POSTGRES_VERSION}-installed/bin/psql
+	RUNDBUSER="su -s /bin/bash $DBUSER -c"
+	export PATH=$SHELLPACK_SOURCES/postgresbuild-${POSTGRES_VERSION}-installed/bin:$PATH
+	export LD_LIBRARY_PATH=$SHELLPACK_SOURCES/postgresbuild-${POSTGRES_VERSION}-installed/lib
+	export PGHOST=/var/run/postgresql
+	export PGPORT=5432
+else
+	MYSQLADMIN="mysqladmin -u $MARIADB_ADMIN_USER -p$MARIADB_ADMIN_PASSWORD"
+	SYSBENCH_DB_OPTIONS="--mysql-user=$MARIADB_ADMIN_USER --mysql-password=$MARIADB_ADMIN_PASSWORD --mysql-db=sbtest --mysql-socket=/tmp/mysql.sock --mysql-table-engine=innodb"
+	export PATH=$SHELLPACK_SOURCES/mariadbbuild-${MARIADB_VERSION}-installed/bin:$PATH
+	export LD_LIBRARY_PATH=$SHELLPACK_SOURCES/mariadbbuild-${MARIADB_VERSION}-installed/lib
+fi
+
+FIRST_TIME=yes
+SYSBENCH_OPTIONS="$MAX_TIME_COMMAND $MAX_TRANSACTIONS_COMMAND $SYSBENCH_DB_OPTIONS"
+OLTP_OPTIONS="--test=oltp $OLTP_TRANSTYPE \
+		--oltp-test-mode=$OLTP_TESTTYPE \
+		--oltp-table-size=$OLTP_TABLESIZE"
+###SHELLPACK threads_huge_stride_begin 1 $MAX_THREADS
+	if [ "$DATABASE_INIT_ONCE" != "yes" -o "$FIRST_TIME" = "yes" ]; then
+		echo Starting database for initialisation
+		mmtests_activity database-init
+		$SHELLPACK_INCLUDE/shellpack-bench-${DBDRIVER}build --start	\
+			--start_opts $MARIADB_START_OPTIONS			\
+			--effective_cachesize $EFFECTIVE_CACHESIZE		\
+			--shared_buffers $SHARED_BUFFERS			\
+			--work_mem $WORK_MEM || die Failed to get usable database installation
+
+		echo Preparing database
+		if [ "$DBDRIVER" = "postgres" ]; then
+			$RUNDBUSER "$PSQL template1 -c 'DROP DATABASE pgtest;'"
+			$RUNDBUSER "$PSQL template1 -c 'DROP ROLE sbtest;'"
+			$RUNDBUSER "$PSQL template1 -c 'CREATE DATABASE pgtest;'" || die Failed to setup database
+			$RUNDBUSER "$PSQL template1 -c 'CREATE ROLE sbtest with LOGIN;'" || die Failed to create sbtest role
+			cp $SHELLPACK_SOURCES/postgresbuild-${POSTGRES_VERSION}-installed/data/postgresql.conf $LOGDIR_RESULTS
+		else
+			eval $MYSQLADMIN -f drop sbtest
+			eval $MYSQLADMIN create sbtest || die Failed to setup database
+			cp /etc/my.cnf $LOGDIR_RESULTS
+		fi
+
+		echo Initialising database for sysbench: $SYSBENCH_OPTIONS $OLTP_OPTIONS
+		$TIME_CMD -o $LOGDIR_RESULTS/load-${NR_THREADS}.time \
+			sysbench $SYSBENCH_OPTIONS $OLTP_OPTIONS prepare \
+			> $LOGDIR_RESULTS/load-${NR_THREADS}.log
+	fi
+	FIRST_TIME=no
+
+	if [ "$RUN_CACHE_COLD" = "yes" ]; then
+		echo Stopping database to drop cache
+		$SHELLPACK_INCLUDE/shellpack-bench-${DBDRIVER}build --stop
+
+		echo Dumping cache to run database cache cold as requested
+		echo 3 > /proc/sys/vm/drop_caches
+
+		echo Starting database cache cold
+		$SHELLPACK_INCLUDE/shellpack-bench-${DBDRIVER}build --start \
+			--effective_cachesize $EFFECTIVE_CACHESIZE \
+			--shared_buffers $SHARED_BUFFERS \
+			--work_mem $WORK_MEM || die Failed to get usable database installation
+	fi
+
+	mmtests_activity sysbench-$NR_THREADS
+	monitor_pre_hook $LOGDIR_RESULTS $NR_THREADS
+	for ITER in `seq 1 $MAX_ITERATIONS`; do
+		echo Running $NR_THREADS threads Iteration $ITER/$MAX_ITERATIONS
+		echo sysbench $SYSBENCH_OPTIONS $OLTP_OPTIONS --num-threads=$NR_THREADS run | tee $LOGDIR_RESULTS/sysbench-raw-$NR_THREADS-$ITER
+	echo "running sh /mmtests/mmtests_CI/data_collection.sh $ITER &"
+	eval sh /mmtests/mmtests_CI/data_collection.sh $ITER &
+	eval $TIME_CMD -o $LOGDIR_RESULTS/time-${NR_THREADS}-${ITER} \
+			sysbench $SYSBENCH_OPTIONS \
+				$OLTP_OPTIONS \
+				--num-threads=$NR_THREADS \
+				run >> $LOGDIR_RESULTS/sysbench-raw-$NR_THREADS-$ITER
+		SYSRET=$?
+		if [ $SYSRET -ne 0 ]; then
+			cat $LOGDIR_RESULTS/sysbench-raw-$NR_THREADS-$ITER
+			die sysbench exited abnormally
+		fi
+	done
+	monitor_post_hook $LOGDIR_RESULTS $NR_THREADS
+###SHELLPACK threads_stride_end
+
+echo Cleaning database: sysbench $SYSBENCH_OPTIONS --test=oltp $OLTP_OPTIONS cleanup
+sysbench $SYSBENCH_OPTIONS --test=oltp $OLTP_OPTIONS cleanup
+
+# Shutdown server
+if [ "$DBDRIVER" = "postgres" ]; then
+	$RUNDBUSER "$PSQL template1 -c 'DROP DATABASE pgtest;'"
+	$RUNDBUSER "$PSQL template1 -c 'DROP ROLE sbtest;'"
+else
+	eval $MYSQLADMIN -f drop sbtest
+fi
+$SHELLPACK_INCLUDE/shellpack-bench-${DBDRIVER}build --stop
+
+echo sysbench successfully completed
+exit $SHELLPACK_SUCCESS

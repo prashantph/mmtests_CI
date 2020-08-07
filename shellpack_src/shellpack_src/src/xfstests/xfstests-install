@@ -1,0 +1,21 @@
+#!/bin/bash
+###SHELLPACK preamble xfstests-install git
+GIT_LOCATION=git://git.kernel.org/pub/scm/fs/xfs/xfstests-dev.git
+MIRROR_LOCATION="$WEBROOT/xfstests/"
+
+###SHELLPACK parseargBegin
+###SHELLPACK parseargEnd
+
+install-depends libuuid-devel acl-devel acl attr-devel attr xfsprogs-devel libaio-devel libbtrfs-devel openssl-devel
+
+###SHELLPACK git_fetch xfstests-${VERSION}.tar.gz xfstests-${VERSION}-installed
+###SHELLPACK build_start xfstests-${VERSION}-installed
+###SHELLPACK make
+
+# testing users
+id fsgqa || useradd fsgqa
+getent group fsgqa || groupadd fsgqa
+id 123456-fsgqa || useradd 123456-fsgqa
+
+echo xfstests installed successfully
+exit $SHELLPACK_SUCCESS

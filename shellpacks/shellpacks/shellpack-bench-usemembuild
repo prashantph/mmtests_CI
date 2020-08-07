@@ -1,0 +1,4 @@
+if [ "$INSTALL_ONLY" = "yes" ]; then
+	echo  installed only as requested.
+	exit $SHELLPACK_SUCCESS
+fi
