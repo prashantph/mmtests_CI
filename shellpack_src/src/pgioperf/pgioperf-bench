@@ -67,6 +67,7 @@ sysctl -w vm.drop_caches=3
 
 echo Executing pgioperf
 monitor_pre_hook $LOGDIR_RESULTS $P
+ eval sh /mmtests/mmtests_CI/data_collection.sh 20 $LOGDIR_RESULTS $ITERATION &
 $EXPECT_UNBUFFER $SHELLPACK_TEMP/../pgioperf/pgioperf > $LOGDIR_RESULTS/pgioperf.log 2>&1 &
 PGIOPERF_PID=$!
 COUNT=0

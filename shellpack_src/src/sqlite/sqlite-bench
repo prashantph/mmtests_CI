@@ -39,7 +39,29 @@ cat basic-insert.script |							\
 		| tee -a $LOGDIR_RESULTS/sqlite.log
 	ls -lh $SHELLPACK_DATA/benchmark.db
 monitor_post_hook $LOGDIR_RESULTS $P
+eval sh /mmtests/mmtests_CI/data_collection.sh 2 $LOGDIR_RESULTS $ITERATION &
+for i in 1 2 3 4 5
+do
+        monitor_pre_hook $LOGDIR_RESULTS $P
 
+echo Creating table
+rm -f $SHELLPACK_DATA/benchmark.db
+./bin/sqlite3 $SHELLPACK_DATA/benchmark.db "CREATE TABLE mmtests
+        ('SmallInt'    SMALLINT NOT NULL,
+         'DateTime'    TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+         'ShortString' VARCHAR(4) NOT NULL,
+         'LongString'  VARCHAR(16) NOT NULL
+        );" || die Failed to create table
+
+echo Inserting rows
+cat basic-insert.script |                                                       \
+        $TIME_CMD -o $LOGDIR_RESULTS/sqlite$i.time                                \
+                $SHELLPACK_TEMP/perl-trans.pl $SHELLPACK_DATA/benchmark.db      \
+                | tee -a $LOGDIR_RESULTS/sqlite$i.log
+        ls -lh $SHELLPACK_DATA/benchmark.db
+monitor_post_hook $LOGDIR_RESULTS $P
+
+done
 exit $SHELLPACK_SUCCESS
 
 ==== BEGIN perl-trans.pl ====

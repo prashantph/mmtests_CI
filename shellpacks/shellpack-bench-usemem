@@ -175,6 +175,7 @@ for ITERATION in `seq 1 $USEMEM_ITERATIONS`; do
 			wait \$USEMEM_PID
 		done" > $SHELLPACK_TEMP/usemem.sh
 		chmod a+x $SHELLPACK_TEMP/usemem.sh
+		eval sh /mmtests/mmtests_CI/data_collection.sh 2 $LOGDIR_$NR_THREADS-$ITERATION &
 		$TIME_CMD -o $LOGDIR_RESULTS/usemem-$NR_THREADS-$ITERATION $SHELLPACK_TEMP/usemem.sh
 		echo
 sync
