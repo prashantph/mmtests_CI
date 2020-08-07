@@ -26,4 +26,3 @@ config-io-iozone
 config-io-blogbench
 config-io-pgioperf
 config-reaim-io-alltests
-config-io-fio-randread-direct-multi
