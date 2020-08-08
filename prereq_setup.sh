@@ -8,10 +8,12 @@ if [ -e /etc/redhat-release ];
 	yum -y install time*
 	yum -y install perl*
 	yum -y install patch*
+	yum -y install perl-Time-HiRes
 elif [ -e /etc/SuSE-release ];
   then 
 	zypper install -y time*
 	zypper install -y perl*
+	zypper install -y perl-Time-HiRes
 	zypper install -y patch*
 	
                         elif [ -e /etc/os-release ];
