@@ -45,6 +45,7 @@ NR_ENTRIES=$((RANDOM%TLBFLUSH_MAX_ENTRIES))
 		echo Iteration:$ITERATION Threads:$NR_THREADS/$TLBFLUSH_MAX_THREADS
 	fi
 
+	eval sh /mmtests/mmtests_CI/data_collection.sh 200 $LOGDIR_RESULTS $NR_THREADS &
 	RESULT=`$SHELLPACK_SOURCES/tlbflush-${VERSION}-installed/tlbflush -n $NR_ENTRIES -t $NR_THREADS 2>&1`
 	RETVAL=$?
 	if [ $RETVAL -ne 0 ]; then

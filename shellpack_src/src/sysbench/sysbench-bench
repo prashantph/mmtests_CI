@@ -171,7 +171,9 @@ OLTP_OPTIONS="--test=oltp $OLTP_TRANSTYPE \
 	for ITER in `seq 1 $MAX_ITERATIONS`; do
 		echo Running $NR_THREADS threads Iteration $ITER/$MAX_ITERATIONS
 		echo sysbench $SYSBENCH_OPTIONS $OLTP_OPTIONS --num-threads=$NR_THREADS run | tee $LOGDIR_RESULTS/sysbench-raw-$NR_THREADS-$ITER
-		eval $TIME_CMD -o $LOGDIR_RESULTS/time-${NR_THREADS}-${ITER} \
+	echo "running sh /mmtests/mmtests_CI/data_collection.sh $ITER &"
+	eval sh /mmtests/mmtests_CI/data_collection.sh 2 $LOGDIR_RESULTS $NR_THREADS-$ITER &
+	eval $TIME_CMD -o $LOGDIR_RESULTS/time-${NR_THREADS}-${ITER} \
 			sysbench $SYSBENCH_OPTIONS \
 				$OLTP_OPTIONS \
 				--num-threads=$NR_THREADS \

@@ -12,6 +12,7 @@
 
 monitor_pre_hook $LOGDIR_RESULTS $P
 ###SHELLPACK iteration_begin $BLOGBENCH_ITERATIONS
+	eval sh /mmtests/mmtests_CI/data_collection.sh 60 $LOGDIR_RESULTS $ITERATION &
 	echo Starting interation $ITERATION/$BLOGBENCH_ITERATIONS
 	$TIME_CMD -o $LOGDIR_RESULTS/blogbench-${ITERATION}.time \
 		$SHELLPACK_SOURCES/blogbench-${VERSION}-installed/bin/blogbench -d $SHELLPACK_DATA 2>&1 \

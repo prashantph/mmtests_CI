@@ -53,7 +53,7 @@ fi
 			if [ "$PARALLELDD_SPLITINPUT" = "yes" ]; then
 				INPUT_FILE=${INPUT_FILE}.$INSTANCE
 			fi
-			eval sh /mmtests/mmtests_CI/data_collection.sh 20 $LOGDIR_RESULTS $NR_THREADS-$INSTANCE-$ITERATION &
+			eval sh /mmtests/mmtests_CI/data_collection.sh 2 $LOGDIR_$NR_THREADS-$ITERATION &
 			$TIME_CMD -o $LOGDIR_RESULTS/time-$NR_THREADS-$INSTANCE-$ITERATION \
 				dd if=$INPUT_FILE of=$OUTPUT_FILE 2> $LOGDIR_RESULTS/log-$NR_THREADS-$INSTANCE-$ITERATION &
 		done

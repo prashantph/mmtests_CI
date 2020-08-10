@@ -23,6 +23,7 @@ echo Perf invocation: $TASKSET_ALL $PERF_CMD bench sched pipe -l $PERFPIPE_LOOPS
 monitor_pre_hook $LOGDIR_RESULTS $P
 ###SHELLPACK iteration_begin $PERFPIPE_ITERATIONS
 	mmtests_activity bench
+	eval sh /mmtests/mmtests_CI/data_collection.sh 2 $LOGDIR_RESULTS $ITERATION &
 	$TASKSET_ALL $PERF_CMD bench sched pipe -l $PERFPIPE_LOOPS \
 			2>&1 | tee $LOGDIR_RESULTS/pipe-${ITERATION}.log
 ###SHELLPACK iteration_end
