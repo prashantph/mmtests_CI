@@ -10,4 +10,4 @@ export MONITOR_PERF_EVENTS=cpu-migrations,context-switches
 export MONITOR_UPDATE_FREQUENCY=10
 
 # rtmigration
-export RTMIGRATION_DURATION=20
+export RTMIGRATION_DURATION=100
