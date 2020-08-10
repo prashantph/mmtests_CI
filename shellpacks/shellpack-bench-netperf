@@ -201,7 +201,7 @@ for ITERATION in `seq 1 $ITERATIONS`; do
 		-- $SOCKETSIZE_OPT $MSGSIZE_OPT $EXTRA"
 	echo $TASKSET_CLIENT "netperf" $NETPERF_OPTS
 	monitor_pre_hook $LOGDIR_RESULTS $SIZE
-	 eval sh /mmtests/mmtests_CI/data_collection.sh 20 $LOGDIR_RESULTS $ITERATION &
+	 eval sh /mmtests/mmtests_CI/data_collection.sh 20 $LOGDIR_RESULTS $PROTOCOL-${SIZE}$ITERATION &
 	eval $TASKSET_CLIENT $NETROOT/bin/netperf $NETPERF_OPTS \
 			2>&1 | tee $LOGDIR_RESULTS/$PROTOCOL-${SIZE}.$ITERATION \
 			|| die Failed to run netperf

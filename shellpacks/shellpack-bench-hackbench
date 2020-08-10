@@ -170,7 +170,7 @@ for ITERATION in `seq 1 $HACKBENCH_ITERATIONS`; do
 		fi
 
 		echo "test for perf collection"
-		eval sh /mmtests/mmtests_CI/data_collection.sh 1 $LOGDIR_RESULTS $ITERATION &
+		eval sh /mmtests/mmtests_CI/data_collection.sh 1 $LOGDIR_RESULTS $NR_THREADS-$ITERATION &
 		 $TIME_CMD -o $LOGDIR_RESULTS/time-$NR_THREADS-$ITERATION                        \
                         $PERF_CMD bench sched messaging                                         \
                                 $CONN_SWITCH $TASK_SWITCH -g $NR_THREADS -l 5000000  \ 

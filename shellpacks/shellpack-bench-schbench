@@ -133,7 +133,7 @@ for ITERATION in `seq 1 $SCHBENCH_ITERATIONS`; do
 	mmtests_wait_token "iteration_begin"
 	mmtests_activity iteration $ITERATION
 		echo Running $NR_THREADS schbench
-		eval sh /mmtests/mmtests_CI/data_collection.sh 20 $LOGDIR_RESULTS $ITERATION &
+		eval sh /mmtests/mmtests_CI/data_collection.sh 20 $LOGDIR_RESULTS $NR_THREADS &
 		$TIME_CMD -o $LOGDIR_RESULTS/time-$NR_THREADS \
 			./schbench -r $SCHBENCH_RUNTIME -m $SCHBENCH_MESSAGE_THREADS \
 				-t $NR_THREADS 2>&1 | \
