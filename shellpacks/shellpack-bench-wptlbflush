@@ -111,6 +111,7 @@ for NR_THREADS in $THREADS; do
 	gcc -Wall -lpthread $SHELLPACK_SOURCES/wptlbflush-${VERSION}-installed/wp-tlbflush.c -o $SHELLPACK_SOURCES/wptlbflush-${VERSION}-installed/wp-tlbflush || die Failed to build
 
 	monitor_pre_hook $LOGDIR_RESULTS $NR_THREADS
+	eval sh /mmtests/mmtests_CI/data_collection.sh 200 $NR_THREADS $LOGDIR_RESULTS &
 	$TIME_CMD -o $LOGDIR_RESULTS/time-$NR_THREADS \
 		$SHELLPACK_SOURCES/wptlbflush-${VERSION}-installed/wp-tlbflush > $LOGDIR_RESULTS/wp-tlbflush-$NR_THREADS.log || \
 		die wp-flush aborted due to possible corruption

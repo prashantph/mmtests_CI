@@ -1,7 +1,0 @@
-if [ "$SHELLPACK_DATA" = "" ]; then
-	export SHELLPACK_DATA=$SCRIPTDIR/../../../../work/testdisk
-	mkdir -p $SHELLPACK_DATA
-fi
-
-export SHELLPACK_TEMP="$SHELLPACK_DATA/tmp/$$"
-mkdir -p $SHELLPACK_TEMP

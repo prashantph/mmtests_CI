@@ -129,6 +129,7 @@ for ITERATION in `seq 1 $PERFPIPE_ITERATIONS`; do
 	mmtests_wait_token "iteration_begin"
 	mmtests_activity iteration $ITERATION
 	mmtests_activity bench
+	eval sh /mmtests/mmtests_CI/data_collection.sh 2 $LOGDIR_RESULTS $ITERATION &
 	$TASKSET_ALL $PERF_CMD bench sched pipe -l $PERFPIPE_LOOPS \
 			2>&1 | tee $LOGDIR_RESULTS/pipe-${ITERATION}.log
 sync

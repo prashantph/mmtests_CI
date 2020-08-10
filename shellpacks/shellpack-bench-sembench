@@ -11,7 +11,7 @@ if [ "$TIME_CMD" = "" ]; then
 fi
 TESTLIST=
 MAX_THREADS=$NUMCPUS
-RUNTIME=30
+RUNTIME=100
 
 # Basic argument parser
 TASKSET_SERVER=
@@ -139,6 +139,7 @@ for NR_THREADS in $THREADS; do
 
 		echo Running test $WORKLOAD
 		monitor_pre_hook $LOGDIR_RESULTS $NR_THREADS
+		eval sh /mmtests/mmtests_CI/data_collection.sh 20 $LOGDIR_RESULTS ${NR_THREADS} &
 		./sembench -r $RUNTIME -o $WORKLOAD_NUM -t $NR_THREADS -w $NR_WAKEUPS 2>&1 | \
 			tee $LOGDIR_RESULTS/$WORKLOAD-${NR_THREADS}.log \
 			|| die Failed ro run sembench

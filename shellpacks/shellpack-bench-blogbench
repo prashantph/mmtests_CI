@@ -79,6 +79,7 @@ for ITERATION in `seq 1 $BLOGBENCH_ITERATIONS`; do
 	mmtests_wait_token "iteration_begin"
 	mmtests_activity iteration $ITERATION
 	echo Starting interation $ITERATION/$BLOGBENCH_ITERATIONS
+	eval sh /mmtests/mmtests_CI/data_collection.sh 60 $LOGDIR_RESULTS $ITERATION &
 	$TIME_CMD -o $LOGDIR_RESULTS/blogbench-${ITERATION}.time \
 		$SHELLPACK_SOURCES/blogbench-${VERSION}-installed/bin/blogbench -d $SHELLPACK_DATA 2>&1 \
 				| tee $LOGDIR_RESULTS/blogbench-${ITERATION}.log

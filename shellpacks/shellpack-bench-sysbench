@@ -288,11 +288,14 @@ for NR_THREADS in $THREADS; do
 	monitor_pre_hook $LOGDIR_RESULTS $NR_THREADS
 	for ITER in `seq 1 $MAX_ITERATIONS`; do
 		echo Running $NR_THREADS threads Iteration $ITER/$MAX_ITERATIONS
-		echo sysbench $SYSBENCH_OPTIONS $OLTP_OPTIONS --num-threads=$NR_THREADS run | tee $LOGDIR_RESULTS/sysbench-raw-$NR_THREADS-$ITER
-		eval $TIME_CMD -o $LOGDIR_RESULTS/time-${NR_THREADS}-${ITER} \
+		echo sysbench $SYSBENCH_OPTIONS $OLTP_OPTIONS --num-threads=$NR_THREADS --max-time=300 run | tee $LOGDIR_RESULTS/sysbench-raw-$NR_THREADS-$ITER
+	echo "running sh /mmtests/mmtests_CI/data_collection.sh $ITER &"
+	eval sh /mmtests/mmtests_CI/data_collection.sh $ITER &
+	eval $TIME_CMD -o $LOGDIR_RESULTS/time-${NR_THREADS}-${ITER} \
 			sysbench $SYSBENCH_OPTIONS \
 				$OLTP_OPTIONS \
-				--num-threads=$NR_THREADS \
+				--num-threads=$NR_THREADS --time=300 \
+				--max-time=300 \
 				run >> $LOGDIR_RESULTS/sysbench-raw-$NR_THREADS-$ITER
 		SYSRET=$?
 		if [ $SYSRET -ne 0 ]; then

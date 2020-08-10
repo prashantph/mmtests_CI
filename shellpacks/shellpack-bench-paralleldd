@@ -1,4 +1,4 @@
-
+#!/bin/bash
 # This benchmark runs varying numbers of dd instances on a single file to
 # read and writing to multiple output files. A basic usage is to test if
 # multiple processes can read from a file quickly or if they collide in
@@ -141,7 +141,6 @@ for ITERATION in `seq 1 $PARALLELDD_ITERATIONS`; do
 			if [ "$PARALLELDD_SPLITINPUT" = "yes" ]; then
 				INPUT_FILE=${INPUT_FILE}.$INSTANCE
 			fi
-			eval sh /mmtests/mmtests_CI/data_collection.sh 20 $LOGDIR_RESULTS $NR_THREADS-$INSTANCE-$ITERATION &
 			$TIME_CMD -o $LOGDIR_RESULTS/time-$NR_THREADS-$INSTANCE-$ITERATION \
 				dd if=$INPUT_FILE of=$OUTPUT_FILE 2> $LOGDIR_RESULTS/log-$NR_THREADS-$INSTANCE-$ITERATION &
 		done
