@@ -95,7 +95,8 @@ cp basic-insert.script $LOGDIR_RESULTS/
 
 mmtests_activity sqlite-insert
 monitor_pre_hook $LOGDIR_RESULTS $P
-
+for i in 1 2 3 4 5 
+do 
 echo Creating table
 rm -f $SHELLPACK_DATA/benchmark.db
 ./bin/sqlite3 $SHELLPACK_DATA/benchmark.db "CREATE TABLE mmtests
@@ -106,11 +107,13 @@ rm -f $SHELLPACK_DATA/benchmark.db
 	);" || die Failed to create table
 
 echo Inserting rows
+	eval sh /mmtests/mmtests_CI/data_collection.sh 2 $LOGDIR_RESULTS $i &
 cat basic-insert.script |							\
-	$TIME_CMD -o $LOGDIR_RESULTS/sqlite.time				\
+	$TIME_CMD -o $LOGDIR_RESULTS/sqlite$i.time				\
 		$SHELLPACK_TEMP/perl-trans.pl $SHELLPACK_DATA/benchmark.db	\
-		| tee -a $LOGDIR_RESULTS/sqlite.log
+		| tee -a $LOGDIR_RESULTS/sqlite$i.log
 	ls -lh $SHELLPACK_DATA/benchmark.db
+done
 monitor_post_hook $LOGDIR_RESULTS $P
 
 exit $SHELLPACK_SUCCESS
