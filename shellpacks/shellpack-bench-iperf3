@@ -232,7 +232,7 @@ for NR_THREADS in $THREADS; do
 			|| die "Failed to run iperf3"
 
 echo "iperf perf run starts "
-    	eval sh /mmtests/mmtests_CI/data_collection.sh 20 $LOGDIR_RESULTS $IPERF_PROTOCOL-$IPERF_MESSAGE_SIZE-$IPERF_MESSAGE_RATE-$NR_THREADS_perf &
+    	eval sh /mmtests/mmtests_CI/data_collection.sh 20 $LOGDIR_RESULTS $IPERF_PROTOCOL-$IPERF_MESSAGE_SIZE-$IPERF_MESSAGE_RATE-$NR_THREADS &
 	eval date
         IPERF3_OPTS="-c $SERVER_HOST \
                 $MSGSIZE_OPT $MSGRATE_OPT $SOCKETSIZE_OPT \
