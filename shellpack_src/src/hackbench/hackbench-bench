@@ -62,14 +62,15 @@ ulimit -n $((HACKBENCH_MAX_GROUPS * 40 * 2))
 			exit $SHELLPACK_SUCCESS
 		fi
 	###SHELLPACK iteration_end $HACKBENCH_ITERATIONS
-		 echo "test for perf collection"
-                eval sh /mmtests/mmtests_CI/data_collection.sh 1 $LOGDIR_RESULTS $NR_THREADS$ITERATION &
+		if [ $NR_THREADS -eq $HACKBENCH_MAX_GROUPS ]; then
+                	eval sh /mmtests/mmtests_CI/data_collection.sh 1 $LOGDIR_RESULTS $NR_THREADS$ITERATION &
+		 
                  $TIME_CMD -o $LOGDIR_RESULTS/time-$NR_THREADS-$ITERATION                        \
                         $PERF_CMD bench sched messaging                                         \
-                                $CONN_SWITCH $TASK_SWITCH -g $NR_THREADS -l 5000000  \
-                                > $LOGDIR_RESULTS/hackbench-$NR_THREADS-$ITERATION
+                                $CONN_SWITCH $TASK_SWITCH -g $NR_THREADS -l 10000 		\
+                                > $LOGDIR_RESULTS/perf_hackbench-$NR_THREADS-$ITERATION
 
-	
+		fi	
 	monitor_post_hook $LOGDIR_RESULTS $NR_THREADS
 ###SHELLPACK threads_stride_end
 
