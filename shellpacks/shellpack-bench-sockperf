@@ -153,11 +153,11 @@ esac
 case $SOCKPERF_TESTTYPE in
 ping-pong)
 	SOCKPERF_MESSAGE_RATES=max
-	ITERATIONS=10
+	ITERATIONS=5
 	;;
 throughput)
 	SOCKPERF_MESSAGE_RATES=max
-	ITERATIONS=10
+	ITERATIONS=5
 	;;
 under-load)
 	ITERATIONS=1
@@ -223,8 +223,8 @@ for SIZE in $SOCKPERF_MESSAGE_SIZES; do
 for ITERATION in `seq 1 $ITERATIONS`; do
 	mmtests_wait_token "iteration_begin"
 	mmtests_activity iteration $ITERATION
-	eval sh /mmtests/mmtests_CI/data_collection.sh 20 $LOGDIR_RESULTS $SOCKPERF_PROTOCOL-$SIZE-$RATE-$ITERATION &
-	echo Running $SOCKPERF_TESTTYPE test $PROTOCOL size $SIZE rate $RATE iteration $ITERATION/$ITERATIONS $TASKSET_CLIENT
+		echo Running $SOCKPERF_TESTTYPE test $PROTOCOL size $SIZE rate $RATE iteration $ITERATION/$ITERATIONS $TASKSET_CLIENT
+		eval sh /mmtests/mmtests_CI/data_collection.sh 20 $LOGDIR_RESULTS $SOCKPERF_PROTOCOL-$SIZE-$RATE-$ITERATION &
 
 		eval $TASKSET_CLIENT $SOCKPERFROOT/bin/sockperf 			\
 			$SOCKPERF_TESTTYPE $PROTOCOL_SWITCH				\
