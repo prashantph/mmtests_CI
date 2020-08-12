@@ -28,7 +28,7 @@ export UB_TESTDIR=$SHELLPACK_DATA
 		mmtests_activity $WORKLOAD-$NR_THREADS
 		monitor_pre_hook $LOGDIR_RESULTS $NR_THREADS
 		###SHELLPACK iteration_begin $UNIXBENCH_ITERATIONS
-			eval sh /mmtests/mmtests_CI/data_collection.sh 20 $LOGDIR_RESULTS $ITERATION &
+			eval sh /mmtests/mmtests_CI/data_collection.sh 5 $LOGDIR_RESULTS $NR_THREADS_$ITERATION &
 			echo Running test $WORKLOAD iteration $ITERATION/$UNIXBENCH_ITERATIONS
 			./Run -q -c $NR_THREADS $WORKLOAD 2>&1 | \
 				tee $LOGDIR_RESULTS/$WORKLOAD-${NR_THREADS}-${ITERATION}.log \
