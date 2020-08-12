@@ -146,6 +146,7 @@ while [ $COUNT -lt $SAMPLES ]; do
 	COUNT=`wc -l $LOGDIR_RESULTS/pgioperf.log | awk '{print $1}'`
 done
 shutdown_pid pgioperf $PGIOPERF_PID
+ eval sh /mmtests/mmtests_CI/data_collection.sh 1 $LOGDIR_RESULTS $ITERATION &
 head -$SAMPLES $LOGDIR_RESULTS/pgioperf.log > $LOGDIR_RESULTS/pgioperf.log.tmp
 mv $LOGDIR_RESULTS/pgioperf.log.tmp $LOGDIR_RESULTS/pgioperf.log
 cd $SHELLPACK_TEMP/..
