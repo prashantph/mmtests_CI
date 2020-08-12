@@ -168,7 +168,7 @@ for ITERATION in `seq 1 $IPCSCALE_ITERATIONS`; do
 	mmtests_wait_token "iteration_begin"
 	mmtests_activity iteration $ITERATION
 			echo Starting $WORKLOAD -- threads-per-core $NR_THREADS/$IPCSCALE_MAX_THREADS, run $ITERATION/$IPCSCALE_ITERATIONS
-			eval sh /mmtests/mmtests_CI/data_collection.sh 2 $LOGDIR_$NR_THREADS-$ITERATION &
+			eval sh /mmtests/mmtests_CI/data_collection.sh 2 $LOGDIR $NR_THREADS-$ITERATION &
 			$TIME_CMD -o $LOGDIR_RESULTS/time.$NR_THREADS.$ITERATION \
 			./sem-scalebench -t $IPCSCALE_RUNTIME $COMPLEXOPS -o $OPNUM -p $NR_THREADS > $LOGDIR_RESULTS/semscale.$NR_THREADS.$ITERATION
 sync
