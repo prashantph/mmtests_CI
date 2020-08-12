@@ -313,7 +313,7 @@ for NR_THREADS in $THREADS; do
 	mmtests_activity $NR_THREADS
 	echo o $NR_THREADS/$PGBENCH_MAX_THREADS threads $MAX_TRANSACTIONS transactions
 	start_deferred_monitors "$NR_THREADS/$PGBENCH_MAX_THREADS threads $MAX_TRANSACTIONS transactions"
-	 eval sh /mmtests/mmtests_CI/data_collection.sh 20 $LOGDIR_RESULTS $NR_THREADS &
+	eval sh /mmtests/mmtests_CI/data_collection.sh 20 $LOGDIR_RESULTS $NR_THREADS-$ITERATION &
 	$TIME_CMD -o $LOGDIR_RESULTS/time-${NR_THREADS} \
 		pgbench -v -h $PGHOST -p $PGPORT -r \
 			-l --aggregate-interval=1 \
