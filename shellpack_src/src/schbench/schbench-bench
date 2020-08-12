@@ -26,7 +26,7 @@ SCHBENCH_ITERATIONS=1
 
 	###SHELLPACK iteration_begin $SCHBENCH_ITERATIONS
 		echo Running $NR_THREADS schbench
-		eval sh /mmtests/mmtests_CI/data_collection.sh 20 $LOGDIR_RESULTS $NR_THREADS &
+		eval sh /mmtests/mmtests_CI/data_collection.sh 5 $LOGDIR_RESULTS $NR_THREADS &
 		$TIME_CMD -o $LOGDIR_RESULTS/time-$NR_THREADS \
 			./schbench -r $SCHBENCH_RUNTIME -m $SCHBENCH_MESSAGE_THREADS \
 				-t $NR_THREADS 2>&1 | \
