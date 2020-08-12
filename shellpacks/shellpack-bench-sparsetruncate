@@ -91,6 +91,7 @@ fi
 
 echo Truncating
 monitor_pre_hook $LOGDIR_RESULTS $P
+ eval sh /mmtests/mmtests_CI/data_collection.sh 1 $LOGDIR_RESULTS $ITERATION &
 $TIME_CMD -o $LOGDIR_RESULTS/time											\
 	./sparsetruncate $SHELLPACK_DATA/sparsetruncate $SPARSETRUNCATE_DIRECTORIES $SPARSETRUNCATE_FILES $SPARSETRUNCATE_FILESIZE 0	\
 		> $LOGDIR_RESULTS/truncate.log 2>&1
