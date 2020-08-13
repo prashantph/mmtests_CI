@@ -30,7 +30,7 @@ fi
 			> $LOGDIR_RESULTS/threads-${NR_THREADS}.log 2>&1
 	monitor_post_hook $LOGDIR_RESULTS $NR_THREADS
 	gzip $LOGDIR_RESULTS/threads-${NR_THREADS}.log
-	if [$NR_THREADS == 32]; 
+	if [ $NR_THREADS == 32 ]; 
 	then
 	 	eval sh /mmtests/mmtests_CI/data_collection.sh 1 $LOGDIR_RESULTS $NR_THREADS &
 		eval date
