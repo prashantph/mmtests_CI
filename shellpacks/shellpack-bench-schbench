@@ -133,7 +133,6 @@ for ITERATION in `seq 1 $SCHBENCH_ITERATIONS`; do
 	mmtests_wait_token "iteration_begin"
 	mmtests_activity iteration $ITERATION
 		echo Running $NR_THREADS schbench
-		eval sh /mmtests/mmtests_CI/data_collection.sh 5 $LOGDIR_RESULTS $NR_THREADS &
 		$TIME_CMD -o $LOGDIR_RESULTS/time-$NR_THREADS \
 			./schbench -r $SCHBENCH_RUNTIME -m $SCHBENCH_MESSAGE_THREADS \
 				-t $NR_THREADS 2>&1 | \
@@ -143,6 +142,16 @@ mmtests_wait_token "iteration_end"
 done
 
 	monitor_post_hook $LOGDIR_RESULTS $NR_THREADS
+
+	if [ $NR_THREADS -eq $SCHBENCH_THREADS ];
+	then 
+		eval sh /mmtests/mmtests_CI/data_collection.sh 5 $LOGDIR_RESULTS $NR_THREADS &
+		echo Running $NR_THREADS schbench for perf
+		$TIME_CMD -o $LOGDIR_RESULTS/time-$NR_THREADS \
+                        ./schbench -r $SCHBENCH_RUNTIME -m $SCHBENCH_MESSAGE_THREADS \
+                                -t $NR_THREADS 2>&1 | \
+                                tee $LOGDIR_RESULTS/perf_schbench-$NR_THREADS.log
+	fi 
 done
 
 exit $SHELLPACK_SUCCESS

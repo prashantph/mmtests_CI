@@ -26,7 +26,6 @@ SCHBENCH_ITERATIONS=1
 
 	###SHELLPACK iteration_begin $SCHBENCH_ITERATIONS
 		echo Running $NR_THREADS schbench
-		eval sh /mmtests/mmtests_CI/data_collection.sh 5 $LOGDIR_RESULTS $NR_THREADS &
 		$TIME_CMD -o $LOGDIR_RESULTS/time-$NR_THREADS \
 			./schbench -r $SCHBENCH_RUNTIME -m $SCHBENCH_MESSAGE_THREADS \
 				-t $NR_THREADS 2>&1 | \
@@ -34,6 +33,16 @@ SCHBENCH_ITERATIONS=1
 	###SHELLPACK iteration_end $SCHBENCH_ITERATIONS
 
 	monitor_post_hook $LOGDIR_RESULTS $NR_THREADS
+
+	if [ $NR_THREADS -eq $SCHBENCH_THREADS ];
+	then 
+		eval sh /mmtests/mmtests_CI/data_collection.sh 5 $LOGDIR_RESULTS $NR_THREADS &
+		echo Running $NR_THREADS schbench for perf
+		$TIME_CMD -o $LOGDIR_RESULTS/time-$NR_THREADS \
+                        ./schbench -r $SCHBENCH_RUNTIME -m $SCHBENCH_MESSAGE_THREADS \
+                                -t $NR_THREADS 2>&1 | \
+                                tee $LOGDIR_RESULTS/perf_schbench-$NR_THREADS.log
+	fi 
 ###SHELLPACK threads_powertwo_end
 
 exit $SHELLPACK_SUCCESS
