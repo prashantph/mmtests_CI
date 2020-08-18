@@ -99,7 +99,8 @@ static void run_threads(void *addr, size_t num_pages, size_t num_threads)
 	free(threads);
 }
 
-#define LOOPS 50000
+//#define LOOPS 50000 reduding loop to minimize run time 
+#define LOOPS 10000
 #define NUM_PROCESS 8
 #define NUM_THREADS (NUM_PROCESS/2)
 
