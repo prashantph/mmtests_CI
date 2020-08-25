@@ -37,7 +37,8 @@ then
 	rm -rf $Home_dir/work/sources/sockperf-0*
 fi
 
-
+#run pre-req script
+sh $Home_dir/prereq_setup.sh
 
 #Running the choosen test suite 
 workloads=($(cat $Config_file))
