@@ -15,6 +15,7 @@ if [ -e /etc/redhat-release ];
 	yum -y install libxml2-devel*
 	yum -y install boost-devel*
 	yum -y install cmake*
+	yum -y install binutils-devel*
 elif [ -e /etc/SuSE-release ];
   then 
 	zypper install -y time*

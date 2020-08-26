@@ -36,6 +36,12 @@ if [ -d "$Home_dir/work/sources/sockperf-0*" ]
 then 
 	rm -rf $Home_dir/work/sources/sockperf-0*
 fi
+if [ -d "$Home_dir/work/sources/rttestbuild-v1.5-installed" ]
+then 
+	cd $Home_dir/work/sources/rttestbuild-v1.5-installed
+	make
+	cd -
+fi
 
 #run pre-req script
 sh $Home_dir/prereq_setup.sh
