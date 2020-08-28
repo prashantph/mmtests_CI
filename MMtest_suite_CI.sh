@@ -43,6 +43,14 @@ then
 	cd -
 fi
 
+rm -f $Home_dir/data_collection.sh
+
+if [ -f "$Home_dir/data_collection.sh" ]
+then 
+	echo "perf script still exist "
+	exit
+fi
+
 #run pre-req script
 sh $Home_dir/prereq_setup.sh
 
