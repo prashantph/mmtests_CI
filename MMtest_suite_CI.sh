@@ -117,9 +117,20 @@ done
 mv $Result_dir/Final_csv $Result_dir/old_cvs
 sh $Home_dir/post_proc_main1.sh $Result_dir $kernelrelease 
 sh $Home_dir/copy_csv_data.sh
+
+#lpcpu data collection 
+lpcpu=`pwd`
+echo "Collecting lpcpu data : " | tee $LOG
+wget http://ltc-jenkins.aus.stglabs.ibm.com:81/perfTest/lpcpu.tar.bz2
+tar xvf lpcpu.tar.bz2
+rm -rf lpcpu.tar.bz2
+sed -i 's|/hana/data/fio|/tmp|g' lpcpu/lpcpu.sh
+$lpcpu/lpcpu/lpcpu.sh duration=60
+mv /tmp/lpcpu* $result_dir
+rm -rf $lpcpu/lpcpu
+
 mv $Log_dir $Log_dir.$HOSTNAME.$RUNDATE
 mv $Result_dir $Result_dir.$HOSTNAME.$RUNDATE
-
 sh backup_data.sh
 #tar -cvjf Final_MMTEST_results.$HOSTNAME.$RUNDATE.tar.bz2 $Log_dir.$HOSTNAME.$RUNDATE $Result_dir.$HOSTNAME.$RUNDATE
 #cp Final_MMTEST_results.$HOSTNAME.$RUNDATE.tar.bz2 /home/MMTEST_RESULTS
