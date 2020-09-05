@@ -4,9 +4,7 @@ config-db-sqlite-insert-small
 config-workload-stream-omp-nodes
 config-workload-rt-migration
 config-workload-perfsyscall
-config-workload-sembench-futex
 config-scheduler-perfpipe-cpufreq
-config-workload-hackbench-process-pipes
 config-scheduler-schbench
 config-scheduler-forkintensive
 config-workload-thpscale
