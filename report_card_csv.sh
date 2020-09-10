@@ -80,6 +80,12 @@ cat $1/netperf-unbound.out |grep send-163840|awk '{print $NF}'|awk '{ total += $
 cat $1/sockperf-unbound.out |grep ^850|sed -n '1,5p'|awk '{print $NF}'|awk '{ total += $1; count++ } END { print "sockperf-unbound : TCP throughput for size 850 ,  " total/count  }'   >> $Result_dir/$filename
 cat $1/sockperf-unbound.out |grep ^850|sed -n '6,10p'|awk '{print $NF}'|awk '{ total += $1; count++ } END { print "sockperf-unbound : UDP throughput for size 850 ,  " total/count  }'   >> $Result_dir/$filename
 
+
+cat $1/netperf-unbound.out |grep send-16384 |awk '{print $NF}'|awk '{ total += $1; count++ } END { print " netperf-unbound:send-16384 , " total/count  }' >> $Result_dir/$filename
+cat $1/netperf-unbound.out |grep recv-16384 |awk '{print $NF}'|awk '{ total += $1; count++ } END { print " netperf-unbound:recv-16384 , " total/count  }' >> $Result_dir/$filename
+cat $1/netperf-unbound.out |grep loss-16384 |awk '{print $NF}'|awk '{ total += $1; count++ } END { print " netperf-unbound:loss-16384 , " total/count  }'  >> $Result_dir/$filename
+
+
 cat $1/stream-omp-nodes.out |awk '{ print "stream : "$1 "," $3}'|tail -4 >> $Result_dir/$filename
 
 cat $1/forkintensive.out |sed -n '1p'|awk '{print "forkintensive : process-pipes , " $1}' >> $Result_dir/$filename
