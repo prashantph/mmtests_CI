@@ -1,3 +1,2 @@
 config-workload-wp-tlbflush
 config-db-sysbench-mariadb-oltp-ro-small
-config-db-pgbench-timed-rw-small
