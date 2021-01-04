@@ -128,8 +128,11 @@ monitor_pre_hook $LOGDIR_RESULTS $P
 for ITERATION in `seq 1 $PERFSYSCALL_ITERATIONS`; do
 	mmtests_wait_token "iteration_begin"
 	mmtests_activity iteration $ITERATION
-	eval sh /mmtests/mmtests_CI/data_collection.sh 2 $LOGDIR_RESULTS $ITERATION &
-	$TASKSET_SERVER $PERF_CMD bench syscall basic -l $PERFSYSCALL_LOOPS \
+eval sh /mmtests/mmtests_CI/data_collection.sh $LOGDIR_RESULTS PERFSYSCALL \
+$TASKSET_SERVER $PERF_CMD bench syscall basic -l $PERFSYSCALL_LOOPS \
+                        2>&1|tee $LOGDIR_RESULTS/syscall-perf.log
+ 
+$TASKSET_SERVER $PERF_CMD bench syscall basic -l $PERFSYSCALL_LOOPS \
 			2>&1 | tee $LOGDIR_RESULTS/syscall-${ITERATION}.log
 sync
 mmtests_wait_token "iteration_end"

@@ -126,20 +126,19 @@ ulimit -n $((HACKBENCH_MAX_GROUPS * 40 * 2))
 THREADS=
 START_THREAD=$HACKBENCH_MIN_GROUPS
 END_THREAD=$HACKBENCH_MAX_GROUPS
-#if [ $END_THREAD -gt 32 ]; then
-#	THREADS=`seq $START_THREAD 3 8`
-#	THREADS="$THREADS `seq 12 9 32`"
-#	THREADS="$THREADS `seq 48 31 $END_THREAD`"
-#elif [ $END_THREAD -gt 8 ]; then
-#	THREADS=`seq $START_THREAD 2 8`
-#	THREADS="$THREADS `seq 12 6 $END_THREAD`"
-#else
-#	THREADS=`seq $START_THREAD 2 $END_THREAD`
-#fi
-#if [ `echo $THREADS | awk '{print $NF}'` -ne $END_THREAD ]; then
-	#THREADS="$THREADS $END_THREAD"
-	THREADS="$END_THREAD"
-#fi
+if [ $END_THREAD -gt 32 ]; then
+	THREADS=`seq $START_THREAD 3 8`
+	THREADS="$THREADS `seq 12 9 32`"
+	THREADS="$THREADS `seq 48 31 $END_THREAD`"
+elif [ $END_THREAD -gt 8 ]; then
+	THREADS=`seq $START_THREAD 2 8`
+	THREADS="$THREADS `seq 12 6 $END_THREAD`"
+else
+	THREADS=`seq $START_THREAD 2 $END_THREAD`
+fi
+if [ `echo $THREADS | awk '{print $NF}'` -ne $END_THREAD ]; then
+	THREADS="$THREADS $END_THREAD"
+fi
 
 for NR_THREADS in $THREADS; do
 	if [ $NR_THREADS -lt $HACKBENCH_MIN_GROUPS ]; then
@@ -169,18 +168,20 @@ for ITERATION in `seq 1 $HACKBENCH_ITERATIONS`; do
 			rm $LOGDIR_RESULTS/hackbench-$NR_THREADS-$ITERATION
 			exit $SHELLPACK_SUCCESS
 		fi
+		if [ $NR_THREADS -eq $HACKBENCH_MAX_GROUPS ]; then
+                	eval sh /mmtests/mmtests_CI/data_collection.sh $LOGDIR_RESULTS  hackbench 
+			$TIME_CMD -o $LOGDIR_RESULTS/time-$NR_THREADS-$ITERATION                        \
+                        $PERF_CMD bench sched messaging                                         \
+                                $CONN_SWITCH $TASK_SWITCH -g $NR_THREADS -l 250000               \
+                                > $LOGDIR_RESULTS/perf_hackbench-PERF.out
+ 
+		fi	
+		#echo "  $TIME_CMD -o $LOGDIR_RESULTS/time-$NR_THREADS-$ITERATION                        \
+                 #       $PERF_CMD bench sched messaging                                         \
+                  #              $CONN_SWITCH $TASK_SWITCH -g $NR_THREADS -l 10000"
 sync
 mmtests_wait_token "iteration_end"
 done
-		if [ $NR_THREADS -eq $HACKBENCH_MAX_GROUPS ]; then
-                	eval sh /mmtests/mmtests_CI/data_collection.sh 1 $LOGDIR_RESULTS $NR_THREADS$ITERATION &
-		 
-                 $TIME_CMD -o $LOGDIR_RESULTS/time-$NR_THREADS-$ITERATION                        \
-                        $PERF_CMD bench sched messaging                                         \
-                                $CONN_SWITCH $TASK_SWITCH -g $NR_THREADS -l 10000 		\
-                                > $LOGDIR_RESULTS/perf_hackbench-$NR_THREADS-$ITERATION
-
-		fi	
 	monitor_post_hook $LOGDIR_RESULTS $NR_THREADS
 done
 

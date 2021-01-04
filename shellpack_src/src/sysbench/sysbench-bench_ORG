@@ -168,7 +168,7 @@ OLTP_OPTIONS="--test=oltp $OLTP_TRANSTYPE \
 
 	mmtests_activity sysbench-$NR_THREADS
 	monitor_pre_hook $LOGDIR_RESULTS $NR_THREADS
-#	for ITER in  $MAX_ITERATIONS`; do
+	for ITER in `seq 1 $MAX_ITERATIONS`; do
 		echo Running $NR_THREADS threads Iteration $ITER/$MAX_ITERATIONS
 		echo sysbench $SYSBENCH_OPTIONS $OLTP_OPTIONS --num-threads=$NR_THREADS run | tee $LOGDIR_RESULTS/sysbench-raw-$NR_THREADS-$ITER
 	echo "running sh /mmtests/mmtests_CI/data_collection.sh $ITER &"
@@ -183,7 +183,7 @@ OLTP_OPTIONS="--test=oltp $OLTP_TRANSTYPE \
 			cat $LOGDIR_RESULTS/sysbench-raw-$NR_THREADS-$ITER
 			die sysbench exited abnormally
 		fi
-	#done
+	done
 	monitor_post_hook $LOGDIR_RESULTS $NR_THREADS
 ###SHELLPACK threads_stride_end
 

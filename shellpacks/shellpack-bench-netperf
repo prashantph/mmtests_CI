@@ -196,15 +196,26 @@ for ITERATION in `seq 1 $ITERATIONS`; do
 	NETPERF_OPTS="\
 		-t $PROTOCOL \
 		-i 3,3 -I 95,5 \
-		-l 100
+		-l 50
 		-H $SERVER_HOST \
 		-- $SOCKETSIZE_OPT $MSGSIZE_OPT $EXTRA"
 	echo $TASKSET_CLIENT "netperf" $NETPERF_OPTS
 	monitor_pre_hook $LOGDIR_RESULTS $SIZE
-	 eval sh /mmtests/mmtests_CI/data_collection.sh 20 $LOGDIR_RESULTS $PROTOCOL-${SIZE}$ITERATION &
 	eval $TASKSET_CLIENT $NETROOT/bin/netperf $NETPERF_OPTS \
 			2>&1 | tee $LOGDIR_RESULTS/$PROTOCOL-${SIZE}.$ITERATION \
 			|| die Failed to run netperf
+	 #collect netperf for size 16384
+	 if [ $SIZE == 16384 ]; then
+		NETPERF_OPTS="\
+			-t $PROTOCOL \
+			-i 3,3 -I 95,5 \
+			-l 10
+			-H $SERVER_HOST \
+			-- $SOCKETSIZE_OPT $MSGSIZE_OPT $EXTRA"
+
+		 eval sh /mmtests/mmtests_CI/data_collection.sh $LOGDIR_RESULTS netperf $TASKSET_CLIENT $NETROOT/bin/netperf $NETPERF_OPTS \
+                        2>&1 | tee $LOGDIR_RESULTS/$PROTOCOL-${SIZE}.perf
+	fi
 	monitor_post_hook $LOGDIR_RESULTS $SIZE
 sync
 mmtests_wait_token "iteration_end"

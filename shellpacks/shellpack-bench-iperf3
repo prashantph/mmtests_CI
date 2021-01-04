@@ -228,22 +228,19 @@ for NR_THREADS in $THREADS; do
 	echo $TASKSET_CLIENT "iperf3" $IPERF3_OPTS
 	monitor_pre_hook $LOGDIR_RESULTS $IPERF_PROTOCOL-$IPERF_MESSAGE_SIZE-$IPERF_MESSAGE_RATE-$NR_THREADS
 	eval $TASKSET_CLIENT $IPERFROOT/bin/iperf3 $IPERF3_OPTS \
-			2>&1 > $LOGDIR_RESULTS/$IPERF_PROTOCOL-$IPERF_MESSAGE_SIZE-$IPERF_MESSAGE_RATE-$NR_THREADS \
-			|| die "Failed to run iperf3"
-
-echo "iperf perf run starts "
-    	eval sh /mmtests/mmtests_CI/data_collection.sh 20 $LOGDIR_RESULTS $IPERF_PROTOCOL-$IPERF_MESSAGE_SIZE-$IPERF_MESSAGE_RATE-$NR_THREADS &
-	eval date
-        IPERF3_OPTS="-c $SERVER_HOST \
+		2>&1 > $LOGDIR_RESULTS/$IPERF_PROTOCOL-$IPERF_MESSAGE_SIZE-$IPERF_MESSAGE_RATE-$NR_THREADS \
+		|| die "Failed to run iperf3"
+	#collect perf for MAX_CLIENTS
+	if [ $NR_THREADS == IPERF_MAX_CLIENTS ]; then 
+	 
+		 IPERF3_OPTS="-c $SERVER_HOST \
                 $MSGSIZE_OPT $MSGRATE_OPT $SOCKETSIZE_OPT \
-                $PROTOCOL_OPT -t 100 \
+                $PROTOCOL_OPT 10 \
                 -P $NR_THREADS --get-server-output -V"
-        echo $TASKSET_CLIENT "iperf3" $IPERF3_OPTS
-        monitor_pre_hook $LOGDIR_RESULTS $IPERF_PROTOCOL-$IPERF_MESSAGE_SIZE-$IPERF_MESSAGE_RATE-$NR_THREADS
-        eval $TASKSET_CLIENT $IPERFROOT/bin/iperf3 $IPERF3_OPTS \
-                        2>&1 > $LOGDIR_RESULTS/$IPERF_PROTOCOL-$IPERF_MESSAGE_SIZE-$IPERF_MESSAGE_RATE-$NR_THREADS_perf \
-                        || die "Failed to run iperf3"
-        eval date
+
+    		eval sh /mmtests/mmtests_CI/data_collection.sh $LOGDIR_RESULTS iperf $TASKSET_CLIENT $IPERFROOT/bin/iperf3 $IPERF3_OPTS \
+			2>&1 > $LOGDIR_RESULTS/perf_iperf_$NR_THREADS.out
+	fi
 	monitor_post_hook $LOGDIR_RESULTS $IPERF_PROTOCOL-$IPERF_MESSAGE_SIZE-$IPERF_MESSAGE_RATE-$NR_THREADS
 	mmtests_server_ctl stop --serverside-name $IPERF_PROTOCOL-$IPERF_MESSAGE_SIZE-$IPERF_MESSAGE_RATE
 done

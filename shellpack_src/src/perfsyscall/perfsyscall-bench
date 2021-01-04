@@ -22,7 +22,10 @@ PERF_CMD=${PERF_DIR}/perf
 echo Perf invocation: $TASKSET_SERVER $PERF_CMD bench syscall basic -l $PERFSYSCALL_LOOPS
 monitor_pre_hook $LOGDIR_RESULTS $P
 ###SHELLPACK iteration_begin $PERFSYSCALL_ITERATIONS
-eval sh /mmtests/mmtests_CI/data_collection.sh 2 $LOGDIR_RESULTS $ITERATION &
+eval sh /mmtests/mmtests_CI/data_collection.sh $LOGDIR_RESULTS PERFSYSCALL \
+$TASKSET_SERVER $PERF_CMD bench syscall basic -l $PERFSYSCALL_LOOPS \
+                        2>&1|tee $LOGDIR_RESULTS/syscall-perf.log
+ 
 $TASKSET_SERVER $PERF_CMD bench syscall basic -l $PERFSYSCALL_LOOPS \
 			2>&1 | tee $LOGDIR_RESULTS/syscall-${ITERATION}.log
 ###SHELLPACK iteration_end

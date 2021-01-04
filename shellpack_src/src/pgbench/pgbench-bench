@@ -211,7 +211,17 @@ FIRST_TIME=yes
 	mmtests_activity $NR_THREADS
 	echo o $NR_THREADS/$PGBENCH_MAX_THREADS threads $MAX_TRANSACTIONS transactions
 	start_deferred_monitors "$NR_THREADS/$PGBENCH_MAX_THREADS threads $MAX_TRANSACTIONS transactions"
-	eval sh /mmtests/mmtests_CI/data_collection.sh 20 $LOGDIR_RESULTS $NR_THREADS-$ITERATION &
+
+	#since each test is running for 300 secs , sufficeint time for perf calc.
+	if [ $NR_THREADS == $PGBENCH_MAX_THREADS]; then 	
+		eval sh /mmtests/mmtests_CI/data_collection.sh $LOGDIR_RESULTS pgbench sleep 10 &
+		$TIME_CMD -o $LOGDIR_RESULTS/time-${NR_THREADS} \
+			pgbench -v -h $PGHOST -p $PGPORT -r \
+				-l --aggregate-interval=1 \
+				$VACUUM_ARG $READONLY_ARG -c $NR_THREADS -j $PGBENCH_THREADS \
+				$MAX_TRANSACTIONS_COMMAND $MAX_TIME_COMMAND \
+				pgbench > $LOGDIR_RESULTS/pgbench_perf.log
+	fi 
 	$TIME_CMD -o $LOGDIR_RESULTS/time-${NR_THREADS} \
 		pgbench -v -h $PGHOST -p $PGPORT -r \
 			-l --aggregate-interval=1 \

@@ -21,6 +21,6 @@ export MONITORS_WITH_LATENCY="vmstat iostat"
 export MONITOR_UPDATE_FREQUENCY=10
 
 # Perf pipe
-export PERFPIPE_LOOPS=5000000
-export PERFPIPE_ITERATIONS=2
+export PERFPIPE_LOOPS=1500000
+export PERFPIPE_ITERATIONS=1
 cpupower frequency-set -g performance

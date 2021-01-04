@@ -124,15 +124,26 @@ for NR_THREADS in $THREADS; do
 	echo 3 > /proc/sys/vm/drop_caches
 	monitor_pre_hook $LOGDIR_RESULTS $NR_THREADS
 	echo Starting $NR_THREADS/$THPSCALE_MAX_THREADS
+	echo "./thpscale $NR_THREADS $THPSCALE_MAPSIZE $SHELLPACK_DATA/workfile $MADV_HUGEPAGE"
 	$TIME_CMD -o $LOGDIR_RESULTS/threads-${NR_THREADS}.time \
 		./thpscale $NR_THREADS $THPSCALE_MAPSIZE $SHELLPACK_DATA/workfile $MADV_HUGEPAGE \
 			> $LOGDIR_RESULTS/threads-${NR_THREADS}.log 2>&1
 	monitor_post_hook $LOGDIR_RESULTS $NR_THREADS
 	gzip $LOGDIR_RESULTS/threads-${NR_THREADS}.log
+	if [ $NR_THREADS == 32 ]; 
+	then
+		eval date
+	 	#eval sh /mmtests/mmtests_CI/data_collection.sh  $LOGDIR_RESULTS $NR_THREADS thpscale \
+		for i in {1..15}
+		do 
+			 echo Starting perf  $NR_THREADS/$THPSCALE_MAX_THREADS
+        		$TIME_CMD -o $LOGDIR_RESULTS/perf_threads-${NR_THREADS}.time \
+                	./thpscale $NR_THREADS $THPSCALE_MAPSIZE $SHELLPACK_DATA/workfile $MADV_HUGEPAGE \
+                        > $LOGDIR_RESULTS/perf_threads-${NR_THREADS}.log 2>&1
+		done
+		eval date
+	fi	
+
 done
-	 eval sh /mmtests/mmtests_CI/data_collection.sh 60 $LOGDIR_RESULTS 32 &
-	$TIME_CMD -o $LOGDIR_RESULTS/perfthreads-32.time \
-		./thpscale 32  $THPSCALE_MAPSIZE $SHELLPACK_DATA/workfile $MADV_HUGEPAGE \
-			> $LOGDIR_RESULTS/perfthreads-32.log 2>&1
 rm $SHELLPACK_DATA/workfile
 exit $SHELLPACK_SUCCESS

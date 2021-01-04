@@ -117,6 +117,8 @@ single-bind)
 	;;
 
 omp)
+	echo "stream compile options-for threads $STREAM_THREADS ------"
+	echo "gcc -DSTREAM_ARRAY_SIZE=$STREAM_ARRAY_ELEMENTS -fopenmp $STREAM_BUILD_FLAGS stream.c -o stream || die Failed to compile stream binary"
 	gcc -DSTREAM_ARRAY_SIZE=$STREAM_ARRAY_ELEMENTS -fopenmp $STREAM_BUILD_FLAGS stream.c -o stream || die Failed to compile stream binary
 	export OMP_NUM_THREADS=$STREAM_THREADS
 	;;

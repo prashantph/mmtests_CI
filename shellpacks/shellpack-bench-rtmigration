@@ -94,7 +94,11 @@ cd $SHELLPACK_SOURCES/rttestbuild-${VERSION}-installed || die "Failed to change 
 monitor_pre_hook $LOGDIR_RESULTS $P
 echo Starting rt-migration threads
 echo o rt-migrate-test $RTMIGRATION_CHECK_SWITCH -r $RTMIGRATION_DURATION
-eval sh /mmtests/mmtests_CI/data_collection.sh 1 $LOGDIR_RESULTS 1 5 &
+eval sh /mmtests/mmtests_CI/data_collection.sh  $LOGDIR_RESULTS  rtmigration $SHELLPACK_SOURCES/rttestbuild-${VERSION}-installed/\
+rt-migrate-test $RTMIGRATION_CHECK_SWITCH \
+-r $RTMIGRATION_DURATION
+> $LOGDIR_RESULTS/rtmigration_perf.log 
+
 ./rt-migrate-test $RTMIGRATION_CHECK_SWITCH	\
 	-r $RTMIGRATION_DURATION		\
 	> $LOGDIR_RESULTS/rtmigration.log

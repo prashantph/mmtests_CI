@@ -25,6 +25,7 @@ fi
 	echo 3 > /proc/sys/vm/drop_caches
 	monitor_pre_hook $LOGDIR_RESULTS $NR_THREADS
 	echo Starting $NR_THREADS/$THPSCALE_MAX_THREADS
+	echo "./thpscale $NR_THREADS $THPSCALE_MAPSIZE $SHELLPACK_DATA/workfile $MADV_HUGEPAGE"
 	$TIME_CMD -o $LOGDIR_RESULTS/threads-${NR_THREADS}.time \
 		./thpscale $NR_THREADS $THPSCALE_MAPSIZE $SHELLPACK_DATA/workfile $MADV_HUGEPAGE \
 			> $LOGDIR_RESULTS/threads-${NR_THREADS}.log 2>&1
@@ -32,8 +33,8 @@ fi
 	gzip $LOGDIR_RESULTS/threads-${NR_THREADS}.log
 	if [ $NR_THREADS == 32 ]; 
 	then
-	 	eval sh /mmtests/mmtests_CI/data_collection.sh 1 $LOGDIR_RESULTS $NR_THREADS &
 		eval date
+	 	#eval sh /mmtests/mmtests_CI/data_collection.sh  $LOGDIR_RESULTS $NR_THREADS thpscale \
 		for i in {1..15}
 		do 
 			 echo Starting perf  $NR_THREADS/$THPSCALE_MAX_THREADS

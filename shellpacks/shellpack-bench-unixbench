@@ -103,7 +103,7 @@ for NR_THREADS in $UNIXBENCH_MIN_THREADS $UNIXBENCH_MAX_THREADS; do
 for ITERATION in `seq 1 $UNIXBENCH_ITERATIONS`; do
 	mmtests_wait_token "iteration_begin"
 	mmtests_activity iteration $ITERATION
-			eval sh /mmtests/mmtests_CI/data_collection.sh 5 $LOGDIR_RESULTS $NR_THREADS_$ITERATION &
+			eval sh /mmtests/mmtests_CI/data_collection.sh 5 $LOGDIR_RESULTS $NR_THREADS_$ITERATION unixbench &
 			echo Running test $WORKLOAD iteration $ITERATION/$UNIXBENCH_ITERATIONS
 			./Run -q -c $NR_THREADS $WORKLOAD 2>&1 | \
 				tee $LOGDIR_RESULTS/$WORKLOAD-${NR_THREADS}-${ITERATION}.log \

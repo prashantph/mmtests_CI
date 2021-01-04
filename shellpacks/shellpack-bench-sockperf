@@ -153,11 +153,11 @@ esac
 case $SOCKPERF_TESTTYPE in
 ping-pong)
 	SOCKPERF_MESSAGE_RATES=max
-	ITERATIONS=5
+	ITERATIONS=1
 	;;
 throughput)
 	SOCKPERF_MESSAGE_RATES=max
-	ITERATIONS=5
+	ITERATIONS=1
 	;;
 under-load)
 	ITERATIONS=1
@@ -224,8 +224,14 @@ for ITERATION in `seq 1 $ITERATIONS`; do
 	mmtests_wait_token "iteration_begin"
 	mmtests_activity iteration $ITERATION
 		echo Running $SOCKPERF_TESTTYPE test $PROTOCOL size $SIZE rate $RATE iteration $ITERATION/$ITERATIONS $TASKSET_CLIENT
-		eval sh /mmtests/mmtests_CI/data_collection.sh 20 $LOGDIR_RESULTS $SOCKPERF_PROTOCOL-$SIZE-$RATE-$ITERATION &
 
+		echo  $TASKSET_CLIENT $SOCKPERFROOT/bin/sockperf                         \
+                        $SOCKPERF_TESTTYPE $PROTOCOL_SWITCH                             \
+                        --full-log $LOGDIR_RESULTS/$SOCKPERF_PROTOCOL-$SIZE-${RATE}-$ITERATION.log \
+                        -t $SOCKPERF_DURATION                                           \
+                        --mps $RATE                                                     \
+                        --msg-size $SIZE                                                \
+                        --no-rdtsc
 		eval $TASKSET_CLIENT $SOCKPERFROOT/bin/sockperf 			\
 			$SOCKPERF_TESTTYPE $PROTOCOL_SWITCH				\
 			--full-log $LOGDIR_RESULTS/$SOCKPERF_PROTOCOL-$SIZE-${RATE}-$ITERATION.log \
@@ -233,6 +239,17 @@ for ITERATION in `seq 1 $ITERATIONS`; do
 			--mps $RATE							\
 			--msg-size $SIZE						\
 			--no-rdtsc 2>&1 | tee $LOGDIR_RESULTS/$SOCKPERF_PROTOCOL-$SIZE-$RATE-${ITERATION}.stdout
+		#collect perf for size 850
+		if [ $SIZE == 850 ]; then
+			eval sh /mmtests/mmtests_CI/data_collection.sh $LOGDIR_RESULTS socketperf \
+			$TASKSET_CLIENT $SOCKPERFROOT/bin/sockperf                         \
+                        $SOCKPERF_TESTTYPE $PROTOCOL_SWITCH                             \
+                        --full-log $LOGDIR_RESULTS/$SOCKPERF_PROTOCOL-$SIZE-${RATE}-$ITERATION.log \
+                        -t $SOCKPERF_DURATION                                           \
+                        --mps $RATE                                                     \
+                        --msg-size $SIZE                                                \
+                        --no-rdtsc 2>&1 | tee $LOGDIR_RESULTS/perf_socket_850.out
+		fi
 sync
 mmtests_wait_token "iteration_end"
 done
