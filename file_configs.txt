@@ -1,7 +1,6 @@
 config-workload-usemem-swap-ramdisk
 config-workload-usemem-stress-numa-compact
 config-workload-perfsyscall
-config-workload-sembench-futex
 config-workload-stream-omp-nodes
 config-workload-rt-migration
 config-scheduler-perfpipe-cpufreq
