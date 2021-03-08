@@ -38,10 +38,12 @@ sleep 1
 #10M cycles
 perf record $perf_args -g -c 10000000 -o $RESULT_DIR/perf_cycles_raw_10M_$WORKLOAD $COMMAND |tee -a $RESULT_DIR/cycle_10M_console.out
 #perf record -a -g -c 10000000 -o $RESULT_DIR/perf_cycles_raw_10M_$WORKLOAD $COMMAND
+perf archive $RESULT_DIR/perf_cycles_raw_10M_$WORKLOAD
 sleep 1
 
 #Inst profile
 perf record $perf_args -e instructions -g -o $RESULT_DIR/perf_instr_raw_$WORKLOAD $COMMAND |tee -a $RESULT_DIR/instruction_console.out
+perf archive $RESULT_DIR/perf_instr_raw_$WORKLOAD
 sleep 1
 
 #Capture kallsyms

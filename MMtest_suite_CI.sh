@@ -118,7 +118,7 @@ done
 mv $Result_dir/Final_csv $Result_dir/old_cvs
 sh $Home_dir/post_proc_main1.sh $Result_dir $kernelrelease 
 sh $Home_dir/copy_csv_data.sh
-sh $Home_dir/report_card_csv.sh $Result_dir
+sh $Home_dir/report_card_csv.sh $Result_dir $Log_dir
 
 #lpcpu data collection 
 lpcpu=`pwd`
@@ -130,6 +130,11 @@ sed -i 's|/hana/data/fio|/tmp|g' lpcpu/lpcpu.sh
 $lpcpu/lpcpu/lpcpu.sh duration=60
 mv /tmp/lpcpu* $result_dir
 rm -rf $lpcpu/lpcpu
+
+
+#add results scorecard to master scorecard
+timestamp=`cat /root/timestamp.txt`
+cat $Result_dir/result_score_card.csv >> /hana/data/$timestamp/CI_Results.txt file
 
 mv $Log_dir $Log_dir.$HOSTNAME.$RUNDATE
 mv $Result_dir $Result_dir.$HOSTNAME.$RUNDATE
