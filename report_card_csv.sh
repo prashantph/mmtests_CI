@@ -11,6 +11,9 @@ then
 else   
 		mv $Result_dir/$filename $Result_dir/$filename_old  
 fi   
+
+
+cat $1/Results/Netop_Results* |head -2  >> $Result_dir/$filename
  
 cat $1/usemem-swap-ramdisk.out |grep syst|awk '{print $NF}'|awk '{ total += $1; count++ } END { print "usemem-swap-ramdisk: system time ,  " total/count  }'   >> $Result_dir/$filename
 cat $1/usemem-swap-ramdisk.out |grep elsp|awk '{print $NF}'|awk '{ total += $1; count++ } END { print "usemem-swap-ramdisk : elapsed time ,  " total/count  }'   >> $Result_dir/$filename
