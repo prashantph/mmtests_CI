@@ -6,6 +6,7 @@ IPV_SWITCH=-4
 TASKSET_SERVER=
 TASKSET_CLIENT=
 SERVER_HOST=127.0.0.1
+ADAPTER_IP=9.3.2.182
 if [ "$REMOTE_SERVER_HOST" != "" ]; then
 	SERVER_HOST=$REMOTE_SERVER_HOST
 fi
@@ -98,7 +99,7 @@ esac
 		2>&1 > $LOGDIR_RESULTS/$IPERF_PROTOCOL-$IPERF_MESSAGE_SIZE-$IPERF_MESSAGE_RATE-$NR_THREADS \
 		|| die "Failed to run iperf3"
 	#collect perf for MAX_CLIENTS
-	if [ $NR_THREADS == IPERF_MAX_CLIENTS ]; then 
+	if [ $NR_THREADS == $IPERF_MAX_CLIENTS ]; then 
 	 
 		 IPERF3_OPTS="-c $SERVER_HOST \
                 $MSGSIZE_OPT $MSGRATE_OPT $SOCKETSIZE_OPT \
@@ -107,6 +108,17 @@ esac
 
     		eval sh /mmtests/mmtests_CI/data_collection.sh $LOGDIR_RESULTS iperf $TASKSET_CLIENT $IPERFROOT/bin/iperf3 $IPERF3_OPTS \
 			2>&1 > $LOGDIR_RESULTS/perf_iperf_$NR_THREADS.out
+		
+		#adapter test 
+		echo "adapter test" 
+		IPERF3_OPTS="-c $SERVER_HOST \
+                $MSGSIZE_OPT $MSGRATE_OPT $SOCKETSIZE_OPT \
+                $PROTOCOL_OPT 10 \
+                -P $NR_THREADS --get-server-output -V"
+		 eval $TASKSET_CLIENT $IPERFROOT/bin/iperf3 $IPERF3_OPTS \
+			2>&1 > $LOGDIR_RESULTS/ADAPTER_$IPERF_PROTOCOL-$IPERF_MESSAGE_SIZE-$IPERF_MESSAGE_RATE-$NR_THREADS \
+                || die "Failed to run iperf3"
+
 	fi
 	monitor_post_hook $LOGDIR_RESULTS $IPERF_PROTOCOL-$IPERF_MESSAGE_SIZE-$IPERF_MESSAGE_RATE-$NR_THREADS
 	mmtests_server_ctl stop --serverside-name $IPERF_PROTOCOL-$IPERF_MESSAGE_SIZE-$IPERF_MESSAGE_RATE

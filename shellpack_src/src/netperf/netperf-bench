@@ -7,6 +7,7 @@ BUFFER_SIZES="64 128 256 1024 2048 3312 4096 6144 8192 10240 12288 14336 16384"
 TASKSET_SERVER=
 TASKSET_CLIENT=
 SERVER_HOST=127.0.0.1
+ADAPTER_IP=9.3.2.182
 if [ "$REMOTE_SERVER_HOST" != "" ]; then
 	SERVER_HOST=$REMOTE_SERVER_HOST
 fi
@@ -109,6 +110,17 @@ mmtests_server_ctl start --serverside-name $PROTOCOL-$SIZE
 
 		 eval sh /mmtests/mmtests_CI/data_collection.sh $LOGDIR_RESULTS netperf $TASKSET_CLIENT $NETROOT/bin/netperf $NETPERF_OPTS \
                         2>&1 | tee $LOGDIR_RESULTS/$PROTOCOL-${SIZE}.perf
+	#adapter test 
+	echo "Running adapter Test "
+	 NETPERF_OPTS="\
+                        -t $PROTOCOL \
+                        -i 3,3 -I 95,5 \
+                        -l 50 
+                        -H $ADAPTER_IP \
+                        -- $SOCKETSIZE_OPT $MSGSIZE_OPT $EXTRA"
+
+                 eval  $TASKSET_CLIENT $NETROOT/bin/netperf $NETPERF_OPTS \
+                        2>&1 | tee $LOGDIR_RESULTS/ADAPTER$PROTOCOL-${SIZE}
 	fi
 	monitor_post_hook $LOGDIR_RESULTS $SIZE
 ###SHELLPACK iteration_end
