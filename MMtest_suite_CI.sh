@@ -137,6 +137,20 @@ sh $Home_dir/post_proc_main1.sh $Result_dir $kernelrelease
 sh $Home_dir/copy_csv_data.sh
 sh $Home_dir/report_card_csv.sh $Result_dir $Log_dir
 
+#Adding mprotect workload here 
+#copy mprotect files 
+#mprotect_workload_dir=$Home_dir/mprotect
+#mkdir -p $mprotect_workload_dir
+#scp root@ci-http-results.aus.stglabs.ibm.com:/home/prashant/mprotect/*  $mprotect_workload_dir
+#cd $mprotect_workload_dir
+#chmod +x run_mprotect.sh
+#sh run_mprotect.sh
+
+#copy results and log data 
+#cp -r $mprotect_workload_dir/mprotect.out $Log_dir
+#cp -r $mprotect_workload_dir/mprotect.out $Result_dir
+
+
 #lpcpu data collection 
 lpcpu=`pwd`
 echo "Collecting lpcpu data : " | tee $LOG
